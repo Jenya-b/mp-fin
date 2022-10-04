@@ -5,7 +5,7 @@ export default createGlobalStyle`
 		padding: 0;
 		margin: 0;
 		border: 0;
-		font-family: 'Inter', sans-serif;
+		font-family: 'Open Sans', sans-serif;
 	}
 	*,
 	*::before,
