@@ -8,6 +8,8 @@ import { SettingsPage } from './modules/pages/settings/Settings';
 import { PrimeCostPage } from './modules/pages/primeCost/PrimeCost';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from './styles/theme';
+import { LoginPage } from './modules/pages/login/Login';
+import { Signin } from './modules/pages/login/signin/Signin';
 
 const App = () => {
   return (
@@ -19,6 +21,9 @@ const App = () => {
           <Route path="reports" element={<ReportsPage />} />
           <Route path="settings" element={<SettingsPage />} />
           <Route path="prime-cost" element={<PrimeCostPage />} />
+        </Route>
+        <Route path="login" element={<LoginPage />}>
+          <Route index element={<Signin />} />
         </Route>
       </Routes>
       <GlobalStyles />
