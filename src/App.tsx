@@ -11,6 +11,7 @@ import { baseTheme } from './styles/theme';
 import { LoginPage } from './modules/pages/login/Login';
 import { Signin } from './modules/pages/login/signin/Signin';
 import { Registration } from './modules/pages/login/registration/Registration';
+import { ResetPass } from './modules/pages/login/resetPass/ResetPass';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="login" element={<LoginPage />}>
           <Route index element={<Signin />} />
           <Route path=":registration" element={<Registration />} />
+          <Route path=":reset-pass" element={<ResetPass />} />
         </Route>
       </Routes>
       <GlobalStyles />

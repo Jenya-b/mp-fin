@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { InputList, LoginForm, TitleForm, Label, Controls, LinkWrapper } from '../Login.styled';
-import { ResetPassLink } from './Signin.styled';
+import {
+  InputList,
+  LoginForm,
+  TitleForm,
+  Label,
+  Controls,
+  LinkWrapper,
+  LinkWrapperCenter,
+} from '../Login.styled';
 
 export const Signin = () => (
   <LoginForm>
@@ -14,14 +21,14 @@ export const Signin = () => (
         <PrimaryInput type="pass" placeholder="Пароль" />
       </Label>
     </InputList>
-    <ResetPassLink>
+    <LinkWrapper>
       <Link to="reset-pass">Забыли пароль?</Link>
-    </ResetPassLink>
+    </LinkWrapper>
     <Controls>
       <PrimaryButton>Продолжить</PrimaryButton>
     </Controls>
-    <LinkWrapper>
+    <LinkWrapperCenter>
       <span>Нет аккаутнта?</span> <Link to="registration">Зарегистрируйтесь</Link>
-    </LinkWrapper>
+    </LinkWrapperCenter>
   </LoginForm>
 );

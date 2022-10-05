@@ -60,8 +60,11 @@ export const Controls = styled.div`
 
 export const LinkWrapper = styled.p`
   margin-top: 13px;
-  ${fontStylesSmall}
   color: ${({ theme }) => theme.colors.formSpan};
-  text-align: center;
+  ${fontStylesSmall}
   ${linkStyles}
+`;
+
+export const LinkWrapperCenter = styled(LinkWrapper)`
+  text-align: center;
 `;
