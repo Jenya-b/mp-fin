@@ -14,7 +14,7 @@ export const FormWrapper = styled.div`
   ${flexCenterAll}
 `;
 export const LogoWrapper = styled.div`
-  background: url('source/images/background.png') no-repeat;
+  background: url('/source/images/background.png') no-repeat;
   background-position: center;
   background-size: cover;
 `;
@@ -24,7 +24,7 @@ export const Logo = styled.div`
   height: 100%;
   margin-left: auto;
   margin-right: auto;
-  background: url('source/images/logoLogin.png') no-repeat;
+  background: url('/source/images/logoLogin.png') no-repeat;
   background-position-y: center;
 `;
 
