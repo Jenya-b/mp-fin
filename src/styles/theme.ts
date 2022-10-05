@@ -36,10 +36,10 @@ export const baseTheme: ITheme = {
     formSpan: colorMainGreySecondary,
 
     //button
-    primaryBtn: colorMainGreyLight,
-    primaryBtnbackground: colorMainGreenSecondary,
-    primaryBtnHover: colorMainGreenPrimary,
-    primaryBtnActive: colorMainGreenPrimary,
+    btn: colorMainGreyLight,
+    btnbackground: colorMainGreenSecondary,
+    btnHover: colorMainGreenPrimary,
+    btnActive: colorMainGreenPrimary,
   },
   sizes: {
     loginForm: {

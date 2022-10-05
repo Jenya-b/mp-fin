@@ -24,10 +24,13 @@ export const InputList = styled.div`
   row-gap: ${({ theme }) => theme.indents.inputList.rowGap}px;
 `;
 
+export const Label = styled.label`
+  width: ${({ theme }) => theme.sizes.loginForm.width}px;
+`;
+
 export const ResetPassLink = styled.p`
   margin-top: 13px;
   ${fontStylesSmall}
-
   ${linkStyles}
 `;
 
@@ -40,6 +43,5 @@ export const RegistrationLink = styled.p`
   ${fontStylesSmall}
   color: ${({ theme }) => theme.colors.formSpan};
   text-align: center;
-
   ${linkStyles}
 `;

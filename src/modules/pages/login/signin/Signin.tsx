@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { PrimaryButton } from '../../../components/button/Button';
-import { PrimaryInput } from '../../../components/input/Input';
+import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
 import {
   Controls,
   InputList,
+  Label,
   LoginForm,
   RegistrationLink,
   ResetPassLink,
@@ -14,14 +14,18 @@ export const Signin = () => (
   <LoginForm>
     <Title>Вход в личный кабинет</Title>
     <InputList>
-      <PrimaryInput type="email" placeholder="Email" />
-      <PrimaryInput type="pass" placeholder="Пароль" />
+      <Label>
+        <PrimaryInput type="email" placeholder="Email" />
+      </Label>
+      <Label>
+        <PrimaryInput type="pass" placeholder="Пароль" />
+      </Label>
     </InputList>
     <ResetPassLink>
       <Link to="reset-pass">Забыли пароль?</Link>
     </ResetPassLink>
     <Controls>
-      <PrimaryButton text="Продолжить" />
+      <PrimaryButton>Продолжить</PrimaryButton>
     </Controls>
     <RegistrationLink>
       <span>Нет аккаутнта?</span> <Link to="registration">Зарегистрируйтесь</Link>

@@ -13,10 +13,10 @@ export interface ITheme {
     formLinkHover: string;
     formSpan: string;
     titleForm: string;
-    primaryBtn: string;
-    primaryBtnbackground: string;
-    primaryBtnHover: string;
-    primaryBtnActive: string;
+    btn: string;
+    btnbackground: string;
+    btnHover: string;
+    btnActive: string;
   };
   sizes: {
     loginForm: {
