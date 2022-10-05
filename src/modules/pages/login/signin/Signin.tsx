@@ -1,18 +1,11 @@
 import { Link } from 'react-router-dom';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import {
-  Controls,
-  InputList,
-  Label,
-  LoginForm,
-  RegistrationLink,
-  ResetPassLink,
-  Title,
-} from './Signin.styled';
+import { InputList, LoginForm, TitleForm, Label, Controls, LinkWrapper } from '../Login.styled';
+import { ResetPassLink } from './Signin.styled';
 
 export const Signin = () => (
   <LoginForm>
-    <Title>Вход в личный кабинет</Title>
+    <TitleForm>Вход в личный кабинет</TitleForm>
     <InputList>
       <Label>
         <PrimaryInput type="email" placeholder="Email" />
@@ -27,8 +20,8 @@ export const Signin = () => (
     <Controls>
       <PrimaryButton>Продолжить</PrimaryButton>
     </Controls>
-    <RegistrationLink>
+    <LinkWrapper>
       <span>Нет аккаутнта?</span> <Link to="registration">Зарегистрируйтесь</Link>
-    </RegistrationLink>
+    </LinkWrapper>
   </LoginForm>
 );
