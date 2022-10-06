@@ -2,6 +2,9 @@ export interface ITheme {
   colors: {
     background: string;
     sidebar: string;
+    header: string;
+    headerBorder: string;
+    footer: string;
     formBackground: string;
     inputFormPlaceholder: string;
     inputFormHoverBord: string;
@@ -17,6 +20,10 @@ export interface ITheme {
     btnbackground: string;
     btnHover: string;
     btnActive: string;
+    btnCircleHeader: string;
+    headerMessageCount: string;
+    textCountHeader: string;
+    textHeaderPrimary: string;
   };
   sizes: {
     loginForm: {
@@ -31,6 +38,16 @@ export interface ITheme {
     primaryBtn: {
       height: number;
     };
+    sidebar: {
+      widthActive: number;
+      widthHidden: number;
+    };
+    header: {
+      height: number;
+    };
+    footer: {
+      height: number;
+    };
   };
   indents: {
     loginForm: {
@@ -42,6 +59,10 @@ export interface ITheme {
     inputList: {
       marginTop: number;
       rowGap: number;
+    };
+    main: {
+      paddingLeft: number;
+      paddingLeftHide: number;
     };
   };
   borders: {

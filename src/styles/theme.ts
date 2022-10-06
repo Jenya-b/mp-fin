@@ -22,6 +22,9 @@ export const baseTheme: ITheme = {
     background: colorMainBlue,
     sidebar: colorMainGreenPrimary,
 
+    footer: colorMainWhite,
+    headerMessageCount: colorMainGreenSecondary,
+
     //formLogin
     formBackground: colorMainWhite,
     inputFormPlaceholder: colorMainGreyTertiary,
@@ -40,6 +43,13 @@ export const baseTheme: ITheme = {
     btnbackground: colorMainGreenSecondary,
     btnHover: colorMainGreenPrimary,
     btnActive: colorMainGreenPrimary,
+    btnCircleHeader: colorMainGreyLight,
+
+    //header
+    header: colorMainWhite,
+    headerBorder: colorMainGreyLight,
+    textHeaderPrimary: colorMainBlack,
+    textCountHeader: colorMainWhite,
   },
   sizes: {
     loginForm: {
@@ -54,6 +64,16 @@ export const baseTheme: ITheme = {
     primaryBtn: {
       height: 55,
     },
+    sidebar: {
+      widthActive: 290,
+      widthHidden: 90,
+    },
+    header: {
+      height: 80,
+    },
+    footer: {
+      height: 80,
+    },
   },
   indents: {
     loginForm: {
@@ -65,6 +85,10 @@ export const baseTheme: ITheme = {
     inputList: {
       marginTop: 25,
       rowGap: 15,
+    },
+    main: {
+      paddingLeft: 290,
+      paddingLeftHide: 90,
     },
   },
   borders: {
