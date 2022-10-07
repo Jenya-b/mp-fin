@@ -4,7 +4,6 @@ export interface ITheme {
     sidebar: string;
     header: string;
     headerBorder: string;
-    footer: string;
     formBackground: string;
     inputFormPlaceholder: string;
     inputFormHoverBord: string;
@@ -24,6 +23,9 @@ export interface ITheme {
     headerMessageCount: string;
     textCountHeader: string;
     textHeaderPrimary: string;
+    footerBg: string;
+    footerBorder: string;
+    textFooterPrimary: string;
   };
   sizes: {
     loginForm: {
