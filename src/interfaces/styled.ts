@@ -26,6 +26,7 @@ export interface ITheme {
     footerBg: string;
     footerBorder: string;
     textFooterPrimary: string;
+    notFoundBg: string;
   };
   sizes: {
     loginForm: {
@@ -49,6 +50,9 @@ export interface ITheme {
     };
     footer: {
       height: number;
+    };
+    notFoundBg: {
+      title: { fontSize: number };
     };
   };
   indents: {

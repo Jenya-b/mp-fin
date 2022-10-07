@@ -13,6 +13,7 @@ import { Signin } from './modules/pages/login/signin/Signin';
 import { Registration } from './modules/pages/login/registration/Registration';
 import { ResetPass } from './modules/pages/login/resetPass/ResetPass';
 import { path } from './constants/path';
+import { NotFoundPage } from './modules/pages/notFound/NotFound';
 
 const App = () => {
   const { analitics, login, primeCost, registration, reports, resetPass, settings } = path;
@@ -32,6 +33,7 @@ const App = () => {
           <Route path={registration} element={<Registration />} />
           <Route path={resetPass} element={<ResetPass />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <GlobalStyles />
     </ThemeProvider>
