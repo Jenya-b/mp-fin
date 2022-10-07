@@ -53,6 +53,9 @@ export const baseTheme: ITheme = {
     footerBg: colorMainWhite,
     footerBorder: colorMainGreyLight,
     textFooterPrimary: colorMainBlack,
+
+    //not-found
+    notFoundBg: colorMainWhite,
   },
   sizes: {
     loginForm: {
@@ -76,6 +79,9 @@ export const baseTheme: ITheme = {
     },
     footer: {
       height: 60,
+    },
+    notFoundBg: {
+      title: { fontSize: 56 },
     },
   },
   indents: {
