@@ -22,9 +22,6 @@ export const baseTheme: ITheme = {
     background: colorMainBlue,
     sidebar: colorMainGreenPrimary,
 
-    footer: colorMainWhite,
-    headerMessageCount: colorMainGreenSecondary,
-
     //formLogin
     formBackground: colorMainWhite,
     inputFormPlaceholder: colorMainGreyTertiary,
@@ -50,6 +47,12 @@ export const baseTheme: ITheme = {
     headerBorder: colorMainGreyLight,
     textHeaderPrimary: colorMainBlack,
     textCountHeader: colorMainWhite,
+    headerMessageCount: colorMainGreenSecondary,
+
+    //footer
+    footerBg: colorMainWhite,
+    footerBorder: colorMainGreyLight,
+    textFooterPrimary: colorMainBlack,
   },
   sizes: {
     loginForm: {
@@ -72,7 +75,7 @@ export const baseTheme: ITheme = {
       height: 80,
     },
     footer: {
-      height: 80,
+      height: 60,
     },
   },
   indents: {
