@@ -22,13 +22,13 @@ export const fontStylesH2 = css`
   font-size: 22px;
   line-height: 30px;
 `;
-export const fontStylesRegular = css`
+export const fontStylesRegularBold = css`
   ${fontsFamilyOpenSans}
   font-weight: 600;
   font-size: 18px;
   line-height: 25px;
 `;
-export const fontStylesRegularBold = css`
+export const fontStylesRegular = css`
   ${fontsFamilyOpenSans}
   font-weight: 400;
   font-size: 18px;

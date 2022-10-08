@@ -1,1 +1,1 @@
-export const ReportsPage = () => <></>;
+export const ReportsPage = () => <main>ReportsPage</main>;

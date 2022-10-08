@@ -14,16 +14,19 @@ import { Registration } from './modules/pages/login/registration/Registration';
 import { ResetPass } from './modules/pages/login/resetPass/ResetPass';
 import { path } from './constants/path';
 import { NotFoundPage } from './modules/pages/notFound/NotFound';
+import { AnaliticCardPage } from './modules/pages/analiticCard/AnaliticCard';
 
 const App = () => {
-  const { analitics, login, primeCost, registration, reports, resetPass, settings } = path;
+  const { analitics, analiticCard, login, primeCost, registration, reports, resetPass, settings } =
+    path;
 
   return (
     <ThemeProvider theme={baseTheme}>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<BalancePage />} />
-          <Route path={analitics} element={<AnaliticsPage />} />
+        <Route path={analitics} element={<Layout />}>
+          {/* <Route index element={<BalancePage />} /> */}
+          <Route index element={<AnaliticsPage />} />
+          <Route path={analiticCard} element={<AnaliticCardPage />} />
           <Route path={reports} element={<ReportsPage />} />
           <Route path={settings} element={<SettingsPage />} />
           <Route path={primeCost} element={<PrimeCostPage />} />
