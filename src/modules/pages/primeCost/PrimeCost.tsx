@@ -1,1 +1,1 @@
-export const PrimeCostPage = () => <></>;
+export const PrimeCostPage = () => <main>PrimeCostPage</main>;

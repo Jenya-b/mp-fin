@@ -20,7 +20,11 @@ import {
 export const baseTheme: ITheme = {
   colors: {
     background: colorMainBlue,
+
+    //sidebar
     sidebar: colorMainGreenPrimary,
+    sidebarLogo: colorMainGreenSecondary,
+    sidebarTextMenu: colorMainWhite,
 
     //formLogin
     formBackground: colorMainWhite,
@@ -73,6 +77,7 @@ export const baseTheme: ITheme = {
     sidebar: {
       widthActive: 290,
       widthHidden: 90,
+      logo: { height: 80 },
     },
     header: {
       height: 80,

@@ -2,6 +2,8 @@ export interface ITheme {
   colors: {
     background: string;
     sidebar: string;
+    sidebarLogo: string;
+    sidebarTextMenu: string;
     header: string;
     headerBorder: string;
     formBackground: string;
@@ -44,6 +46,7 @@ export interface ITheme {
     sidebar: {
       widthActive: number;
       widthHidden: number;
+      logo: { height: number };
     };
     header: {
       height: number;

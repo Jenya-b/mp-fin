@@ -1,12 +1,38 @@
-import styled from 'styled-components';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
+import { mainLogo } from '../../../constants/images';
+import { menuList } from '../../../constants/menu';
+import { path } from '../../../constants/path';
+import { MenuItem } from '../menuItem/MenuItem';
+import { Aside, Logo, LogoImg, LogoWrapper, MenuList } from './Sidebar.styled';
 
-export const Sidebar = () => <Aside></Aside>;
+export const Sidebar = () => {
+  const { analitics } = path;
+  const [isActiveSidebar, setInActiveSidebar] = useState<boolean>(false);
 
-const Aside = styled.aside`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: ${({ theme }) => theme.sizes.sidebar.widthActive}px;
-  height: 100%;
-  background: ${({ theme }) => theme.colors.sidebar};
-`;
+  const activeSidebar = () => {
+    setInActiveSidebar(true);
+  };
+
+  const hideSidebar = () => {
+    setInActiveSidebar(false);
+  };
+
+  return (
+    <Aside isActive={isActiveSidebar} onMouseEnter={activeSidebar} onMouseLeave={hideSidebar}>
+      <Link to={analitics}>
+        <Logo>
+          <LogoWrapper isActive={isActiveSidebar}>
+            <LogoImg src={mainLogo} />
+          </LogoWrapper>
+        </Logo>
+      </Link>
+      <MenuList>
+        {menuList.map((menu) => (
+          <MenuItem key={v4()} {...menu} isActive={isActiveSidebar} />
+        ))}
+      </MenuList>
+    </Aside>
+  );
+};
