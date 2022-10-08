@@ -1,21 +1,31 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { fontStylesRegular, fontStylesRegularBold } from '../../../styles/typography';
+import { fontStylesRegular } from '../../../styles/typography';
 
 interface MenuItemProps {
   srcImg: string;
   title: string;
   href: string;
+  isActive: boolean;
 }
 
-export const MenuItem = ({ srcImg, title, href }: MenuItemProps) => {
+export const MenuItem = ({ srcImg, title, href, isActive }: MenuItemProps) => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (!isActive) return setVisible(false);
+
+    setTimeout(() => setVisible(true), 80);
+  }, [isActive]);
+
   return (
     <Link to={href}>
       <Item>
         <ImageWrapp>
           <Image src={srcImg}></Image>
         </ImageWrapp>
-        <Title>{title}</Title>
+        {visible && <Title>{title}</Title>}
       </Item>
     </Link>
   );

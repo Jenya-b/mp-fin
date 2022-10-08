@@ -13,7 +13,7 @@ export const Main = styled.div`
   display: grid;
   grid-template: ${({ theme }) => theme.sizes.header.height}px 1fr ${({ theme }) =>
       theme.sizes.footer.height}px / 1fr;
-  padding-left: ${({ theme }) => theme.indents.main.paddingLeft}px;
+  padding-left: ${({ theme }) => theme.indents.main.paddingLeftHide}px;
 `;
 
 export const Button = styled.button`
