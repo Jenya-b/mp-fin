@@ -7,4 +7,5 @@ export const path = {
   login: 'login',
   registration: 'registration',
   resetPass: 'reset-pass',
+  balance: 'balance',
 };

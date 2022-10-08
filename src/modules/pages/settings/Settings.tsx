@@ -1,1 +1,1 @@
-export const SettingsPage = () => <></>;
+export const SettingsPage = () => <main>SettingsPage</main>;

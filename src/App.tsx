@@ -17,19 +17,28 @@ import { NotFoundPage } from './modules/pages/notFound/NotFound';
 import { AnaliticCardPage } from './modules/pages/analiticCard/AnaliticCard';
 
 const App = () => {
-  const { analitics, analiticCard, login, primeCost, registration, reports, resetPass, settings } =
-    path;
+  const {
+    analitics,
+    analiticCard,
+    login,
+    primeCost,
+    registration,
+    reports,
+    resetPass,
+    settings,
+    balance,
+  } = path;
 
   return (
     <ThemeProvider theme={baseTheme}>
       <Routes>
         <Route path={analitics} element={<Layout />}>
-          {/* <Route index element={<BalancePage />} /> */}
           <Route index element={<AnaliticsPage />} />
           <Route path={analiticCard} element={<AnaliticCardPage />} />
           <Route path={reports} element={<ReportsPage />} />
           <Route path={settings} element={<SettingsPage />} />
           <Route path={primeCost} element={<PrimeCostPage />} />
+          <Route path={balance} element={<BalancePage />} />
         </Route>
         <Route path={login} element={<LoginPage />}>
           <Route index element={<Signin />} />
