@@ -1,25 +1,25 @@
 import { menuIcon } from './../constants/images';
-import { path } from './../constants/path';
+import { routerPath } from './routerPath';
 
 export const menuList = [
   {
     srcImg: menuIcon.analiticIcon,
     title: 'Аналитика',
-    href: path.analitics,
+    href: routerPath.analitics,
   },
   {
     srcImg: menuIcon.analiticCardIcon,
     title: 'Аналитика карточки',
-    href: path.analiticCard,
+    href: routerPath.analiticCard,
   },
   {
     srcImg: menuIcon.reportIcon,
     title: 'Загрузить отчет',
-    href: path.reports,
+    href: routerPath.reports,
   },
   {
     srcImg: menuIcon.primeCostIcon,
     title: 'Себестоимость',
-    href: path.primeCost,
+    href: routerPath.primeCost,
   },
 ];

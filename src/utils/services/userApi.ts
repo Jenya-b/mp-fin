@@ -6,7 +6,7 @@ export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
   endpoints: (builder) => ({
-    getUsers: builder.query<IUser, null>({
+    getUser: builder.query<IUser, null>({
       query: () => ({
         url: '/Account/GetUser',
         credentials: 'include',
@@ -22,4 +22,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useGetUsersQuery } = userApi;
+export const { useGetUserQuery } = userApi;

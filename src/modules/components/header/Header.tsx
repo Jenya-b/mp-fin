@@ -1,12 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { StyledHeader, BalanceInfo, Controls, LoginImage } from './Header.styled';
 import { LoginInfo, LoginName, ButtonWrapper, ButtonSettings } from './Header.styled';
 import { ButtonMessage, ButtonLogin, LoginTitle, CountMessage } from './Header.styled';
 import { BalanceIcon, BalanceSum, BalanceButton } from './Header.styled';
-import { path } from './../../../constants/path';
+import { routerPath } from '../../../constants/routerPath';
 
 export const Header = () => {
-  const { balance, settings } = path;
+  const { balance, settings } = routerPath;
   const navigate = useNavigate();
 
   const openPage = (href: string) => {

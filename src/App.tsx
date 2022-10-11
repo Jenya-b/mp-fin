@@ -12,7 +12,7 @@ import { LoginPage } from './modules/pages/login/Login';
 import { Signin } from './modules/pages/login/signin/Signin';
 import { Registration } from './modules/pages/login/registration/Registration';
 import { ResetPass } from './modules/pages/login/resetPass/ResetPass';
-import { path } from './constants/path';
+import { routerPath } from './constants/routerPath';
 import { NotFoundPage } from './modules/pages/notFound/NotFound';
 import { AnaliticCardPage } from './modules/pages/analiticCard/AnaliticCard';
 
@@ -27,7 +27,7 @@ const App = () => {
     resetPass,
     settings,
     balance,
-  } = path;
+  } = routerPath;
 
   return (
     <ThemeProvider theme={baseTheme}>
