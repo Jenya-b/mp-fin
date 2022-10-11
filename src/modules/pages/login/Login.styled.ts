@@ -28,7 +28,7 @@ export const Logo = styled.div`
   background-position-y: center;
 `;
 
-export const LoginForm = styled.div`
+export const LoginForm = styled.form`
   padding-top: ${({ theme }) => theme.indents.loginForm.paddingTop}px;
   padding-right: ${({ theme }) => theme.indents.loginForm.paddingRight}px;
   padding-bottom: ${({ theme }) => theme.indents.loginForm.paddingBottom}px;
