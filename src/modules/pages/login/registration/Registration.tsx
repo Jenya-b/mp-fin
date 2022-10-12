@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { useRegisterUserMutation } from '../../../../utils/services/authApi';
+import { useRegisterUserMutation } from '../../../../utils/api/authApi';
 import {
   Controls,
   InputList,

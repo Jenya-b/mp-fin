@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IUser } from '../../interfaces/user';
+import { IUser } from '../api/types';
 import { setUser } from '../store/reducers/userSlice';
 
 export const userApi = createApi({

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { baseUrl } from '../../constants/api';
-import { IGenericResponse, ISigninInputs, IRegistrationInputs } from '../apiTypes';
+import { baseUrl } from './baseUrl';
+import { IGenericResponse, ISigninInputs, IRegistrationInputs } from './types';
 import { userApi } from './userApi';
 
 export const authApi = createApi({

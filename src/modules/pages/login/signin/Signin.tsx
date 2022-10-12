@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from '../../../../constants/routerPath';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { useSigninUserMutation } from '../../../../utils/services/authApi';
+import { useSigninUserMutation } from '../../../../utils/api/authApi';
 import {
   InputList,
   LoginForm,
