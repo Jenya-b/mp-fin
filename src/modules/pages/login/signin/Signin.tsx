@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from '../../../../constants/routerPath';
+import { useAppDispatch } from '../../../../hooks/redux';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
 import { useSigninUserMutation } from '../../../../utils/api/authApi';
+import { setIsActiveUser } from '../../../../utils/store/reducers/userSlice';
+import { Loader } from '../../../components/loader/Loader';
 import {
   InputList,
   LoginForm,
@@ -11,52 +15,70 @@ import {
   Controls,
   LinkWrapper,
   LinkWrapperCenter,
+  MessageError,
 } from '../Login.styled';
 
+type FormValues = {
+  email: string;
+  password: string;
+};
+
 export const Signin = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const dispatch = useAppDispatch();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormValues>();
   const { analitics } = routerPath;
 
-  const [signinUser, { isLoading, isError, error, isSuccess }] = useSigninUserMutation();
+  const [signinUser, { isLoading, isSuccess }] = useSigninUserMutation();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess) {
+      dispatch(setIsActiveUser('Пользователь авторизован'));
       navigate(analitics);
     }
-  }, [isLoading]);
+  }, [isSuccess]);
 
-  const hundleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = handleSubmit((data) => {
     signinUser({
-      email: email,
-      password: password,
       rememberMe: false,
       returnUrl: null,
+      ...data,
     });
-  };
+  });
+
+  if (isLoading) return <Loader />;
 
   return (
-    <LoginForm onSubmit={hundleSubmit}>
+    <LoginForm onSubmit={onSubmit}>
       <TitleForm>Вход в личный кабинет</TitleForm>
       <InputList>
         <Label>
           <PrimaryInput
-            type="email"
+            {...register('email', {
+              required: 'Поле обязательно к заполнению',
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: 'Не соответствует формату электронной почты',
+              },
+            })}
             placeholder="Email"
-            value={email}
-            onChange={(event) => setEmail(event.currentTarget.value)}
           />
+          {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
         </Label>
         <Label>
           <PrimaryInput
-            type="password"
+            {...register('password', {
+              required: 'Поле обязательно к заполнению',
+            })}
             placeholder="Пароль"
-            value={password}
-            onChange={(event) => setPassword(event.currentTarget.value)}
+            type="password"
           />
+          {errors?.password && <MessageError>{errors?.password?.message || 'Error'}</MessageError>}
         </Label>
       </InputList>
       <LinkWrapper>

@@ -1,6 +1,5 @@
 import GlobalStyles from './styles/global';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './modules/pages/Layout';
 import { BalancePage } from './modules/pages/balance/Balance';
 import { AnaliticsPage } from './modules/pages/analitics/Analitics';
 import { ReportsPage } from './modules/pages/reports/Reports';
@@ -15,6 +14,10 @@ import { ResetPass } from './modules/pages/login/resetPass/ResetPass';
 import { routerPath } from './constants/routerPath';
 import { NotFoundPage } from './modules/pages/notFound/NotFound';
 import { AnaliticCardPage } from './modules/pages/analiticCard/AnaliticCard';
+import { useLazyIsInSystemUserQuery } from './utils/api/authApi';
+import { useEffect } from 'react';
+import { useAppSelector } from './hooks/redux';
+import { LayoutWrapp } from './modules/pages/LayouWrapp';
 
 const App = () => {
   const {
@@ -29,10 +32,19 @@ const App = () => {
     balance,
   } = routerPath;
 
+  const { isActiveUser } = useAppSelector((state) => state.userReducer);
+  console.log(isActiveUser);
+
+  const [fetchSysUser] = useLazyIsInSystemUserQuery();
+
+  useEffect(() => {
+    if (isActiveUser) fetchSysUser(null);
+  }, [isActiveUser]);
+
   return (
     <ThemeProvider theme={baseTheme}>
       <Routes>
-        <Route path={analitics} element={<Layout />}>
+        <Route path={analitics} element={<LayoutWrapp isActiveUser={isActiveUser} />}>
           <Route index element={<AnaliticsPage />} />
           <Route path={analiticCard} element={<AnaliticCardPage />} />
           <Route path={reports} element={<ReportsPage />} />

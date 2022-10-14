@@ -1,84 +1,120 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { routerPath } from '../../../../constants/routerPath';
+import { useAppDispatch } from '../../../../hooks/redux';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
 import { useRegisterUserMutation } from '../../../../utils/api/authApi';
+import { setIsActiveUser } from '../../../../utils/store/reducers/userSlice';
+import { Loader } from '../../../components/loader/Loader';
 import {
   Controls,
   InputList,
   Label,
   LinkWrapperCenter,
   LoginForm,
+  MessageError,
   TitleForm,
 } from '../Login.styled';
 
-export const Registration = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [firsname, setFirsname] = useState<string>('');
-  const [lastname, setLastname] = useState<string>('');
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [registerUser, { isLoading, isSuccess, error, isError }] = useRegisterUserMutation();
+type FormValues = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  name: string;
+  surname: string;
+  phoneNumber: string;
+};
 
-  const hundleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    registerUser({
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-      name: firsname,
-      surname: lastname,
-      phoneNumber: phoneNumber,
-    });
-  };
+export const Registration = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { analitics } = routerPath;
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormValues>();
+
+  const [registerUser, { isLoading, isSuccess }] = useRegisterUserMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setIsActiveUser('Пользователь авторизован'));
+      navigate(analitics);
+    }
+  }, [isSuccess]);
+
+  const onSubmit = handleSubmit((data) => {
+    registerUser(data);
+  });
+
+  if (isLoading) return <Loader />;
 
   return (
-    <LoginForm onSubmit={hundleSubmit}>
+    <LoginForm onSubmit={onSubmit}>
       <TitleForm>Регистрация</TitleForm>
       <InputList>
         <Label>
           <PrimaryInput
+            {...register('name', {
+              required: 'Поле обязательно к заполнению',
+            })}
             placeholder="Ваше имя"
-            value={firsname}
-            onChange={(event) => setFirsname(event.currentTarget.value)}
           />
+          {errors?.name && <MessageError>{errors?.name?.message || 'Error'}</MessageError>}
         </Label>
         <Label>
           <PrimaryInput
+            {...register('surname', {
+              required: 'Поле обязательно к заполнению',
+            })}
             placeholder="Ваша фамилия"
-            value={lastname}
-            onChange={(event) => setLastname(event.currentTarget.value)}
           />
+          {errors?.surname && <MessageError>{errors?.surname?.message || 'Error'}</MessageError>}
         </Label>
         <Label>
           <PrimaryInput
-            type="email"
+            {...register('email', {
+              required: 'Поле обязательно к заполнению',
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: 'Не соответствует формату электронной почты',
+              },
+            })}
             placeholder="Email"
-            value={email}
-            onChange={(event) => setEmail(event.currentTarget.value)}
           />
+          {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
         </Label>
         <Label>
           <PrimaryInput
+            {...register('phoneNumber', {
+              required: 'Поле обязательно к заполнению',
+            })}
             placeholder="Телефон"
-            value={phoneNumber}
-            onChange={(event) => setPhoneNumber(event.currentTarget.value)}
           />
+          {errors?.phoneNumber && (
+            <MessageError>{errors?.phoneNumber?.message || 'Error'}</MessageError>
+          )}
         </Label>
         <Label>
           <PrimaryInput
+            {...register('password', {
+              required:
+                'Пароль должен состоять из строчных, заглавных латинских букв, цифр и спец символов, не менее 10 символов длиной',
+              min: 10,
+              pattern: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/g,
+            })}
             type="password"
             placeholder="Создайте пароль"
-            value={password}
-            onChange={(event) => setPassword(event.currentTarget.value)}
           />
+          {errors?.password && <MessageError>{errors?.password?.message || 'Error'}</MessageError>}
         </Label>
         <Label>
           <PrimaryInput
+            {...register('confirmPassword')}
             type="password"
             placeholder="Повторите пароль"
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.currentTarget.value)}
           />
         </Label>
       </InputList>

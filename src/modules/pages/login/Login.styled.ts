@@ -68,3 +68,8 @@ export const LinkWrapper = styled.p`
 export const LinkWrapperCenter = styled(LinkWrapper)`
   text-align: center;
 `;
+
+export const MessageError = styled.p`
+  margin-top: 5px;
+  color: ${({ theme }) => theme.colors.messageError};
+`;

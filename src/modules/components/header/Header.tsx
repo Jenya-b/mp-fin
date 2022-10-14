@@ -6,16 +6,21 @@ import { BalanceIcon, BalanceSum, BalanceButton } from './Header.styled';
 import { routerPath } from '../../../constants/routerPath';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { useSignoutMutation } from '../../../utils/api/authApi';
-import { setUser } from '../../../utils/store/reducers/userSlice';
 import { useEffect } from 'react';
+import {
+  removeStorage,
+  setIsActiveUser,
+  setUser,
+  storageUser,
+} from '../../../utils/store/reducers/userSlice';
 
 export const Header = () => {
   const { balance, settings, login } = routerPath;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.userReducer);
+  const { user, isActiveUser } = useAppSelector((state) => state.userReducer);
 
-  const [signoutUser, { isLoading, isSuccess, error, isError }] = useSignoutMutation();
+  const [signoutUser, { isSuccess }] = useSignoutMutation();
 
   const openPage = (href: string) => {
     navigate(href);
@@ -27,7 +32,10 @@ export const Header = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      removeStorage(storageUser);
+      dispatch(setIsActiveUser(null));
       dispatch(setUser(null));
+      navigate('/');
     }
   }, [isSuccess]);
 
@@ -35,9 +43,9 @@ export const Header = () => {
     <StyledHeader>
       <LoginInfo>
         <LoginImage></LoginImage>
-        {user && <LoginName>{user.email}</LoginName>}
+        {isActiveUser && <LoginName>{user?.email}</LoginName>}
       </LoginInfo>
-      {user && (
+      {isActiveUser && (
         <BalanceInfo>
           <BalanceIcon></BalanceIcon>
           <BalanceSum>Баланс: 1800 ₽</BalanceSum>
@@ -45,7 +53,7 @@ export const Header = () => {
         </BalanceInfo>
       )}
       <Controls>
-        {user && (
+        {isActiveUser && (
           <>
             <ButtonWrapper>
               <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
@@ -58,8 +66,8 @@ export const Header = () => {
         )}
         <ButtonWrapper>
           <ButtonLogin></ButtonLogin>
-          {!user && <LoginTitle onClick={() => openPage(login)}>Войти</LoginTitle>}
-          {user && <LoginTitle onClick={onSignoutHandler}>Выйти</LoginTitle>}
+          {!isActiveUser && <LoginTitle onClick={() => openPage(login)}>Войти</LoginTitle>}
+          {isActiveUser && <LoginTitle onClick={onSignoutHandler}>Выйти</LoginTitle>}
         </ButtonWrapper>
       </Controls>
     </StyledHeader>
