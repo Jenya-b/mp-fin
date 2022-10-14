@@ -11,6 +11,7 @@ import {
   Controls,
   InputList,
   Label,
+  LinkWrapper,
   LinkWrapperCenter,
   LoginForm,
   MessageError,
@@ -36,7 +37,8 @@ export const Registration = () => {
     handleSubmit,
   } = useForm<FormValues>();
 
-  const [registerUser, { isLoading, isSuccess }] = useRegisterUserMutation();
+  const [registerUser, { isLoading, isSuccess, isError, error: registerUserError }] =
+    useRegisterUserMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -75,6 +77,7 @@ export const Registration = () => {
         </Label>
         <Label>
           <PrimaryInput
+            style={registerUserError && { color: 'red' }}
             {...register('email', {
               required: 'Поле обязательно к заполнению',
               pattern: {
@@ -85,6 +88,11 @@ export const Registration = () => {
             placeholder="Email"
           />
           {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
+          {registerUserError && (
+            <LinkWrapper>
+              <span>Email уже зарегестрирован.</span> <Link to="reset-pass">Забыли пароль?</Link>
+            </LinkWrapper>
+          )}
         </Label>
         <Label>
           <PrimaryInput
