@@ -61,6 +61,10 @@ export interface ITheme {
     notFoundBg: {
       title: { fontSize: number };
     };
+    settingInputFile: {
+      width: number;
+      height: number;
+    };
   };
   indents: {
     loginForm: {

@@ -27,8 +27,8 @@ export const Label = styled.label`
 
 export const InputFileWrapp = styled.div`
   overflow: hidden;
-  width: 178px;
-  height: 178px;
+  width: ${({ theme }) => theme.sizes.settingInputFile.width}px;
+  height: ${({ theme }) => theme.sizes.settingInputFile.height}px;
   border-radius: 50%;
   position: relative;
 `;

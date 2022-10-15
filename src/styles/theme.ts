@@ -96,6 +96,10 @@ export const baseTheme: ITheme = {
     notFoundBg: {
       title: { fontSize: 56 },
     },
+    settingInputFile: {
+      width: 178,
+      height: 178,
+    },
   },
   indents: {
     loginForm: {
