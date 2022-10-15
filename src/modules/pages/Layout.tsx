@@ -4,13 +4,15 @@ import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { Sidebar } from '../components/sidebar/Sidebar';
 
-export const Layout = () => (
-  <Wrapper>
-    <Sidebar />
-    <Main>
-      <Header />
-      <Outlet />
-      <Footer />
-    </Main>
-  </Wrapper>
-);
+export const Layout = () => {
+  return (
+    <Wrapper>
+      <Sidebar />
+      <Main>
+        <Header />
+        <Outlet />
+        <Footer />
+      </Main>
+    </Wrapper>
+  );
+};

@@ -29,6 +29,7 @@ export interface ITheme {
     footerBorder: string;
     textFooterPrimary: string;
     notFoundBg: string;
+    messageError: string;
   };
   sizes: {
     loginForm: {

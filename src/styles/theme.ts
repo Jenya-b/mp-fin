@@ -38,6 +38,7 @@ export const baseTheme: ITheme = {
     formLink: colorMainGreenPrimary,
     formLinkHover: colorMainGreenSecondary,
     formSpan: colorMainGreySecondary,
+    messageError: colorAdditionalPinkSecondary,
 
     //button
     btn: colorMainGreyLight,

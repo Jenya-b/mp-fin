@@ -1,4 +1,4 @@
-export const path = {
+export const routerPath = {
   analitics: '/',
   analiticCard: 'analitic-card',
   reports: 'reports',

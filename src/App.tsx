@@ -1,6 +1,5 @@
 import GlobalStyles from './styles/global';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './modules/pages/Layout';
 import { BalancePage } from './modules/pages/balance/Balance';
 import { AnaliticsPage } from './modules/pages/analitics/Analitics';
 import { ReportsPage } from './modules/pages/reports/Reports';
@@ -12,9 +11,14 @@ import { LoginPage } from './modules/pages/login/Login';
 import { Signin } from './modules/pages/login/signin/Signin';
 import { Registration } from './modules/pages/login/registration/Registration';
 import { ResetPass } from './modules/pages/login/resetPass/ResetPass';
-import { path } from './constants/path';
+import { routerPath } from './constants/routerPath';
 import { NotFoundPage } from './modules/pages/notFound/NotFound';
 import { AnaliticCardPage } from './modules/pages/analiticCard/AnaliticCard';
+import { useIsInSystemUserQuery } from './utils/api/authApi';
+import { useEffect } from 'react';
+import { useAppDispatch } from './hooks/redux';
+import { LayoutWrapp } from './modules/pages/LayouWrapp';
+import { setIsActiveUser } from './utils/store/reducers/userSlice';
 
 const App = () => {
   const {
@@ -27,12 +31,21 @@ const App = () => {
     resetPass,
     settings,
     balance,
-  } = path;
+  } = routerPath;
+
+  const dispatch = useAppDispatch();
+  const { data } = useIsInSystemUserQuery(null);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setIsActiveUser(data));
+    }
+  }, [data]);
 
   return (
     <ThemeProvider theme={baseTheme}>
       <Routes>
-        <Route path={analitics} element={<Layout />}>
+        <Route path={analitics} element={<LayoutWrapp />}>
           <Route index element={<AnaliticsPage />} />
           <Route path={analiticCard} element={<AnaliticCardPage />} />
           <Route path={reports} element={<ReportsPage />} />
