@@ -29,11 +29,12 @@ export const authApi = createApi({
         credentials: 'include',
       }),
     }),
-    isInSystemUser: builder.query<IGenericResponse, null>({
+    isInSystemUser: builder.query<string, null>({
       query: () => ({
         url: '/Account/IsInSystem',
         credentials: 'include',
       }),
+      transformResponse: (response: IGenericResponse) => response.message,
     }),
   }),
 });
@@ -42,5 +43,5 @@ export const {
   useRegisterUserMutation,
   useSigninUserMutation,
   useSignoutMutation,
-  useLazyIsInSystemUserQuery,
+  useIsInSystemUserQuery,
 } = authApi;

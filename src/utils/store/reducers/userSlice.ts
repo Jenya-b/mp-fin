@@ -6,13 +6,8 @@ interface InitialStateType {
   user: IUser | null;
 }
 
-export const storageUser = 'isSystemUser';
-export const getStorage = (key: string) => localStorage.getItem(key);
-export const saveStorage = (key: string, data: string) => localStorage.setItem(key, data);
-export const removeStorage = (key: string) => localStorage.removeItem(key);
-
 const initialState: InitialStateType = {
-  isActiveUser: getStorage(storageUser),
+  isActiveUser: null,
   user: null,
 };
 
@@ -26,9 +21,6 @@ export const userSlice = createSlice({
     },
     setIsActiveUser: (state, action: PayloadAction<string | null>) => {
       state.isActiveUser = action.payload;
-      if (action.payload) {
-        saveStorage(storageUser, action.payload);
-      }
     },
   },
 });

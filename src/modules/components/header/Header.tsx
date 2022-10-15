@@ -7,12 +7,7 @@ import { routerPath } from '../../../constants/routerPath';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { useSignoutMutation } from '../../../utils/api/authApi';
 import { useEffect } from 'react';
-import {
-  removeStorage,
-  setIsActiveUser,
-  setUser,
-  storageUser,
-} from '../../../utils/store/reducers/userSlice';
+import { setIsActiveUser, setUser } from '../../../utils/store/reducers/userSlice';
 
 export const Header = () => {
   const { balance, settings, login } = routerPath;
@@ -32,7 +27,6 @@ export const Header = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      removeStorage(storageUser);
       dispatch(setIsActiveUser(null));
       dispatch(setUser(null));
       navigate('/');
