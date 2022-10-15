@@ -30,6 +30,9 @@ export interface ITheme {
     textFooterPrimary: string;
     notFoundBg: string;
     messageError: string;
+    mainTitle: string;
+    inputSettingsFormBg: string;
+    labelSettingsFormText: string;
   };
   sizes: {
     loginForm: {
@@ -84,4 +87,10 @@ export interface ITheme {
     input: { time: number };
     button: { time: number };
   };
+  order: {
+    sidebar: number;
+    settingInputFile: number;
+    settingLogo: number;
+  };
+  cursor: string;
 }

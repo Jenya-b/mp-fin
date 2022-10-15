@@ -70,6 +70,7 @@ export const ButtonWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  cursor: ${({ theme }) => theme.cursor};
 
   :last-child {
     margin-left: 65px;
@@ -79,12 +80,14 @@ export const ButtonSettings = styled(PrimaryButton)`
   background-image: url('/source/images/iconSettings.png');
   background-position: center center;
   background-repeat: no-repeat;
+  cursor: ${({ theme }) => theme.cursor};
 `;
 
 export const ButtonMessage = styled(PrimaryButton)`
   background-image: url('/source/images/iconMessages.png');
   background-position: center center;
   background-repeat: no-repeat;
+  cursor: ${({ theme }) => theme.cursor};
 `;
 
 export const ButtonLogin = styled(PrimaryButton)`

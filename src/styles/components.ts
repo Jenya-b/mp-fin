@@ -1,19 +1,13 @@
 import styled from 'styled-components';
-import { fontStylesCaption, fontStylesRegularBold } from './typography';
+import { fontStylesCaption, fontStylesH1, fontStylesRegularBold } from './typography';
 
-export const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: ${({ theme }) => theme.colors.background};
+export const Main = styled.main`
+  padding: 80px 60px;
 `;
 
-export const Main = styled.div`
-  min-height: 100%;
-  display: grid;
-  grid-template: ${({ theme }) => theme.sizes.header.height}px 1fr ${({ theme }) =>
-      theme.sizes.footer.height}px / 1fr;
-  padding-left: ${({ theme }) => theme.indents.main.paddingLeftHide}px;
+export const MainTitle = styled.h1`
+  ${fontStylesH1}
+  color: ${({ theme }) => theme.colors.mainTitle};
 `;
 
 export const Button = styled.button`

@@ -6,3 +6,5 @@ export const menuIcon = {
   primeCostIcon: '/source/images/menu/primeCostIcon.png',
   reportIcon: '/source/images/menu/reportIcon.png',
 };
+
+export const defaultLogo = '/source/images/logoUser.png';
