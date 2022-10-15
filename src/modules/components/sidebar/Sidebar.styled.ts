@@ -17,6 +17,7 @@ export const Aside = styled.aside<AsideProps>`
   display: grid;
   grid-template: ${({ theme }) => theme.sizes.sidebar.logo.height}px 1fr / 1fr;
   transition: all 0.1s;
+  z-index: ${({ theme }) => theme.order.sidebar};
 `;
 
 export const Logo = styled.div`

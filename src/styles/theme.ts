@@ -61,6 +61,13 @@ export const baseTheme: ITheme = {
 
     //not-found
     notFoundBg: colorMainWhite,
+
+    //main
+    mainTitle: colorMainGreyPrimary,
+
+    //settings
+    inputSettingsFormBg: colorMainWhite,
+    labelSettingsFormText: colorMainGreySecondary,
   },
   sizes: {
     loginForm: {
@@ -89,6 +96,10 @@ export const baseTheme: ITheme = {
     notFoundBg: {
       title: { fontSize: 56 },
     },
+    settingInputFile: {
+      width: 178,
+      height: 178,
+    },
   },
   indents: {
     loginForm: {
@@ -115,4 +126,11 @@ export const baseTheme: ITheme = {
     input: { time: 0.3 },
     button: { time: 0.3 },
   },
+  // z-index
+  order: {
+    sidebar: 50,
+    settingInputFile: 10,
+    settingLogo: 1,
+  },
+  cursor: 'pointer',
 };
