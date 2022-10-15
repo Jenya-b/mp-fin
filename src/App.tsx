@@ -10,7 +10,7 @@ import { baseTheme } from './styles/theme';
 import { LoginPage } from './modules/pages/login/Login';
 import { Signin } from './modules/pages/login/signin/Signin';
 import { Registration } from './modules/pages/login/registration/Registration';
-import { ResetPass } from './modules/pages/login/resetPass/ResetPass';
+import { PasswordRecovery } from './modules/pages/login/passwordRecovery/PasswordRecovery';
 import { routerPath } from './constants/routerPath';
 import { NotFoundPage } from './modules/pages/notFound/NotFound';
 import { AnaliticCardPage } from './modules/pages/analiticCard/AnaliticCard';
@@ -28,7 +28,7 @@ const App = () => {
     primeCost,
     registration,
     reports,
-    resetPass,
+    passwordRecovery,
     settings,
     balance,
   } = routerPath;
@@ -37,9 +37,7 @@ const App = () => {
   const { data } = useIsInSystemUserQuery(null);
 
   useEffect(() => {
-    if (data) {
-      dispatch(setIsActiveUser(data));
-    }
+    data ? dispatch(setIsActiveUser(data)) : dispatch(setIsActiveUser(null));
   }, [data]);
 
   return (
@@ -56,7 +54,7 @@ const App = () => {
         <Route path={login} element={<LoginPage />}>
           <Route index element={<Signin />} />
           <Route path={registration} element={<Registration />} />
-          <Route path={resetPass} element={<ResetPass />} />
+          <Route path={passwordRecovery} element={<PasswordRecovery />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

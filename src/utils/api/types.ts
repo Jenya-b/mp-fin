@@ -24,3 +24,7 @@ export interface ISigninInputs {
   rememberMe: boolean;
   returnUrl: string | null;
 }
+
+export interface IPassRecoveryInput {
+  email: string;
+}

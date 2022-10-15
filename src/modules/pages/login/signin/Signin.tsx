@@ -30,7 +30,8 @@ export const Signin = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<FormValues>();
-  const { analitics } = routerPath;
+
+  const { analitics, passwordRecovery, registration } = routerPath;
 
   const [signinUser, { isLoading, isSuccess }] = useSigninUserMutation();
 
@@ -82,13 +83,13 @@ export const Signin = () => {
         </Label>
       </InputList>
       <LinkWrapper>
-        <Link to="reset-pass">Забыли пароль?</Link>
+        <Link to={passwordRecovery}>Забыли пароль?</Link>
       </LinkWrapper>
       <Controls>
         <PrimaryButton>Продолжить</PrimaryButton>
       </Controls>
       <LinkWrapperCenter>
-        <span>Нет аккаутнта?</span> <Link to="registration">Зарегистрируйтесь</Link>
+        <span>Нет аккаутнта?</span> <Link to={registration}>Зарегистрируйтесь</Link>
       </LinkWrapperCenter>
     </LoginForm>
   );

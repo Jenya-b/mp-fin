@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from './baseUrl';
-import { IGenericResponse, ISigninInputs, IRegistrationInputs } from './types';
+import { IGenericResponse, ISigninInputs, IRegistrationInputs, IPassRecoveryInput } from './types';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -36,6 +36,13 @@ export const authApi = createApi({
       }),
       transformResponse: (response: IGenericResponse) => response.message,
     }),
+    passwordRecovery: builder.mutation<{ token: string; status: string }, IPassRecoveryInput>({
+      query: (data) => ({
+        url: '/Account/ForgotPassword',
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -44,4 +51,5 @@ export const {
   useSigninUserMutation,
   useSignoutMutation,
   useIsInSystemUserQuery,
+  usePasswordRecoveryMutation,
 } = authApi;
