@@ -6,6 +6,6 @@ export const routerPath = {
   primeCost: 'prime-cost',
   login: 'login',
   registration: 'registration',
-  resetPass: 'reset-pass',
+  passwordRecovery: 'recovery-pass',
   balance: 'balance',
 };
