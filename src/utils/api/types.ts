@@ -3,6 +3,7 @@ export interface IUser {
   surname: string;
   phoneNumber: string;
   email: string;
+  telegram?: string;
 }
 
 export interface IGenericResponse {

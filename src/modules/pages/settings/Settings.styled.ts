@@ -53,5 +53,7 @@ export const LogoImage = styled.img`
 `;
 
 export const ControlWrapper = styled.div`
+  grid-column: 1/2;
+  grid-row: 4/5;
   padding-top: 10px;
 `;
