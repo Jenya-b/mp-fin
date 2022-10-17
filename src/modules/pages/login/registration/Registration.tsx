@@ -31,13 +31,14 @@ export const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { analitics } = routerPath;
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<FormValues>();
 
-  const [registerUser, { isLoading, isSuccess, isError, error: registerUserError }] =
+  const [registerUser, { isLoading, isSuccess, error: registerUserError }] =
     useRegisterUserMutation();
 
   useEffect(() => {
@@ -108,15 +109,17 @@ export const Registration = () => {
         <Label>
           <PrimaryInput
             {...register('password', {
-              required:
-                'Пароль должен состоять из строчных, заглавных латинских букв, цифр и спец символов, не менее 10 символов длиной',
-              min: 10,
-              pattern: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/g,
+              required: 'Поле обязательно к заполнению',
+              pattern: {
+                value: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/g,
+                message:
+                  'Пароль должен состоять из строчных, заглавных латинских букв, цифр и спец символов, не менее 10 символов длиной',
+              },
             })}
             type="password"
             placeholder="Создайте пароль"
           />
-          {errors?.password && <MessageError>{errors?.password?.message || 'Error'}</MessageError>}
+          {errors?.password && <MessageError>{errors?.password?.message}</MessageError>}
         </Label>
         <Label>
           <PrimaryInput
