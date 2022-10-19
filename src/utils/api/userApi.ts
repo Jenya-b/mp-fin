@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IUser } from '../api/types';
+import { IGenericResponse, IUser } from '../api/types';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -11,7 +11,15 @@ export const userApi = createApi({
         credentials: 'include',
       }),
     }),
+    changePersonalData: builder.mutation<IGenericResponse, IUser>({
+      query: (data) => ({
+        url: '/Account/ChangeInfo',
+        method: 'POST',
+        body: data,
+        credentials: 'include',
+      }),
+    }),
   }),
 });
 
-export const { useLazyGetUserQuery } = userApi;
+export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;
