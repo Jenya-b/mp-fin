@@ -57,3 +57,5 @@ export const Input = styled.input`
 export const PrimaryInput = styled(Input)`
   background: ${({ theme }) => theme.colors.inputFormBackground};
 `;
+
+export const Checkbox = styled.input``;

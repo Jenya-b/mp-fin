@@ -3,7 +3,7 @@ export interface IUser {
   surname: string;
   phoneNumber: string;
   email: string;
-  telegram?: string;
+  telegram: string;
 }
 
 export interface IGenericResponse {
@@ -14,9 +14,6 @@ export interface IRegistrationInputs {
   email: string;
   password: string;
   confirmPassword: string;
-  name: string;
-  surname: string;
-  phoneNumber: string;
 }
 
 export interface ISigninInputs {

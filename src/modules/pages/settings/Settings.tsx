@@ -37,6 +37,7 @@ export const SettingsPage = () => {
       setValue('surname', user.surname);
       setValue('phoneNumber', user.phoneNumber);
       setValue('email', user.email);
+      setValue('telegram', user.telegram);
     }
   }, [user]);
 

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from '../../../../constants/routerPath';
 import { useAppDispatch } from '../../../../hooks/redux';
-import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
+import { Checkbox, PrimaryButton, PrimaryInput } from '../../../../styles/components';
 import { useRegisterUserMutation } from '../../../../utils/api/authApi';
 import { setIsActiveUser } from '../../../../utils/store/reducers/userSlice';
 import { Loader } from '../../../components/loader/Loader';
@@ -22,9 +22,7 @@ type FormValues = {
   email: string;
   password: string;
   confirmPassword: string;
-  name: string;
-  surname: string;
-  phoneNumber: string;
+  isAgreeProcessing: boolean;
 };
 
 export const Registration = () => {
@@ -60,24 +58,6 @@ export const Registration = () => {
       <InputList>
         <Label>
           <PrimaryInput
-            {...register('name', {
-              required: 'Поле обязательно к заполнению',
-            })}
-            placeholder="Ваше имя"
-          />
-          {errors?.name && <MessageError>{errors?.name?.message || 'Error'}</MessageError>}
-        </Label>
-        <Label>
-          <PrimaryInput
-            {...register('surname', {
-              required: 'Поле обязательно к заполнению',
-            })}
-            placeholder="Ваша фамилия"
-          />
-          {errors?.surname && <MessageError>{errors?.surname?.message || 'Error'}</MessageError>}
-        </Label>
-        <Label>
-          <PrimaryInput
             style={registerUserError && { color: 'red' }}
             {...register('email', {
               required: 'Поле обязательно к заполнению',
@@ -93,17 +73,6 @@ export const Registration = () => {
             <LinkWrapper>
               <span>Email уже зарегестрирован.</span> <Link to="reset-pass">Забыли пароль?</Link>
             </LinkWrapper>
-          )}
-        </Label>
-        <Label>
-          <PrimaryInput
-            {...register('phoneNumber', {
-              required: 'Поле обязательно к заполнению',
-            })}
-            placeholder="Телефон"
-          />
-          {errors?.phoneNumber && (
-            <MessageError>{errors?.phoneNumber?.message || 'Error'}</MessageError>
           )}
         </Label>
         <Label>
@@ -127,6 +96,11 @@ export const Registration = () => {
             type="password"
             placeholder="Повторите пароль"
           />
+        </Label>
+        <Label>
+          <Checkbox {...register('isAgreeProcessing', { required: true })} type="checkbox" />{' '}
+          Согласен на обработку персональных данных
+          {errors?.isAgreeProcessing && <MessageError>Вы должны дать согласие</MessageError>}
         </Label>
       </InputList>
       <Controls>

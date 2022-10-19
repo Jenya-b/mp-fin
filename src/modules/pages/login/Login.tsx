@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-
 import { Container, FormWrapper, Logo, LogoWrapper } from './Login.styled';
 
 export const LoginPage = () => {
