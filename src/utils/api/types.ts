@@ -26,3 +26,12 @@ export interface ISigninInputs {
 export interface IPassRecoveryInput {
   email: string;
 }
+
+export interface IReport {
+  startWeek: string;
+  endWeek: string;
+  logistik: number;
+  saled: number;
+  weekId: string;
+  stateId: string;
+}
