@@ -68,6 +68,11 @@ export const baseTheme: ITheme = {
     //settings
     inputSettingsFormBg: colorMainWhite,
     labelSettingsFormText: colorMainGreySecondary,
+
+    //table
+    tableReportDate: colorMainBluePrimary,
+    tableReportTextMain: colorMainGreyPrimary,
+    tableReportSubtitleColl: colorMainGreySecondary,
   },
   sizes: {
     loginForm: {

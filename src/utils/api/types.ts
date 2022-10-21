@@ -27,6 +27,11 @@ export interface IPassRecoveryInput {
   email: string;
 }
 
+export interface IReportID {
+  weekDataId: string;
+  stateId: string;
+}
+
 export interface IReport {
   startWeek: string;
   endWeek: string;
@@ -34,4 +39,6 @@ export interface IReport {
   saled: number;
   weekId: string;
   stateId: string;
+  isReportSaved: boolean;
+  weekNumber: number;
 }

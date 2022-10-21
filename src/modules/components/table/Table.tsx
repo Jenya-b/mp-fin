@@ -3,6 +3,7 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
+import { colorMainWhite } from '../../../constants/colors';
 
 interface Props<T> {
   data: T[] | undefined;
@@ -11,10 +12,18 @@ interface Props<T> {
 }
 
 export const BasicTable = <T,>({ renderRow, data = [], renderColumnNames }: Props<T>) => {
-  if (!data.length) return <>Нет данных для отображения</>;
+  if (!data.length) return <p style={{ marginTop: 39 }}>Нет данных для отображения</p>;
 
   return (
-    <TableContainer>
+    <TableContainer
+      style={{
+        background: colorMainWhite,
+        marginTop: 39,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        border: '1px solid #F2F2F2',
+      }}
+    >
       <Table>
         <TableHead>
           <TableRow>{renderColumnNames()}</TableRow>
