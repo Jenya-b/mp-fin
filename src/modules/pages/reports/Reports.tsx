@@ -1,9 +1,11 @@
+import axios from 'axios';
 import styled from 'styled-components';
 import { tableControlIcon } from '../../../constants/images';
 import { Main, MainTitle } from '../../../styles/components';
 import { fontStylesCaption } from '../../../styles/typography';
 import { useDeleteReportMutation, useGetReportsQuery } from '../../../utils/api/productApi';
 import { IReport } from '../../../utils/api/types';
+import { InputFile } from '../../components/table/InputFile';
 import { BasicTable } from '../../components/table/Table';
 import { TableButton } from '../../components/table/TableBtn';
 import { StyledTableCell, StyledTableCellColl } from '../../components/table/TableCell';
@@ -22,8 +24,10 @@ export const ReportsPage = () => {
       <StyledTableCell>
         <ControlsWrapper>
           {!item.isReportSaved ? (
-            <TableButton
-              handleClick={addReport}
+            <InputFile
+              weekDataId={item.weekId}
+              stateId={item.stateId}
+              handleChange={uploadFile}
               title={'Загрузить отчет'}
               src={tableControlIcon.uploadReport}
             />
@@ -34,9 +38,7 @@ export const ReportsPage = () => {
             handleClick={() => deleteRow({ weekDataId: item.weekId, stateId: item.stateId })}
             title={'Удалить'}
             src={tableControlIcon.deleteReportRow}
-          >
-            Удалить
-          </TableButton>
+          />
         </ControlsWrapper>
       </StyledTableCell>
     </>
@@ -57,7 +59,32 @@ export const ReportsPage = () => {
     </>
   );
 
-  const addReport = () => {};
+  const uploadFile = (
+    weekDataId: string,
+    stateId: string,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { files } = event.target;
+    const formData = new FormData();
+
+    if (files) {
+      formData.append('myExcelDatas', files[0]);
+      axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/Product/SaveProducts`,
+          { myExcelDatas: formData.get('myExcelDatas'), weekDataId: weekDataId, stateId: stateId },
+          {
+            headers: {
+              'content-type': 'multipart/form-data',
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => res.data)
+        .then(console.log)
+        .catch(console.log);
+    }
+  };
 
   const deleteRow = ({ weekDataId, stateId }: { weekDataId: string; stateId: string }) => {
     deleteReport({ weekDataId, stateId });

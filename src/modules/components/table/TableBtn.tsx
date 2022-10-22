@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-interface TableButtonProps {
+export interface TableButtonProps {
   children?: string;
-  handleClick: () => void;
+  handleClick?: () => void;
   title: string;
   src: string;
 }
