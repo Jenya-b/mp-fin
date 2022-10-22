@@ -1,18 +1,28 @@
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { tableControlIcon } from '../../../constants/images';
 import { Main, MainTitle } from '../../../styles/components';
 import { fontStylesCaption } from '../../../styles/typography';
 import { useDeleteReportMutation, useGetReportsQuery } from '../../../utils/api/productApi';
 import { IReport } from '../../../utils/api/types';
+import { Loader } from '../../components/loader/Loader';
 import { InputFile } from '../../components/table/InputFile';
 import { BasicTable } from '../../components/table/Table';
 import { TableButton } from '../../components/table/TableBtn';
 import { StyledTableCell, StyledTableCellColl } from '../../components/table/TableCell';
 
 export const ReportsPage = () => {
-  const { data: reportList } = useGetReportsQuery(null);
-  const [deleteReport] = useDeleteReportMutation();
+  const { data: reportList, refetch, isLoading: isLoadingGetData } = useGetReportsQuery(null);
+  const [deleteReport, { isSuccess: isSuccessDelete, isLoading: isLoadingDelete }] =
+    useDeleteReportMutation();
+  const [isLoadingUpload, setIsLoadingUpload] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isSuccessDelete) {
+      refetch();
+    }
+  }, [isSuccessDelete]);
 
   const renderRow = (item: IReport) => (
     <>
@@ -69,6 +79,7 @@ export const ReportsPage = () => {
 
     if (files) {
       formData.append('myExcelDatas', files[0]);
+      setIsLoadingUpload(true);
       axios
         .post(
           `${process.env.REACT_APP_API_URL}/Product/SaveProducts`,
@@ -81,8 +92,10 @@ export const ReportsPage = () => {
           }
         )
         .then((res) => res.data)
+        .then(() => refetch())
         .then(console.log)
-        .catch(console.log);
+        .catch(console.log)
+        .finally(() => setIsLoadingUpload(false));
     }
   };
 
@@ -92,6 +105,7 @@ export const ReportsPage = () => {
 
   return (
     <Main>
+      {(isLoadingUpload || isLoadingDelete || isLoadingGetData) && <Loader />}
       <MainTitle>Загруженные отчеты</MainTitle>
       <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={reportList} />
     </Main>
