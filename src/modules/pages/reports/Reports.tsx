@@ -1,4 +1,5 @@
-import axios from 'axios';
+// import axios from 'axios';
+import axios from '../../../utils/api/axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { tableControlIcon } from '../../../constants/images';
@@ -81,16 +82,11 @@ export const ReportsPage = () => {
       formData.append('myExcelDatas', files[0]);
       setIsLoadingUpload(true);
       axios
-        .post(
-          `${process.env.REACT_APP_API_URL}/Product/SaveProducts`,
-          { myExcelDatas: formData.get('myExcelDatas'), weekDataId: weekDataId, stateId: stateId },
-          {
-            headers: {
-              'content-type': 'multipart/form-data',
-            },
-            withCredentials: true,
-          }
-        )
+        .post('/Product/SaveProducts', {
+          myExcelDatas: formData.get('myExcelDatas'),
+          weekDataId: weekDataId,
+          stateId: stateId,
+        })
         .then((res) => res.data)
         .then(() => refetch())
         .then(console.log)
