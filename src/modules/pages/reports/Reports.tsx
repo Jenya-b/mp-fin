@@ -1,10 +1,7 @@
-// import axios from 'axios';
 import axios from '../../../utils/api/axios';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { tableControlIcon } from '../../../constants/images';
 import { Main, MainTitle } from '../../../styles/components';
-import { fontStylesCaption } from '../../../styles/typography';
 import { useDeleteReportMutation, useGetReportsQuery } from '../../../utils/api/productApi';
 import { IReport } from '../../../utils/api/types';
 import { Loader } from '../../components/loader/Loader';
@@ -12,6 +9,9 @@ import { InputFile } from '../../components/table/InputFile';
 import { BasicTable } from '../../components/table/Table';
 import { TableButton } from '../../components/table/TableBtn';
 import { StyledTableCell, StyledTableCellColl } from '../../components/table/TableCell';
+import { v4 } from 'uuid';
+import { reportColumnNames } from '../../../constants/table';
+import { ControlsWrapper, PeriodWeek, SubtitleColl } from './Reports.styled';
 
 export const ReportsPage = () => {
   const { data: reportList, refetch, isLoading: isLoadingGetData } = useGetReportsQuery(null);
@@ -57,16 +57,11 @@ export const ReportsPage = () => {
 
   const renderColumnNames = () => (
     <>
-      <StyledTableCellColl style={{ verticalAlign: 'top' }}>Неделя</StyledTableCellColl>
-      <StyledTableCellColl style={{ verticalAlign: 'top' }}>
-        Продажи
-        <SubtitleColl>(сумма)</SubtitleColl>
-      </StyledTableCellColl>
-      <StyledTableCellColl style={{ verticalAlign: 'top' }}>
-        Заказы
-        <SubtitleColl>(сумма)</SubtitleColl>
-      </StyledTableCellColl>
-      <StyledTableCellColl style={{ verticalAlign: 'top' }}>Действия</StyledTableCellColl>
+      {reportColumnNames.map((item) => (
+        <StyledTableCellColl key={v4()}>
+          {item.title} <SubtitleColl>{item.subtitle}</SubtitleColl>
+        </StyledTableCellColl>
+      ))}
     </>
   );
 
@@ -107,18 +102,3 @@ export const ReportsPage = () => {
     </Main>
   );
 };
-
-const PeriodWeek = styled.p`
-  color: ${({ theme }) => theme.colors.tableReportDate};
-  ${fontStylesCaption}
-`;
-
-const ControlsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const SubtitleColl = styled.div`
-  color: ${({ theme }) => theme.colors.tableReportSubtitleColl};
-  ${fontStylesCaption}
-`;

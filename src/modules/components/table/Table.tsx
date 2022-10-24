@@ -4,6 +4,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
 import { colorMainWhite } from '../../../constants/colors';
+import { v4 } from 'uuid';
 
 interface Props<T> {
   data: T[] | undefined;
@@ -29,8 +30,8 @@ export const BasicTable = <T,>({ renderRow, data = [], renderColumnNames }: Prop
           <TableRow>{renderColumnNames()}</TableRow>
         </TableHead>
         <TableBody>
-          {data.map((item, i) => (
-            <TableRow key={i}>{renderRow(item)}</TableRow>
+          {data.map((item) => (
+            <TableRow key={v4()}>{renderRow(item)}</TableRow>
           ))}
         </TableBody>
       </Table>
