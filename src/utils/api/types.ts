@@ -42,3 +42,9 @@ export interface IReport {
   isReportSaved: boolean;
   weekNumber: number;
 }
+
+export interface IArticle {
+  articleId: string;
+  articleName: string;
+  costPrice: number;
+}
