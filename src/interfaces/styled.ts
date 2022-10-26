@@ -33,6 +33,9 @@ export interface ITheme {
     mainTitle: string;
     inputSettingsFormBg: string;
     labelSettingsFormText: string;
+    tableReportDate: string;
+    tableReportTextMain: string;
+    tableReportSubtitleColl: string;
   };
   sizes: {
     loginForm: {

@@ -8,3 +8,8 @@ export const menuIcon = {
 };
 
 export const defaultLogo = '/source/images/logoUser.png';
+
+export const tableControlIcon = {
+  deleteReportRow: '/source/images/iconDelete.png',
+  uploadReport: '/source/images/iconUpload.png',
+};
