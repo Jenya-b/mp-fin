@@ -76,12 +76,15 @@ export const ReportsPage = () => {
     if (files) {
       formData.append('myExcelDatas', files[0]);
       setIsLoadingUpload(true);
+
+      const dataPost = {
+        myExcelDatas: formData.get('myExcelDatas'),
+        weekDataId: weekDataId,
+        stateId: stateId,
+      };
+
       axios
-        .post('/Product/SaveProducts', {
-          myExcelDatas: formData.get('myExcelDatas'),
-          weekDataId: weekDataId,
-          stateId: stateId,
-        })
+        .post('/Product/SaveProducts', dataPost)
         .then((res) => res.data)
         .then(() => refetch())
         .then(console.log)
