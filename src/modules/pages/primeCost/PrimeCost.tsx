@@ -29,6 +29,7 @@ export const PrimeCostPage = () => {
 
   const renderRow = (item: IArticle) => (
     <>
+      <StyledTableCell>{item.itemCode}</StyledTableCell>
       <StyledTableCell>{item.articleName}</StyledTableCell>
       <StyledTableCell>
         <PrimaryInput

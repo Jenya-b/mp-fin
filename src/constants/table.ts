@@ -5,4 +5,8 @@ export const reportColumnNames = [
   { title: 'Действия' },
 ];
 
-export const primeCostColumnNames = [{ title: 'Артикул' }, { title: 'Себестоимость' }];
+export const primeCostColumnNames = [
+  { title: 'Артикул ВБ' },
+  { title: 'Артикул поставщика' },
+  { title: 'Себестоимость' },
+];

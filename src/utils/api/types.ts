@@ -47,6 +47,7 @@ export interface IArticle {
   articleId: string;
   articleName: string;
   costPrice: number;
+  itemCode: string;
 }
 
 export interface IChangeArticle {
