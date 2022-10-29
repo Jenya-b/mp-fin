@@ -27,7 +27,7 @@ export const ReportsPage = () => {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   useEffect(() => {
     if (isSuccessDelete) {

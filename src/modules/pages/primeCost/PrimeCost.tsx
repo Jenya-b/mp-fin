@@ -18,6 +18,10 @@ export const PrimeCostPage = () => {
     useChangeArticleMutation();
 
   useEffect(() => {
+    refetch();
+  }, [refetch]);
+
+  useEffect(() => {
     if (isSuccessChangeArticle) {
       refetch();
     }
