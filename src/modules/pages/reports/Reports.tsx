@@ -1,9 +1,8 @@
-import axios from '../../../utils/api/axios';
 import { useEffect, useState } from 'react';
 import { tableControlIcon } from '../../../constants/images';
 import { Main, MainTitle } from '../../../styles/components';
 import { useDeleteReportMutation, useGetReportsQuery } from '../../../utils/api/productApi';
-import { IChangeArticle, IReport } from '../../../utils/api/types';
+import { IReport } from '../../../utils/api/types';
 import { Loader } from '../../components/loader/Loader';
 import { InputFile } from '../../components/table/InputFile';
 import { BasicTable } from '../../components/table/Table';
@@ -13,17 +12,22 @@ import { v4 } from 'uuid';
 import { reportColumnNames } from '../../../constants/table';
 import { ControlsWrapper, PeriodWeek, SubtitleColl } from './Reports.styled';
 import { BasicDialog } from '../../components/dialog/Dialog';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { fetchFiles } from '../../../utils/api/filesApi';
 
 export const ReportsPage = () => {
+  const dispatch = useAppDispatch();
   const [isActiveDialog, setActiveDialog] = useState<boolean>(false);
-  const [dataPost, setDataPost] = useState<IChangeArticle>();
-  const [parameter, setParameter] = useState<string>('DELETE');
   const [weekDataId, setWeekDataId] = useState<string>('');
   const [stateId, setStateId] = useState<string>('');
   const { data: reportList, refetch, isLoading: isLoadingGetData } = useGetReportsQuery(null);
   const [deleteReport, { isSuccess: isSuccessDelete, isLoading: isLoadingDelete }] =
     useDeleteReportMutation();
-  const [isLoadingUpload, setIsLoadingUpload] = useState<boolean>(false);
+  const { isLoading: isLoadingUpload } = useAppSelector((state) => state.fileReducer);
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   useEffect(() => {
     if (isSuccessDelete) {
@@ -81,20 +85,20 @@ export const ReportsPage = () => {
 
     if (files) {
       formData.append('myExcelDatas', files[0]);
-      setDataPost({
-        myExcelDatas: formData.get('myExcelDatas'),
-        weekDataId: weekDataId,
-        stateId: stateId,
-      });
-      setParameter('UPDATE');
-      setActiveDialog(true);
+
+      dispatch(
+        fetchFiles({
+          myExcelDatas: formData.get('myExcelDatas'),
+          weekDataId: weekDataId,
+          stateId: stateId,
+        })
+      ).then(() => refetch());
     }
   };
 
   const deleteRow = ({ weekDataId, stateId }: { weekDataId: string; stateId: string }) => {
     setWeekDataId(weekDataId);
     setStateId(stateId);
-    setParameter('DELETE');
     setActiveDialog(true);
   };
 
@@ -103,22 +107,7 @@ export const ReportsPage = () => {
   };
 
   const confirmAction = () => {
-    switch (parameter) {
-      case 'DELETE':
-        deleteReport({ weekDataId, stateId });
-        break;
-      case 'UPDATE':
-        setIsLoadingUpload(true);
-        axios
-          .post('/Product/SaveProducts', dataPost)
-          .then((res) => res.data)
-          .then(() => refetch())
-          .then(console.log)
-          .catch(console.log)
-          .finally(() => setIsLoadingUpload(false));
-        break;
-    }
-
+    deleteReport({ weekDataId, stateId });
     closeDialogWindow();
   };
 
@@ -129,11 +118,7 @@ export const ReportsPage = () => {
         isActiveDialog={isActiveDialog}
         handleClose={closeDialogWindow}
         handleConfirm={confirmAction}
-        desc={
-          parameter === 'DELETE'
-            ? 'Вы действительно хотите удалить отчет?'
-            : 'Вы действительно хотите добавить отчет?'
-        }
+        desc="Вы действительно хотите удалить отчет?"
       />
       <MainTitle>Загруженные отчеты</MainTitle>
       <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={reportList} />

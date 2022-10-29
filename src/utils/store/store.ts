@@ -3,6 +3,7 @@ import { authApi } from '../api/authApi';
 import { userApi } from '../api/userApi';
 import { productApi } from '../api/productApi';
 import userReducer from './reducers/userSlice';
+import fileReducer from './reducers/fileSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     userReducer,
+    fileReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
