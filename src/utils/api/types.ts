@@ -48,3 +48,9 @@ export interface IArticle {
   articleName: string;
   costPrice: number;
 }
+
+export interface IChangeArticle {
+  myExcelDatas: FormDataEntryValue | null;
+  weekDataId: string;
+  stateId: string;
+}
