@@ -84,15 +84,13 @@ export const ReportsPage = () => {
     const formData = new FormData();
 
     if (files) {
-      formData.append('myExcelDatas', files[0]);
+      for (let i = 0; i < files.length; i++) {
+        formData.append(`myExcelDatas`, files[i]);
+      }
+      formData.set(`weekDataId`, weekDataId);
+      formData.set(`stateId`, stateId);
 
-      dispatch(
-        fetchFiles({
-          myExcelDatas: formData.get('myExcelDatas'),
-          weekDataId: weekDataId,
-          stateId: stateId,
-        })
-      ).then(() => refetch());
+      dispatch(fetchFiles(formData)).then(() => refetch());
     }
   };
 
