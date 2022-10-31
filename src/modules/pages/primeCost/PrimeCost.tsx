@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 import { primeCostColumnNames } from '../../../constants/table';
+import { useDebounce } from '../../../hooks/debounce';
 import { Main, MainTitle, PrimaryInput } from '../../../styles/components';
 import { useChangeArticleMutation, useGetArticlesQuery } from '../../../utils/api/productApi';
 import { IArticle } from '../../../utils/api/types';
@@ -10,10 +11,18 @@ import { BasicTable } from '../../components/table/Table';
 import { StyledTableCell, StyledTableCellColl } from '../../components/table/TableCell';
 
 export const PrimeCostPage = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const debounced = useDebounce(searchValue);
   const [isActiveDialog, setActiveDialog] = useState<boolean>(false);
   const [articlesId, setArticlesId] = useState<string>();
   const [costPrices, setCostPrices] = useState<number>();
-  const { data: articleList, refetch, isLoading: isLoadingGetData } = useGetArticlesQuery(null);
+  const {
+    data: articleList,
+    refetch,
+    isLoading: isLoadingGetData,
+    isFetching,
+  } = useGetArticlesQuery(debounced, {});
+
   const [setArticle, { isSuccess: isSuccessChangeArticle, isLoading: isLoadingSetData }] =
     useChangeArticleMutation();
 
@@ -71,9 +80,14 @@ export const PrimeCostPage = () => {
     closeDialogWindow();
   };
 
+  const addSearchValue = (event: React.FormEvent<HTMLInputElement>) => {
+    const { value } = event.currentTarget;
+    setSearchValue(value);
+  };
+
   return (
     <Main>
-      {(isLoadingSetData || isLoadingGetData) && <Loader />}
+      {(isLoadingSetData || isLoadingGetData || isFetching) && <Loader />}
       <BasicDialog
         isActiveDialog={isActiveDialog}
         handleClose={closeDialogWindow}
@@ -81,7 +95,13 @@ export const PrimeCostPage = () => {
         desc="Вы действительно хотите внести изменения?"
       />
       <MainTitle>Себестоимсть</MainTitle>
-      <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={articleList} />
+      <BasicTable
+        isSearch={true}
+        handleChange={addSearchValue}
+        renderRow={renderRow}
+        renderColumnNames={renderColumnNames}
+        data={articleList}
+      />
     </Main>
   );
 };
