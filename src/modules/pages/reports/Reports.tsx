@@ -85,7 +85,7 @@ export const ReportsPage = () => {
 
     if (files) {
       for (let i = 0; i < files.length; i++) {
-        formData.append(`myExcelDatas`, files[i]);
+        formData.append(`myExcelDatas${i}`, files[i]);
       }
       formData.set(`weekDataId`, weekDataId);
       formData.set(`stateId`, stateId);
