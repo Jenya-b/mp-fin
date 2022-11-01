@@ -14,6 +14,7 @@ import { ControlsWrapper, PeriodWeek, SubtitleColl } from './Reports.styled';
 import { BasicDialog } from '../../components/dialog/Dialog';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { fetchFiles } from '../../../utils/api/filesApi';
+import { INPUT_FILE_TYPE, MAX_FILES } from '../../../constants/reports';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();
@@ -83,15 +84,20 @@ export const ReportsPage = () => {
     const { files } = event.target;
     const formData = new FormData();
 
-    if (files) {
-      for (let i = 0; i < files.length; i++) {
-        formData.append(`myExcelDatas${i}`, files[i]);
-      }
-      formData.set(`weekDataId`, weekDataId);
-      formData.set(`stateId`, stateId);
+    if (!files || files.length > MAX_FILES) return;
 
-      dispatch(fetchFiles(formData)).then(() => refetch());
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.type !== INPUT_FILE_TYPE) {
+        return;
+      }
+      formData.append(`myExcelDatas${i}`, file);
     }
+
+    formData.set(`weekDataId`, weekDataId);
+    formData.set(`stateId`, stateId);
+
+    dispatch(fetchFiles(formData)).then(() => refetch());
   };
 
   const deleteRow = ({ weekDataId, stateId }: { weekDataId: string; stateId: string }) => {
