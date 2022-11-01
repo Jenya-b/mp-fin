@@ -42,3 +42,16 @@ export interface IReport {
   isReportSaved: boolean;
   weekNumber: number;
 }
+
+export interface IArticle {
+  articleId: string;
+  articleName: string;
+  costPrice: number;
+  itemCode: string;
+}
+
+export interface IChangeArticle {
+  myExcelDatas: FormDataEntryValue | null;
+  weekDataId: string;
+  stateId: string;
+}

@@ -36,6 +36,7 @@ export interface ITheme {
     tableReportDate: string;
     tableReportTextMain: string;
     tableReportSubtitleColl: string;
+    tablePrimeCostWrapper: string;
   };
   sizes: {
     loginForm: {

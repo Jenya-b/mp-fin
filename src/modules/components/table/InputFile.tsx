@@ -15,7 +15,7 @@ export const InputFile = ({ handleChange, title, src, weekDataId, stateId }: Inp
   return (
     <Wrapper>
       <TableButton title={title} src={src} />
-      <Input type="file" onChange={(event) => handleChange(weekDataId, stateId, event)} />
+      <Input type="file" multiple onChange={(event) => handleChange(weekDataId, stateId, event)} />
     </Wrapper>
   );
 };

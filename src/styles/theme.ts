@@ -73,6 +73,9 @@ export const baseTheme: ITheme = {
     tableReportDate: colorMainBluePrimary,
     tableReportTextMain: colorMainGreyPrimary,
     tableReportSubtitleColl: colorMainGreySecondary,
+
+    //
+    tablePrimeCostWrapper: colorMainWhite,
   },
   sizes: {
     loginForm: {

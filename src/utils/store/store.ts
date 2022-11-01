@@ -3,6 +3,8 @@ import { authApi } from '../api/authApi';
 import { userApi } from '../api/userApi';
 import { productApi } from '../api/productApi';
 import userReducer from './reducers/userSlice';
+import fileReducer from './reducers/fileSlice';
+import { fetchFiles } from '../api/filesApi';
 
 export const store = configureStore({
   reducer: {
@@ -10,14 +12,16 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     userReducer,
+    fileReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).concat([
-      authApi.middleware,
-      userApi.middleware,
-      productApi.middleware,
-    ]),
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: fetchFiles,
+      },
+      serializableCheck: false,
+    }).concat([authApi.middleware, userApi.middleware, productApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

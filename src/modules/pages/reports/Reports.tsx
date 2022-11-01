@@ -1,4 +1,3 @@
-import axios from '../../../utils/api/axios';
 import { useEffect, useState } from 'react';
 import { tableControlIcon } from '../../../constants/images';
 import { Main, MainTitle } from '../../../styles/components';
@@ -12,12 +11,23 @@ import { StyledTableCell, StyledTableCellColl } from '../../components/table/Tab
 import { v4 } from 'uuid';
 import { reportColumnNames } from '../../../constants/table';
 import { ControlsWrapper, PeriodWeek, SubtitleColl } from './Reports.styled';
+import { BasicDialog } from '../../components/dialog/Dialog';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { fetchFiles } from '../../../utils/api/filesApi';
 
 export const ReportsPage = () => {
+  const dispatch = useAppDispatch();
+  const [isActiveDialog, setActiveDialog] = useState<boolean>(false);
+  const [weekDataId, setWeekDataId] = useState<string>('');
+  const [stateId, setStateId] = useState<string>('');
   const { data: reportList, refetch, isLoading: isLoadingGetData } = useGetReportsQuery(null);
   const [deleteReport, { isSuccess: isSuccessDelete, isLoading: isLoadingDelete }] =
     useDeleteReportMutation();
-  const [isLoadingUpload, setIsLoadingUpload] = useState<boolean>(false);
+  const { isLoading: isLoadingUpload } = useAppSelector((state) => state.fileReducer);
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   useEffect(() => {
     if (isSuccessDelete) {
@@ -74,29 +84,40 @@ export const ReportsPage = () => {
     const formData = new FormData();
 
     if (files) {
-      formData.append('myExcelDatas', files[0]);
-      setIsLoadingUpload(true);
-      axios
-        .post('/Product/SaveProducts', {
-          myExcelDatas: formData.get('myExcelDatas'),
-          weekDataId: weekDataId,
-          stateId: stateId,
-        })
-        .then((res) => res.data)
-        .then(() => refetch())
-        .then(console.log)
-        .catch(console.log)
-        .finally(() => setIsLoadingUpload(false));
+      for (let i = 0; i < files.length; i++) {
+        formData.append(`myExcelDatas${i}`, files[i]);
+      }
+      formData.set(`weekDataId`, weekDataId);
+      formData.set(`stateId`, stateId);
+
+      dispatch(fetchFiles(formData)).then(() => refetch());
     }
   };
 
   const deleteRow = ({ weekDataId, stateId }: { weekDataId: string; stateId: string }) => {
+    setWeekDataId(weekDataId);
+    setStateId(stateId);
+    setActiveDialog(true);
+  };
+
+  const closeDialogWindow = () => {
+    setActiveDialog(false);
+  };
+
+  const confirmAction = () => {
     deleteReport({ weekDataId, stateId });
+    closeDialogWindow();
   };
 
   return (
     <Main>
       {(isLoadingUpload || isLoadingDelete || isLoadingGetData) && <Loader />}
+      <BasicDialog
+        isActiveDialog={isActiveDialog}
+        handleClose={closeDialogWindow}
+        handleConfirm={confirmAction}
+        desc="Вы действительно хотите удалить отчет?"
+      />
       <MainTitle>Загруженные отчеты</MainTitle>
       <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={reportList} />
     </Main>

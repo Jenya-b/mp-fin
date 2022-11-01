@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from './baseUrl';
-import { IReport, IReportID } from './types';
+import { IArticle, IReport, IReportID } from './types';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
@@ -20,7 +20,29 @@ export const productApi = createApi({
         credentials: 'include',
       }),
     }),
+    getArticles: builder.query<IArticle[], string>({
+      query: (search) => ({
+        url: '/Product/GetArticles',
+        credentials: 'include',
+        params: {
+          text: search,
+        },
+      }),
+    }),
+    changeArticle: builder.mutation({
+      query: (data) => ({
+        url: '/Product/SetCostPrices',
+        method: 'POST',
+        body: data,
+        credentials: 'include',
+      }),
+    }),
   }),
 });
 
-export const { useGetReportsQuery, useDeleteReportMutation } = productApi;
+export const {
+  useGetReportsQuery,
+  useDeleteReportMutation,
+  useGetArticlesQuery,
+  useChangeArticleMutation,
+} = productApi;
