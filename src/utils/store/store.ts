@@ -5,6 +5,7 @@ import { productApi } from '../api/productApi';
 import userReducer from './reducers/userSlice';
 import fileReducer from './reducers/fileSlice';
 import { fetchFiles } from '../api/filesApi';
+import notifyReducer from './reducers/notifySlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     userReducer,
     fileReducer,
+    notifyReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

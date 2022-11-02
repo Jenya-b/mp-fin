@@ -1,19 +1,16 @@
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { Dispatch, SetStateAction } from 'react';
+import { useAppDispatch } from '../../../hooks/redux';
 import { INotify } from '../../../interfaces/modalWindows';
+import { closeNotify } from '../../../utils/store/reducers/notifySlice';
 
 interface NotificationProps {
   isOpenNotify: boolean;
   notifyMessage: INotify;
-  setIsOpenNotify: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Notification = ({
-  notifyMessage,
-  isOpenNotify,
-  setIsOpenNotify,
-}: NotificationProps) => {
+export const Notification = ({ notifyMessage, isOpenNotify }: NotificationProps) => {
+  const dispatch = useAppDispatch();
   const { message, type } = notifyMessage;
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -21,7 +18,7 @@ export const Notification = ({
       return;
     }
 
-    setIsOpenNotify(false);
+    dispatch(closeNotify());
   };
 
   return (
