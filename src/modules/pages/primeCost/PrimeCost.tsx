@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 import { primeCostColumnNames } from '../../../constants/table';
 import { useDebounce } from '../../../hooks/debounce';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { Main, MainTitle, PrimaryInput } from '../../../styles/components';
 import { useChangeArticleMutation, useGetArticlesQuery } from '../../../utils/api/productApi';
 import { IArticle } from '../../../utils/api/types';
@@ -9,8 +10,12 @@ import { BasicDialog } from '../../components/dialog/Dialog';
 import { Loader } from '../../components/loader/Loader';
 import { BasicTable } from '../../components/table/Table';
 import { StyledTableCell, StyledTableCellColl } from '../../components/table/TableCell';
+import { Notification } from '../../components/notification/Notification';
+import { openNotify } from '../../../utils/store/reducers/notifySlice';
+import { alertMessage } from '../../../constants/alert';
 
 export const PrimeCostPage = () => {
+  const dispatch = useAppDispatch();
   const [searchValue, setSearchValue] = useState('');
   const debounced = useDebounce(searchValue);
   const [isActiveDialog, setActiveDialog] = useState<boolean>(false);
@@ -21,10 +26,12 @@ export const PrimeCostPage = () => {
     refetch,
     isLoading: isLoadingGetData,
     isFetching,
-  } = useGetArticlesQuery(debounced, {});
-
-  const [setArticle, { isSuccess: isSuccessChangeArticle, isLoading: isLoadingSetData }] =
-    useChangeArticleMutation();
+  } = useGetArticlesQuery(debounced);
+  const [
+    setArticle,
+    { isSuccess: isSuccessChangeArticle, isLoading: isLoadingSetData, isError: isErrorSetData },
+  ] = useChangeArticleMutation();
+  const { isOpenNotify, notifyMessage } = useAppSelector((state) => state.notifyReducer);
 
   useEffect(() => {
     refetch();
@@ -33,8 +40,15 @@ export const PrimeCostPage = () => {
   useEffect(() => {
     if (isSuccessChangeArticle) {
       refetch();
+      dispatch(openNotify(alertMessage.successSetArticle));
     }
   }, [isSuccessChangeArticle]);
+
+  useEffect(() => {
+    if (isErrorSetData) {
+      dispatch(openNotify(alertMessage.errorSetArticle));
+    }
+  }, [isErrorSetData]);
 
   const renderRow = (item: IArticle) => (
     <>
@@ -88,6 +102,7 @@ export const PrimeCostPage = () => {
   return (
     <Main>
       {(isLoadingSetData || isLoadingGetData || isFetching) && <Loader />}
+      <Notification notifyMessage={notifyMessage} isOpenNotify={isOpenNotify} />
       <BasicDialog
         isActiveDialog={isActiveDialog}
         handleClose={closeDialogWindow}
