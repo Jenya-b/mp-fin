@@ -15,16 +15,30 @@ import { BasicDialog } from '../../components/dialog/Dialog';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { fetchFiles } from '../../../utils/api/filesApi';
 import { INPUT_FILE_TYPE, MAX_FILES } from '../../../constants/reports';
+import { Notification } from '../../components/notification/Notification';
+import { alertMessage } from '../../../constants/alert';
+import { INotify } from '../../../interfaces/modalWindows';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();
   const [isActiveDialog, setActiveDialog] = useState<boolean>(false);
   const [weekDataId, setWeekDataId] = useState<string>('');
   const [stateId, setStateId] = useState<string>('');
+  const [notifyMessage, setNotifyMessage] = useState<INotify>({
+    message: '',
+    type: undefined,
+  });
+  const [isOpenNotify, setIsOpenNotify] = useState<boolean>(false);
   const { data: reportList, refetch, isLoading: isLoadingGetData } = useGetReportsQuery(null);
-  const [deleteReport, { isSuccess: isSuccessDelete, isLoading: isLoadingDelete }] =
-    useDeleteReportMutation();
-  const { isLoading: isLoadingUpload } = useAppSelector((state) => state.fileReducer);
+  const [
+    deleteReport,
+    { isSuccess: isSuccessDelete, isLoading: isLoadingDelete, isError: isErrorDelete },
+  ] = useDeleteReportMutation();
+  const {
+    isLoading: isLoadingUpload,
+    isError: isErrorUploadFile,
+    isSuccess: isSuccessUploadFile,
+  } = useAppSelector((state) => state.fileReducer);
 
   useEffect(() => {
     refetch();
@@ -33,8 +47,25 @@ export const ReportsPage = () => {
   useEffect(() => {
     if (isSuccessDelete) {
       refetch();
+      setNotifyMessage(alertMessage.successDeleteReport);
+      setIsOpenNotify(true);
     }
   }, [isSuccessDelete]);
+
+  useEffect(() => {
+    if (isErrorDelete) {
+      setNotifyMessage(alertMessage.errorDeleteReport);
+      setIsOpenNotify(true);
+    }
+    if (isSuccessUploadFile) {
+      setNotifyMessage(alertMessage.successUploadReport);
+      setIsOpenNotify(true);
+    }
+    if (isErrorUploadFile) {
+      setNotifyMessage(alertMessage.warningUploadReport);
+      setIsOpenNotify(true);
+    }
+  }, [isErrorDelete, isSuccessUploadFile, isErrorUploadFile]);
 
   const renderRow = (item: IReport) => (
     <>
@@ -84,11 +115,17 @@ export const ReportsPage = () => {
     const { files } = event.target;
     const formData = new FormData();
 
-    if (!files || files.length > MAX_FILES) return;
-
+    if (!files) return;
+    if (files.length > MAX_FILES) {
+      setNotifyMessage(alertMessage.errorUploadReportValidCount);
+      setIsOpenNotify(true);
+      return;
+    }
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       if (file.type !== INPUT_FILE_TYPE) {
+        setNotifyMessage(alertMessage.errorUploadReportValidType);
+        setIsOpenNotify(true);
         return;
       }
       formData.append(`myExcelDatas${i}`, file);
@@ -118,6 +155,11 @@ export const ReportsPage = () => {
   return (
     <Main>
       {(isLoadingUpload || isLoadingDelete || isLoadingGetData) && <Loader />}
+      <Notification
+        notifyMessage={notifyMessage}
+        isOpenNotify={isOpenNotify}
+        setIsOpenNotify={setIsOpenNotify}
+      />
       <BasicDialog
         isActiveDialog={isActiveDialog}
         handleClose={closeDialogWindow}
