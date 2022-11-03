@@ -14,4 +14,6 @@ export const alertMessage: INotifyMessage = {
   },
   errorUploadReportValidType: { message: 'Выбран неверный тип файла', type: 'error' },
   errorUploadReportValidCount: { message: 'Выбрано больше 2 файлов', type: 'error' },
+  successSetArticle: { message: 'Данные успешно изменены', type: 'success' },
+  errorSetArticle: { message: 'Произошла ошибка, попробуйте снова', type: 'error' },
 };
