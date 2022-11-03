@@ -42,7 +42,7 @@ export const authApi = createApi({
       }),
       transformResponse: (response: IGenericResponse) => response.message,
     }),
-    passwordRecovery: builder.mutation<{ token: string; status: string }, IPassRecoveryInput>({
+    passwordRecovery: builder.mutation<{ message: string }, IPassRecoveryInput>({
       query: (data) => ({
         url: '/Account/ForgotPassword',
         method: 'POST',
