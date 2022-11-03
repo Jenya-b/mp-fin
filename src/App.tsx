@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from './hooks/redux';
 import { LayoutWrapp } from './modules/pages/LayouWrapp';
 import { setIsActiveUser } from './utils/store/reducers/userSlice';
+import { PasswordReset } from './modules/pages/login/passwordReset/PasswordReset';
 
 const App = () => {
   const {
@@ -31,6 +32,7 @@ const App = () => {
     passwordRecovery,
     settings,
     balance,
+    passwordReset,
   } = routerPath;
 
   const dispatch = useAppDispatch();
@@ -55,6 +57,7 @@ const App = () => {
           <Route index element={<Signin />} />
           <Route path={registration} element={<Registration />} />
           <Route path={passwordRecovery} element={<PasswordRecovery />} />
+          <Route path={passwordReset} element={<PasswordReset />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

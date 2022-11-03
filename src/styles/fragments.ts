@@ -15,3 +15,17 @@ export const linkStyles = css`
     }
   }
 `;
+
+export const ButtonMailStyles = css`
+  border-radius: ${({ theme }) => theme.borders.primaryBtn.borderRadius}px;
+  background: ${({ theme }) => theme.colors.btnbackground};
+  transition: all ${({ theme }) => theme.transitions.button.time}s;
+
+  :hover {
+    background: ${({ theme }) => theme.colors.btnHover};
+  }
+
+  :active {
+    background: ${({ theme }) => theme.colors.btnHover};
+  }
+`;

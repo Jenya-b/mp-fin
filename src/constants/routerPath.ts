@@ -7,5 +7,6 @@ export const routerPath = {
   login: 'login',
   registration: 'registration',
   passwordRecovery: 'recovery-pass',
+  passwordReset: 'reset-pass',
   balance: 'balance',
 };
