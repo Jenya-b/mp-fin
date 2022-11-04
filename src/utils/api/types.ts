@@ -27,6 +27,12 @@ export interface IPassRecoveryInput {
   email: string;
 }
 
+export interface IPassReset {
+  userToken: string;
+  userEmail: string;
+  passNew: string;
+}
+
 export interface IReportID {
   weekDataId: string;
   stateId: string;

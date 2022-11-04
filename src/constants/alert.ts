@@ -16,4 +16,6 @@ export const alertMessage: INotifyMessage = {
   errorUploadReportValidCount: { message: 'Выбрано больше 2 файлов', type: 'error' },
   successSetArticle: { message: 'Данные успешно изменены', type: 'success' },
   errorSetArticle: { message: 'Произошла ошибка, попробуйте снова', type: 'error' },
+  successResetPass: { message: 'Пароль изменен', type: 'success' },
+  errorResetPass: { message: 'Произошла ошибка', type: 'error' },
 };

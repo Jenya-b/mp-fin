@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ButtonMailStyles } from './fragments';
 import { fontStylesCaption, fontStylesH1, fontStylesRegularBold } from './typography';
 
 export const Main = styled.main`
@@ -11,18 +12,8 @@ export const MainTitle = styled.h1`
 `;
 
 export const Button = styled.button`
-  border-radius: ${({ theme }) => theme.borders.primaryBtn.borderRadius}px;
   color: ${({ theme }) => theme.colors.btn};
-  background: ${({ theme }) => theme.colors.btnbackground};
-  transition: all ${({ theme }) => theme.transitions.button.time}s;
-
-  :hover {
-    background: ${({ theme }) => theme.colors.btnHover};
-  }
-
-  :active {
-    background: ${({ theme }) => theme.colors.btnHover};
-  }
+  ${ButtonMailStyles}
 `;
 
 export const PrimaryButton = styled(Button)`
