@@ -20,7 +20,7 @@ export const authApi = createApi({
         credentials: 'include',
       }),
     }),
-    signinUser: builder.mutation<{ token: string; status: string }, ISigninInputs>({
+    signinUser: builder.mutation<IGenericResponse, ISigninInputs>({
       query: (data) => ({
         url: '/Account/Login',
         method: 'POST',
@@ -28,7 +28,7 @@ export const authApi = createApi({
         credentials: 'include',
       }),
     }),
-    signout: builder.mutation<void, void>({
+    signout: builder.mutation<IGenericResponse, void>({
       query: () => ({
         url: '/Account/Logout',
         method: 'POST',
@@ -42,14 +42,14 @@ export const authApi = createApi({
       }),
       transformResponse: (response: IGenericResponse) => response.message,
     }),
-    passwordRecovery: builder.mutation<{ message: string }, IPassRecoveryInput>({
+    passwordRecovery: builder.mutation<IGenericResponse, IPassRecoveryInput>({
       query: (data) => ({
         url: '/Account/ForgotPassword',
         method: 'POST',
         body: data,
       }),
     }),
-    passwordReset: builder.mutation<null, IPassReset>({
+    passwordReset: builder.mutation<IGenericResponse, IPassReset>({
       query: (data) => ({
         url: '/Account/ConfirmResetPassword',
         method: 'POST',
