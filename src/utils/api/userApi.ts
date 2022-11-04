@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IGenericResponse, IUser } from '../api/types';
+import { setUser } from '../store/reducers/userSlice';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -10,6 +11,12 @@ export const userApi = createApi({
         url: '/Account/GetUser',
         credentials: 'include',
       }),
+      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setUser(data));
+        } catch (error) {}
+      },
     }),
     changePersonalData: builder.mutation<IGenericResponse, IUser>({
       query: (data) => ({

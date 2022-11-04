@@ -7,6 +7,7 @@ import {
   IPassRecoveryInput,
   IPassReset,
 } from './types';
+import { userApi } from './userApi';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -27,6 +28,12 @@ export const authApi = createApi({
         body: data,
         credentials: 'include',
       }),
+      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
+        try {
+          await queryFulfilled;
+          await dispatch(userApi.endpoints.getUser.initiate(null));
+        } catch (error) {}
+      },
     }),
     signout: builder.mutation<IGenericResponse, void>({
       query: () => ({
