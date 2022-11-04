@@ -27,7 +27,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setIsActiveUser(null));
+      dispatch(setIsActiveUser(false));
       dispatch(setUser(null));
       navigate('/');
     }

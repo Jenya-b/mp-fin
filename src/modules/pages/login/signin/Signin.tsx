@@ -39,7 +39,7 @@ export const Signin = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setIsActiveUser('Пользователь авторизован'));
+      dispatch(setIsActiveUser(true));
       navigate(analitics);
     }
   }, [isSuccess]);

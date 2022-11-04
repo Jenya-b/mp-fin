@@ -36,11 +36,12 @@ const App = () => {
   } = routerPath;
 
   const dispatch = useAppDispatch();
-  const { data } = useIsInSystemUserQuery(null);
+  const { isSuccess } = useIsInSystemUserQuery(null);
 
   useEffect(() => {
-    data ? dispatch(setIsActiveUser(data)) : dispatch(setIsActiveUser(null));
-  }, [data]);
+    if (!isSuccess) return;
+    dispatch(setIsActiveUser(true));
+  }, [isSuccess]);
 
   return (
     <ThemeProvider theme={baseTheme}>
