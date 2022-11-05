@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../../api/types';
 
 interface InitialStateType {
-  isActiveUser: string | null;
+  isActiveUser: boolean;
   user: IUser | null;
 }
 
 const initialState: InitialStateType = {
-  isActiveUser: null,
+  isActiveUser: false,
   user: null,
 };
 
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
     setUser: (state, action: PayloadAction<IUser | null>) => {
       state.user = action.payload;
     },
-    setIsActiveUser: (state, action: PayloadAction<string | null>) => {
+    setIsActiveUser: (state, action: PayloadAction<boolean>) => {
       state.isActiveUser = action.payload;
     },
   },

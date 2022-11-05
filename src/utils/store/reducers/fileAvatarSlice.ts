@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchFiles } from '../../api/filesApi';
+import { fetchAvatarFile } from '../../api/filesApi';
 
 const initialState = {
   isLoading: false,
@@ -8,23 +8,23 @@ const initialState = {
   error: '',
 };
 
-export const fileSlice = createSlice({
-  name: 'files',
+export const fileAvatarSlice = createSlice({
+  name: 'fileAvatar',
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchFiles.pending.type]: (state) => {
+    [fetchAvatarFile.pending.type]: (state) => {
       state.isLoading = true;
       state.isSuccess = false;
       state.isError = false;
     },
-    [fetchFiles.fulfilled.type]: (state) => {
+    [fetchAvatarFile.fulfilled.type]: (state) => {
       state.isLoading = false;
       state.error = '';
       state.isSuccess = true;
       state.isError = false;
     },
-    [fetchFiles.rejected.type]: (state, action: PayloadAction<string>) => {
+    [fetchAvatarFile.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
       state.isSuccess = false;
@@ -33,4 +33,4 @@ export const fileSlice = createSlice({
   },
 });
 
-export default fileSlice.reducer;
+export default fileAvatarSlice.reducer;

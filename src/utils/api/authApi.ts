@@ -7,6 +7,7 @@ import {
   IPassRecoveryInput,
   IPassReset,
 } from './types';
+import { userApi } from './userApi';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -20,15 +21,21 @@ export const authApi = createApi({
         credentials: 'include',
       }),
     }),
-    signinUser: builder.mutation<{ token: string; status: string }, ISigninInputs>({
+    signinUser: builder.mutation<IGenericResponse, ISigninInputs>({
       query: (data) => ({
         url: '/Account/Login',
         method: 'POST',
         body: data,
         credentials: 'include',
       }),
+      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
+        try {
+          await queryFulfilled;
+          await dispatch(userApi.endpoints.getUser.initiate(null));
+        } catch (error) {}
+      },
     }),
-    signout: builder.mutation<void, void>({
+    signout: builder.mutation<IGenericResponse, void>({
       query: () => ({
         url: '/Account/Logout',
         method: 'POST',
@@ -42,14 +49,14 @@ export const authApi = createApi({
       }),
       transformResponse: (response: IGenericResponse) => response.message,
     }),
-    passwordRecovery: builder.mutation<{ message: string }, IPassRecoveryInput>({
+    passwordRecovery: builder.mutation<IGenericResponse, IPassRecoveryInput>({
       query: (data) => ({
         url: '/Account/ForgotPassword',
         method: 'POST',
         body: data,
       }),
     }),
-    passwordReset: builder.mutation<null, IPassReset>({
+    passwordReset: builder.mutation<IGenericResponse, IPassReset>({
       query: (data) => ({
         url: '/Account/ConfirmResetPassword',
         method: 'POST',

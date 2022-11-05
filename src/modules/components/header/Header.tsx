@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { useSignoutMutation } from '../../../utils/api/authApi';
 import { useEffect } from 'react';
 import { setIsActiveUser, setUser } from '../../../utils/store/reducers/userSlice';
+import { defaultIconLogo } from '../../../constants/images';
 
 export const Header = () => {
   const { balance, settings, login } = routerPath;
@@ -27,7 +28,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setIsActiveUser(null));
+      dispatch(setIsActiveUser(false));
       dispatch(setUser(null));
       navigate('/');
     }
@@ -36,7 +37,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <LoginInfo>
-        <LoginImage></LoginImage>
+        <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
         {isActiveUser && <LoginName>{user?.email}</LoginName>}
       </LoginInfo>
       {isActiveUser && (

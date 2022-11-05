@@ -16,7 +16,7 @@ export const LayoutWrapp = () => {
   }, [isActiveUser]);
 
   useEffect(() => {
-    if (data) {
+    if (isSuccess && data) {
       dispatch(setUser(data));
     }
   }, [isSuccess]);
