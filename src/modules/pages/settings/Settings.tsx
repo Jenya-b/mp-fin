@@ -3,13 +3,15 @@ import { useForm } from 'react-hook-form';
 import { defaultLogo } from '../../../constants/images';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { Main, MainTitle, PrimaryButton } from '../../../styles/components';
+import { fetchAvatarFile } from '../../../utils/api/filesApi';
 import { useChangePersonalDataMutation } from '../../../utils/api/userApi';
 import { setUser } from '../../../utils/store/reducers/userSlice';
 import { SettingsForm, InputsWrapper, PostPicture, Label, SecondaryInput } from './Settings.styled';
 import { InputFileWrapp, InputFile, LogoImage, ControlWrapper } from './Settings.styled';
 
 export const SettingsPage = () => {
-  const [logoFile, setLogoFile] = useState(defaultLogo);
+  const [logoUrl, setLogoUrl] = useState(defaultLogo);
+  const [logoFile, setLogoFile] = useState<FormData>();
   const dispatch = useAppDispatch();
   const [changePersonalData, { isSuccess }] = useChangePersonalDataMutation();
   const { user } = useAppSelector((state) => state.userReducer);
@@ -26,8 +28,13 @@ export const SettingsPage = () => {
 
   const addLogo = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
+    const formData = new FormData();
+
+    if (!files) return;
     if (files) {
-      setLogoFile(URL.createObjectURL(files[0]));
+      setLogoUrl(URL.createObjectURL(files[0]));
+      formData.append('file', files[0]);
+      setLogoFile(formData);
     }
   };
 
@@ -49,6 +56,9 @@ export const SettingsPage = () => {
 
   const onSubmit = handleSubmit((data) => {
     changePersonalData(data);
+    if (logoFile) {
+      dispatch(fetchAvatarFile(logoFile));
+    }
   });
 
   return (
@@ -58,7 +68,7 @@ export const SettingsPage = () => {
         <PostPicture>
           <InputFileWrapp>
             <InputFile type="file" onChange={addLogo} />
-            <LogoImage src={logoFile} />
+            <LogoImage src={logoUrl} />
           </InputFileWrapp>
         </PostPicture>
         <InputsWrapper>

@@ -13,7 +13,7 @@ import { reportColumnNames } from '../../../constants/table';
 import { ControlsWrapper, PeriodWeek, SubtitleColl } from './Reports.styled';
 import { BasicDialog } from '../../components/dialog/Dialog';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { fetchFiles } from '../../../utils/api/filesApi';
+import { fetchReportFiles } from '../../../utils/api/filesApi';
 import { INPUT_FILE_TYPE, MAX_FILES } from '../../../constants/reports';
 import { Notification } from '../../components/notification/Notification';
 import { alertMessage } from '../../../constants/alert';
@@ -125,7 +125,7 @@ export const ReportsPage = () => {
     formData.set(`weekDataId`, weekDataId);
     formData.set(`stateId`, stateId);
 
-    dispatch(fetchFiles(formData)).then(() => refetch());
+    dispatch(fetchReportFiles(formData)).then(() => refetch());
   };
 
   const deleteRow = ({ weekDataId, stateId }: { weekDataId: string; stateId: string }) => {

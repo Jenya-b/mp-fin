@@ -3,9 +3,10 @@ import { authApi } from '../api/authApi';
 import { userApi } from '../api/userApi';
 import { productApi } from '../api/productApi';
 import userReducer from './reducers/userSlice';
-import fileReducer from './reducers/fileSlice';
-import { fetchFiles } from '../api/filesApi';
+import fileReducer from './reducers/fileReportSlice';
+import { fetchReportFiles } from '../api/filesApi';
 import notifyReducer from './reducers/notifySlice';
+import fileAvatarReducer from './reducers/fileAvatarSlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,12 +16,13 @@ export const store = configureStore({
     userReducer,
     fileReducer,
     notifyReducer,
+    fileAvatarReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
-        extraArgument: fetchFiles,
+        extraArgument: fetchReportFiles,
       },
       serializableCheck: false,
     }).concat([authApi.middleware, userApi.middleware, productApi.middleware]),
