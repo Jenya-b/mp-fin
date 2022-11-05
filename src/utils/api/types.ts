@@ -4,6 +4,7 @@ export interface IUser {
   phoneNumber: string;
   email: string;
   telegram: string;
+  avatar?: string;
 }
 
 export interface IGenericResponse {

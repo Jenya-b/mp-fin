@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { FILE_AVATAR_TYPE, MAX_SIZE } from '../../../constants/files';
 import { defaultLogo } from '../../../constants/images';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { Main, MainTitle, PrimaryButton } from '../../../styles/components';
 import { fetchAvatarFile } from '../../../utils/api/filesApi';
-import { useChangePersonalDataMutation } from '../../../utils/api/userApi';
+import { useChangePersonalDataMutation, useLazyGetUserQuery } from '../../../utils/api/userApi';
 import { setUser } from '../../../utils/store/reducers/userSlice';
+import { Loader } from '../../components/loader/Loader';
 import { SettingsForm, InputsWrapper, PostPicture, Label, SecondaryInput } from './Settings.styled';
 import { InputFileWrapp, InputFile, LogoImage, ControlWrapper } from './Settings.styled';
 
@@ -13,15 +15,19 @@ export const SettingsPage = () => {
   const [logoUrl, setLogoUrl] = useState(defaultLogo);
   const [logoFile, setLogoFile] = useState<FormData>();
   const dispatch = useAppDispatch();
-  const [changePersonalData, { isSuccess }] = useChangePersonalDataMutation();
+  const [changePersonalData, { isSuccess: isSuccessChangeData, isLoading: isLoadingChangeData }] =
+    useChangePersonalDataMutation();
+  const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
   const { user } = useAppSelector((state) => state.userReducer);
+  const { isLoading: isLoadingUploadFile, isSuccess: isSuccessUploadFile } = useAppSelector(
+    (state) => state.fileAvatarReducer
+  );
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-    getValues,
   } = useForm({
     defaultValues: { name: '', surname: '', phoneNumber: '', email: '', telegram: '' },
   });
@@ -30,12 +36,15 @@ export const SettingsPage = () => {
     const { files } = event.target;
     const formData = new FormData();
 
-    if (!files) return;
-    if (files) {
-      setLogoUrl(URL.createObjectURL(files[0]));
-      formData.append('file', files[0]);
-      setLogoFile(formData);
-    }
+    if (!files || !files.length) return;
+    const file = files[0];
+
+    if (file.size > MAX_SIZE) return;
+    if (!FILE_AVATAR_TYPE.includes(file.type)) return;
+
+    setLogoUrl(URL.createObjectURL(file));
+    formData.append('file', files[0]);
+    setLogoFile(formData);
   };
 
   useEffect(() => {
@@ -46,13 +55,22 @@ export const SettingsPage = () => {
       setValue('email', user.email);
       setValue('telegram', user.telegram);
     }
+    if (user && user.avatar) {
+      setLogoUrl(user.avatar);
+    }
   }, [user]);
 
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(setUser(getValues()));
+    if (isSuccessChangeData || isSuccessUploadFile) {
+      fetchUser(null);
     }
-  }, [isSuccess]);
+  }, [isSuccessChangeData, isSuccessUploadFile]);
+
+  useEffect(() => {
+    if (isSuccessFetchUser && dataUser) {
+      dispatch(setUser(dataUser));
+    }
+  }, [isSuccessFetchUser]);
 
   const onSubmit = handleSubmit((data) => {
     changePersonalData(data);
@@ -63,6 +81,7 @@ export const SettingsPage = () => {
 
   return (
     <Main>
+      {(isLoadingUploadFile || isLoadingChangeData) && <Loader />}
       <MainTitle>Настройки аккаунта</MainTitle>
       <SettingsForm onSubmit={onSubmit}>
         <PostPicture>

@@ -14,7 +14,7 @@ import { ControlsWrapper, PeriodWeek, SubtitleColl } from './Reports.styled';
 import { BasicDialog } from '../../components/dialog/Dialog';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { fetchReportFiles } from '../../../utils/api/filesApi';
-import { INPUT_FILE_TYPE, MAX_FILES } from '../../../constants/reports';
+import { INPUT_FILE_TYPE, MAX_FILES } from '../../../constants/files';
 import { Notification } from '../../components/notification/Notification';
 import { alertMessage } from '../../../constants/alert';
 import { openNotify } from '../../../utils/store/reducers/notifySlice';
@@ -33,7 +33,7 @@ export const ReportsPage = () => {
     isLoading: isLoadingUpload,
     isError: isErrorUploadFile,
     isSuccess: isSuccessUploadFile,
-  } = useAppSelector((state) => state.fileReducer);
+  } = useAppSelector((state) => state.fileReportReducer);
   const { isOpenNotify, notifyMessage } = useAppSelector((state) => state.notifyReducer);
 
   useEffect(() => {

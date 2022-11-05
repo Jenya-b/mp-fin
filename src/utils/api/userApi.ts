@@ -26,14 +26,7 @@ export const userApi = createApi({
         credentials: 'include',
       }),
     }),
-    getAvatar: builder.query<string, null>({
-      query: () => ({
-        url: '/Account/GetAvatar',
-        credentials: 'include',
-      }),
-    }),
   }),
 });
 
-export const { useLazyGetUserQuery, useChangePersonalDataMutation, useLazyGetAvatarQuery } =
-  userApi;
+export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;

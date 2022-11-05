@@ -17,14 +17,14 @@ export const LoginInfo = styled.div`
   column-gap: 20px;
 `;
 
-export const LoginImage = styled.div`
+export const LoginImage = styled.div<{ imagesUrl: string }>`
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.btnCircleHeader};
-  background-image: url('/source/images/iconAccount.png');
+  background-image: url(${({ imagesUrl }) => imagesUrl});
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
 `;
 export const LoginName = styled.div`
   ${fontStylesRegular}
@@ -94,6 +94,7 @@ export const ButtonLogin = styled(PrimaryButton)`
   background-image: url('/source/images/iconLogin.png');
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 export const LoginTitle = styled.div`
