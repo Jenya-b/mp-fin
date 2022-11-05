@@ -40,23 +40,23 @@ export const Header = () => {
         <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
         {isActiveUser && <LoginName>{user?.email}</LoginName>}
       </LoginInfo>
-      {isActiveUser && (
+      {/* {isActiveUser && ( //! страница в разработке
         <BalanceInfo>
           <BalanceIcon></BalanceIcon>
           <BalanceSum>Баланс: 1800 ₽</BalanceSum>
           <BalanceButton onClick={() => openPage(balance)}>Пополнить</BalanceButton>
         </BalanceInfo>
-      )}
+      )} */}
       <Controls>
         {isActiveUser && (
           <>
             <ButtonWrapper>
               <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
             </ButtonWrapper>
-            <ButtonWrapper>
+            {/* <ButtonWrapper> //! страница в разработке
               <ButtonMessage></ButtonMessage>
               <CountMessage>89</CountMessage>
-            </ButtonWrapper>
+            </ButtonWrapper> */}
           </>
         )}
         <ButtonWrapper>

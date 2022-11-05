@@ -52,7 +52,7 @@ const App = () => {
           <Route path={reports} element={<ReportsPage />} />
           <Route path={settings} element={<SettingsPage />} />
           <Route path={primeCost} element={<PrimeCostPage />} />
-          <Route path={balance} element={<BalancePage />} />
+          {/* <Route path={balance} element={<BalancePage />} /> //! страница в разработке */}
         </Route>
         <Route path={login} element={<LoginPage />}>
           <Route index element={<Signin />} />
