@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { usePasswordRecoveryMutation } from '../../../../utils/api/authApi';
-import { openNotify } from '../../../../utils/store/reducers/notifySlice';
+import { usePasswordRecoveryMutation } from '../../../../services';
+import { openNotify } from '../../../../store/reducers/notifySlice';
 import { Loader } from '../../../components/loader/Loader';
 import { Notification } from '../../../components/notification/Notification';
 import {

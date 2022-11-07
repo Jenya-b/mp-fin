@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from '../../../../constants/routerPath';
 import { useAppDispatch } from '../../../../hooks/redux';
 import { Checkbox, PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { useRegisterUserMutation } from '../../../../utils/api/authApi';
-import { setIsActiveUser } from '../../../../utils/store/reducers/userSlice';
+import { useRegisterUserMutation } from '../../../../services';
+import { setIsActiveUser } from '../../../../store/reducers/userSlice';
 import { Loader } from '../../../components/loader/Loader';
 import {
   Controls,

@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { baseUrl } from './baseUrl';
+import { baseUrl } from '../baseUrl';
 import {
   IGenericResponse,
   ISigninInputs,
   IRegistrationInputs,
   IPassRecoveryInput,
   IPassReset,
-} from './types';
+} from '../types';
 import { userApi } from './userApi';
 
 export const authApi = createApi({
@@ -65,12 +65,3 @@ export const authApi = createApi({
     }),
   }),
 });
-
-export const {
-  useRegisterUserMutation,
-  useSigninUserMutation,
-  useSignoutMutation,
-  useIsInSystemUserQuery,
-  usePasswordRecoveryMutation,
-  usePasswordResetMutation,
-} = authApi;

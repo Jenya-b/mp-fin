@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from '../../api/types';
+import { IUser } from '../../services/types';
 
 interface InitialStateType {
   isActiveUser: boolean;

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authApi } from '../api/authApi';
-import { userApi } from '../api/userApi';
-import { productApi } from '../api/productApi';
+import { authApi } from '../services/api/authApi';
+import { userApi } from '../services/api/userApi';
+import { productApi } from '../services/api/productApi';
 import userReducer from './reducers/userSlice';
 import fileReportReducer from './reducers/fileReportSlice';
-import { fetchReportFiles } from '../api/filesApi';
+import { fetchReportFiles } from '../services/api/filesApi';
 import notifyReducer from './reducers/notifySlice';
 import fileAvatarReducer from './reducers/fileAvatarSlice';
 

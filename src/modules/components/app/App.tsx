@@ -1,27 +1,27 @@
-import GlobalStyles from './styles/global';
+import GlobalStyles from '../../../styles/global';
 import { Route, Routes } from 'react-router-dom';
-import { BalancePage } from './modules/pages/balance/Balance';
-import { AnaliticsPage } from './modules/pages/analitics/Analitics';
-import { ReportsPage } from './modules/pages/reports/Reports';
-import { SettingsPage } from './modules/pages/settings/Settings';
-import { PrimeCostPage } from './modules/pages/primeCost/PrimeCost';
+import { BalancePage } from '../../pages/balance/Balance';
+import { AnaliticsPage } from '../../pages/analitics/Analitics';
+import { ReportsPage } from '../../pages/reports/Reports';
+import { SettingsPage } from '../../pages/settings/Settings';
+import { PrimeCostPage } from '../../pages/primeCost/PrimeCost';
 import { ThemeProvider } from 'styled-components';
-import { baseTheme } from './styles/theme';
-import { LoginPage } from './modules/pages/login/Login';
-import { Signin } from './modules/pages/login/signin/Signin';
-import { Registration } from './modules/pages/login/registration/Registration';
-import { PasswordRecovery } from './modules/pages/login/passwordRecovery/PasswordRecovery';
-import { routerPath } from './constants/routerPath';
-import { NotFoundPage } from './modules/pages/notFound/NotFound';
-import { AnaliticCardPage } from './modules/pages/analiticCard/AnaliticCard';
-import { useIsInSystemUserQuery } from './utils/api/authApi';
+import { baseTheme } from '../../../styles/theme';
+import { LoginPage } from '../../pages/login/Login';
+import { Signin } from '../../pages/login/signin/Signin';
+import { Registration } from '../../pages/login/registration/Registration';
+import { PasswordRecovery } from '../../pages/login/passwordRecovery/PasswordRecovery';
+import { routerPath } from '../../../constants/routerPath';
+import { NotFoundPage } from '../../pages/notFound/NotFound';
+import { AnaliticCardPage } from '../../pages/analiticCard/AnaliticCard';
+import { useIsInSystemUserQuery } from '../../../services';
 import { useEffect } from 'react';
-import { useAppDispatch } from './hooks/redux';
-import { LayoutWrapp } from './modules/pages/LayouWrapp';
-import { setIsActiveUser } from './utils/store/reducers/userSlice';
-import { PasswordReset } from './modules/pages/login/passwordReset/PasswordReset';
+import { useAppDispatch } from '../../../hooks/redux';
+import { LayoutWrapp } from '../../pages/LayouWrapp';
+import { setIsActiveUser } from '../../../store/reducers/userSlice';
+import { PasswordReset } from '../../pages/login/passwordReset/PasswordReset';
 
-const App = () => {
+export const App = () => {
   const {
     analitics,
     analiticCard,
@@ -66,5 +66,3 @@ const App = () => {
     </ThemeProvider>
   );
 };
-
-export default App;

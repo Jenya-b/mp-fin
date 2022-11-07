@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PrimaryInput, PrimaryButton } from '../../../../styles/components';
-import { usePasswordResetMutation } from '../../../../utils/api/authApi';
+import { usePasswordResetMutation } from '../../../../services';
 import {
   InputList,
   Label,

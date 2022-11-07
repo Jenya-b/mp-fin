@@ -5,9 +5,9 @@ import { ButtonMessage, ButtonLogin, LoginTitle, CountMessage } from './Header.s
 import { BalanceIcon, BalanceSum, BalanceButton } from './Header.styled';
 import { routerPath } from '../../../constants/routerPath';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { useSignoutMutation } from '../../../utils/api/authApi';
+import { useSignoutMutation } from '../../../services';
 import { useEffect } from 'react';
-import { setIsActiveUser, setUser } from '../../../utils/store/reducers/userSlice';
+import { setIsActiveUser, setUser } from '../../../store/reducers/userSlice';
 import { defaultIconLogo } from '../../../constants/images';
 
 export const Header = () => {

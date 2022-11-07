@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchAvatarFile } from '../../api/filesApi';
+import { fetchAvatarFile } from '../../services/api/filesApi';
 
 const initialState = {
   isLoading: false,

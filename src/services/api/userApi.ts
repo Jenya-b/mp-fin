@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IGenericResponse, IUser } from '../api/types';
-import { setUser } from '../store/reducers/userSlice';
+import { IGenericResponse, IUser } from '../types';
+import { setUser } from '../../store/reducers/userSlice';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -28,5 +28,3 @@ export const userApi = createApi({
     }),
   }),
 });
-
-export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;

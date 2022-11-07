@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { tableControlIcon } from '../../../constants/images';
 import { Main, MainTitle } from '../../../styles/components';
-import { useDeleteReportMutation, useGetReportsQuery } from '../../../utils/api/productApi';
-import { IReport } from '../../../utils/api/types';
+import { useDeleteReportMutation, useGetReportsQuery } from '../../../services';
+import { IReport } from '../../../services/types';
 import { Loader } from '../../components/loader/Loader';
 import { InputFile } from '../../components/table/InputFile';
 import { BasicTable } from '../../components/table/Table';
@@ -13,11 +13,11 @@ import { reportColumnNames } from '../../../constants/table';
 import { ControlsWrapper, PeriodWeek, SubtitleColl } from './Reports.styled';
 import { BasicDialog } from '../../components/dialog/Dialog';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { fetchReportFiles } from '../../../utils/api/filesApi';
+import { fetchReportFiles } from '../../../services/api/filesApi';
 import { INPUT_FILE_TYPE, MAX_FILES } from '../../../constants/files';
 import { Notification } from '../../components/notification/Notification';
 import { alertMessage } from '../../../constants/alert';
-import { openNotify } from '../../../utils/store/reducers/notifySlice';
+import { openNotify } from '../../../store/reducers/notifySlice';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();

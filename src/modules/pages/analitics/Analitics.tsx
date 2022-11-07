@@ -1,5 +1,5 @@
 import { Main, MainTitle } from '../../../styles/components';
-import { smartanalyticsUrl } from '../../../utils/api/baseUrl';
+import { smartanalyticsUrl } from '../../../services/baseUrl';
 import { IframeWrapper, Iframe } from './Analitics.styled';
 
 export const AnaliticsPage = () => (

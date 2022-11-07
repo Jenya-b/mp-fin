@@ -4,14 +4,14 @@ import { primeCostColumnNames } from '../../../constants/table';
 import { useDebounce } from '../../../hooks/debounce';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { Main, MainTitle, PrimaryInput } from '../../../styles/components';
-import { useChangeArticleMutation, useGetArticlesQuery } from '../../../utils/api/productApi';
-import { IArticle } from '../../../utils/api/types';
+import { useChangeArticleMutation, useGetArticlesQuery } from '../../../services';
+import { IArticle } from '../../../services/types';
 import { BasicDialog } from '../../components/dialog/Dialog';
 import { Loader } from '../../components/loader/Loader';
 import { BasicTable } from '../../components/table/Table';
 import { StyledTableCell, StyledTableCellColl } from '../../components/table/TableCell';
 import { Notification } from '../../components/notification/Notification';
-import { openNotify } from '../../../utils/store/reducers/notifySlice';
+import { openNotify } from '../../../store/reducers/notifySlice';
 import { alertMessage } from '../../../constants/alert';
 
 export const PrimeCostPage = () => {
