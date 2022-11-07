@@ -13,6 +13,7 @@ import {
 } from '../Login.styled';
 import { Loader } from '../../../components/loader/Loader';
 import { InfoMessage } from '../InfoMessage';
+import { inputPassPattern } from '../../../../constants/validInput';
 
 type FormValues = {
   passNew: string;
@@ -65,11 +66,7 @@ export const PasswordReset = () => {
                 <PrimaryInput
                   {...register('passNew', {
                     required: 'Поле обязательно к заполнению',
-                    pattern: {
-                      value: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/g,
-                      message:
-                        'Пароль должен состоять из строчных, заглавных латинских букв, цифр и спец символов, не менее 10 символов длиной',
-                    },
+                    pattern: inputPassPattern,
                   })}
                   placeholder="Новый пароль"
                   type="password"

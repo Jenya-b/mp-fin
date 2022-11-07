@@ -16,6 +16,7 @@ import {
   LinkWrapperCenter,
   MessageError,
 } from '../Login.styled';
+import { inputEmailPattern } from '../../../../constants/validInput';
 
 type FormValues = {
   email: string;
@@ -81,10 +82,7 @@ export const PasswordRecovery = () => {
             <PrimaryInput
               {...register('email', {
                 required: 'Поле обязательно к заполнению',
-                pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: 'Не соответствует формату электронной почты',
-                },
+                pattern: inputEmailPattern,
               })}
               placeholder="Email"
             />

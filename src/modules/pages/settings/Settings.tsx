@@ -10,6 +10,8 @@ import { setUser } from '../../../store/reducers/userSlice';
 import { Loader } from '../../components/loader/Loader';
 import { SettingsForm, InputsWrapper, PostPicture, Label, SecondaryInput } from './Settings.styled';
 import { InputFileWrapp, InputFile, LogoImage, ControlWrapper } from './Settings.styled';
+import { inputEmailPattern } from '../../../constants/validInput';
+import { MessageError } from '../login/Login.styled';
 
 export const SettingsPage = () => {
   const [logoUrl, setLogoUrl] = useState(defaultLogo);
@@ -101,7 +103,13 @@ export const SettingsPage = () => {
           </Label>
           <Label>
             Email
-            <SecondaryInput {...register('email')} />
+            <SecondaryInput
+              {...register('email', {
+                required: 'Поле обязательно к заполнению',
+                pattern: inputEmailPattern,
+              })}
+            />
+            {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
           </Label>
           <Label>
             Телефон
