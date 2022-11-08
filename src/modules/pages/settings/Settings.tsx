@@ -127,3 +127,5 @@ export const SettingsPage = () => {
     </Main>
   );
 };
+
+export default SettingsPage;

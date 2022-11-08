@@ -1,38 +1,37 @@
-import GlobalStyles from '../../../styles/global';
+import { useEffect, Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { BalancePage } from '../../pages/balance/Balance';
-import { AnaliticsPage } from '../../pages/analitics/Analitics';
-import { ReportsPage } from '../../pages/reports/Reports';
-import { SettingsPage } from '../../pages/settings/Settings';
-import { PrimeCostPage } from '../../pages/primeCost/PrimeCost';
 import { ThemeProvider } from 'styled-components';
+import GlobalStyles from '../../../styles/global';
 import { baseTheme } from '../../../styles/theme';
 import { LoginPage } from '../../pages/login/Login';
-import { Signin } from '../../pages/login/signin/Signin';
-import { Registration } from '../../pages/login/registration/Registration';
-import { PasswordRecovery } from '../../pages/login/passwordRecovery/PasswordRecovery';
+import { Loader } from '../loader/Loader';
 import { routerPath } from '../../../constants/routerPath';
-import { NotFoundPage } from '../../pages/notFound/NotFound';
-import { AnaliticCardPage } from '../../pages/analiticCard/AnaliticCard';
 import { useIsInSystemUserQuery } from '../../../services';
-import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/redux';
-import { LayoutWrapp } from '../../pages/LayouWrapp';
+import { LayoutWrapp } from '../layout/LayouWrapp';
 import { setIsActiveUser } from '../../../store/reducers/userSlice';
-import { PasswordReset } from '../../pages/login/passwordReset/PasswordReset';
+
+const AnaliticsPage = lazy(() => import('./../../pages/analitics/Analitics'));
+const ReportsPage = lazy(() => import('./../../pages/reports/Reports'));
+const SettingsPage = lazy(() => import('../../pages/settings/Settings'));
+const PrimeCostPage = lazy(() => import('../../pages/primeCost/PrimeCost'));
+const Signin = lazy(() => import('../../pages/login/signin/Signin'));
+const Registration = lazy(() => import('../../pages/login/registration/Registration'));
+const PasswordRecovery = lazy(() => import('../../pages/login/passwordRecovery/PasswordRecovery'));
+const PasswordReset = lazy(() => import('../../pages/login/passwordReset/PasswordReset'));
+const NotFoundPage = lazy(() => import('../../pages/notFound/NotFound'));
 
 export const App = () => {
   const {
     analitics,
-    analiticCard,
     login,
     primeCost,
     registration,
     reports,
     passwordRecovery,
     settings,
-    balance,
     passwordReset,
+    notFound,
   } = routerPath;
 
   const dispatch = useAppDispatch();
@@ -41,27 +40,27 @@ export const App = () => {
   useEffect(() => {
     if (!isSuccess) return;
     dispatch(setIsActiveUser(true));
-  }, [isSuccess]);
+  }, [dispatch, isSuccess]);
 
   return (
     <ThemeProvider theme={baseTheme}>
-      <Routes>
-        <Route path={analitics} element={<LayoutWrapp />}>
-          <Route index element={<AnaliticsPage />} />
-          <Route path={analiticCard} element={<AnaliticCardPage />} />
-          <Route path={reports} element={<ReportsPage />} />
-          <Route path={settings} element={<SettingsPage />} />
-          <Route path={primeCost} element={<PrimeCostPage />} />
-          {/* <Route path={balance} element={<BalancePage />} /> //! страница в разработке */}
-        </Route>
-        <Route path={login} element={<LoginPage />}>
-          <Route index element={<Signin />} />
-          <Route path={registration} element={<Registration />} />
-          <Route path={passwordRecovery} element={<PasswordRecovery />} />
-          <Route path={passwordReset} element={<PasswordReset />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path={analitics} element={<LayoutWrapp />}>
+            <Route index element={<AnaliticsPage />} />
+            <Route path={reports} element={<ReportsPage />} />
+            <Route path={settings} element={<SettingsPage />} />
+            <Route path={primeCost} element={<PrimeCostPage />} />
+          </Route>
+          <Route path={login} element={<LoginPage />}>
+            <Route index element={<Signin />} />
+            <Route path={registration} element={<Registration />} />
+            <Route path={passwordRecovery} element={<PasswordRecovery />} />
+            <Route path={passwordReset} element={<PasswordReset />} />
+          </Route>
+          <Route path={notFound} element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
       <GlobalStyles />
     </ThemeProvider>
   );

@@ -9,4 +9,5 @@ export const routerPath = {
   passwordRecovery: 'recovery-pass',
   passwordReset: 'reset-pass',
   balance: 'balance',
+  notFound: '*',
 };

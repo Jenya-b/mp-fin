@@ -92,3 +92,5 @@ export const Signin = () => {
     </LoginForm>
   );
 };
+
+export default Signin;

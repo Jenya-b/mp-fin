@@ -120,3 +120,5 @@ export const PrimeCostPage = () => {
     </Main>
   );
 };
+
+export default PrimeCostPage;

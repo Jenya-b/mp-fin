@@ -10,3 +10,5 @@ export const AnaliticsPage = () => (
     </IframeWrapper>
   </Main>
 );
+
+export default AnaliticsPage;

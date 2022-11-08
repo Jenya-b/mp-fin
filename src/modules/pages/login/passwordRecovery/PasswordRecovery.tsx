@@ -99,3 +99,5 @@ export const PasswordRecovery = () => {
     </>
   );
 };
+
+export default PasswordRecovery;

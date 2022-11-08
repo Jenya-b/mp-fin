@@ -91,3 +91,5 @@ export const PasswordReset = () => {
     </>
   );
 };
+
+export default PasswordReset;

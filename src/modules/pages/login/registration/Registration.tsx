@@ -106,3 +106,5 @@ export const Registration = () => {
     </LoginForm>
   );
 };
+
+export default Registration;

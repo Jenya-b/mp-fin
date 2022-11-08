@@ -158,3 +158,5 @@ export const ReportsPage = () => {
     </Main>
   );
 };
+
+export default ReportsPage;
