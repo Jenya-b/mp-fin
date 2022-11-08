@@ -10,16 +10,9 @@ export const LayoutWrapp = () => {
   const { isActiveUser } = useAppSelector((state) => state.userReducer);
 
   useEffect(() => {
-    if (isActiveUser) {
-      fetchUser(null);
-    }
-  }, [isActiveUser]);
-
-  useEffect(() => {
-    if (isSuccess && data) {
-      dispatch(setUser(data));
-    }
-  }, [isSuccess]);
+    if (isActiveUser) fetchUser(null);
+    if (isSuccess && data) dispatch(setUser(data));
+  }, [data, dispatch, fetchUser, isActiveUser, isSuccess]);
 
   return <Layout />;
 };
