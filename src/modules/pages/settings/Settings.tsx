@@ -20,7 +20,7 @@ export const SettingsPage = () => {
   const [changePersonalData, { isSuccess: isSuccessChangeData, isLoading: isLoadingChangeData }] =
     useChangePersonalDataMutation();
   const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
-  const { user } = useAppSelector((state) => state.userReducer);
+  const { user } = useAppSelector((state) => state.persistedUserReducer);
   const { isLoading: isLoadingUploadFile, isSuccess: isSuccessUploadFile } = useAppSelector(
     (state) => state.fileAvatarReducer
   );

@@ -14,7 +14,7 @@ export const Header = () => {
   const { balance, settings, login } = routerPath;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { user, isActiveUser } = useAppSelector((state) => state.userReducer);
+  const { user, isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
 
   const [signoutUser, { isSuccess }] = useSignoutMutation();
 
@@ -30,7 +30,6 @@ export const Header = () => {
     if (isSuccess) {
       dispatch(setIsActiveUser(false));
       dispatch(setUser(null));
-      navigate('/');
     }
   }, [isSuccess]);
 

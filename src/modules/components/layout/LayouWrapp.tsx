@@ -7,7 +7,7 @@ import { Layout } from './Layout';
 export const LayoutWrapp = () => {
   const dispatch = useAppDispatch();
   const [fetchUser, { isSuccess, data }] = useLazyGetUserQuery();
-  const { isActiveUser } = useAppSelector((state) => state.userReducer);
+  const { isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
 
   useEffect(() => {
     if (isActiveUser) fetchUser(null);

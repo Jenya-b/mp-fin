@@ -7,6 +7,7 @@ import { Loader } from '../loader/Loader';
 import { routerPath } from '../../../constants/routerPath';
 import { useIsInSystemUserQuery } from '../../../services';
 import { useAppDispatch } from '../../../hooks/redux';
+import { RequireAuth } from '../../../hocs/RequireAuth';
 import { LayoutWrapp } from '../layout/LayouWrapp';
 import { setIsActiveUser } from '../../../store/reducers/userSlice';
 import {
@@ -48,10 +49,38 @@ export const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path={analitics} element={<LayoutWrapp />}>
-            <Route index element={<AnaliticsPage />} />
-            <Route path={reports} element={<ReportsPage />} />
-            <Route path={settings} element={<SettingsPage />} />
-            <Route path={primeCost} element={<PrimeCostPage />} />
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <AnaliticsPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path={reports}
+              element={
+                <RequireAuth>
+                  <ReportsPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path={settings}
+              element={
+                <RequireAuth>
+                  <SettingsPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path={primeCost}
+              element={
+                <RequireAuth>
+                  <PrimeCostPage />
+                </RequireAuth>
+              }
+            />
           </Route>
           <Route path={login} element={<LoginPage />}>
             <Route index element={<Signin />} />
