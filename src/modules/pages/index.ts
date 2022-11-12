@@ -10,6 +10,7 @@ const Registration = lazy(() => import('./../pages/login/registration/Registrati
 const PasswordRecovery = lazy(() => import('./../pages/login/passwordRecovery/PasswordRecovery'));
 const PasswordReset = lazy(() => import('./../pages/login/passwordReset/PasswordReset'));
 const NotFoundPage = lazy(() => import('./../pages/notFound/NotFound'));
+const BalancePage = lazy(() => import('./../pages/balance/Balance'));
 
 export {
   AnaliticsPage,
@@ -21,5 +22,6 @@ export {
   PasswordRecovery,
   PasswordReset,
   NotFoundPage,
+  BalancePage,
   LoginPage,
 };

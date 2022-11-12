@@ -15,6 +15,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user, isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
+  const { currentBalance } = useAppSelector((state) => state.balanceReducer);
 
   const [signoutUser, { isSuccess }] = useSignoutMutation();
 
@@ -31,7 +32,7 @@ export const Header = () => {
       dispatch(setIsActiveUser(false));
       dispatch(setUser(null));
     }
-  }, [isSuccess]);
+  }, [dispatch, isSuccess]);
 
   return (
     <StyledHeader>
@@ -39,13 +40,13 @@ export const Header = () => {
         <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
         {isActiveUser && <LoginName>{user?.email}</LoginName>}
       </LoginInfo>
-      {/* {isActiveUser && ( //! страница в разработке
+      {isActiveUser && (
         <BalanceInfo>
           <BalanceIcon></BalanceIcon>
-          <BalanceSum>Баланс: 1800 ₽</BalanceSum>
+          <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
           <BalanceButton onClick={() => openPage(balance)}>Пополнить</BalanceButton>
         </BalanceInfo>
-      )} */}
+      )}
       <Controls>
         {isActiveUser && (
           <>

@@ -8,7 +8,7 @@ import { routerPath } from '../../../constants/routerPath';
 import { useIsInSystemUserQuery } from '../../../services';
 import { useAppDispatch } from '../../../hooks/redux';
 import { RequireAuth } from '../../../hocs/RequireAuth';
-import { LayoutWrapp } from '../layout/LayouWrapp';
+import { Layout } from '../layout/Layout';
 import { setIsActiveUser } from '../../../store/reducers/userSlice';
 import {
   AnaliticsPage,
@@ -21,6 +21,7 @@ import {
   PasswordReset,
   NotFoundPage,
   LoginPage,
+  BalancePage,
 } from './../../pages';
 
 export const App = () => {
@@ -33,6 +34,7 @@ export const App = () => {
     passwordRecovery,
     settings,
     passwordReset,
+    balance,
     notFound,
   } = routerPath;
 
@@ -48,7 +50,7 @@ export const App = () => {
     <ThemeProvider theme={baseTheme}>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path={analitics} element={<LayoutWrapp />}>
+          <Route path={analitics} element={<Layout />}>
             <Route
               index
               element={
@@ -78,6 +80,14 @@ export const App = () => {
               element={
                 <RequireAuth>
                   <PrimeCostPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path={balance}
+              element={
+                <RequireAuth>
+                  <BalancePage />
                 </RequireAuth>
               }
             />

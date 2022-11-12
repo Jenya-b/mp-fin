@@ -7,6 +7,7 @@ import {
   IPassRecoveryInput,
   IPassReset,
 } from '../types';
+import { balanceApi } from './balanceApi';
 import { userApi } from './userApi';
 
 export const authApi = createApi({
@@ -32,7 +33,10 @@ export const authApi = createApi({
         try {
           await queryFulfilled;
           await dispatch(userApi.endpoints.getUser.initiate(null));
-        } catch (error) {}
+          await dispatch(balanceApi.endpoints.getBalance.initiate(null));
+        } catch {
+          throw new Error();
+        }
       },
     }),
     signout: builder.mutation<IGenericResponse, void>({
@@ -48,6 +52,15 @@ export const authApi = createApi({
         credentials: 'include',
       }),
       transformResponse: (response: IGenericResponse) => response.message,
+      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
+        try {
+          await queryFulfilled;
+          await dispatch(userApi.endpoints.getUser.initiate(null));
+          await dispatch(balanceApi.endpoints.getBalance.initiate(null));
+        } catch {
+          throw new Error();
+        }
+      },
     }),
     passwordRecovery: builder.mutation<IGenericResponse, IPassRecoveryInput>({
       query: (data) => ({

@@ -1,6 +1,7 @@
 import { authApi } from './api/authApi';
 import { productApi } from './api/productApi';
 import { userApi } from './api/userApi';
+import { balanceApi } from './api/balanceApi';
 
 export const {
   useRegisterUserMutation,
@@ -19,3 +20,5 @@ export const {
 } = productApi;
 
 export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;
+
+export const { useGetBalanceQuery } = balanceApi;
