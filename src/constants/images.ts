@@ -14,3 +14,5 @@ export const tableControlIcon = {
   deleteReportRow: '/source/images/iconDelete.png',
   uploadReport: '/source/images/iconUpload.png',
 };
+
+export const balanceImg = '/source/images/balanceBg.png';

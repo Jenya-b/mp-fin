@@ -37,6 +37,10 @@ export interface ITheme {
     tableReportTextMain: string;
     tableReportSubtitleColl: string;
     tablePrimeCostWrapper: string;
+    replenishmentSpan: string;
+    replenishmentBalance: string;
+    replenishmentWriteOff: string;
+    replenishmentBg: string;
   };
   sizes: {
     loginForm: {
@@ -69,6 +73,9 @@ export interface ITheme {
       width: number;
       height: number;
     };
+    replenishmentBlock: {
+      height: number;
+    };
   };
   indents: {
     loginForm: {
@@ -90,6 +97,7 @@ export interface ITheme {
     loginForm: { borderRadius: number };
     inputForm: { borderRadius: number };
     primaryBtn: { borderRadius: number };
+    replenishment: { borderRadius: number };
   };
   transitions: {
     input: { time: number };
