@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from '../../../../constants/routerPath';
 import { useAppDispatch } from '../../../../hooks/redux';
 import { Checkbox, PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { useRegisterUserMutation } from '../../../../utils/api/authApi';
-import { setIsActiveUser } from '../../../../utils/store/reducers/userSlice';
+import { useRegisterUserMutation } from '../../../../services';
+import { setIsActiveUser } from '../../../../store/reducers/userSlice';
 import { Loader } from '../../../components/loader/Loader';
 import {
   Controls,
@@ -17,6 +17,7 @@ import {
   MessageError,
   TitleForm,
 } from '../Login.styled';
+import { inputEmailPattern, inputPassPattern } from '../../../../constants/validInput';
 
 type FormValues = {
   email: string;
@@ -61,10 +62,7 @@ export const Registration = () => {
             style={registerUserError && { color: 'red' }}
             {...register('email', {
               required: 'Поле обязательно к заполнению',
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: 'Не соответствует формату электронной почты',
-              },
+              pattern: inputEmailPattern,
             })}
             placeholder="Email"
           />
@@ -79,11 +77,7 @@ export const Registration = () => {
           <PrimaryInput
             {...register('password', {
               required: 'Поле обязательно к заполнению',
-              pattern: {
-                value: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/g,
-                message:
-                  'Пароль должен состоять из строчных, заглавных латинских букв, цифр и спец символов, не менее 10 символов длиной',
-              },
+              pattern: inputPassPattern,
             })}
             type="password"
             placeholder="Создайте пароль"
@@ -112,3 +106,5 @@ export const Registration = () => {
     </LoginForm>
   );
 };
+
+export default Registration;

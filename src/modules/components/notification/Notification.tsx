@@ -2,7 +2,7 @@ import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { useAppDispatch } from '../../../hooks/redux';
 import { INotify } from '../../../interfaces/modalWindows';
-import { closeNotify } from '../../../utils/store/reducers/notifySlice';
+import { closeNotify } from '../../../store/reducers/notifySlice';
 
 interface NotificationProps {
   isOpenNotify: boolean;

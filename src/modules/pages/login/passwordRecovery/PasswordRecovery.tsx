@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { usePasswordRecoveryMutation } from '../../../../utils/api/authApi';
-import { openNotify } from '../../../../utils/store/reducers/notifySlice';
+import { usePasswordRecoveryMutation } from '../../../../services';
+import { openNotify } from '../../../../store/reducers/notifySlice';
 import { Loader } from '../../../components/loader/Loader';
 import { Notification } from '../../../components/notification/Notification';
 import {
@@ -16,6 +16,7 @@ import {
   LinkWrapperCenter,
   MessageError,
 } from '../Login.styled';
+import { inputEmailPattern } from '../../../../constants/validInput';
 
 type FormValues = {
   email: string;
@@ -81,10 +82,7 @@ export const PasswordRecovery = () => {
             <PrimaryInput
               {...register('email', {
                 required: 'Поле обязательно к заполнению',
-                pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: 'Не соответствует формату электронной почты',
-                },
+                pattern: inputEmailPattern,
               })}
               placeholder="Email"
             />
@@ -101,3 +99,5 @@ export const PasswordRecovery = () => {
     </>
   );
 };
+
+export default PasswordRecovery;

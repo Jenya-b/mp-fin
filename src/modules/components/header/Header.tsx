@@ -1,20 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import { StyledHeader, BalanceInfo, Controls, LoginImage } from './Header.styled';
 import { LoginInfo, LoginName, ButtonWrapper, ButtonSettings } from './Header.styled';
-import { ButtonMessage, ButtonLogin, LoginTitle, CountMessage } from './Header.styled';
+import { ButtonLogin, LoginTitle } from './Header.styled';
 import { BalanceIcon, BalanceSum, BalanceButton } from './Header.styled';
 import { routerPath } from '../../../constants/routerPath';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { useSignoutMutation } from '../../../utils/api/authApi';
+import { useSignoutMutation } from '../../../services';
 import { useEffect } from 'react';
-import { setIsActiveUser, setUser } from '../../../utils/store/reducers/userSlice';
+import { setIsActiveUser, setUser } from '../../../store/reducers/userSlice';
 import { defaultIconLogo } from '../../../constants/images';
 
 export const Header = () => {
   const { balance, settings, login } = routerPath;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { user, isActiveUser } = useAppSelector((state) => state.userReducer);
+  const { user, isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
+  const { currentBalance } = useAppSelector((state) => state.balanceReducer);
 
   const [signoutUser, { isSuccess }] = useSignoutMutation();
 
@@ -30,9 +31,8 @@ export const Header = () => {
     if (isSuccess) {
       dispatch(setIsActiveUser(false));
       dispatch(setUser(null));
-      navigate('/');
     }
-  }, [isSuccess]);
+  }, [dispatch, isSuccess]);
 
   return (
     <StyledHeader>
@@ -43,7 +43,7 @@ export const Header = () => {
       {isActiveUser && (
         <BalanceInfo>
           <BalanceIcon></BalanceIcon>
-          <BalanceSum>Баланс: 1800 ₽</BalanceSum>
+          <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
           <BalanceButton onClick={() => openPage(balance)}>Пополнить</BalanceButton>
         </BalanceInfo>
       )}
@@ -52,10 +52,6 @@ export const Header = () => {
           <>
             <ButtonWrapper>
               <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
-            </ButtonWrapper>
-            <ButtonWrapper>
-              <ButtonMessage></ButtonMessage>
-              <CountMessage>89</CountMessage>
             </ButtonWrapper>
           </>
         )}

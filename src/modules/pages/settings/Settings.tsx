@@ -4,12 +4,14 @@ import { FILE_AVATAR_TYPE, MAX_SIZE } from '../../../constants/files';
 import { defaultLogo } from '../../../constants/images';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { Main, MainTitle, PrimaryButton } from '../../../styles/components';
-import { fetchAvatarFile } from '../../../utils/api/filesApi';
-import { useChangePersonalDataMutation, useLazyGetUserQuery } from '../../../utils/api/userApi';
-import { setUser } from '../../../utils/store/reducers/userSlice';
+import { fetchAvatarFile } from '../../../services/api/filesApi';
+import { useChangePersonalDataMutation, useLazyGetUserQuery } from '../../../services';
+import { setUser } from '../../../store/reducers/userSlice';
 import { Loader } from '../../components/loader/Loader';
 import { SettingsForm, InputsWrapper, PostPicture, Label, SecondaryInput } from './Settings.styled';
 import { InputFileWrapp, InputFile, LogoImage, ControlWrapper } from './Settings.styled';
+import { inputEmailPattern } from '../../../constants/validInput';
+import { MessageError } from '../login/Login.styled';
 
 export const SettingsPage = () => {
   const [logoUrl, setLogoUrl] = useState(defaultLogo);
@@ -18,7 +20,7 @@ export const SettingsPage = () => {
   const [changePersonalData, { isSuccess: isSuccessChangeData, isLoading: isLoadingChangeData }] =
     useChangePersonalDataMutation();
   const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
-  const { user } = useAppSelector((state) => state.userReducer);
+  const { user } = useAppSelector((state) => state.persistedUserReducer);
   const { isLoading: isLoadingUploadFile, isSuccess: isSuccessUploadFile } = useAppSelector(
     (state) => state.fileAvatarReducer
   );
@@ -101,7 +103,13 @@ export const SettingsPage = () => {
           </Label>
           <Label>
             Email
-            <SecondaryInput {...register('email')} />
+            <SecondaryInput
+              {...register('email', {
+                required: 'Поле обязательно к заполнению',
+                pattern: inputEmailPattern,
+              })}
+            />
+            {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
           </Label>
           <Label>
             Телефон
@@ -119,3 +127,5 @@ export const SettingsPage = () => {
     </Main>
   );
 };
+
+export default SettingsPage;

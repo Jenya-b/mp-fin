@@ -76,6 +76,12 @@ export const baseTheme: ITheme = {
 
     //
     tablePrimeCostWrapper: colorMainWhite,
+
+    //replenishment
+    replenishmentBg: colorMainWhite,
+    replenishmentSpan: colorMainBlack,
+    replenishmentBalance: colorMainGreyPrimary,
+    replenishmentWriteOff: colorMainGreySecondary,
   },
   sizes: {
     loginForm: {
@@ -108,6 +114,9 @@ export const baseTheme: ITheme = {
       width: 178,
       height: 178,
     },
+    replenishmentBlock: {
+      height: 239,
+    },
   },
   indents: {
     loginForm: {
@@ -129,6 +138,7 @@ export const baseTheme: ITheme = {
     loginForm: { borderRadius: 10 },
     inputForm: { borderRadius: 10 },
     primaryBtn: { borderRadius: 10 },
+    replenishment: { borderRadius: 10 },
   },
   transitions: {
     input: { time: 0.3 },

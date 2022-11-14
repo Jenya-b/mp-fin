@@ -4,9 +4,10 @@ export const routerPath = {
   reports: 'reports',
   settings: 'settings',
   primeCost: 'prime-cost',
-  login: 'login',
+  login: '/login',
   registration: 'registration',
   passwordRecovery: 'recovery-pass',
   passwordReset: 'reset-pass',
   balance: 'balance',
+  notFound: '*',
 };

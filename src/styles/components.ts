@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ButtonMailStyles } from './fragments';
-import { fontStylesCaption, fontStylesH1, fontStylesRegularBold } from './typography';
+import { fontStylesCaption, fontStylesH1, fontStylesH2, fontStylesRegularBold } from './typography';
 
 export const Main = styled.main`
   padding: 80px 60px;
@@ -8,6 +8,11 @@ export const Main = styled.main`
 
 export const MainTitle = styled.h1`
   ${fontStylesH1}
+  color: ${({ theme }) => theme.colors.mainTitle};
+`;
+
+export const MainSubtitle = styled.h2`
+  ${fontStylesH2}
   color: ${({ theme }) => theme.colors.mainTitle};
 `;
 

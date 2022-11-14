@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from '../../../../constants/routerPath';
 import { useAppDispatch } from '../../../../hooks/redux';
 import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { useSigninUserMutation } from '../../../../utils/api/authApi';
-import { setIsActiveUser } from '../../../../utils/store/reducers/userSlice';
+import { useSigninUserMutation } from '../../../../services';
+import { setIsActiveUser } from '../../../../store/reducers/userSlice';
 import { Loader } from '../../../components/loader/Loader';
 import {
   InputList,
@@ -17,6 +17,7 @@ import {
   LinkWrapperCenter,
   MessageError,
 } from '../Login.styled';
+import { inputEmailPattern } from '../../../../constants/validInput';
 
 type FormValues = {
   email: string;
@@ -62,10 +63,7 @@ export const Signin = () => {
           <PrimaryInput
             {...register('email', {
               required: 'Поле обязательно к заполнению',
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: 'Не соответствует формату электронной почты',
-              },
+              pattern: inputEmailPattern,
             })}
             placeholder="Email"
           />
@@ -94,3 +92,5 @@ export const Signin = () => {
     </LoginForm>
   );
 };
+
+export default Signin;

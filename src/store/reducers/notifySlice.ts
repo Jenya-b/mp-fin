@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { INotify } from '../../../interfaces/modalWindows';
+import { INotify } from '../../interfaces/modalWindows';
 
 interface initialStateType {
   notifyMessage: INotify;

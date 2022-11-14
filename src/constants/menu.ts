@@ -7,11 +7,12 @@ export const menuList = [
     title: 'Аналитика',
     href: routerPath.analitics,
   },
-  {
-    srcImg: menuIcon.analiticCardIcon,
-    title: 'Аналитика карточки',
-    href: routerPath.analiticCard,
-  },
+  //! страница в разработке
+  // {
+  //   srcImg: menuIcon.analiticCardIcon,
+  //   title: 'Аналитика карточки',
+  //   href: routerPath.analiticCard,
+  // },
   {
     srcImg: menuIcon.reportIcon,
     title: 'Загрузить отчет',
