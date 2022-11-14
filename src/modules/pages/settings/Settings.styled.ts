@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Input } from '../../../styles/components';
-import { fontStylesCaption } from '../../../styles/typography';
+import { Input } from 'styles/components';
+import { fontStylesCaption } from 'styles/typography';
 
 export const SettingsForm = styled.form`
   margin-top: 60px;

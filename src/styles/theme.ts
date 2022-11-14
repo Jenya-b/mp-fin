@@ -1,4 +1,4 @@
-import { ITheme } from '../interfaces/styled';
+import { ITheme } from 'interfaces/styled';
 import {
   colorMainBlack,
   colorMainBlue,
@@ -15,7 +15,7 @@ import {
   colorAdditionalOrange,
   colorAdditionalPinkPrimary,
   colorAdditionalPinkSecondary,
-} from '../constants/colors';
+} from 'constants/colors';
 
 export const baseTheme: ITheme = {
   colors: {

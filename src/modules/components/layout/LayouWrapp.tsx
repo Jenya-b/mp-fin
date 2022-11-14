@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { useLazyGetUserQuery } from '../../../services';
-import { setUser } from '../../../store/reducers/userSlice';
-import { Layout } from './Layout';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useLazyGetUserQuery } from 'services';
+import { setUser } from 'store/reducers/userSlice';
+import { Layout } from 'modules/components/layout/Layout';
 
 export const LayoutWrapp = () => {
   const dispatch = useAppDispatch();

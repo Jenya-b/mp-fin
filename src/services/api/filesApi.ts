@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { baseUrl } from '../baseUrl';
+import { baseUrl } from 'services/baseUrl';
 
 const uploadFiles = axios.create({
   baseURL: baseUrl,

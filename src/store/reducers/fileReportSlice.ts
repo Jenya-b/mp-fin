@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchReportFiles } from '../../services/api/filesApi';
+import { fetchReportFiles } from 'services/api/filesApi';
 
 const initialState = {
   isLoading: false,

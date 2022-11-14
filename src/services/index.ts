@@ -1,7 +1,7 @@
-import { authApi } from './api/authApi';
-import { productApi } from './api/productApi';
-import { userApi } from './api/userApi';
-import { balanceApi } from './api/balanceApi';
+import { authApi } from 'services/api/authApi';
+import { productApi } from 'services/api/productApi';
+import { userApi } from 'services/api/userApi';
+import { balanceApi } from 'services/api/balanceApi';
 
 export const {
   useRegisterUserMutation,

@@ -10,16 +10,16 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authApi } from '../services/api/authApi';
-import { userApi } from '../services/api/userApi';
-import { productApi } from '../services/api/productApi';
-import { balanceApi } from '../services/api/balanceApi';
-import userReducer from './reducers/userSlice';
-import fileReportReducer from './reducers/fileReportSlice';
-import { fetchReportFiles } from '../services/api/filesApi';
-import notifyReducer from './reducers/notifySlice';
-import fileAvatarReducer from './reducers/fileAvatarSlice';
-import balanceReducer from './reducers/balanceSlice';
+import { authApi } from 'services/api/authApi';
+import { userApi } from 'services/api/userApi';
+import { productApi } from 'services/api/productApi';
+import { balanceApi } from 'services/api/balanceApi';
+import userReducer from 'store/reducers/userSlice';
+import fileReportReducer from 'store/reducers/fileReportSlice';
+import { fetchReportFiles } from 'services/api/filesApi';
+import notifyReducer from 'store/reducers/notifySlice';
+import fileAvatarReducer from 'store/reducers/fileAvatarSlice';
+import balanceReducer from 'store/reducers/balanceSlice';
 
 const persistConfig = {
   key: 'userReducer',

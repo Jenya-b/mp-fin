@@ -1,5 +1,5 @@
-import { menuIcon } from './../constants/images';
-import { routerPath } from './routerPath';
+import { menuIcon } from 'constants/images';
+import { routerPath } from 'constants/routerPath';
 
 export const menuList = [
   {
@@ -7,12 +7,6 @@ export const menuList = [
     title: 'Аналитика',
     href: routerPath.analitics,
   },
-  //! страница в разработке
-  // {
-  //   srcImg: menuIcon.analiticCardIcon,
-  //   title: 'Аналитика карточки',
-  //   href: routerPath.analiticCard,
-  // },
   {
     srcImg: menuIcon.reportIcon,
     title: 'Загрузить отчет',

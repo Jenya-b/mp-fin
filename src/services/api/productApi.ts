@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { baseUrl } from '../baseUrl';
-import { IArticle, IReport, IReportID } from '../types';
+import { baseUrl } from 'services/baseUrl';
+import { IArticle, IReport, IReportID } from 'services/types';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
-  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getReports: builder.query<IReport[], null>({
       query: () => ({

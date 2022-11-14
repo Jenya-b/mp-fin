@@ -1,17 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { FILE_AVATAR_TYPE, MAX_SIZE } from '../../../constants/files';
-import { defaultLogo } from '../../../constants/images';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { Main, MainTitle, PrimaryButton } from '../../../styles/components';
-import { fetchAvatarFile } from '../../../services/api/filesApi';
-import { useChangePersonalDataMutation, useLazyGetUserQuery } from '../../../services';
-import { setUser } from '../../../store/reducers/userSlice';
-import { Loader } from '../../components/loader/Loader';
-import { SettingsForm, InputsWrapper, PostPicture, Label, SecondaryInput } from './Settings.styled';
-import { InputFileWrapp, InputFile, LogoImage, ControlWrapper } from './Settings.styled';
-import { inputEmailPattern } from '../../../constants/validInput';
-import { MessageError } from '../login/Login.styled';
+import { FILE_AVATAR_TYPE, MAX_SIZE } from 'constants/files';
+import { defaultLogo } from 'constants/images';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { Main, MainTitle, PrimaryButton } from 'styles/components';
+import { fetchAvatarFile } from 'services/api/filesApi';
+import { useChangePersonalDataMutation, useLazyGetUserQuery } from 'services';
+import { setUser } from 'store/reducers/userSlice';
+import { Loader } from 'modules/components/loader/Loader';
+import {
+  SettingsForm,
+  InputsWrapper,
+  PostPicture,
+  Label,
+  SecondaryInput,
+  InputFileWrapp,
+  InputFile,
+  LogoImage,
+  ControlWrapper,
+} from 'modules/pages/settings/Settings.styled';
+import { inputEmailPattern } from 'constants/validInput';
+import { MessageError } from 'modules/pages/login/Login.styled';
 
 export const SettingsPage = () => {
   const [logoUrl, setLogoUrl] = useState(defaultLogo);

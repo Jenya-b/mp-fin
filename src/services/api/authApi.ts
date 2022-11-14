@@ -1,18 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { baseUrl } from '../baseUrl';
+import { baseUrl } from 'services/baseUrl';
 import {
   IGenericResponse,
   ISigninInputs,
   IRegistrationInputs,
   IPassRecoveryInput,
   IPassReset,
-} from '../types';
-import { balanceApi } from './balanceApi';
-import { userApi } from './userApi';
+} from 'services/types';
+import { balanceApi } from 'services/api/balanceApi';
+import { userApi } from 'services/api/userApi';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     registerUser: builder.mutation<IGenericResponse, IRegistrationInputs>({
       query: (data) => ({

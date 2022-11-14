@@ -1,6 +1,6 @@
 import TableCell from '@mui/material/TableCell';
 import { styled } from '@mui/material/styles';
-import { colorMainGreyPrimary, colorMainBlack } from '../../../constants/colors';
+import { colorMainGreyPrimary, colorMainBlack } from 'constants/colors';
 
 export const StyledTableCell = styled(TableCell)`
   color: ${colorMainGreyPrimary};

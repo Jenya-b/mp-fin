@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IGenericResponse, IUser } from '../types';
-import { setUser } from '../../store/reducers/userSlice';
+import { IGenericResponse, IUser } from 'services/types';
+import { baseUrl } from 'services/baseUrl';
+import { setUser } from 'store/reducers/userSlice';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getUser: builder.query<IUser, null>({
       query: () => ({

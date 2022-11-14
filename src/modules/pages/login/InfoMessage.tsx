@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ButtonMailStyles, flexCenterAll } from '../../../styles/fragments';
-import { fontStylesRegularBold, fontStylesCaptionBig } from '../../../styles/typography';
-import { Controls, LinkWrapperCenter, TitleForm } from './Login.styled';
+import { ButtonMailStyles, flexCenterAll } from 'styles/fragments';
+import { fontStylesRegularBold, fontStylesCaptionBig } from 'styles/typography';
+import { TitleForm } from 'modules/pages/login/Login.styled';
 
 interface InfoMessageProps {
   title: string;

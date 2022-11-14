@@ -1,15 +1,15 @@
 import { useEffect, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles from '../../../styles/global';
-import { baseTheme } from '../../../styles/theme';
-import { Loader } from '../loader/Loader';
-import { routerPath } from '../../../constants/routerPath';
-import { useIsInSystemUserQuery } from '../../../services';
-import { useAppDispatch } from '../../../hooks/redux';
-import { RequireAuth } from '../../../hocs/RequireAuth';
-import { Layout } from '../layout/Layout';
-import { setIsActiveUser } from '../../../store/reducers/userSlice';
+import GlobalStyles from 'styles/global';
+import { baseTheme } from 'styles/theme';
+import { Loader } from 'modules/components/loader/Loader';
+import { routerPath } from 'constants/routerPath';
+import { useIsInSystemUserQuery } from 'services';
+import { useAppDispatch } from 'hooks/redux';
+import { RequireAuth } from 'hocs/RequireAuth';
+import { Layout } from 'modules/components/layout/Layout';
+import { setIsActiveUser } from 'store/reducers/userSlice';
 import {
   AnaliticsPage,
   ReportsPage,

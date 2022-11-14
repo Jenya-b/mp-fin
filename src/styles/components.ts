@@ -1,6 +1,11 @@
 import styled from 'styled-components';
-import { ButtonMailStyles } from './fragments';
-import { fontStylesCaption, fontStylesH1, fontStylesH2, fontStylesRegularBold } from './typography';
+import { ButtonMailStyles } from 'styles/fragments';
+import {
+  fontStylesCaption,
+  fontStylesH1,
+  fontStylesH2,
+  fontStylesRegularBold,
+} from 'styles/typography';
 
 export const Main = styled.main`
   padding: 80px 60px;

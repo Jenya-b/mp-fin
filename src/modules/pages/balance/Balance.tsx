@@ -1,10 +1,10 @@
-import { balanceColumnNames } from '../../../constants/table';
-import { useAppSelector } from '../../../hooks/redux';
-import { Main, MainTitle, MainSubtitle } from '../../../styles/components';
-import { BasicTable } from '../../components/table/Table';
-import { StyledTableCell, StyledTableCellColl } from '../../components/table/TableCell';
-import { BalanceWrapper, HistoryBlock } from './Balance.styled';
-import { Replenishment } from './Replenishment';
+import { balanceColumnNames } from 'constants/table';
+import { useAppSelector } from 'hooks/redux';
+import { Main, MainTitle, MainSubtitle } from 'styles/components';
+import { BasicTable } from 'modules/components/table/Table';
+import { StyledTableCellColl } from 'modules/components/table/TableCell';
+import { BalanceWrapper, HistoryBlock } from 'modules/pages/balance/Balance.styled';
+import { Replenishment } from 'modules/pages/balance/Replenishment';
 
 export const BalancePage = () => {
   const { currentBalance } = useAppSelector((state) => state.balanceReducer);
