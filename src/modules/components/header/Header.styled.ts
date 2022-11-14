@@ -83,13 +83,6 @@ export const ButtonSettings = styled(PrimaryButton)`
   cursor: ${({ theme }) => theme.cursor};
 `;
 
-export const ButtonMessage = styled(PrimaryButton)`
-  background-image: url('/source/images/iconMessages.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  cursor: ${({ theme }) => theme.cursor};
-`;
-
 export const ButtonLogin = styled(PrimaryButton)`
   background-image: url('/source/images/iconLogin.png');
   background-position: center center;
@@ -101,15 +94,4 @@ export const LoginTitle = styled.div`
   margin-left: 15px;
   ${fontStylesCaption}
   color: ${({ theme }) => theme.colors.textHeaderPrimary};
-`;
-
-export const CountMessage = styled.div`
-  padding: 0px 8px;
-  background: ${({ theme }) => theme.colors.headerMessageCount};
-  color: ${({ theme }) => theme.colors.textCountHeader};
-  ${fontStylesCaption}
-  border-radius: 10px;
-  position: absolute;
-  top: -9px;
-  left: 29px;
 `;

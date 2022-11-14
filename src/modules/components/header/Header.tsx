@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { StyledHeader, BalanceInfo, Controls, LoginImage } from './Header.styled';
 import { LoginInfo, LoginName, ButtonWrapper, ButtonSettings } from './Header.styled';
-import { ButtonMessage, ButtonLogin, LoginTitle, CountMessage } from './Header.styled';
+import { ButtonLogin, LoginTitle } from './Header.styled';
 import { BalanceIcon, BalanceSum, BalanceButton } from './Header.styled';
 import { routerPath } from '../../../constants/routerPath';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
@@ -53,10 +53,6 @@ export const Header = () => {
             <ButtonWrapper>
               <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
             </ButtonWrapper>
-            {/* <ButtonWrapper> //! страница в разработке
-              <ButtonMessage></ButtonMessage>
-              <CountMessage>89</CountMessage>
-            </ButtonWrapper> */}
           </>
         )}
         <ButtonWrapper>
