@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from 'services/types';
+import { IAllUserOptions } from 'services/types';
 
 interface InitialStateType {
   isActiveUser: boolean;
-  user: IUser | null;
+  user: IAllUserOptions | null;
 }
 
 const initialState: InitialStateType = {
@@ -16,7 +16,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     signout: () => initialState,
-    setUser: (state, action: PayloadAction<IUser | null>) => {
+    setUser: (state, action: PayloadAction<IAllUserOptions | null>) => {
       state.user = action.payload;
     },
     setIsActiveUser: (state, action: PayloadAction<boolean>) => {

@@ -1,10 +1,20 @@
-export interface IUser {
+export interface IPersonalDataUser {
   name: string;
   surname: string;
   phoneNumber: string;
   email: string;
   telegram: string;
+}
+
+export interface IUserSettings extends IPersonalDataUser {
   avatar?: string;
+}
+
+export interface IAllUserOptions extends IPersonalDataUser {
+  balance: number;
+  isAdmin: true;
+  avatar: string;
+  userId: string;
 }
 
 export interface IGenericResponse {

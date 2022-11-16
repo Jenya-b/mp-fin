@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IGenericResponse, IUser } from 'services/types';
+import { IGenericResponse, IAllUserOptions, IUserSettings } from 'services/types';
 import { baseUrl } from 'services/baseUrl';
 import { setUser } from 'store/reducers/userSlice';
 
@@ -7,7 +7,7 @@ export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getUser: builder.query<IUser, null>({
+    getUser: builder.query<IAllUserOptions, null>({
       query: () => ({
         url: '/Account/GetUser',
         credentials: 'include',
@@ -21,7 +21,7 @@ export const userApi = createApi({
         }
       },
     }),
-    changePersonalData: builder.mutation<IGenericResponse, IUser>({
+    changePersonalData: builder.mutation<IGenericResponse, IUserSettings>({
       query: (data) => ({
         url: '/Account/ChangeInfo',
         method: 'POST',
