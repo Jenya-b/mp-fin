@@ -21,4 +21,4 @@ export const {
 
 export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;
 
-export const { useGetBalanceQuery } = balanceApi;
+export const { useLazyGetBalanceQuery } = balanceApi;

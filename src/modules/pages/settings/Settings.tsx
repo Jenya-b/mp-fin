@@ -69,19 +69,19 @@ export const SettingsPage = () => {
     if (user && user.avatar) {
       setLogoUrl(user.avatar);
     }
-  }, [user]);
+  }, [setValue, user]);
 
   useEffect(() => {
     if (isSuccessChangeData || isSuccessUploadFile) {
       fetchUser(null);
     }
-  }, [isSuccessChangeData, isSuccessUploadFile]);
+  }, [fetchUser, isSuccessChangeData, isSuccessUploadFile]);
 
   useEffect(() => {
     if (isSuccessFetchUser && dataUser) {
       dispatch(setUser(dataUser));
     }
-  }, [isSuccessFetchUser]);
+  }, [dataUser, dispatch, isSuccessFetchUser]);
 
   const onSubmit = handleSubmit((data) => {
     changePersonalData(data);

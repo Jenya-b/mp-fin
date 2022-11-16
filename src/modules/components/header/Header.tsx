@@ -20,7 +20,7 @@ import {
 import { routerPath } from 'constants/routerPath';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { useSignoutMutation } from 'services';
-import { setIsActiveUser, setUser } from 'store/reducers/userSlice';
+import { resetUser } from 'store/reducers/userSlice';
 import { defaultIconLogo } from 'constants/images';
 
 export const Header = () => {
@@ -42,8 +42,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setIsActiveUser(false));
-      dispatch(setUser(null));
+      dispatch(resetUser());
     }
   }, [dispatch, isSuccess]);
 

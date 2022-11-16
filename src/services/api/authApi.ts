@@ -29,15 +29,6 @@ export const authApi = createApi({
         body: data,
         credentials: 'include',
       }),
-      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
-        try {
-          await queryFulfilled;
-          await dispatch(userApi.endpoints.getUser.initiate(null));
-          await dispatch(balanceApi.endpoints.getBalance.initiate(null));
-        } catch {
-          throw new Error();
-        }
-      },
     }),
     signout: builder.mutation<IGenericResponse, void>({
       query: () => ({

@@ -12,7 +12,7 @@ export const userApi = createApi({
         url: '/Account/GetUser',
         credentials: 'include',
       }),
-      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
           const { data } = await queryFulfilled;
           dispatch(setUser(data));

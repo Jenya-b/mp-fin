@@ -22,8 +22,9 @@ export const userSlice = createSlice({
     setIsActiveUser: (state, action: PayloadAction<boolean>) => {
       state.isActiveUser = action.payload;
     },
+    resetUser: () => initialState,
   },
 });
 
 export default userSlice.reducer;
-export const { signout, setUser, setIsActiveUser } = userSlice.actions;
+export const { signout, setUser, setIsActiveUser, resetUser } = userSlice.actions;

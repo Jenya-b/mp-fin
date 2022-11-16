@@ -1,18 +1,20 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { useLazyGetUserQuery } from 'services';
-import { setUser } from 'store/reducers/userSlice';
+import { useLazyGetBalanceQuery, useLazyGetUserQuery } from 'services';
 import { Layout } from 'modules/components/layout/Layout';
 
 export const LayoutWrapp = () => {
   const dispatch = useAppDispatch();
-  const [fetchUser, { isSuccess, data }] = useLazyGetUserQuery();
+  const [fetchUser] = useLazyGetUserQuery();
+  const [fetchBalance] = useLazyGetBalanceQuery();
   const { isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
 
   useEffect(() => {
-    if (isActiveUser) fetchUser(null);
-    if (isSuccess && data) dispatch(setUser(data));
-  }, [data, dispatch, fetchUser, isActiveUser, isSuccess]);
+    if (isActiveUser) {
+      fetchUser(null);
+      fetchBalance(null);
+    }
+  }, [dispatch, fetchBalance, fetchUser, isActiveUser]);
 
   return <Layout />;
 };

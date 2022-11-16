@@ -8,7 +8,7 @@ import { routerPath } from 'constants/routerPath';
 import { useIsInSystemUserQuery } from 'services';
 import { useAppDispatch } from 'hooks/redux';
 import { RequireAuth } from 'hocs/RequireAuth';
-import { Layout } from 'modules/components/layout/Layout';
+import { LayoutWrapp } from 'modules/components/layout/LayouWrapp';
 import { setIsActiveUser } from 'store/reducers/userSlice';
 import {
   AnaliticsPage,
@@ -42,15 +42,16 @@ export const App = () => {
   const { isSuccess } = useIsInSystemUserQuery(null);
 
   useEffect(() => {
-    if (!isSuccess) return;
-    dispatch(setIsActiveUser(true));
+    if (isSuccess) {
+      dispatch(setIsActiveUser(true));
+    }
   }, [dispatch, isSuccess]);
 
   return (
     <ThemeProvider theme={baseTheme}>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path={analitics} element={<Layout />}>
+          <Route path={analitics} element={<LayoutWrapp />}>
             <Route
               index
               element={
