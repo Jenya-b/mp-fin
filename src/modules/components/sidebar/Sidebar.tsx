@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { mainLogo } from 'constants/images';
-import { menuList } from 'constants/menu';
+import { menuSidebar, adminRoute } from 'constants/menu';
 import { routerPath } from 'constants/routerPath';
 import { MenuItem } from 'modules/components/menuItem/MenuItem';
 import { Aside, Logo, LogoImg, LogoWrapper, MenuList } from './Sidebar.styled';
+import { useAppSelector } from 'hooks/redux';
 
 export const Sidebar = () => {
   const { analitics } = routerPath;
+  const [menuList, setMenuList] = useState(menuSidebar);
+  const { user } = useAppSelector((state) => state.persistedUserReducer);
   const [isActiveSidebar, setInActiveSidebar] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (user && user.isAdmin) {
+      setMenuList([...menuSidebar, adminRoute]);
+    }
+  }, [user]);
 
   const activeSidebar = () => {
     setInActiveSidebar(true);

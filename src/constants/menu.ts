@@ -1,7 +1,7 @@
 import { menuIcon } from 'constants/images';
 import { routerPath } from 'constants/routerPath';
 
-export const menuList = [
+export const menuSidebar = [
   {
     srcImg: menuIcon.analiticIcon,
     title: 'Аналитика',
@@ -19,7 +19,13 @@ export const menuList = [
   },
 ];
 
-export const menuAdmin = [
+export const adminRoute = {
+  srcImg: menuIcon.adminPanel,
+  title: 'Администрирование',
+  href: routerPath.weeks,
+};
+
+export const menuAdminPanel = [
   {
     title: 'Недели',
     href: routerPath.weeks,

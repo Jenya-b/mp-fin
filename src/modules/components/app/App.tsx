@@ -8,6 +8,7 @@ import { routerPath } from 'constants/routerPath';
 import { useIsInSystemUserQuery } from 'services';
 import { useAppDispatch } from 'hooks/redux';
 import { RequireAuth } from 'hocs/RequireAuth';
+import { RequireAdmin } from 'hocs/RequireAdmin';
 import { LayoutWrapp } from 'modules/components/layout/LayouWrapp';
 import { setIsActiveUser } from 'store/reducers/userSlice';
 import {
@@ -97,7 +98,15 @@ export const App = () => {
                 </RequireAuth>
               }
             />
-            <Route element={<AdminPage />}>
+            <Route
+              element={
+                <RequireAuth>
+                  <RequireAdmin>
+                    <AdminPage />
+                  </RequireAdmin>
+                </RequireAuth>
+              }
+            >
               <Route path={weeks} element={<Weeks />} />
               <Route path={users} element={<Users />} />
             </Route>

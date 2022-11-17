@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontStylesCaption, fontStylesCaptionBig } from 'styles/typography';
+import { fontStylesCaptionBig } from 'styles/typography';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   grid-template: 1fr / auto 1fr;
 `;
 export const Menu = styled.div`
-  padding: 40px 20px 40px 30px;
+  padding: 40px 25px 40px 30px;
   background: ${({ theme }) => theme.colors.adminMenuBg};
 `;
 export const List = styled.ul`

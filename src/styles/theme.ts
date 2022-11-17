@@ -84,7 +84,7 @@ export const baseTheme: ITheme = {
     replenishmentWriteOff: colorMainGreySecondary,
 
     //admin-panel
-    adminMenuBg: colorMainGreyTertiary,
+    adminMenuBg: colorMainGreyLight,
     adminMenuLink: colorMainBlack,
     adminMenuLinkActive: colorMainBluePrimary,
   },

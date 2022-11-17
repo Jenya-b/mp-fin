@@ -4,6 +4,7 @@ export const menuIcon = {
   analiticIcon: '/source/images/menu/analiticIcon.png',
   primeCostIcon: '/source/images/menu/primeCostIcon.png',
   reportIcon: '/source/images/menu/reportIcon.png',
+  adminPanel: '/source/images/menu/adminPanel.png',
 };
 
 export const defaultLogo = '/source/images/logoUser.png';
