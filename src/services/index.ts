@@ -2,6 +2,7 @@ import { authApi } from 'services/api/authApi';
 import { productApi } from 'services/api/productApi';
 import { userApi } from 'services/api/userApi';
 import { balanceApi } from 'services/api/balanceApi';
+import { adminApi } from 'services/api/adminApi';
 
 export const {
   useRegisterUserMutation,
@@ -22,3 +23,5 @@ export const {
 export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;
 
 export const { useLazyGetBalanceQuery } = balanceApi;
+
+export const { useGetWeeksQuery, useCreateWeekMutation } = adminApi;

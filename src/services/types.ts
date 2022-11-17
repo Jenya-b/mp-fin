@@ -72,3 +72,13 @@ export interface IChangeArticle {
   weekDataId: string;
   stateId: string;
 }
+
+export interface IWeek {
+  weekEnd: string;
+  weekNumber: number;
+  weekStart: string;
+}
+
+export interface IWeekWithParam extends IWeek {
+  weekId: string;
+}
