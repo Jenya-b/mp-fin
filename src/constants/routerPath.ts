@@ -9,5 +9,7 @@ export const routerPath = {
   passwordRecovery: 'recovery-pass',
   passwordReset: 'reset-pass',
   balance: 'balance',
+  weeks: '/admin-panel/weeks',
+  users: '/admin-panel/users',
   notFound: '*',
 };

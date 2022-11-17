@@ -1,5 +1,7 @@
 import { lazy } from 'react';
 import { LoginPage } from 'modules/pages/login/Login';
+import { Users } from 'modules/pages/admin/users/Users';
+import { Weeks } from 'modules/pages/admin/weeks/Weeks';
 
 const AnaliticsPage = lazy(() => import('modules/pages/analitics/Analitics'));
 const ReportsPage = lazy(() => import('modules/pages/reports/Reports'));
@@ -13,6 +15,7 @@ const PasswordRecovery = lazy(
 const PasswordReset = lazy(() => import('modules/pages/login/passwordReset/PasswordReset'));
 const NotFoundPage = lazy(() => import('modules/pages/notFound/NotFound'));
 const BalancePage = lazy(() => import('modules/pages/balance/Balance'));
+const AdminPage = lazy(() => import('modules/pages/admin/Admin'));
 
 export {
   AnaliticsPage,
@@ -25,5 +28,8 @@ export {
   PasswordReset,
   NotFoundPage,
   BalancePage,
+  AdminPage,
   LoginPage,
+  Users,
+  Weeks,
 };

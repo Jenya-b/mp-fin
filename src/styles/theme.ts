@@ -82,6 +82,11 @@ export const baseTheme: ITheme = {
     replenishmentSpan: colorMainBlack,
     replenishmentBalance: colorMainGreyPrimary,
     replenishmentWriteOff: colorMainGreySecondary,
+
+    //admin-panel
+    adminMenuBg: colorMainGreyTertiary,
+    adminMenuLink: colorMainBlack,
+    adminMenuLinkActive: colorMainBluePrimary,
   },
   sizes: {
     loginForm: {

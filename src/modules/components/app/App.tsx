@@ -22,6 +22,9 @@ import {
   NotFoundPage,
   LoginPage,
   BalancePage,
+  AdminPage,
+  Users,
+  Weeks,
 } from './../../pages';
 
 export const App = () => {
@@ -35,6 +38,8 @@ export const App = () => {
     settings,
     passwordReset,
     balance,
+    weeks,
+    users,
     notFound,
   } = routerPath;
 
@@ -92,6 +97,10 @@ export const App = () => {
                 </RequireAuth>
               }
             />
+            <Route element={<AdminPage />}>
+              <Route path={weeks} element={<Weeks />} />
+              <Route path={users} element={<Users />} />
+            </Route>
           </Route>
           <Route path={login} element={<LoginPage />}>
             <Route index element={<Signin />} />

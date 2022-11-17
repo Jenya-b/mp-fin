@@ -18,3 +18,14 @@ export const menuList = [
     href: routerPath.primeCost,
   },
 ];
+
+export const menuAdmin = [
+  {
+    title: 'Недели',
+    href: routerPath.weeks,
+  },
+  {
+    title: 'Пользователи',
+    href: routerPath.users,
+  },
+];
