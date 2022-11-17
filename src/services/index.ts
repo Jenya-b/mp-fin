@@ -24,4 +24,4 @@ export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;
 
 export const { useLazyGetBalanceQuery } = balanceApi;
 
-export const { useGetWeeksQuery, useCreateWeekMutation } = adminApi;
+export const { useGetWeeksQuery, useCreateWeekMutation, useGetAdminPanelUsersQuery } = adminApi;

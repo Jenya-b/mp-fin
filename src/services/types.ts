@@ -17,6 +17,10 @@ export interface IAllUserOptions extends IPersonalDataUser {
   userId: string;
 }
 
+export interface IUsersInAdminPanel extends IPersonalDataUser {
+  balance: number;
+}
+
 export interface IGenericResponse {
   message: string;
 }

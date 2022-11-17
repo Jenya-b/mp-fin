@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import { IWeek, IWeekWithParam, IGenericResponse } from 'services/types';
+import { IWeek, IWeekWithParam, IGenericResponse, IUsersInAdminPanel } from 'services/types';
 
 export const adminApi = createApi({
   reducerPath: 'adminApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
-  tagTypes: ['Weeks'],
+  tagTypes: ['Weeks', 'Users'],
   endpoints: (builder) => ({
     getWeeks: builder.query<IWeekWithParam[], null>({
       query: () => ({
@@ -22,6 +22,13 @@ export const adminApi = createApi({
         credentials: 'include',
       }),
       invalidatesTags: ['Weeks'],
+    }),
+    getAdminPanelUsers: builder.query<IUsersInAdminPanel[], null>({
+      query: () => ({
+        url: '/Admin/GetUsers',
+        credentials: 'include',
+      }),
+      providesTags: ['Users'],
     }),
   }),
 });
