@@ -1,12 +1,12 @@
+import { useForm } from 'react-hook-form';
 import { weekColumnNames } from 'constants/table';
 import { Loader } from 'modules/components/loader/Loader';
 import { BasicTable } from 'modules/components/table/Table';
 import { StyledTableCell, StyledTableCellColl } from 'modules/components/table/TableCell';
-import { useForm } from 'react-hook-form';
 import { useCreateWeekMutation, useGetWeeksQuery } from 'services';
 import { IWeek } from 'services/types';
 import { Main, MainTitle, PrimaryButton } from 'styles/components';
-import { formatDateGeneral, formatDateISOString } from 'utils/formatDate';
+import { formatDateISOString } from 'utils/formatDate';
 import { InputDate, Label, WeeksForm } from './Weeks.styled';
 
 export const Weeks = () => {
@@ -25,8 +25,8 @@ export const Weeks = () => {
   const renderRow = (item: IWeek) => (
     <>
       <StyledTableCell>{item.weekNumber}</StyledTableCell>
-      <StyledTableCell>{formatDateGeneral(item.weekStart)}</StyledTableCell>
-      <StyledTableCell>{formatDateGeneral(item.weekEnd)}</StyledTableCell>
+      <StyledTableCell>{item.weekStart}</StyledTableCell>
+      <StyledTableCell>{item.weekStart}</StyledTableCell>
     </>
   );
 
