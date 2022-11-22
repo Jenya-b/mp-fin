@@ -109,7 +109,7 @@ export const PrimeCostPage = () => {
         handleConfirm={confirmAction}
         desc="Вы действительно хотите внести изменения?"
       />
-      <MainTitle>Себестоимсть</MainTitle>
+      <MainTitle>Себестоимость</MainTitle>
       <BasicTable
         isSearch={true}
         handleChange={addSearchValue}
