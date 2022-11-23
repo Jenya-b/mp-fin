@@ -31,4 +31,5 @@ export const usersColumnNames = [
   { title: 'Телефон' },
   { title: 'Телеграм' },
   { title: 'Баланс' },
+  { title: 'Назначенные роли' },
 ];

@@ -30,5 +30,27 @@ export const adminApi = createApi({
       }),
       providesTags: ['Users'],
     }),
+    appointAdmin: builder.mutation<IGenericResponse, string>({
+      query: (userEmail) => ({
+        url: '/Admin/AddAdmin',
+        method: 'POST',
+        params: {
+          userEmail,
+        },
+        credentials: 'include',
+      }),
+      invalidatesTags: ['Users'],
+    }),
+    removeAdminRights: builder.mutation<IGenericResponse, string>({
+      query: (userEmail) => ({
+        url: '/Admin/DeleteAdmin',
+        method: 'POST',
+        params: {
+          userEmail,
+        },
+        credentials: 'include',
+      }),
+      invalidatesTags: ['Users'],
+    }),
   }),
 });

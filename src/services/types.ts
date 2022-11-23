@@ -12,13 +12,14 @@ export interface IUserSettings extends IPersonalDataUser {
 
 export interface IAllUserOptions extends IPersonalDataUser {
   balance: number;
-  isAdmin: true;
+  isAdmin: boolean;
   avatar: string;
   userId: string;
 }
 
 export interface IUsersInAdminPanel extends IPersonalDataUser {
   balance: number;
+  isAdmin: boolean;
 }
 
 export interface IGenericResponse {
