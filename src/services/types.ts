@@ -87,3 +87,7 @@ export interface IWeek {
 export interface IWeekWithParam extends IWeek {
   weekId: string;
 }
+
+export interface IIframeSSOResponse {
+  hash: string;
+}

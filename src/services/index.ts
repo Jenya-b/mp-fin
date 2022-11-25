@@ -3,6 +3,7 @@ import { productApi } from 'services/api/productApi';
 import { userApi } from 'services/api/userApi';
 import { balanceApi } from 'services/api/balanceApi';
 import { adminApi } from 'services/api/adminApi';
+import { analiticApi } from 'services/api/analiticApi';
 
 export const {
   useRegisterUserMutation,
@@ -31,3 +32,5 @@ export const {
   useAppointAdminMutation,
   useRemoveAdminRightsMutation,
 } = adminApi;
+
+export const { useLazyGetSmartDataSSOQuery } = analiticApi;

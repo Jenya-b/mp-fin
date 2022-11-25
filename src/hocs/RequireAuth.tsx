@@ -11,7 +11,10 @@ export const RequireAuth = ({ children }: RequireAuthProps) => {
   const { isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
   const { login } = routerPath;
 
-  if (!isActiveUser) return <Navigate to={login} state={{ from: location }} />;
+  if (!isActiveUser) {
+    localStorage.removeItem('hashMd5');
+    return <Navigate to={login} state={{ from: location }} />;
+  }
 
   return children;
 };
