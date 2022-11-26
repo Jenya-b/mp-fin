@@ -21,7 +21,8 @@ export const {
   useChangeArticleMutation,
 } = productApi;
 
-export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;
+export const { useLazyGetUserQuery, useChangePersonalDataMutation, useChangeReportIdMutation } =
+  userApi;
 
 export const { useLazyGetBalanceQuery } = balanceApi;
 
@@ -33,4 +34,4 @@ export const {
   useRemoveAdminRightsMutation,
 } = adminApi;
 
-export const { useLazyGetSmartDataSSOQuery } = analiticApi;
+export const { useLazyGetSmartDataSSOQuery, useAddReportSmartDataMutation } = analiticApi;

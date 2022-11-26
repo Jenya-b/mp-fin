@@ -15,6 +15,7 @@ export interface IAllUserOptions extends IPersonalDataUser {
   isAdmin: boolean;
   avatar: string;
   userId: string;
+  reportId: null | string;
 }
 
 export interface IUsersInAdminPanel extends IPersonalDataUser {
@@ -90,4 +91,8 @@ export interface IWeekWithParam extends IWeek {
 
 export interface IIframeSSOResponse {
   hash: string;
+}
+
+export interface IReportSmartData {
+  id: number;
 }

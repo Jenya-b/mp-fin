@@ -6,12 +6,14 @@ import { setUser } from 'store/reducers/userSlice';
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
+  tagTypes: ['User'],
   endpoints: (builder) => ({
     getUser: builder.query<IAllUserOptions, null>({
       query: () => ({
         url: '/Account/GetUser',
         credentials: 'include',
       }),
+      providesTags: ['User'],
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
           const { data } = await queryFulfilled;
@@ -28,6 +30,17 @@ export const userApi = createApi({
         body: data,
         credentials: 'include',
       }),
+    }),
+    changeReportId: builder.mutation({
+      query: (reportId) => ({
+        url: '/Account/ChangeReportId',
+        method: 'POST',
+        params: {
+          reportId,
+        },
+        credentials: 'include',
+      }),
+      invalidatesTags: ['User'],
     }),
   }),
 });
