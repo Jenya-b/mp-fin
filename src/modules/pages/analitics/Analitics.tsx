@@ -30,7 +30,7 @@ export const AnaliticsPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem('hashMd5')) return;
-    if (!user || user.reportId) return;
+    if (!user) return;
 
     const timestamp = Date.now();
     const hash = md5(user.email + '+' + smartKey + '+' + timestamp);
@@ -49,13 +49,13 @@ export const AnaliticsPage = () => {
   }, [isSuccessFetchSSO]);
 
   const addReportSmartCallback = useCallback(() => {
-    addReportSmart(user?.userId);
-  }, []);
-
-  useEffect(() => {
     if (!localStorage.getItem('hashMd5')) return;
     if (!user || user.reportId) return;
 
+    addReportSmart(user.userId);
+  }, []);
+
+  useEffect(() => {
     addReportSmartCallback();
   }, [addReportSmartCallback]);
 
@@ -76,7 +76,7 @@ export const AnaliticsPage = () => {
       <MainTitle>Аналитика</MainTitle>
       <IframeWrapper>
         <Iframe
-          src={`${smartanalyticsIframe}/ru/#!/index/2065/reports/2/${user?.reportId ?? 8184}`}
+          src={`${smartanalyticsIframe}/ru/#!/index/2065/reports/2/${user?.reportId ?? ''}`}
         ></Iframe>
       </IframeWrapper>
     </Main>

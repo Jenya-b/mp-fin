@@ -90,7 +90,7 @@ export const analiticApi = createApi({
                     },
                     {
                       type: 'DIMENSION',
-                      filter: 'ARRAY_CUSTOM_weeknumber%3D%3D42',
+                      filter: '',
                       id: 7003558,
                     },
                   ],
