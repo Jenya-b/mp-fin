@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { routerPath } from '../../../../constants/routerPath';
-import { useAppDispatch } from '../../../../hooks/redux';
-import { PrimaryButton, PrimaryInput } from '../../../../styles/components';
-import { useSigninUserMutation } from '../../../../services';
-import { setIsActiveUser } from '../../../../store/reducers/userSlice';
-import { Loader } from '../../../components/loader/Loader';
+import { routerPath } from 'constants/routerPath';
+import { useAppDispatch } from 'hooks/redux';
+import { PrimaryButton, PrimaryInput } from 'styles/components';
+import { useSigninUserMutation } from 'services';
+import { setIsActiveUser } from 'store/reducers/userSlice';
+import { Loader } from 'modules/components/loader/Loader';
 import {
   InputList,
   LoginForm,
@@ -16,8 +16,8 @@ import {
   LinkWrapper,
   LinkWrapperCenter,
   MessageError,
-} from '../Login.styled';
-import { inputEmailPattern } from '../../../../constants/validInput';
+} from 'modules/pages/login/Login.styled';
+import { inputEmailPattern } from 'constants/validInput';
 
 type FormValues = {
   email: string;

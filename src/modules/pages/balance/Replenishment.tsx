@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { PrimaryButton } from '../../../styles/components';
-import { fontStylesCaption, fontStylesH1, fontStylesRegularBold } from '../../../styles/typography';
-import { balanceImg } from '../../../constants/images';
+import { PrimaryButton } from 'styles/components';
+import { fontStylesCaption, fontStylesH1, fontStylesRegularBold } from 'styles/typography';
+import { balanceImg } from 'constants/images';
 
 interface ReplenishmentProps {
   currentBalance: number;

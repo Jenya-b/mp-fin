@@ -1,4 +1,4 @@
-import { ITheme } from '../interfaces/styled';
+import { ITheme } from 'interfaces/styled';
 import {
   colorMainBlack,
   colorMainBlue,
@@ -15,7 +15,7 @@ import {
   colorAdditionalOrange,
   colorAdditionalPinkPrimary,
   colorAdditionalPinkSecondary,
-} from '../constants/colors';
+} from 'constants/colors';
 
 export const baseTheme: ITheme = {
   colors: {
@@ -82,6 +82,11 @@ export const baseTheme: ITheme = {
     replenishmentSpan: colorMainBlack,
     replenishmentBalance: colorMainGreyPrimary,
     replenishmentWriteOff: colorMainGreySecondary,
+
+    //admin-panel
+    adminMenuBg: colorMainGreyLight,
+    adminMenuLink: colorMainBlack,
+    adminMenuLinkActive: colorMainBluePrimary,
   },
   sizes: {
     loginForm: {

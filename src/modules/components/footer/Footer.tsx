@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexCenterAll } from '../../../styles/fragments';
+import { flexCenterAll } from 'styles/fragments';
 
 export const Footer = () => (
   <StyledFooter>

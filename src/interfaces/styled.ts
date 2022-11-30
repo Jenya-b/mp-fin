@@ -1,46 +1,6 @@
 export interface ITheme {
   colors: {
-    background: string;
-    sidebar: string;
-    sidebarLogo: string;
-    sidebarTextMenu: string;
-    header: string;
-    headerBorder: string;
-    formBackground: string;
-    inputFormPlaceholder: string;
-    inputFormHoverBord: string;
-    inputFormFocusBord: string;
-    inputFormText: string;
-    inputFormBackground: string;
-    inputFormBorder: string;
-    formLink: string;
-    formLinkHover: string;
-    formSpan: string;
-    titleForm: string;
-    btn: string;
-    btnbackground: string;
-    btnHover: string;
-    btnActive: string;
-    btnCircleHeader: string;
-    headerMessageCount: string;
-    textCountHeader: string;
-    textHeaderPrimary: string;
-    footerBg: string;
-    footerBorder: string;
-    textFooterPrimary: string;
-    notFoundBg: string;
-    messageError: string;
-    mainTitle: string;
-    inputSettingsFormBg: string;
-    labelSettingsFormText: string;
-    tableReportDate: string;
-    tableReportTextMain: string;
-    tableReportSubtitleColl: string;
-    tablePrimeCostWrapper: string;
-    replenishmentSpan: string;
-    replenishmentBalance: string;
-    replenishmentWriteOff: string;
-    replenishmentBg: string;
+    [key: string]: string;
   };
   sizes: {
     loginForm: {

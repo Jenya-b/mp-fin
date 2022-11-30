@@ -3,10 +3,10 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
-import { colorMainWhite } from '../../../constants/colors';
+import { colorMainWhite } from 'constants/colors';
 import { v4 } from 'uuid';
-import { SearchInput } from '../../../styles/components';
-import { StyledTableCell } from './TableCell';
+import { SearchInput } from 'styles/components';
+import { StyledTableCell } from 'modules/components/table/TableCell';
 interface Props<T> {
   isSearch?: boolean;
   searchValue?: string;

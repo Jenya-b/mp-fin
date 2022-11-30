@@ -1,10 +1,26 @@
-export interface IUser {
+export interface IPersonalDataUser {
   name: string;
   surname: string;
   phoneNumber: string;
   email: string;
   telegram: string;
+}
+
+export interface IUserSettings extends IPersonalDataUser {
   avatar?: string;
+}
+
+export interface IAllUserOptions extends IPersonalDataUser {
+  balance: number;
+  isAdmin: boolean;
+  avatar: string;
+  userId: string;
+  reportId: null | string;
+}
+
+export interface IUsersInAdminPanel extends IPersonalDataUser {
+  balance: number;
+  isAdmin: boolean;
 }
 
 export interface IGenericResponse {
@@ -61,4 +77,22 @@ export interface IChangeArticle {
   myExcelDatas: FormDataEntryValue | null;
   weekDataId: string;
   stateId: string;
+}
+
+export interface IWeek {
+  weekEnd: string;
+  weekNumber: number;
+  weekStart: string;
+}
+
+export interface IWeekWithParam extends IWeek {
+  weekId: string;
+}
+
+export interface IIframeSSOResponse {
+  hash: string;
+}
+
+export interface IReportSmartData {
+  id: number;
 }

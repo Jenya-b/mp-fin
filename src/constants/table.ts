@@ -18,3 +18,18 @@ export const balanceColumnNames = [
   { title: 'Тип операции' },
   { title: 'Статус' },
 ];
+
+export const weekColumnNames = [
+  { title: 'Номер недели' },
+  { title: 'Первый день недели' },
+  { title: 'Последний день недели' },
+];
+
+export const usersColumnNames = [
+  { title: 'Имя' },
+  { title: 'Email' },
+  { title: 'Телефон' },
+  { title: 'Телеграм' },
+  { title: 'Баланс' },
+  { title: 'Назначенные роли' },
+];

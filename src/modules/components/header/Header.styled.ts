@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Button } from '../../../styles/components';
-import { fontStylesCaption, fontStylesRegular } from '../../../styles/typography';
+import { Button } from 'styles/components';
+import { fontStylesCaption, fontStylesRegular } from 'styles/typography';
 
 export const StyledHeader = styled.header`
   height: 100%;

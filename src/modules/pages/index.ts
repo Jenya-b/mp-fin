@@ -1,16 +1,21 @@
 import { lazy } from 'react';
-import { LoginPage } from './../pages/login/Login';
+import { LoginPage } from 'modules/pages/login/Login';
+import { Users } from 'modules/pages/admin/users/Users';
+import { Weeks } from 'modules/pages/admin/weeks/Weeks';
 
-const AnaliticsPage = lazy(() => import('./../pages/analitics/Analitics'));
-const ReportsPage = lazy(() => import('./../pages/reports/Reports'));
-const SettingsPage = lazy(() => import('./../pages/settings/Settings'));
-const PrimeCostPage = lazy(() => import('./../pages/primeCost/PrimeCost'));
-const Signin = lazy(() => import('./../pages/login/signin/Signin'));
-const Registration = lazy(() => import('./../pages/login/registration/Registration'));
-const PasswordRecovery = lazy(() => import('./../pages/login/passwordRecovery/PasswordRecovery'));
-const PasswordReset = lazy(() => import('./../pages/login/passwordReset/PasswordReset'));
-const NotFoundPage = lazy(() => import('./../pages/notFound/NotFound'));
-const BalancePage = lazy(() => import('./../pages/balance/Balance'));
+const AnaliticsPage = lazy(() => import('modules/pages/analitics/Analitics'));
+const ReportsPage = lazy(() => import('modules/pages/reports/Reports'));
+const SettingsPage = lazy(() => import('modules/pages/settings/Settings'));
+const PrimeCostPage = lazy(() => import('modules/pages/primeCost/PrimeCost'));
+const Signin = lazy(() => import('modules/pages/login/signin/Signin'));
+const Registration = lazy(() => import('modules/pages/login/registration/Registration'));
+const PasswordRecovery = lazy(
+  () => import('modules/pages/login/passwordRecovery/PasswordRecovery')
+);
+const PasswordReset = lazy(() => import('modules/pages/login/passwordReset/PasswordReset'));
+const NotFoundPage = lazy(() => import('modules/pages/notFound/NotFound'));
+const BalancePage = lazy(() => import('modules/pages/balance/Balance'));
+const AdminPage = lazy(() => import('modules/pages/admin/Admin'));
 
 export {
   AnaliticsPage,
@@ -23,5 +28,8 @@ export {
   PasswordReset,
   NotFoundPage,
   BalancePage,
+  AdminPage,
   LoginPage,
+  Users,
+  Weeks,
 };

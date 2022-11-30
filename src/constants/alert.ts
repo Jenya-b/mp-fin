@@ -1,4 +1,4 @@
-import { INotify } from '../interfaces/modalWindows';
+import { INotify } from 'interfaces/modalWindows';
 
 interface INotifyMessage {
   [index: string]: INotify;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button } from '../../../styles/components';
-import { fontStylesCaptionBig, fontStylesH1, fontStylesH2 } from '../../../styles/typography';
+import { Button } from 'styles/components';
+import { fontStylesCaptionBig, fontStylesH1, fontStylesH2 } from 'styles/typography';
 
 export const NotFoundPage = () => (
   <Wrapper>

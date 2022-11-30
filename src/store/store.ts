@@ -10,16 +10,18 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authApi } from '../services/api/authApi';
-import { userApi } from '../services/api/userApi';
-import { productApi } from '../services/api/productApi';
-import { balanceApi } from '../services/api/balanceApi';
-import userReducer from './reducers/userSlice';
-import fileReportReducer from './reducers/fileReportSlice';
-import { fetchReportFiles } from '../services/api/filesApi';
-import notifyReducer from './reducers/notifySlice';
-import fileAvatarReducer from './reducers/fileAvatarSlice';
-import balanceReducer from './reducers/balanceSlice';
+import { authApi } from 'services/api/authApi';
+import { userApi } from 'services/api/userApi';
+import { productApi } from 'services/api/productApi';
+import { balanceApi } from 'services/api/balanceApi';
+import { fetchReportFiles } from 'services/api/filesApi';
+import { adminApi } from 'services/api/adminApi';
+import { analiticApi } from 'services/api/analiticApi';
+import userReducer from 'store/reducers/userSlice';
+import fileReportReducer from 'store/reducers/fileReportSlice';
+import notifyReducer from 'store/reducers/notifySlice';
+import fileAvatarReducer from 'store/reducers/fileAvatarSlice';
+import balanceReducer from 'store/reducers/balanceSlice';
 
 const persistConfig = {
   key: 'userReducer',
@@ -35,6 +37,8 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     [balanceApi.reducerPath]: balanceApi.reducer,
+    [adminApi.reducerPath]: adminApi.reducer,
+    [analiticApi.reducerPath]: analiticApi.reducer,
     persistedUserReducer,
     fileReportReducer,
     notifyReducer,
@@ -55,6 +59,8 @@ export const store = configureStore({
       userApi.middleware,
       productApi.middleware,
       balanceApi.middleware,
+      adminApi.middleware,
+      analiticApi.middleware,
     ]),
 });
 

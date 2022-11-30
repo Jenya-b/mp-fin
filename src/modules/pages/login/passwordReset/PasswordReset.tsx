@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link, useSearchParams } from 'react-router-dom';
-import { PrimaryInput, PrimaryButton } from '../../../../styles/components';
-import { usePasswordResetMutation } from '../../../../services';
+import { PrimaryInput, PrimaryButton } from 'styles/components';
+import { usePasswordResetMutation } from 'services';
 import {
   InputList,
   Label,
@@ -10,10 +10,10 @@ import {
   TitleForm,
   Controls,
   LinkWrapperCenter,
-} from '../Login.styled';
-import { Loader } from '../../../components/loader/Loader';
-import { InfoMessage } from '../InfoMessage';
-import { inputPassPattern } from '../../../../constants/validInput';
+} from 'modules/pages/login/Login.styled';
+import { Loader } from 'modules/components/loader/Loader';
+import { InfoMessage } from 'modules/pages/login/InfoMessage';
+import { inputPassPattern } from 'constants/validInput';
 
 type FormValues = {
   passNew: string;

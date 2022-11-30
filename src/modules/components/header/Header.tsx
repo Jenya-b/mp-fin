@@ -1,14 +1,27 @@
-import { useNavigate } from 'react-router-dom';
-import { StyledHeader, BalanceInfo, Controls, LoginImage } from './Header.styled';
-import { LoginInfo, LoginName, ButtonWrapper, ButtonSettings } from './Header.styled';
-import { ButtonLogin, LoginTitle } from './Header.styled';
-import { BalanceIcon, BalanceSum, BalanceButton } from './Header.styled';
-import { routerPath } from '../../../constants/routerPath';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { useSignoutMutation } from '../../../services';
 import { useEffect } from 'react';
-import { setIsActiveUser, setUser } from '../../../store/reducers/userSlice';
-import { defaultIconLogo } from '../../../constants/images';
+import { useNavigate } from 'react-router-dom';
+import {
+  StyledHeader,
+  BalanceInfo,
+  Controls,
+  LoginImage,
+} from 'modules/components/header/Header.styled';
+import {
+  LoginInfo,
+  LoginName,
+  ButtonWrapper,
+  ButtonSettings,
+  ButtonLogin,
+  LoginTitle,
+  BalanceIcon,
+  BalanceSum,
+  BalanceButton,
+} from 'modules/components/header/Header.styled';
+import { routerPath } from 'constants/routerPath';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useSignoutMutation } from 'services';
+import { resetUser } from 'store/reducers/userSlice';
+import { defaultIconLogo } from 'constants/images';
 
 export const Header = () => {
   const { balance, settings, login } = routerPath;
@@ -29,8 +42,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setIsActiveUser(false));
-      dispatch(setUser(null));
+      dispatch(resetUser());
     }
   }, [dispatch, isSuccess]);
 

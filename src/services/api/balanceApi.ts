@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { setBalance } from '../../store/reducers/balanceSlice';
-import { baseUrl } from '../baseUrl';
+import { setBalance } from 'store/reducers/balanceSlice';
+import { baseUrl } from 'services/baseUrl';
 
 export const balanceApi = createApi({
   reducerPath: 'balanceApi',

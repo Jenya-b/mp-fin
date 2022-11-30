@@ -1,15 +1,16 @@
 import { useEffect, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles from '../../../styles/global';
-import { baseTheme } from '../../../styles/theme';
-import { Loader } from '../loader/Loader';
-import { routerPath } from '../../../constants/routerPath';
-import { useIsInSystemUserQuery } from '../../../services';
-import { useAppDispatch } from '../../../hooks/redux';
-import { RequireAuth } from '../../../hocs/RequireAuth';
-import { Layout } from '../layout/Layout';
-import { setIsActiveUser } from '../../../store/reducers/userSlice';
+import GlobalStyles from 'styles/global';
+import { baseTheme } from 'styles/theme';
+import { Loader } from 'modules/components/loader/Loader';
+import { routerPath } from 'constants/routerPath';
+import { useIsInSystemUserQuery } from 'services';
+import { useAppDispatch } from 'hooks/redux';
+import { RequireAuth } from 'hocs/RequireAuth';
+import { RequireAdmin } from 'hocs/RequireAdmin';
+import { LayoutWrapp } from 'modules/components/layout/LayouWrapp';
+import { setIsActiveUser } from 'store/reducers/userSlice';
 import {
   AnaliticsPage,
   ReportsPage,
@@ -22,6 +23,9 @@ import {
   NotFoundPage,
   LoginPage,
   BalancePage,
+  AdminPage,
+  Users,
+  Weeks,
 } from './../../pages';
 
 export const App = () => {
@@ -35,6 +39,8 @@ export const App = () => {
     settings,
     passwordReset,
     balance,
+    weeks,
+    users,
     notFound,
   } = routerPath;
 
@@ -42,15 +48,16 @@ export const App = () => {
   const { isSuccess } = useIsInSystemUserQuery(null);
 
   useEffect(() => {
-    if (!isSuccess) return;
-    dispatch(setIsActiveUser(true));
+    if (isSuccess) {
+      dispatch(setIsActiveUser(true));
+    }
   }, [dispatch, isSuccess]);
 
   return (
     <ThemeProvider theme={baseTheme}>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path={analitics} element={<Layout />}>
+          <Route path={analitics} element={<LayoutWrapp />}>
             <Route
               index
               element={
@@ -91,6 +98,18 @@ export const App = () => {
                 </RequireAuth>
               }
             />
+            <Route
+              element={
+                <RequireAuth>
+                  <RequireAdmin>
+                    <AdminPage />
+                  </RequireAdmin>
+                </RequireAuth>
+              }
+            >
+              <Route path={weeks} element={<Weeks />} />
+              <Route path={users} element={<Users />} />
+            </Route>
           </Route>
           <Route path={login} element={<LoginPage />}>
             <Route index element={<Signin />} />

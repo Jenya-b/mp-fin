@@ -1,18 +1,12 @@
-import { menuIcon } from './../constants/images';
-import { routerPath } from './routerPath';
+import { menuIcon } from 'constants/images';
+import { routerPath } from 'constants/routerPath';
 
-export const menuList = [
+export const menuSidebar = [
   {
     srcImg: menuIcon.analiticIcon,
     title: 'Аналитика',
     href: routerPath.analitics,
   },
-  //! страница в разработке
-  // {
-  //   srcImg: menuIcon.analiticCardIcon,
-  //   title: 'Аналитика карточки',
-  //   href: routerPath.analiticCard,
-  // },
   {
     srcImg: menuIcon.reportIcon,
     title: 'Загрузить отчет',
@@ -22,5 +16,22 @@ export const menuList = [
     srcImg: menuIcon.primeCostIcon,
     title: 'Себестоимость',
     href: routerPath.primeCost,
+  },
+];
+
+export const adminRoute = {
+  srcImg: menuIcon.adminPanel,
+  title: 'Администрирование',
+  href: routerPath.weeks,
+};
+
+export const menuAdminPanel = [
+  {
+    title: 'Недели',
+    href: routerPath.weeks,
+  },
+  {
+    title: 'Пользователи',
+    href: routerPath.users,
   },
 ];

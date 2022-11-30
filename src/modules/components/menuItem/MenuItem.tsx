@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { fontStylesRegular } from '../../../styles/typography';
+import { fontStylesRegular } from 'styles/typography';
 
 interface MenuItemProps {
   srcImg: string;
