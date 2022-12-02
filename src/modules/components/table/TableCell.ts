@@ -11,6 +11,11 @@ export const StyledTableCell = styled(TableCell)`
   line-height: 22px;
   padding-left: 40px;
   padding-right: 70px;
+
+  @media (max-width: 1300px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 export const StyledTableCellColl = styled(TableCell)`
@@ -22,4 +27,9 @@ export const StyledTableCellColl = styled(TableCell)`
   line-height: 22px;
   padding-left: 40px;
   padding-right: 70px;
+
+  @media (max-width: 1300px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;

@@ -24,7 +24,7 @@ import { resetUser } from 'store/reducers/userSlice';
 import { defaultIconLogo } from 'constants/images';
 
 export const Header = () => {
-  const { balance, settings, login } = routerPath;
+  const { balance, settings } = routerPath;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user, isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
@@ -67,10 +67,9 @@ export const Header = () => {
             </ButtonWrapper>
           </>
         )}
-        <ButtonWrapper>
+        <ButtonWrapper onClick={onSignoutHandler}>
           <ButtonLogin></ButtonLogin>
-          {!isActiveUser && <LoginTitle onClick={() => openPage(login)}>Войти</LoginTitle>}
-          {isActiveUser && <LoginTitle onClick={onSignoutHandler}>Выйти</LoginTitle>}
+          <LoginTitle>Выйти</LoginTitle>
         </ButtonWrapper>
       </Controls>
     </StyledHeader>
