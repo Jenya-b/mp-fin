@@ -5,7 +5,7 @@ export const menuSidebar = [
   {
     srcImg: menuIcon.analiticIcon,
     title: 'Аналитика',
-    href: routerPath.analitics,
+    href: routerPath.home,
   },
   {
     srcImg: menuIcon.reportIcon,

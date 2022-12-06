@@ -9,9 +9,9 @@ interface RequireAdminProps {
 export const RequireAdmin = ({ children }: RequireAdminProps) => {
   const location = useLocation();
   const { user } = useAppSelector((state) => state.persistedUserReducer);
-  const { analitics } = routerPath;
+  const { home } = routerPath;
 
-  if (!user || !user.isAdmin) return <Navigate to={analitics} state={{ from: location }} />;
+  if (!user || !user.isAdmin) return <Navigate to={home} state={{ from: location }} />;
 
   return children;
 };

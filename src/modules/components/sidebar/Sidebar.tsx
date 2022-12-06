@@ -9,7 +9,7 @@ import { Aside, Logo, LogoImg, LogoWrapper, MenuList } from './Sidebar.styled';
 import { useAppSelector } from 'hooks/redux';
 
 export const Sidebar = () => {
-  const { analitics } = routerPath;
+  const { home } = routerPath;
   const [menuList, setMenuList] = useState(menuSidebar);
   const { user } = useAppSelector((state) => state.persistedUserReducer);
   const [isActiveSidebar, setInActiveSidebar] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export const Sidebar = () => {
 
   return (
     <Aside isActive={isActiveSidebar} onMouseEnter={activeSidebar} onMouseLeave={hideSidebar}>
-      <Link to={analitics}>
+      <Link to={home}>
         <Logo>
           <LogoWrapper isActive={isActiveSidebar}>
             <LogoImg src={mainLogo} />

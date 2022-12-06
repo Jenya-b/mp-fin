@@ -1,5 +1,5 @@
 import { useEffect, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/global';
 import { baseTheme } from 'styles/theme';
@@ -27,10 +27,14 @@ import {
   Users,
   Weeks,
 } from './../../pages';
+import { AnaliticsOther } from 'modules/pages/analitics/AnaliticsOther/AnaliticsOther';
+import { AnaliticsOwn } from 'modules/pages/analitics/AnaliticsOwn/AnaliticsOwn';
 
 export const App = () => {
   const {
-    analitics,
+    home,
+    analiticsOwn,
+    analiticsOther,
     login,
     primeCost,
     registration,
@@ -57,15 +61,18 @@ export const App = () => {
     <ThemeProvider theme={baseTheme}>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path={analitics} element={<LayoutWrapp />}>
+          <Route path={home} element={<LayoutWrapp />}>
+            <Route index element={<Navigate to={analiticsOther} replace />} />
             <Route
-              index
               element={
                 <RequireAuth>
                   <AnaliticsPage />
                 </RequireAuth>
               }
-            />
+            >
+              <Route path={analiticsOther} element={<AnaliticsOther />} />
+              <Route path={analiticsOwn} element={<AnaliticsOwn />} />
+            </Route>
             <Route
               path={reports}
               element={

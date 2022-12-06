@@ -1,22 +1,18 @@
 import styled from 'styled-components';
+import { fontStylesCaptionBig } from 'styles/typography';
 
-export const IframeWrapper = styled.div`
-  margin-top: 40px;
-  width: 100%;
-  height: 100vh;
-  max-height: 745px;
-  overflow: hidden auto;
-  position: relative;
-  ::-webkit-scrollbar {
-    display: none;
+export const NavWrapper = styled.div`
+  ${fontStylesCaptionBig}
+  padding: 30px 0 20px 0;
+  display: flex;
+  column-gap: 20px;
+
+  a {
+    color: ${({ theme }) => theme.colors.adminMenuLink};
+
+    &.active {
+      color: ${({ theme }) => theme.colors.adminMenuLinkActive};
+      border-bottom: 1px solid;
+    }
   }
-  -ms-overflow-style: none; /* IE и Edge */
-  scrollbar-width: none; /* Firefox */
-`;
-export const Iframe = styled.iframe`
-  width: 100%;
-  position: absolute;
-  top: -250px;
-  left: -272px;
-  height: 995px;
 `;

@@ -1,5 +1,5 @@
 export const routerPath = {
-  analitics: '/',
+  home: '/',
   analiticCard: 'analitic-card',
   reports: 'reports',
   settings: 'settings',
@@ -11,5 +11,7 @@ export const routerPath = {
   balance: 'balance',
   weeks: '/admin-panel/weeks',
   users: '/admin-panel/users',
+  analiticsOwn: 'analitics-own',
+  analiticsOther: 'analitics-other',
   notFound: '*',
 };

@@ -29,7 +29,7 @@ type FormValues = {
 export const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { analitics } = routerPath;
+  const { home } = routerPath;
 
   const {
     register,
@@ -43,7 +43,7 @@ export const Registration = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(setIsActiveUser(true));
-      navigate(analitics);
+      navigate(home);
     }
   }, [isSuccess]);
 

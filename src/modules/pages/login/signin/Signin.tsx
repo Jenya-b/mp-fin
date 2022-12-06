@@ -32,7 +32,7 @@ export const Signin = () => {
     handleSubmit,
   } = useForm<FormValues>();
 
-  const { analitics, passwordRecovery, registration } = routerPath;
+  const { home, passwordRecovery, registration } = routerPath;
 
   const [signinUser, { isLoading, isSuccess }] = useSigninUserMutation();
 
@@ -41,7 +41,7 @@ export const Signin = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(setIsActiveUser(true));
-      navigate(analitics);
+      navigate(home);
     }
   }, [isSuccess]);
 
