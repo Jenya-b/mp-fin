@@ -4,7 +4,7 @@ export const IframeWrapper = styled.div`
   margin-top: 40px;
   width: 100%;
   height: 100vh;
-  max-height: 695px;
+  max-height: 745px;
   overflow: hidden auto;
   position: relative;
   ::-webkit-scrollbar {
