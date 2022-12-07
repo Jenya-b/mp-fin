@@ -18,7 +18,7 @@ import {
   AnaliticsOther,
   AnaliticsOwn,
 } from 'modules/pages';
-import { LayoutWrapp } from 'modules/components/layout/LayouWrapp';
+import { LayoutWrapp } from 'modules/components/Layout/LayouWrapp';
 import { RequireAuth } from 'hocs/RequireAuth';
 import { RequireAdmin } from 'hocs/RequireAdmin';
 

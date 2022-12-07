@@ -6,11 +6,11 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Main, MainTitle, PrimaryInput } from 'styles/components';
 import { useChangeArticleMutation, useGetArticlesQuery } from 'services';
 import { IArticle } from 'services/types';
-import { BasicDialog } from 'modules/components/dialog/Dialog';
-import { Loader } from 'modules/components/loader/Loader';
-import { BasicTable } from 'modules/components/table/Table';
-import { StyledTableCell, StyledTableCellColl } from 'modules/components/table/TableCell';
-import { Notification } from 'modules/components/notification/Notification';
+import { BasicDialog } from 'modules/components/Dialog/Dialog';
+import { Loader } from 'modules/components/Loader/Loader';
+import { BasicTable } from 'modules/components/Table/Table';
+import { StyledTableCell, StyledTableCellColl } from 'modules/components/Table/TableCell';
+import { Notification } from 'modules/components/Notification/Notification';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
 

@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { weekColumnNames } from 'constants/table';
-import { Loader } from 'modules/components/loader/Loader';
-import { BasicTable } from 'modules/components/table/Table';
-import { StyledTableCell, StyledTableCellColl } from 'modules/components/table/TableCell';
+import { Loader } from 'modules/components/Loader/Loader';
+import { BasicTable } from 'modules/components/Table/Table';
+import { StyledTableCell, StyledTableCellColl } from 'modules/components/Table/TableCell';
 import { useCreateWeekMutation, useGetWeeksQuery } from 'services';
 import { IWeek } from 'services/types';
 import { Main, MainTitle, PrimaryButton } from 'styles/components';

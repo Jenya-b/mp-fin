@@ -4,7 +4,7 @@ import { v4 } from 'uuid';
 import { mainLogo } from 'constants/images';
 import { menuSidebar, adminRoute } from 'constants/menu';
 import { routerPath } from 'constants/routerPath';
-import { MenuItem } from 'modules/components/menuItem/MenuItem';
+import { MenuItem } from 'modules/components/MenuItem/MenuItem';
 import { Aside, Logo, LogoImg, LogoWrapper, MenuList } from './Sidebar.styled';
 import { useAppSelector } from 'hooks/redux';
 

@@ -6,7 +6,7 @@ import { useAppDispatch } from 'hooks/redux';
 import { Checkbox, PrimaryButton, PrimaryInput } from 'styles/components';
 import { useRegisterUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
-import { Loader } from 'modules/components/loader/Loader';
+import { Loader } from 'modules/components/Loader/Loader';
 import {
   Controls,
   InputList,
@@ -16,7 +16,7 @@ import {
   LoginForm,
   MessageError,
   TitleForm,
-} from 'modules/pages/login/Login.styled';
+} from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern, inputPassPattern } from 'constants/validInput';
 
 type FormValues = {

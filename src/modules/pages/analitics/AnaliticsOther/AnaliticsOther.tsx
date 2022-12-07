@@ -7,7 +7,7 @@ import {
   useLazyGetSmartDataSSOQuery,
 } from 'services';
 import { smartanalyticsIframe } from 'services/baseUrl';
-import { Loader } from 'modules/components/loader/Loader';
+import { Loader } from 'modules/components/Loader/Loader';
 import { Iframe, IframeWrapper } from './AnaliticsOther.styled';
 
 const projectId = process.env.REACT_APP_SMARTANALITIC_PROJECT_ID ?? '';

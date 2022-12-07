@@ -5,7 +5,7 @@ import {
   BalanceInfo,
   Controls,
   LoginImage,
-} from 'modules/components/header/Header.styled';
+} from 'modules/components/Header/Header.styled';
 import {
   LoginInfo,
   LoginName,
@@ -16,7 +16,7 @@ import {
   BalanceIcon,
   BalanceSum,
   BalanceButton,
-} from 'modules/components/header/Header.styled';
+} from 'modules/components/Header/Header.styled';
 import { routerPath } from 'constants/routerPath';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { useSignoutMutation } from 'services';

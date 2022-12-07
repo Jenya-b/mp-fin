@@ -10,9 +10,9 @@ import {
   TitleForm,
   Controls,
   LinkWrapperCenter,
-} from 'modules/pages/login/Login.styled';
-import { Loader } from 'modules/components/loader/Loader';
-import { InfoMessage } from 'modules/pages/login/InfoMessage';
+} from 'modules/pages/Login/Login.styled';
+import { Loader } from 'modules/components/Loader/Loader';
+import { InfoMessage } from 'modules/pages/Login/InfoMessage';
 import { inputPassPattern } from 'constants/validInput';
 
 type FormValues = {

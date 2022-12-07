@@ -5,8 +5,8 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { PrimaryButton, PrimaryInput } from 'styles/components';
 import { usePasswordRecoveryMutation } from 'services';
 import { openNotify } from 'store/reducers/notifySlice';
-import { Loader } from 'modules/components/loader/Loader';
-import { Notification } from 'modules/components/notification/Notification';
+import { Loader } from 'modules/components/Loader/Loader';
+import { Notification } from 'modules/components/Notification/Notification';
 import {
   LoginForm,
   TitleForm,
@@ -15,7 +15,7 @@ import {
   Controls,
   LinkWrapperCenter,
   MessageError,
-} from 'modules/pages/login/Login.styled';
+} from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
 
 type FormValues = {

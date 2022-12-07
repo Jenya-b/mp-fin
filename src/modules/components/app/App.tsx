@@ -7,7 +7,7 @@ import { useAppDispatch } from 'hooks/redux';
 import { setIsActiveUser } from 'store/reducers/userSlice';
 import GlobalStyles from 'styles/global';
 import { baseTheme } from 'styles/theme';
-import { Loader } from 'modules/components/loader/Loader';
+import { Loader } from 'modules/components/Loader/Loader';
 import { ErrorFallback } from 'modules/components/ErrorFallback/ErrorFallback';
 import { router } from 'modules/components/Router/Router';
 

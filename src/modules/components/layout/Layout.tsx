@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from 'modules/components/footer/Footer';
-import { Header } from 'modules/components/header/Header';
-import { Sidebar } from 'modules/components/sidebar/Sidebar';
+import { Footer } from 'modules/components/Footer/Footer';
+import { Header } from 'modules/components/Header/Header';
+import { Sidebar } from 'modules/components/Sidebar/Sidebar';
 
 export const Layout = () => {
   return (

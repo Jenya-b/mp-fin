@@ -7,7 +7,7 @@ import { Main, MainTitle, PrimaryButton } from 'styles/components';
 import { fetchAvatarFile } from 'services/api/filesApi';
 import { useChangePersonalDataMutation, useLazyGetUserQuery } from 'services';
 import { setUser } from 'store/reducers/userSlice';
-import { Loader } from 'modules/components/loader/Loader';
+import { Loader } from 'modules/components/Loader/Loader';
 import {
   SettingsForm,
   InputsWrapper,
@@ -18,9 +18,9 @@ import {
   InputFile,
   LogoImage,
   ControlWrapper,
-} from 'modules/pages/settings/Settings.styled';
+} from 'modules/pages/Settings/Settings.styled';
 import { inputEmailPattern } from 'constants/validInput';
-import { MessageError } from 'modules/pages/login/Login.styled';
+import { MessageError } from 'modules/pages/Login/Login.styled';
 
 export const SettingsPage = () => {
   const [logoUrl, setLogoUrl] = useState(defaultLogo);

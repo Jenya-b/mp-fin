@@ -6,7 +6,7 @@ import { useAppDispatch } from 'hooks/redux';
 import { PrimaryButton, PrimaryInput } from 'styles/components';
 import { useSigninUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
-import { Loader } from 'modules/components/loader/Loader';
+import { Loader } from 'modules/components/Loader/Loader';
 import {
   InputList,
   LoginForm,
@@ -16,7 +16,7 @@ import {
   LinkWrapper,
   LinkWrapperCenter,
   MessageError,
-} from 'modules/pages/login/Login.styled';
+} from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
 
 type FormValues = {

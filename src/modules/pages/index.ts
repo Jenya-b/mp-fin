@@ -1,23 +1,23 @@
 import { lazy } from 'react';
-import { LoginPage } from 'modules/pages/login/Login';
-import { Users } from 'modules/pages/admin/users/Users';
-import { Weeks } from 'modules/pages/admin/weeks/Weeks';
-import { AnaliticsOwn } from 'modules/pages/analitics/AnaliticsOwn/AnaliticsOwn';
-import { AnaliticsOther } from 'modules/pages/analitics/AnaliticsOther/AnaliticsOther';
+import { LoginPage } from 'modules/pages/Login/Login';
+import { Users } from 'modules/pages/Admin/Users/Users';
+import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
+import { AnaliticsOwn } from 'modules/pages/Analitics/AnaliticsOwn/AnaliticsOwn';
+import { AnaliticsOther } from 'modules/pages/Analitics/AnaliticsOther/AnaliticsOther';
 
-const AnaliticsPage = lazy(() => import('modules/pages/analitics/Analitics'));
-const ReportsPage = lazy(() => import('modules/pages/reports/Reports'));
-const SettingsPage = lazy(() => import('modules/pages/settings/Settings'));
-const PrimeCostPage = lazy(() => import('modules/pages/primeCost/PrimeCost'));
-const Signin = lazy(() => import('modules/pages/login/signin/Signin'));
-const Registration = lazy(() => import('modules/pages/login/registration/Registration'));
+const AnaliticsPage = lazy(() => import('modules/pages/Analitics/Analitics'));
+const ReportsPage = lazy(() => import('modules/pages/Reports/Reports'));
+const SettingsPage = lazy(() => import('modules/pages/Settings/Settings'));
+const PrimeCostPage = lazy(() => import('modules/pages/PrimeCost/PrimeCost'));
+const Signin = lazy(() => import('modules/pages/Login/Signin/Signin'));
+const Registration = lazy(() => import('modules/pages/Login/Registration/Registration'));
 const PasswordRecovery = lazy(
-  () => import('modules/pages/login/passwordRecovery/PasswordRecovery')
+  () => import('modules/pages/Login/PasswordRecovery/PasswordRecovery')
 );
-const PasswordReset = lazy(() => import('modules/pages/login/passwordReset/PasswordReset'));
-const NotFoundPage = lazy(() => import('modules/pages/notFound/NotFound'));
-const BalancePage = lazy(() => import('modules/pages/balance/Balance'));
-const AdminPage = lazy(() => import('modules/pages/admin/Admin'));
+const PasswordReset = lazy(() => import('modules/pages/Login/PasswordReset/PasswordReset'));
+const NotFoundPage = lazy(() => import('modules/pages/NotFound/NotFound'));
+const BalancePage = lazy(() => import('modules/pages/Balance/Balance'));
+const AdminPage = lazy(() => import('modules/pages/Admin/Admin'));
 
 export {
   AnaliticsPage,

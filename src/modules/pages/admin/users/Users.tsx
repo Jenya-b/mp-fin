@@ -1,7 +1,7 @@
 import { usersColumnNames } from 'constants/table';
-import { BasicTable } from 'modules/components/table/Table';
-import { Loader } from 'modules/components/loader/Loader';
-import { StyledTableCell, StyledTableCellColl } from 'modules/components/table/TableCell';
+import { BasicTable } from 'modules/components/Table/Table';
+import { Loader } from 'modules/components/Loader/Loader';
+import { StyledTableCell, StyledTableCellColl } from 'modules/components/Table/TableCell';
 import {
   useAppointAdminMutation,
   useGetAdminPanelUsersQuery,

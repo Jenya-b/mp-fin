@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TableButton, TableButtonProps } from 'modules/components/table/TableBtn';
+import { TableButton, TableButtonProps } from 'modules/components/Table/TableBtn';
 
 interface InputFileProps extends TableButtonProps {
   handleChange: (
