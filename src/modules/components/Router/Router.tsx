@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
     element: <LayoutWrapp />,
     children: [
       {
-        path: home,
+        index: true,
         element: <Navigate to={analiticsOther} replace />,
       },
       {
@@ -123,7 +123,7 @@ export const router = createBrowserRouter([
     element: <LoginPage />,
     children: [
       {
-        path: login,
+        index: true,
         element: <Signin />,
       },
       {
