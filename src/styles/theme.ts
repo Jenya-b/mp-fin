@@ -112,7 +112,10 @@ export const baseTheme: ITheme = {
     footer: {
       height: 60,
     },
-    notFoundBg: {
+    notFound: {
+      title: { fontSize: 56 },
+    },
+    errorFallback: {
       title: { fontSize: 56 },
     },
     settingInputFile: {

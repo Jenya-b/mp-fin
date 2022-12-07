@@ -26,7 +26,10 @@ export interface ITheme {
     footer: {
       height: number;
     };
-    notFoundBg: {
+    notFound: {
+      title: { fontSize: number };
+    };
+    errorFallback: {
       title: { fontSize: number };
     };
     settingInputFile: {
