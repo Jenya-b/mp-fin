@@ -96,3 +96,10 @@ export interface IIframeSSOResponse {
 export interface IReportSmartData {
   id: number;
 }
+
+export interface IAnaliticOwn {
+  analytics: null;
+  weeklyArticleDatas: null;
+  articles: IArticle[];
+  weeksList: IWeekWithParam[];
+}

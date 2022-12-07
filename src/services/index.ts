@@ -3,6 +3,7 @@ import { productApi } from 'services/api/productApi';
 import { userApi } from 'services/api/userApi';
 import { balanceApi } from 'services/api/balanceApi';
 import { adminApi } from 'services/api/adminApi';
+import { smartAnaliticApi } from 'services/api/smartAnaliticApi';
 import { analiticApi } from 'services/api/analiticApi';
 
 export const {
@@ -34,4 +35,6 @@ export const {
   useRemoveAdminRightsMutation,
 } = adminApi;
 
-export const { useLazyGetSmartDataSSOQuery, useAddReportSmartDataMutation } = analiticApi;
+export const { useLazyGetSmartDataSSOQuery, useAddReportSmartDataMutation } = smartAnaliticApi;
+
+export const { useGetAnaliticOwnDataQuery } = analiticApi;
