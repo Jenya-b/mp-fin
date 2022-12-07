@@ -26,9 +26,9 @@ import {
   AdminPage,
   Users,
   Weeks,
+  AnaliticsOther,
+  AnaliticsOwn,
 } from './../../pages';
-import { AnaliticsOther } from 'modules/pages/analitics/AnaliticsOther/AnaliticsOther';
-import { AnaliticsOwn } from 'modules/pages/analitics/AnaliticsOwn/AnaliticsOwn';
 
 export const App = () => {
   const {

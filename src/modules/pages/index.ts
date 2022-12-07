@@ -2,6 +2,8 @@ import { lazy } from 'react';
 import { LoginPage } from 'modules/pages/login/Login';
 import { Users } from 'modules/pages/admin/users/Users';
 import { Weeks } from 'modules/pages/admin/weeks/Weeks';
+import { AnaliticsOwn } from 'modules/pages/analitics/AnaliticsOwn/AnaliticsOwn';
+import { AnaliticsOther } from 'modules/pages/analitics/AnaliticsOther/AnaliticsOther';
 
 const AnaliticsPage = lazy(() => import('modules/pages/analitics/Analitics'));
 const ReportsPage = lazy(() => import('modules/pages/reports/Reports'));
@@ -32,4 +34,6 @@ export {
   LoginPage,
   Users,
   Weeks,
+  AnaliticsOwn,
+  AnaliticsOther,
 };
