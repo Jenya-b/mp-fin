@@ -1,24 +1,20 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 import { fontStylesCaptionBig, fontStylesH1, fontStylesH2 } from 'styles/typography';
 
-interface ErrorFallbackProps {
-  error: Error;
-  resetErrorBoundary: () => void;
-}
+export const ErrorBoundary = () => {
+  const error = useRouteError() as { message: string };
 
-export const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => (
-  <Wrapper>
-    <Title>Oops!</Title>
-    <Desc>{error.message}</Desc>
-    <Control>
-      Попробуйте перезапустить страницу или{' '}
-      <StyledLink to="/" onClick={resetErrorBoundary}>
-        перейти на главную
-      </StyledLink>
-    </Control>
-  </Wrapper>
-);
+  return (
+    <Wrapper>
+      <Title>Oops!</Title>
+      <Desc>{error.message}</Desc>
+      <Control>
+        Попробуйте перезапустить страницу или <StyledLink to="/">перейти на главную</StyledLink>
+      </Control>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   height: 100%;

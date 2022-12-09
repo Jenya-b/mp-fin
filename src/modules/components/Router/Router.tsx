@@ -21,6 +21,7 @@ import {
 import { LayoutWrapp } from 'modules/components/Layout/LayouWrapp';
 import { RequireAuth } from 'hocs/RequireAuth';
 import { RequireAdmin } from 'hocs/RequireAdmin';
+import { ErrorBoundary } from 'modules/components/ErrorBoundary/ErrorBoundary';
 
 const {
   home,
@@ -42,6 +43,7 @@ const {
 export const router = createBrowserRouter([
   {
     path: home,
+    errorElement: <ErrorBoundary />,
     element: <LayoutWrapp />,
     children: [
       {
