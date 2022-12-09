@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import { IAnaliticOwn } from 'services/types';
+import { IAnaliticArticle, IAnaliticOwn } from 'services/types';
 
 export const analiticApi = createApi({
   reducerPath: 'analiticApi',
@@ -12,7 +12,10 @@ export const analiticApi = createApi({
         credentials: 'include',
       }),
     }),
-    getOwnAnalitic: builder.mutation({
+    getOwnAnalitic: builder.mutation<
+      IAnaliticArticle[],
+      { weekIds: string[]; articleNames: string[] }
+    >({
       query: (data) => ({
         url: '/Analytic/GetAnalytics',
         method: 'POST',

@@ -5,6 +5,7 @@ import { fontStylesCaption, fontStylesCaptionBig, fontStylesH2 } from 'styles/ty
 export const Wrapper = styled.div`
   display: grid;
   grid: 1fr / minmax(100px, max-content) auto;
+  column-gap: 40px;
 `;
 
 export const Filters = styled.div`

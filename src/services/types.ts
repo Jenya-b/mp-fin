@@ -98,8 +98,30 @@ export interface IReportSmartData {
 }
 
 export interface IAnaliticOwn {
-  // analytics: null;
-  // weeklyArticleDatas: null;
   articles: IArticle[];
   weeksList: IWeekWithParam[];
+}
+
+export interface IAnaliticArticle {
+  article: string;
+  ordersCount: number;
+  ordersSum: number;
+  salesCount: number;
+  salesSum: number;
+  refundsCount: number;
+  refundsSum: number;
+  redemtionPercent: number;
+  logistics: number;
+  onBankAccount: number;
+  comissionRubs: number;
+  comissionPercents: number;
+  costPriceSum: number;
+  profitRub: number;
+  profitFraction: number;
+  averageSetPrice: number;
+  averagePurchasePrice: number;
+  margin: number;
+  wbExpenses: number;
+  ndsAwardWB: number;
+  poverennyyServices: number;
 }

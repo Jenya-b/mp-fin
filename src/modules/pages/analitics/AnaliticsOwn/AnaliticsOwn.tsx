@@ -1,5 +1,5 @@
-import { useFilter } from 'hooks/useFilter';
 import { useEffect, useState } from 'react';
+import { useFilter } from 'hooks/useFilter';
 import { useGetOwnDataQuery, useGetOwnAnaliticMutation } from 'services';
 import { formatDateGeneral } from 'utils/formatDate';
 import {
@@ -15,6 +15,7 @@ import {
   Subtitle,
   ButtonFilter,
 } from './AnaliticsOwn.styled';
+import { SmartTable } from 'modules/components/DataGrid/DataGrid';
 
 export const AnaliticsOwn = () => {
   const { data: getOwnData, isSuccess } = useGetOwnDataQuery(null);
@@ -79,7 +80,9 @@ export const AnaliticsOwn = () => {
             </List>
           </Filter>
         </Filters>
-        <Visualization></Visualization>
+        <Visualization>
+          <SmartTable data={ownData ?? []} />
+        </Visualization>
       </Wrapper>
       <ButtonFilter onClick={handleClick}>Обновить</ButtonFilter>
     </>
