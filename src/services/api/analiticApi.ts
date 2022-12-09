@@ -6,9 +6,17 @@ export const analiticApi = createApi({
   reducerPath: 'analiticApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getAnaliticOwnData: builder.query<IAnaliticOwn, null>({
+    getOwnData: builder.query<IAnaliticOwn, null>({
       query: () => ({
-        url: '/Analytic/Get',
+        url: '/Analytic/GetData',
+        credentials: 'include',
+      }),
+    }),
+    getOwnAnalitic: builder.mutation({
+      query: (data) => ({
+        url: '/Analytic/GetAnalytics',
+        method: 'POST',
+        body: data,
         credentials: 'include',
       }),
     }),

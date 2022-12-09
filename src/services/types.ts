@@ -98,8 +98,8 @@ export interface IReportSmartData {
 }
 
 export interface IAnaliticOwn {
-  analytics: null;
-  weeklyArticleDatas: null;
+  // analytics: null;
+  // weeklyArticleDatas: null;
   articles: IArticle[];
   weeksList: IWeekWithParam[];
 }

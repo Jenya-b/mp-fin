@@ -8,7 +8,7 @@ import {
 } from 'styles/typography';
 
 export const Main = styled.main`
-  padding: 80px 60px;
+  padding: 50px 60px 80px 60px;
 
   @media (max-width: 1200px) {
     padding: 40px 30px;

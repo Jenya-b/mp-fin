@@ -37,4 +37,4 @@ export const {
 
 export const { useLazyGetSmartDataSSOQuery, useAddReportSmartDataMutation } = smartAnaliticApi;
 
-export const { useGetAnaliticOwnDataQuery } = analiticApi;
+export const { useGetOwnDataQuery, useGetOwnAnaliticMutation } = analiticApi;
