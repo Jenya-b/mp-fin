@@ -102,26 +102,40 @@ export interface IAnaliticOwn {
   weeksList: IWeekWithParam[];
 }
 
-export interface IAnaliticArticle {
-  article: string;
+export interface IAnaliticDataSum {
+  averagePurchasePrice: number;
+  averageSetPrice: number;
+  comissionPercents: number;
+  comissionRubs: number;
+  costPriceSum: number;
+  logistics: number;
+  margin: number;
+  ndsAwardWB: number;
+  onBankAccount: number;
   ordersCount: number;
   ordersSum: number;
-  salesCount: number;
-  salesSum: number;
+  poverennyyServices: number;
+  profitFraction: number;
+  profitRub: number;
+  redemtionPercent: number;
   refundsCount: number;
   refundsSum: number;
-  redemtionPercent: number;
-  logistics: number;
-  onBankAccount: number;
-  comissionRubs: number;
-  comissionPercents: number;
-  costPriceSum: number;
-  profitRub: number;
-  profitFraction: number;
-  averageSetPrice: number;
-  averagePurchasePrice: number;
-  margin: number;
+  salesCount: number;
+  salesSum: number;
   wbExpenses: number;
-  ndsAwardWB: number;
-  poverennyyServices: number;
+}
+
+export interface IAnaliticArticle extends IAnaliticDataSum {
+  article: string;
+}
+
+export interface IAnaliticWeek extends IAnaliticDataSum {
+  weekId: string;
+  weekNumber: string;
+}
+
+export interface IAnaliticVisualOwnData {
+  analyticsDatas: IAnaliticArticle[];
+  analyticsDatasSum: IAnaliticDataSum[];
+  weekAndSums: IAnaliticWeek[];
 }
