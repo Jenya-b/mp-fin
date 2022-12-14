@@ -1,29 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useFilter } from 'hooks/useFilter';
-import { useGetOwnDataQuery, useGetOwnAnaliticMutation } from 'services';
-import { formatDateGeneral } from 'utils/formatDate';
-import {
-  Filters,
-  Filter,
-  Input,
-  Item,
-  Label,
-  List,
-  Wrapper,
-  Title,
-  Subtitle,
-  ButtonFilter,
-  Diagram,
-  Table,
-} from './AnaliticsOwn.styled';
-import { SmartTable } from 'modules/components/DataGrid/DataGrid';
-import { Loader } from 'modules/components/Loader/Loader';
-import { VerticalBarChart } from 'modules/components/Charts/VerticalBar/VerticalBar';
-import { LineChart } from 'modules/components/Charts/Line/Line';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useFilter } from 'hooks/useFilter';
+import { useGetOwnDataQuery, useGetOwnAnaliticMutation } from 'services';
+import { Filters, Wrapper, Title, ButtonFilter, Diagram, Table } from './AnaliticsOwn.styled';
+import { SmartTable } from 'modules/components/DataGrid/DataGrid';
+import { Loader } from 'modules/components/Loader/Loader';
+import { VerticalBarChart } from 'modules/components/Charts/VerticalBar/VerticalBar';
+import { LineChart } from 'modules/components/Charts/Line/Line';
+import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
+import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -78,11 +66,11 @@ export const AnaliticsOwn = () => {
 
   useEffect(() => {
     if (allWeekId.length && allArticleName.length) {
-      handleClick();
+      updateData();
     }
   }, [allWeekId, allArticleName]);
 
-  const handleClick = () => {
+  const updateData = () => {
     fetchOwnData({
       weekIds: !weekIdFilter.length ? allWeekId : weekIdFilter,
       articleNames: !articleNameFilter.length ? allArticleName : articleNameFilter,
@@ -101,35 +89,16 @@ export const AnaliticsOwn = () => {
       <Wrapper>
         <Filters>
           <Title>Фильтр</Title>
-          <Filter>
-            <Subtitle>Недели:</Subtitle>
-            <List>
-              {getOwnData?.weeksList.map(({ weekId, weekNumber, weekStart, weekEnd }) => (
-                <Item key={weekId}>
-                  <Label htmlFor={weekId}>
-                    <Input id={weekId} type="checkbox" onChange={setWeekIdFilter} /> {''}
-                    {`${weekNumber} (${formatDateGeneral(weekStart)} - ${formatDateGeneral(
-                      weekEnd
-                    )})`}
-                  </Label>
-                </Item>
-              ))}
-            </List>
-          </Filter>
-          <Filter>
-            <Subtitle>Артикулы:</Subtitle>
-            <List>
-              {getOwnData?.articles.map(({ articleId, articleName }) => (
-                <Item key={articleId}>
-                  <Label htmlFor={articleName}>
-                    <Input id={articleName} type="checkbox" onChange={setArticleNameFilter} /> {''}
-                    {articleName}
-                  </Label>
-                </Item>
-              ))}
-            </List>
-          </Filter>
-          <ButtonFilter onClick={handleClick}>Обновить</ButtonFilter>
+          {getOwnData && (
+            <>
+              <FilterWeeks weeks={getOwnData.weeksList} setWeekIdFilter={setWeekIdFilter} />
+              <FilterArticles
+                articles={getOwnData.articles}
+                setArticleNameFilter={setArticleNameFilter}
+              />
+            </>
+          )}
+          <ButtonFilter onClick={updateData}>Обновить</ButtonFilter>
         </Filters>
         <Diagram>
           <Box sx={{ width: '100%' }}>
