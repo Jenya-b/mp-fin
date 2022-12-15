@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { v4 } from 'uuid';
 import { tableControlIcon } from 'constants/images';
 import { Main, MainTitle } from 'styles/components';
 import { useDeleteReportMutation, useGetReportsQuery } from 'services';
@@ -8,9 +7,9 @@ import { Loader } from 'modules/components/Loader/Loader';
 import { InputFile } from 'modules/components/Table/InputFile';
 import { BasicTable } from 'modules/components/Table/Table';
 import { TableButton } from 'modules/components/Table/TableBtn';
-import { StyledTableCell, StyledTableCellColl } from 'modules/components/Table/TableCell';
+import { StyledTableCell } from 'modules/components/Table/TableCell';
 import { reportColumnNames } from 'constants/table';
-import { ControlsWrapper, PeriodWeek, SubtitleColl } from 'modules/pages/Reports/Reports.styled';
+import { ControlsWrapper, PeriodWeek } from 'modules/pages/Reports/Reports.styled';
 import { BasicDialog } from 'modules/components/Dialog/Dialog';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { fetchReportFiles } from 'services/api/filesApi';
@@ -18,6 +17,7 @@ import { INPUT_FILE_TYPE, MAX_FILES } from 'constants/files';
 import { Notification } from 'modules/components/Notification/Notification';
 import { alertMessage } from 'constants/alert';
 import { openNotify } from 'store/reducers/notifySlice';
+import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();
@@ -89,15 +89,7 @@ export const ReportsPage = () => {
     </>
   );
 
-  const renderColumnNames = () => (
-    <>
-      {reportColumnNames.map((item) => (
-        <StyledTableCellColl key={v4()}>
-          {item.title} <SubtitleColl>{item.subtitle}</SubtitleColl>
-        </StyledTableCellColl>
-      ))}
-    </>
-  );
+  const renderColumnNames = () => <TableColumns columnNames={reportColumnNames} />;
 
   const uploadFile = (
     weekDataId: string,

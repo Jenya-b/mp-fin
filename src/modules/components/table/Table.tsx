@@ -7,6 +7,7 @@ import { colorMainWhite } from 'constants/colors';
 import { v4 } from 'uuid';
 import { SearchInput } from 'styles/components';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
+
 interface Props<T> {
   isSearch?: boolean;
   searchValue?: string;

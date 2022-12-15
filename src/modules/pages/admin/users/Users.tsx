@@ -1,7 +1,7 @@
 import { usersColumnNames } from 'constants/table';
 import { BasicTable } from 'modules/components/Table/Table';
 import { Loader } from 'modules/components/Loader/Loader';
-import { StyledTableCell, StyledTableCellColl } from 'modules/components/Table/TableCell';
+import { StyledTableCell } from 'modules/components/Table/TableCell';
 import {
   useAppointAdminMutation,
   useGetAdminPanelUsersQuery,
@@ -10,18 +10,14 @@ import {
 import { IUsersInAdminPanel } from 'services/types';
 import { Main, MainTitle } from 'styles/components';
 import { AssignedRoles, AssignedRolesButton, AssignedRolesDesc } from './Users.styled';
+import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 
 export const Users = () => {
   const { data: users, isLoading: isLoadingGetUsers } = useGetAdminPanelUsersQuery(null);
   const [fetchAppointAdmin, { isLoading: isLoadingAppointAdmin }] = useAppointAdminMutation();
   const [fetchRemoveAdmin, { isLoading: isLoadingRemoveAdmin }] = useRemoveAdminRightsMutation();
-  const renderColumnNames = () => (
-    <>
-      {usersColumnNames.map((item) => (
-        <StyledTableCellColl key={item.title}>{item.title}</StyledTableCellColl>
-      ))}
-    </>
-  );
+
+  const renderColumnNames = () => <TableColumns columnNames={usersColumnNames} />;
 
   const renderRow = (item: IUsersInAdminPanel) => (
     <>

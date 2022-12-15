@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { v4 } from 'uuid';
 import { primeCostColumnNames } from 'constants/table';
 import { useDebounce } from 'hooks/debounce';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -9,10 +8,11 @@ import { IArticle } from 'services/types';
 import { BasicDialog } from 'modules/components/Dialog/Dialog';
 import { Loader } from 'modules/components/Loader/Loader';
 import { BasicTable } from 'modules/components/Table/Table';
-import { StyledTableCell, StyledTableCellColl } from 'modules/components/Table/TableCell';
+import { StyledTableCell } from 'modules/components/Table/TableCell';
 import { Notification } from 'modules/components/Notification/Notification';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
+import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 
 export const PrimeCostPage = () => {
   const dispatch = useAppDispatch();
@@ -63,13 +63,7 @@ export const PrimeCostPage = () => {
     </>
   );
 
-  const renderColumnNames = () => (
-    <>
-      {primeCostColumnNames.map((item) => (
-        <StyledTableCellColl key={v4()}>{item.title}</StyledTableCellColl>
-      ))}
-    </>
-  );
+  const renderColumnNames = () => <TableColumns columnNames={primeCostColumnNames} />;
 
   const onKeyPressHandler = (event: React.KeyboardEvent<HTMLElement>, articlesId: string) => {
     if (event.key === 'Enter') {
