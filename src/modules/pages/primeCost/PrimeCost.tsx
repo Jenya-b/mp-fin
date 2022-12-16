@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { primeCostColumnNames } from 'constants/table';
 import { useDebounce } from 'hooks/debounce';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Main, MainTitle, PrimaryInput } from 'styles/components';
 import { useChangeArticleMutation, useGetArticlesQuery } from 'services';
 import { IArticle } from 'services/types';
-import { BasicDialog } from 'modules/components/Dialog/Dialog';
 import { Loader } from 'modules/components/Loader/Loader';
 import { BasicTable } from 'modules/components/Table/Table';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
@@ -14,23 +13,25 @@ import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 
+let delayTimer: ReturnType<typeof setTimeout>;
+
 export const PrimeCostPage = () => {
   const dispatch = useAppDispatch();
-  const [searchValue, setSearchValue] = useState('');
-  const debounced = useDebounce(searchValue);
-  const [isActiveDialog, setActiveDialog] = useState<boolean>(false);
-  const [articlesId, setArticlesId] = useState<string>();
-  const [costPrices, setCostPrices] = useState<number>();
+  const [searchValue, setSearchValue] = useState<string>('');
+  const debouncedSearch = useDebounce(searchValue);
+
   const {
     data: articleList,
     refetch,
     isLoading: isLoadingGetData,
     isFetching,
-  } = useGetArticlesQuery(debounced);
+  } = useGetArticlesQuery(debouncedSearch);
+
   const [
     setArticle,
     { isSuccess: isSuccessChangeArticle, isLoading: isLoadingSetData, isError: isErrorSetData },
   ] = useChangeArticleMutation();
+
   const { isOpenNotify, notifyMessage } = useAppSelector((state) => state.notifyReducer);
 
   useEffect(() => {
@@ -57,7 +58,7 @@ export const PrimeCostPage = () => {
       <StyledTableCell>
         <PrimaryInput
           defaultValue={item.costPrice}
-          onKeyDown={(event) => onKeyPressHandler(event, item.articleId)}
+          onChange={(event) => onChangeArticle(event, item.articleId)}
         />
       </StyledTableCell>
     </>
@@ -65,27 +66,24 @@ export const PrimeCostPage = () => {
 
   const renderColumnNames = () => <TableColumns columnNames={primeCostColumnNames} />;
 
-  const onKeyPressHandler = (event: React.KeyboardEvent<HTMLElement>, articlesId: string) => {
-    if (event.key === 'Enter') {
-      const costPrices = Number((event.currentTarget as HTMLInputElement).value);
-      setArticlesId(articlesId);
-      setCostPrices(costPrices);
-      setActiveDialog(true);
-    }
-  };
+  const onChangeArticle = (event: ChangeEvent<HTMLInputElement>, articlesId: string) => {
+    const { value } = event.target;
 
-  const closeDialogWindow = () => {
-    setActiveDialog(false);
-  };
+    if (!value.length) return;
+    event.target.value = value;
+    const costPrices = Number(value);
 
-  const confirmAction = () => {
-    setArticle([
-      {
-        costPrices,
-        articlesId,
-      },
-    ]);
-    closeDialogWindow();
+    (() => {
+      clearTimeout(delayTimer);
+      delayTimer = setTimeout(function () {
+        setArticle([
+          {
+            costPrices,
+            articlesId,
+          },
+        ]);
+      }, 1000);
+    })();
   };
 
   const addSearchValue = (event: React.FormEvent<HTMLInputElement>) => {
@@ -97,12 +95,6 @@ export const PrimeCostPage = () => {
     <Main>
       {(isLoadingSetData || isLoadingGetData || isFetching) && <Loader />}
       <Notification notifyMessage={notifyMessage} isOpenNotify={isOpenNotify} />
-      <BasicDialog
-        isActiveDialog={isActiveDialog}
-        handleClose={closeDialogWindow}
-        handleConfirm={confirmAction}
-        desc="Вы действительно хотите внести изменения?"
-      />
       <MainTitle>Себестоимость</MainTitle>
       <BasicTable
         isSearch={true}
