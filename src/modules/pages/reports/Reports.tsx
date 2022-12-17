@@ -18,6 +18,7 @@ import { Notification } from 'modules/components/Notification/Notification';
 import { alertMessage } from 'constants/alert';
 import { openNotify } from 'store/reducers/notifySlice';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
+import { fileReportSelector, notifySelector } from 'store/selectors';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();
@@ -33,8 +34,8 @@ export const ReportsPage = () => {
     isLoading: isLoadingUpload,
     isError: isErrorUploadFile,
     isSuccess: isSuccessUploadFile,
-  } = useAppSelector((state) => state.fileReportReducer);
-  const { isOpenNotify, notifyMessage } = useAppSelector((state) => state.notifyReducer);
+  } = useAppSelector(fileReportSelector);
+  const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
 
   useEffect(() => {
     refetch();

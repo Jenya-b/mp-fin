@@ -12,6 +12,7 @@ import { Notification } from 'modules/components/Notification/Notification';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
+import { notifySelector } from 'store/selectors';
 
 let delayTimer: ReturnType<typeof setTimeout>;
 
@@ -32,7 +33,7 @@ export const PrimeCostPage = () => {
     { isSuccess: isSuccessChangeArticle, isLoading: isLoadingSetData, isError: isErrorSetData },
   ] = useChangeArticleMutation();
 
-  const { isOpenNotify, notifyMessage } = useAppSelector((state) => state.notifyReducer);
+  const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
 
   useEffect(() => {
     refetch();

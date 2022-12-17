@@ -22,13 +22,14 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { useSignoutMutation } from 'services';
 import { resetUser } from 'store/reducers/userSlice';
 import { defaultIconLogo } from 'constants/images';
+import { balanceSelector, userSelector } from 'store/selectors';
 
 export const Header = () => {
   const { balance, settings } = routerPath;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { user, isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
-  const { currentBalance } = useAppSelector((state) => state.balanceReducer);
+  const { user, isActiveUser } = useAppSelector(userSelector);
+  const currentBalance = useAppSelector(balanceSelector);
 
   const [signoutUser, { isSuccess }] = useSignoutMutation();
 

@@ -17,6 +17,7 @@ import {
   MessageError,
 } from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
+import { notifySelector } from 'store/selectors';
 
 type FormValues = {
   email: string;
@@ -38,7 +39,7 @@ export const PasswordRecovery = () => {
   const [recoveryPass, { isLoading, isSuccess, isError, data, error }] =
     usePasswordRecoveryMutation();
 
-  const { isOpenNotify, notifyMessage } = useAppSelector((state) => state.notifyReducer);
+  const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
 
   useEffect(() => {
     if (isSuccess) {

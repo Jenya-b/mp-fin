@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { v4 } from 'uuid';
 import { mainLogo } from 'constants/images';
 import { menuSidebar, adminRoute } from 'constants/menu';
 import { routerPath } from 'constants/routerPath';
 import { MenuItem } from 'modules/components/MenuItem/MenuItem';
 import { Aside, Logo, LogoImg, LogoWrapper, MenuList } from './Sidebar.styled';
 import { useAppSelector } from 'hooks/redux';
+import { userSelector } from 'store/selectors';
 
 export const Sidebar = () => {
   const { home } = routerPath;
   const [menuList, setMenuList] = useState(menuSidebar);
-  const { user } = useAppSelector((state) => state.persistedUserReducer);
+  const { user } = useAppSelector(userSelector);
   const [isActiveSidebar, setInActiveSidebar] = useState<boolean>(false);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const Sidebar = () => {
       </Link>
       <MenuList>
         {menuList.map((menu) => (
-          <MenuItem key={v4()} {...menu} isActive={isActiveSidebar} />
+          <MenuItem key={menu.title} {...menu} isActive={isActiveSidebar} />
         ))}
       </MenuList>
     </Aside>

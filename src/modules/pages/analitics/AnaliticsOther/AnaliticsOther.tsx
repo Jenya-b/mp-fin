@@ -9,6 +9,7 @@ import {
 import { smartanalyticsIframe } from 'services/baseUrl';
 import { Loader } from 'modules/components/Loader/Loader';
 import { Iframe, IframeWrapper } from './AnaliticsOther.styled';
+import { userSelector } from 'store/selectors';
 
 const projectId = process.env.REACT_APP_SMARTANALITIC_PROJECT_ID ?? '';
 const smartKey = process.env.REACT_APP_SMARTANALITIC_KEY ?? '';
@@ -17,7 +18,7 @@ export const AnaliticsOther = () => {
   const [iframeParamUrl, setIftameParamUrl] = useState('');
   const [reportNum, setReportNum] = useState<string>();
   const [hashMd5, setHashMd5] = useState('');
-  const { user } = useAppSelector((state) => state.persistedUserReducer);
+  const { user } = useAppSelector(userSelector);
   const [fetchSSO, { isSuccess: isSuccessFetchSSO, isLoading: isLoadingFetchSSO }] =
     useLazyGetSmartDataSSOQuery();
   const [

@@ -21,6 +21,7 @@ import {
 } from 'modules/pages/Settings/Settings.styled';
 import { inputEmailPattern } from 'constants/validInput';
 import { MessageError } from 'modules/pages/Login/Login.styled';
+import { avatarSelector, userSelector } from 'store/selectors';
 
 export const SettingsPage = () => {
   const [logoUrl, setLogoUrl] = useState(defaultLogo);
@@ -29,10 +30,9 @@ export const SettingsPage = () => {
   const [changePersonalData, { isSuccess: isSuccessChangeData, isLoading: isLoadingChangeData }] =
     useChangePersonalDataMutation();
   const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
-  const { user } = useAppSelector((state) => state.persistedUserReducer);
-  const { isLoading: isLoadingUploadFile, isSuccess: isSuccessUploadFile } = useAppSelector(
-    (state) => state.fileAvatarReducer
-  );
+  const { user } = useAppSelector(userSelector);
+  const { isLoading: isLoadingUploadFile, isSuccess: isSuccessUploadFile } =
+    useAppSelector(avatarSelector);
 
   const {
     register,

@@ -5,9 +5,10 @@ import { BasicTable } from 'modules/components/Table/Table';
 import { BalanceWrapper, HistoryBlock } from 'modules/pages/Balance/Balance.styled';
 import { Replenishment } from 'modules/pages/Balance/Replenishment';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
+import { balanceSelector } from 'store/selectors';
 
 export const BalancePage = () => {
-  const { currentBalance } = useAppSelector((state) => state.balanceReducer);
+  const currentBalance = useAppSelector(balanceSelector);
 
   const historyList: string[] = [];
 
