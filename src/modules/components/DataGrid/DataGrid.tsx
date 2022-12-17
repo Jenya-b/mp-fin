@@ -1,8 +1,8 @@
-import { DataGrid, GridColumnVisibilityModel, GridToolbar } from '@mui/x-data-grid';
-import { analiticColumns } from 'constants/dataGrid';
 import { useState, useEffect } from 'react';
+import { DataGrid, GridColumnVisibilityModel, GridToolbar } from '@mui/x-data-grid';
 import { IAnaliticArticle } from 'services/types';
 import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
+import { analiticColumns } from 'constants/dataGrid';
 
 interface SmartTableProps {
   data: IAnaliticArticle[];
