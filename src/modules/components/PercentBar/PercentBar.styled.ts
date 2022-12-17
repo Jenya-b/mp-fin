@@ -24,7 +24,11 @@ export const PercentText = styled.div`
 export const ColorBlock = styled.div.attrs<WidthProps>(({ maxWidth }) => ({
   style: {
     backgroundColor:
-      maxWidth >= 70 ? '#088208a3' : maxWidth < 70 && maxWidth >= 40 ? '#efbb5aa3' : '#f44336',
+      maxWidth >= 70
+        ? 'rgb(8 130 8 / 35%)'
+        : maxWidth < 70 && maxWidth >= 30
+        ? 'rgb(239 187 90 / 35%)'
+        : 'rgb(244 67 54 / 35%)',
     maxWidth: maxWidth + '%',
   },
 }))<WidthProps>`
