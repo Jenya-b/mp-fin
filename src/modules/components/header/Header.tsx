@@ -17,6 +17,7 @@ import {
   BalanceSum,
   BalanceButton,
 } from 'modules/components/Header/Header.styled';
+import { Loader } from 'modules/components/Loader/Loader';
 import { routerPath } from 'constants/routerPath';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { useSignoutMutation } from 'services';
@@ -31,7 +32,7 @@ export const Header = () => {
   const { user, isActiveUser } = useAppSelector(userSelector);
   const currentBalance = useAppSelector(balanceSelector);
 
-  const [signoutUser, { isSuccess }] = useSignoutMutation();
+  const [signoutUser, { isSuccess, isLoading }] = useSignoutMutation();
 
   const openPage = (href: string) => {
     navigate(href);
@@ -48,31 +49,34 @@ export const Header = () => {
   }, [dispatch, isSuccess]);
 
   return (
-    <StyledHeader>
-      <LoginInfo>
-        <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
-        {isActiveUser && <LoginName>{user?.email}</LoginName>}
-      </LoginInfo>
-      {isActiveUser && (
-        <BalanceInfo>
-          <BalanceIcon></BalanceIcon>
-          <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
-          <BalanceButton onClick={() => openPage(balance)}>Пополнить</BalanceButton>
-        </BalanceInfo>
-      )}
-      <Controls>
+    <>
+      {isLoading && <Loader />}
+      <StyledHeader>
+        <LoginInfo>
+          <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
+          {isActiveUser && <LoginName>{user?.email}</LoginName>}
+        </LoginInfo>
         {isActiveUser && (
-          <>
-            <ButtonWrapper>
-              <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
-            </ButtonWrapper>
-          </>
+          <BalanceInfo>
+            <BalanceIcon></BalanceIcon>
+            <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
+            <BalanceButton onClick={() => openPage(balance)}>Пополнить</BalanceButton>
+          </BalanceInfo>
         )}
-        <ButtonWrapper onClick={onSignoutHandler}>
-          <ButtonLogin></ButtonLogin>
-          <LoginTitle>Выйти</LoginTitle>
-        </ButtonWrapper>
-      </Controls>
-    </StyledHeader>
+        <Controls>
+          {isActiveUser && (
+            <>
+              <ButtonWrapper>
+                <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
+              </ButtonWrapper>
+            </>
+          )}
+          <ButtonWrapper onClick={onSignoutHandler}>
+            <ButtonLogin></ButtonLogin>
+            <LoginTitle>Выйти</LoginTitle>
+          </ButtonWrapper>
+        </Controls>
+      </StyledHeader>
+    </>
   );
 };

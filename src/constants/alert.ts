@@ -18,4 +18,5 @@ export const alertMessage: INotifyMessage = {
   errorSetArticle: { message: 'Произошла ошибка, попробуйте снова', type: 'error' },
   successResetPass: { message: 'Пароль изменен', type: 'success' },
   errorResetPass: { message: 'Произошла ошибка', type: 'error' },
+  errorSignin: { message: 'неверный логин или пароль', type: 'error' },
 };
