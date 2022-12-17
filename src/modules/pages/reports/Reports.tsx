@@ -106,14 +106,13 @@ export const ReportsPage = () => {
 
       return;
     }
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+    [...files].forEach((file, i) => {
       if (file.type !== INPUT_FILE_TYPE) {
         dispatch(openNotify(alertMessage.errorUploadReportValidType));
         return;
       }
       formData.append(`myExcelDatas${i}`, file);
-    }
+    });
 
     formData.set(`weekDataId`, weekDataId);
     formData.set(`stateId`, stateId);
