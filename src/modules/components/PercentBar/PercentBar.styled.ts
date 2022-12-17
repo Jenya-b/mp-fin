@@ -21,9 +21,12 @@ export const PercentText = styled.div`
   justify-content: center;
 `;
 
-export const ColorBlock = styled.div<WidthProps>`
+export const ColorBlock = styled.div.attrs<WidthProps>(({ maxWidth }) => ({
+  style: {
+    backgroundColor:
+      maxWidth >= 70 ? '#088208a3' : maxWidth < 70 && maxWidth >= 40 ? '#efbb5aa3' : '#f44336',
+    maxWidth: maxWidth + '%',
+  },
+}))<WidthProps>`
   height: 100%;
-  background-color: ${({ maxWidth }) =>
-    maxWidth >= 70 ? '#088208a3' : maxWidth < 70 && maxWidth >= 40 ? '#efbb5aa3' : '#f44336'};
-  max-width: ${({ maxWidth }) => maxWidth}%;
 `;

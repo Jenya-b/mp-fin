@@ -30,7 +30,8 @@ export const SmartTable = ({ data }: SmartTableProps) => {
       field: 'ordersCount',
       headerName: 'Заказы, кол-во',
       renderCell: (params: GridRenderCellParams) => {
-        return <div>{params.value}</div>;
+        const maxValue = getMaxValueInObject({ data, parameter: 'ordersCount' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
       },
     },
     {
@@ -38,51 +39,153 @@ export const SmartTable = ({ data }: SmartTableProps) => {
       headerName: 'Заказы, сумма',
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'ordersSum' });
-        return <PercentBar value={Math.round(params.value)} maxValue={maxValue} />;
+        return <PercentBar value={params.value} maxValue={maxValue} />;
       },
     },
-    { field: 'salesCount', headerName: 'Продажи, кол-во' },
+    {
+      field: 'salesCount',
+      headerName: 'Продажи, кол-во',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'salesCount' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
     {
       field: 'salesSum',
       headerName: 'Продажи, сумма',
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'salesSum' });
-        return <PercentBar value={Math.round(params.value)} maxValue={maxValue} />;
+        return <PercentBar value={params.value} maxValue={maxValue} />;
       },
     },
-    { field: 'refundsCount', headerName: 'Возвраты, кол-во' },
+    {
+      field: 'refundsCount',
+      headerName: 'Возвраты, кол-во',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'refundsCount' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
     {
       field: 'refundsSum',
       headerName: 'Возвраты, сумма',
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'refundsSum' });
-        return <PercentBar value={Math.round(params.value)} maxValue={maxValue} />;
+        return <PercentBar value={params.value} maxValue={maxValue} />;
       },
     },
-    { field: 'redemtionPercent', headerName: 'Выкуп, %' },
+    {
+      field: 'redemtionPercent',
+      headerName: 'Выкуп, %',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'redemtionPercent' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
     {
       field: 'logistics',
       headerName: 'Логистика',
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'logistics' });
-        return <PercentBar value={Math.round(params.value)} maxValue={maxValue} />;
+        return <PercentBar value={params.value} maxValue={maxValue} />;
       },
     },
-    { field: 'onBankAccount', headerName: 'На счёту, руб' },
-    { field: 'comissionRubs', headerName: 'Комиссия, руб' },
+    {
+      field: 'onBankAccount',
+      headerName: 'На счёту, руб',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'onBankAccount' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'comissionRubs',
+      headerName: 'Комиссия, руб',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'comissionRubs' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
     {
       field: 'comissionPercents',
       headerName: 'Комиссия, %',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'comissionPercents' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
     },
-    { field: 'costPriceSum', headerName: 'Себестоимость, руб' },
-    { field: 'profitRub', headerName: 'Прибыль, руб' },
-    { field: 'profitFraction', headerName: 'Прибыль, на 1 ед.' },
-    { field: 'averageSetPrice', headerName: 'Средняя установленная цена' },
-    { field: 'averagePurchasePrice', headerName: 'Средняя цена покупки' },
-    { field: 'margin', headerName: 'Маржа, %' },
-    { field: 'wbExpenses', headerName: 'Расходы на ВБ, %' },
-    { field: 'ndsAwardWB', headerName: 'НДС вознаграждение ВБ' },
-    { field: 'poverennyyServices', headerName: 'Услуги поверенного' },
+    {
+      field: 'costPriceSum',
+      headerName: 'Себестоимость, руб',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'costPriceSum' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'profitRub',
+      headerName: 'Прибыль, руб',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'profitRub' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'profitFraction',
+      headerName: 'Прибыль, на 1 ед.',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'profitFraction' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'averageSetPrice',
+      headerName: 'Средняя установленная цена',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'averageSetPrice' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'averagePurchasePrice',
+      headerName: 'Средняя цена покупки',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'averagePurchasePrice' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'margin',
+      headerName: 'Маржа, %',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'margin' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'wbExpenses',
+      headerName: 'Расходы на ВБ, %',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'wbExpenses' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'ndsAwardWB',
+      headerName: 'НДС вознаграждение ВБ',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'ndsAwardWB' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
+    {
+      field: 'poverennyyServices',
+      headerName: 'Услуги поверенного',
+      renderCell: (params: GridRenderCellParams) => {
+        const maxValue = getMaxValueInObject({ data, parameter: 'poverennyyServices' });
+        return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+    },
   ];
 
   useEffect(() => {
