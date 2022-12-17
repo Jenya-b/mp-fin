@@ -17,7 +17,7 @@ import {
   MessageError,
   TitleForm,
 } from 'modules/pages/Login/Login.styled';
-import { inputEmailPattern, inputPassPattern } from 'constants/validInput';
+import { inputEmailPattern } from 'constants/validInput';
 
 type FormValues = {
   email: string;
@@ -77,12 +77,16 @@ export const Registration = () => {
           <PrimaryInput
             {...register('password', {
               required: 'Поле обязательно к заполнению',
-              pattern: inputPassPattern,
+              minLength: 4,
             })}
             type="password"
             placeholder="Создайте пароль"
           />
-          {errors?.password && <MessageError>{errors?.password?.message}</MessageError>}
+          {errors?.password && (
+            <MessageError>
+              {errors?.password?.message || 'Минимальная длина поля 4 символа'}
+            </MessageError>
+          )}
         </Label>
         <Label>
           <PrimaryInput
