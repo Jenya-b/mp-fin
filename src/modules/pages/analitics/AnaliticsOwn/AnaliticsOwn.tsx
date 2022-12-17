@@ -57,9 +57,7 @@ export const AnaliticsOwn = () => {
           <ButtonFilter onClick={updateData}>Обновить</ButtonFilter>
         </Filters>
         <Diagram>{ownData && <OwnDataTabs ownData={ownData} />}</Diagram>
-        <Table>
-          <SmartTable data={ownData?.analyticsDatas ?? []} />
-        </Table>
+        <Table>{ownData && <SmartTable data={ownData.analyticsDatas ?? []} />}</Table>
       </Wrapper>
     </>
   );

@@ -1,19 +1,24 @@
 import styled from 'styled-components';
 
 interface PercentBarProps {
-  percent: number;
+  value: number;
+  maxValue: number;
 }
 
 interface WidthProps {
   maxWidth: number;
 }
 
-export const PercentBar = ({ percent }: PercentBarProps) => (
-  <Wrapper>
-    <PercentText>{percent}%</PercentText>
-    <ColorBlock maxWidth={percent}></ColorBlock>
-  </Wrapper>
-);
+export const PercentBar = ({ value, maxValue }: PercentBarProps) => {
+  const percent = (100 / maxValue) * value;
+
+  return (
+    <Wrapper>
+      <PercentText>{value}</PercentText>
+      <ColorBlock maxWidth={percent}></ColorBlock>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   width: 100%;
@@ -35,6 +40,6 @@ const PercentText = styled.div`
 const ColorBlock = styled.div<WidthProps>`
   height: 100%;
   background-color: ${({ maxWidth }) =>
-    maxWidth >= 70 ? '#f44336' : maxWidth < 70 && maxWidth >= 40 ? '#efbb5aa3' : '#088208a3'};
+    maxWidth >= 70 ? '#088208a3' : maxWidth < 70 && maxWidth >= 40 ? '#efbb5aa3' : '#f44336'};
   max-width: ${({ maxWidth }) => maxWidth}%;
 `;
