@@ -8,7 +8,7 @@ import { InputFile } from 'modules/components/Table/InputFile';
 import { BasicTable } from 'modules/components/Table/Table';
 import { TableButton } from 'modules/components/Table/TableBtn';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
-import { reportColumnNames } from 'constants/table';
+import { reportColumnNames } from 'constants/tables';
 import { ControlsWrapper, PeriodWeek } from 'modules/pages/Reports/Reports.styled';
 import { BasicDialog } from 'modules/components/Dialog/Dialog';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';

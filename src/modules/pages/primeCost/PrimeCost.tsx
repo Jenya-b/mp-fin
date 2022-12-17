@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { primeCostColumnNames } from 'constants/table';
+import { primeCostColumnNames } from 'constants/tables';
 import { useDebounce } from 'hooks/debounce';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Main, MainTitle, PrimaryInput } from 'styles/components';

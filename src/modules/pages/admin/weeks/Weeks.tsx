@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { weekColumnNames } from 'constants/table';
+import { weekColumnNames } from 'constants/tables';
 import { Loader } from 'modules/components/Loader/Loader';
 import { BasicTable } from 'modules/components/Table/Table';
 import { StyledTableCell } from 'modules/components/Table/TableCell';

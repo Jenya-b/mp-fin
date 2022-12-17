@@ -1,4 +1,4 @@
-import { balanceColumnNames } from 'constants/table';
+import { balanceColumnNames } from 'constants/tables';
 import { useAppSelector } from 'hooks/redux';
 import { Main, MainTitle, MainSubtitle } from 'styles/components';
 import { BasicTable } from 'modules/components/Table/Table';

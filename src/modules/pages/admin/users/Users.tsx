@@ -1,4 +1,4 @@
-import { usersColumnNames } from 'constants/table';
+import { usersColumnNames } from 'constants/tables';
 import { BasicTable } from 'modules/components/Table/Table';
 import { Loader } from 'modules/components/Loader/Loader';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
