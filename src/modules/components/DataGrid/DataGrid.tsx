@@ -1,5 +1,5 @@
 import { DataGrid, GridColumnVisibilityModel, GridToolbar } from '@mui/x-data-grid';
-import { analiticColumns } from 'constants/tables';
+import { analiticColumns } from 'constants/dataGrid';
 import { useState, useEffect } from 'react';
 import { IAnaliticArticle } from 'services/types';
 import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
@@ -19,16 +19,14 @@ export const SmartTable = ({ data }: SmartTableProps) => {
   }, [columnVisibilityModel]);
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
-      <DataGrid
-        columns={analiticColumns}
-        rows={data}
-        getRowId={(row) => row.article}
-        rowHeight={30}
-        components={{ Toolbar: GridToolbar }}
-        columnVisibilityModel={columnVisibilityModel}
-        onColumnVisibilityModelChange={(newModel) => setColumnVisibilityModel(newModel)}
-      />
-    </div>
+    <DataGrid
+      columns={analiticColumns}
+      rows={data}
+      getRowId={(row) => row.article}
+      rowHeight={30}
+      components={{ Toolbar: GridToolbar }}
+      columnVisibilityModel={columnVisibilityModel}
+      onColumnVisibilityModelChange={(newModel) => setColumnVisibilityModel(newModel)}
+    />
   );
 };
