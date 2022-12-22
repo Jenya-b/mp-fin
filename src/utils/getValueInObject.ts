@@ -31,3 +31,7 @@ export const getMaxValueInObject = ({ data, parameter }: getMaxValueInObjectProp
     data.map((item) => item[parameter])
   );
 };
+
+export const getSumValuesInObject = ({ data, parameter }: getMaxValueInObjectProps) => {
+  return data.reduce((sum, current) => sum + current[parameter], 0);
+};
