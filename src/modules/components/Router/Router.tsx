@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to={analiticsOther} replace />,
+        element: <Navigate to={analiticsOwn} replace />,
       },
       {
         element: (
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: analiticsOther,
-            element: <AnaliticsOther />,
+            element: <Navigate to={analiticsOwn} replace />,
           },
           {
             path: analiticsOwn,

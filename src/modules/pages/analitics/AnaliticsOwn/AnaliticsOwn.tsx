@@ -42,7 +42,7 @@ export const AnaliticsOwn = () => {
   return (
     <>
       {(isLoadingGetOwnData || isLoadingFetchOwn) && <Loader />}
-      <Wrapper>
+      <Wrapper style={{ marginTop: '40px' }}>
         <Filters>
           <Title>Фильтр</Title>
           {getOwnData && (

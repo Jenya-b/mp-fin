@@ -8,10 +8,10 @@ export const AnaliticsPage = () => {
   return (
     <Main>
       <MainTitle>Аналитика</MainTitle>
-      <NavWrapper>
+      {/* <NavWrapper> //! Удалить 25.01.23
         <NavLink to={analiticsOther}>Smart Data</NavLink>
         <NavLink to={analiticsOwn}>MpFin</NavLink>
-      </NavWrapper>
+      </NavWrapper> */}
       <Outlet />
     </Main>
   );
