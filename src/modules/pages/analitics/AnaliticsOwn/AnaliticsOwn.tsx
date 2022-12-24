@@ -6,7 +6,7 @@ import { SmartTable } from 'modules/components/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
 import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
 import { FilterArticles } from 'modules/components/Filters/FilterArticles';
-import { OwnDataTabs } from 'modules/components/Tabs/Tabs';
+import { BaseChart } from 'modules/components/Charts/Chart';
 
 export const AnaliticsOwn = () => {
   const { data: getOwnData, isSuccess, isLoading: isLoadingGetOwnData } = useGetOwnDataQuery(null);
@@ -56,7 +56,7 @@ export const AnaliticsOwn = () => {
           )}
           <ButtonFilter onClick={updateData}>Обновить</ButtonFilter>
         </Filters>
-        <Diagram>{ownData && <OwnDataTabs ownData={ownData} />}</Diagram>
+        <Diagram>{ownData && <BaseChart mainData={ownData} />}</Diagram>
         <Table>{ownData && <SmartTable data={ownData.analyticsDatas ?? []} />}</Table>
       </Wrapper>
     </>
