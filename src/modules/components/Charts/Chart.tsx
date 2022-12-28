@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import { chartParameter } from 'constants/charts';
 import { Chart } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { IAnaliticVisualOwnData } from 'services/types';
 import { SelectChangeEvent } from '@mui/material';
 import { Controls } from './Controls';
@@ -30,7 +31,8 @@ ChartJS.register(
   BarController,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartDataLabels
 );
 
 interface BaseChartProps {
@@ -54,6 +56,15 @@ export const BaseChart = ({ mainData }: BaseChartProps) => {
       },
       title: {
         display: true,
+      },
+      datalabels: {
+        display: true,
+        align: 'end' as const,
+        color: 'black',
+
+        formatter: function (value: number) {
+          if (value === 0) return '';
+        },
       },
     },
   };
