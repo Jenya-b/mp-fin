@@ -19,11 +19,11 @@ import {
 } from 'modules/components/Header/Header.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { routerPath } from 'constants/routerPath';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { useSignoutMutation } from 'services';
 import { resetUser } from 'store/reducers/userSlice';
 import { defaultIconLogo } from 'constants/images';
 import { balanceSelector, userSelector } from 'store/selectors';
+import { useAppDispatch, useAppSelector } from 'store/store';
 
 export const Header = () => {
   const { balance, settings } = routerPath;

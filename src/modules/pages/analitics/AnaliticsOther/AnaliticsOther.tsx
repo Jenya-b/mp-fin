@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import md5 from 'md5';
-import { useAppSelector } from 'hooks/redux';
 import {
   useAddReportSmartDataMutation,
   useChangeReportIdMutation,
@@ -10,6 +9,7 @@ import { smartanalyticsIframe } from 'services/baseUrl';
 import { Loader } from 'modules/components/Loader/Loader';
 import { Iframe, IframeWrapper } from './AnaliticsOther.styled';
 import { userSelector } from 'store/selectors';
+import { useAppSelector } from 'store/store';
 
 const projectId = process.env.REACT_APP_SMARTANALITIC_PROJECT_ID ?? '';
 const smartKey = process.env.REACT_APP_SMARTANALITIC_KEY ?? '';

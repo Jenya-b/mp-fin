@@ -1,5 +1,5 @@
 import { balanceColumnNames } from 'constants/tables';
-import { useAppSelector } from 'hooks/redux';
+import { useAppSelector } from 'store/store';
 import { Main, MainTitle, MainSubtitle } from 'styles/components';
 import { BasicTable } from 'modules/components/Table/Table';
 import { BalanceWrapper, HistoryBlock } from 'modules/pages/Balance/Balance.styled';

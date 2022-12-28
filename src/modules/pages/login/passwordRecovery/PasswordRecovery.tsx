@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'store/store';
 import { PrimaryButton, PrimaryInput } from 'styles/components';
 import { usePasswordRecoveryMutation } from 'services';
 import { openNotify } from 'store/reducers/notifySlice';

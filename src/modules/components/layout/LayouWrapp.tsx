@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'store/store';
 import { useLazyGetBalanceQuery, useLazyGetUserQuery } from 'services';
 import { Layout } from 'modules/components/Layout/Layout';
 

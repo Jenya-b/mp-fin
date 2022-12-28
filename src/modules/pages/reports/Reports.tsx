@@ -11,7 +11,7 @@ import { StyledTableCell } from 'modules/components/Table/TableCell';
 import { reportColumnNames } from 'constants/tables';
 import { ControlsWrapper, PeriodWeek } from 'modules/pages/Reports/Reports.styled';
 import { BasicDialog } from 'modules/components/Dialog/Dialog';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'store/store';
 import { fetchReportFiles } from 'services/api/filesApi';
 import { INPUT_FILE_TYPE, MAX_FILES } from 'constants/files';
 import { Notification } from 'modules/components/Notification/Notification';

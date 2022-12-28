@@ -5,7 +5,7 @@ import { menuSidebar, adminRoute } from 'constants/menu';
 import { routerPath } from 'constants/routerPath';
 import { MenuItem } from 'modules/components/MenuItem/MenuItem';
 import { Aside, Logo, LogoImg, LogoWrapper, MenuList } from './Sidebar.styled';
-import { useAppSelector } from 'hooks/redux';
+import { useAppSelector } from 'store/store';
 import { userSelector } from 'store/selectors';
 
 export const Sidebar = () => {

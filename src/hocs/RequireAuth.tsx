@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
-import { useAppSelector } from 'hooks/redux';
+import { useAppSelector } from 'store/store';
 
 interface RequireAuthProps {
   children: JSX.Element;

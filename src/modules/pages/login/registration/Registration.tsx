@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch } from 'store/store';
 import { Checkbox, PrimaryButton, PrimaryInput } from 'styles/components';
 import { useRegisterUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
