@@ -34,7 +34,7 @@ export interface IRegistrationInputs {
 }
 
 export interface ISigninInputs {
-  email: string;
+  userName: string;
   password: string;
   rememberMe: boolean;
   returnUrl: string | null;

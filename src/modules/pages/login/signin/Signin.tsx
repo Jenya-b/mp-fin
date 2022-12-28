@@ -24,7 +24,7 @@ import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
 
 type FormValues = {
-  email: string;
+  userName: string;
   password: string;
 };
 
@@ -72,13 +72,15 @@ export const Signin = () => {
         <InputList>
           <Label>
             <PrimaryInput
-              {...register('email', {
+              {...register('userName', {
                 required: 'Поле обязательно к заполнению',
                 pattern: inputEmailPattern,
               })}
               placeholder="Email"
             />
-            {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
+            {errors?.userName && (
+              <MessageError>{errors?.userName?.message || 'Error'}</MessageError>
+            )}
           </Label>
           <Label>
             <PrimaryInput

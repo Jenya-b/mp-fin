@@ -10,19 +10,17 @@ interface InfoMessageProps {
   routPath: string;
 }
 
-export const InfoMessage = ({ title, desc, routPath }: InfoMessageProps) => {
-  return (
-    <>
-      <TitleForm>{title}</TitleForm>
-      <InfoText>{desc}</InfoText>
-      <ButtonWrapper>
-        <Button>
-          <Link to={routPath}>Перейти</Link>
-        </Button>
-      </ButtonWrapper>
-    </>
-  );
-};
+export const InfoMessage = ({ title, desc, routPath }: InfoMessageProps) => (
+  <>
+    <TitleForm>{title}</TitleForm>
+    <InfoText>{desc}</InfoText>
+    <ButtonWrapper>
+      <Button>
+        <Link to={routPath}>Перейти</Link>
+      </Button>
+    </ButtonWrapper>
+  </>
+);
 
 const InfoText = styled.div`
   margin-top: 20px;
