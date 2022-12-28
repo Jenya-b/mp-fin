@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { primeCostColumnNames } from 'constants/tables';
 import { useDebounce } from 'hooks/debounce';
 import { useAppDispatch, useAppSelector } from 'store/store';
@@ -59,7 +59,8 @@ export const PrimeCostPage = () => {
       <StyledTableCell>
         <PrimaryInput
           defaultValue={item.costPrice}
-          onChange={(event) => onChangeArticle(event, item.articleId)}
+          name={item.articleId}
+          onChange={onChangeArticle}
         />
       </StyledTableCell>
     </>
@@ -67,8 +68,9 @@ export const PrimeCostPage = () => {
 
   const renderColumnNames = () => <TableColumns columnNames={primeCostColumnNames} />;
 
-  const onChangeArticle = (event: ChangeEvent<HTMLInputElement>, articlesId: string) => {
+  const onChangeArticle = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
+    const articlesId = event.currentTarget.name;
 
     if (!value.length) return;
     event.target.value = value;
@@ -87,7 +89,7 @@ export const PrimeCostPage = () => {
     })();
   };
 
-  const addSearchValue = (event: React.FormEvent<HTMLInputElement>) => {
+  const addSearchValue = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setSearchValue(value);
   };
