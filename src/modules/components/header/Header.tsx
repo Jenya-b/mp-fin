@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   StyledHeader,
@@ -34,11 +34,22 @@ export const Header = () => {
 
   const [signoutUser, { isSuccess, isLoading }] = useSignoutMutation();
 
-  const openPage = (href: string) => {
-    navigate(href);
+  const openPage = (event: MouseEvent<HTMLButtonElement>) => {
+    const { name } = event.currentTarget;
+
+    switch (name) {
+      case balance:
+        navigate(balance);
+        break;
+      case settings:
+        navigate(settings);
+        break;
+      default:
+        break;
+    }
   };
 
-  const onSignoutHandler = async () => {
+  const onSignoutHandler = () => {
     signoutUser();
   };
 
@@ -60,14 +71,16 @@ export const Header = () => {
           <BalanceInfo>
             <BalanceIcon></BalanceIcon>
             <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
-            <BalanceButton onClick={() => openPage(balance)}>Пополнить</BalanceButton>
+            <BalanceButton name={balance} onClick={openPage}>
+              Пополнить
+            </BalanceButton>
           </BalanceInfo>
         )}
         <Controls>
           {isActiveUser && (
             <>
               <ButtonWrapper>
-                <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
+                <ButtonSettings name={settings} onClick={openPage}></ButtonSettings>
               </ButtonWrapper>
             </>
           )}

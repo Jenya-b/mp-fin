@@ -63,7 +63,7 @@ export const Controls = styled.div`
   column-gap: 15px;
 `;
 
-const PrimaryButton = styled.div`
+const PrimaryButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
