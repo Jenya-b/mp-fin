@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import { tableControlIcon } from 'constants/images';
 import { Main, MainTitle } from 'styles/components';
 import { useDeleteReportMutation, useGetReportsQuery } from 'services';
@@ -95,7 +95,7 @@ export const ReportsPage = () => {
   const uploadFile = (
     weekDataId: string,
     stateId: string,
-    event: React.ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     const { files } = event.target;
     const formData = new FormData();
