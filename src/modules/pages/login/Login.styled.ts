@@ -8,15 +8,27 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.background};
   display: grid;
   grid-template-columns: 1fr ${({ theme }) => theme.sizes.logoForm.width}px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const FormWrapper = styled.div`
   ${flexCenterAll}
+
+  @media (max-width: 560px) {
+    display: block;
+  }
 `;
 export const LogoWrapper = styled.div`
   background: url('/source/images/background.png') no-repeat;
   background-position: center;
   background-size: cover;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const Logo = styled.div`
@@ -35,6 +47,12 @@ export const LoginForm = styled.form`
   padding-left: ${({ theme }) => theme.indents.loginForm.paddingLeft}px;
   background: ${({ theme }) => theme.colors.formBackground};
   border-radius: ${({ theme }) => theme.borders.loginForm.borderRadius}px;
+
+  @media (max-width: 560px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const TitleForm = styled.h2`
@@ -52,6 +70,10 @@ export const InputList = styled.div`
 
 export const Label = styled.label`
   width: ${({ theme }) => theme.sizes.loginForm.width}px;
+
+  @media (max-width: 560px) {
+    width: 100%;
+  }
 `;
 
 export const Controls = styled.div`

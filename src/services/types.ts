@@ -34,7 +34,7 @@ export interface IRegistrationInputs {
 }
 
 export interface ISigninInputs {
-  email: string;
+  userName: string;
   password: string;
   rememberMe: boolean;
   returnUrl: string | null;
@@ -95,4 +95,47 @@ export interface IIframeSSOResponse {
 
 export interface IReportSmartData {
   id: number;
+}
+
+export interface IAnaliticOwn {
+  articles: IArticle[];
+  weeksList: IWeekWithParam[];
+}
+
+export interface IAnaliticDataSum {
+  averagePurchasePrice: number;
+  averageSetPrice: number;
+  comissionPercents: number;
+  comissionRubs: number;
+  costPriceSum: number;
+  logistics: number;
+  margin: number;
+  ndsAwardWB: number;
+  onBankAccount: number;
+  ordersCount: number;
+  ordersSum: number;
+  poverennyyServices: number;
+  profitFraction: number;
+  profitRub: number;
+  redemtionPercent: number;
+  refundsCount: number;
+  refundsSum: number;
+  salesCount: number;
+  salesSum: number;
+  wbExpenses: number;
+}
+
+export interface IAnaliticArticle extends IAnaliticDataSum {
+  article: string;
+}
+
+export interface IAnaliticWeek extends IAnaliticDataSum {
+  weekId: string;
+  weekNumber: string;
+}
+
+export interface IAnaliticVisualOwnData {
+  analyticsDatas: IAnaliticArticle[];
+  analyticsDatasSum: IAnaliticDataSum[];
+  weekAndSums: IAnaliticWeek[];
 }

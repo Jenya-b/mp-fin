@@ -10,9 +10,9 @@ export const NotFoundPage = () => (
       Кажется что-то пошло не так! Страница, которую Вы запрашиваете, не существует. Возможно она
       устарела, была удалена, или был введен неверный адрес в адресной строке.
     </Subtitle>
-    <Link to="/">
+    <StyledLink to="/">
       <NotFoundButton>Перейти на главную</NotFoundButton>
-    </Link>
+    </StyledLink>
   </Wrapper>
 );
 
@@ -25,18 +25,12 @@ const Wrapper = styled.div`
   grid-template: 1fr repeat(3, auto) 1fr/ 1fr minmax(auto, 1200px) 1fr;
   align-items: center;
   row-gap: 40px;
-  a {
-    grid-row: 4/5;
-    grid-column: 2/3;
-    margin-left: auto;
-    margin-right: auto;
-  }
 `;
 const Title = styled.h1`
   grid-row: 2/3;
   grid-column: 2/3;
   ${fontStylesH1}
-  font-size: ${({ theme }) => theme.sizes.notFoundBg.title.fontSize}px;
+  font-size: ${({ theme }) => theme.sizes.notFound.title.fontSize}px;
   text-align: center;
 `;
 const Subtitle = styled.h2`
@@ -48,4 +42,10 @@ const Subtitle = styled.h2`
 const NotFoundButton = styled(Button)`
   ${fontStylesCaptionBig}
   padding: 10px 30px;
+`;
+const StyledLink = styled(Link)`
+  grid-row: 4/5;
+  grid-column: 2/3;
+  margin-left: auto;
+  margin-right: auto;
 `;

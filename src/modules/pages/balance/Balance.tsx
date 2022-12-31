@@ -1,23 +1,18 @@
-import { balanceColumnNames } from 'constants/table';
-import { useAppSelector } from 'hooks/redux';
+import { balanceColumnNames } from 'constants/tables';
+import { useAppSelector } from 'store/store';
 import { Main, MainTitle, MainSubtitle } from 'styles/components';
-import { BasicTable } from 'modules/components/table/Table';
-import { StyledTableCellColl } from 'modules/components/table/TableCell';
-import { BalanceWrapper, HistoryBlock } from 'modules/pages/balance/Balance.styled';
-import { Replenishment } from 'modules/pages/balance/Replenishment';
+import { BasicTable } from 'modules/components/Table/Table';
+import { BalanceWrapper, HistoryBlock } from 'modules/pages/Balance/Balance.styled';
+import { Replenishment } from 'modules/pages/Balance/Replenishment';
+import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
+import { balanceSelector } from 'store/selectors';
 
 export const BalancePage = () => {
-  const { currentBalance } = useAppSelector((state) => state.balanceReducer);
+  const currentBalance = useAppSelector(balanceSelector);
 
   const historyList: string[] = [];
 
-  const renderColumnNames = () => (
-    <>
-      {balanceColumnNames.map((item) => (
-        <StyledTableCellColl key={item.title}>{item.title}</StyledTableCellColl>
-      ))}
-    </>
-  );
+  const renderColumnNames = () => <TableColumns columnNames={balanceColumnNames} />;
 
   const renderRow = (item: string) => <></>;
 

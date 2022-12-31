@@ -1,23 +1,24 @@
-import { useEffect, useState } from 'react';
-import { v4 } from 'uuid';
+import { useEffect, useState, ChangeEvent } from 'react';
 import { tableControlIcon } from 'constants/images';
 import { Main, MainTitle } from 'styles/components';
 import { useDeleteReportMutation, useGetReportsQuery } from 'services';
 import { IReport } from 'services/types';
-import { Loader } from 'modules/components/loader/Loader';
-import { InputFile } from 'modules/components/table/InputFile';
-import { BasicTable } from 'modules/components/table/Table';
-import { TableButton } from 'modules/components/table/TableBtn';
-import { StyledTableCell, StyledTableCellColl } from 'modules/components/table/TableCell';
-import { reportColumnNames } from 'constants/table';
-import { ControlsWrapper, PeriodWeek, SubtitleColl } from 'modules/pages/reports/Reports.styled';
-import { BasicDialog } from 'modules/components/dialog/Dialog';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { Loader } from 'modules/components/Loader/Loader';
+import { InputFile } from 'modules/components/Table/InputFile';
+import { BasicTable } from 'modules/components/Table/Table';
+import { TableButton } from 'modules/components/Table/TableBtn';
+import { StyledTableCell } from 'modules/components/Table/TableCell';
+import { reportColumnNames } from 'constants/tables';
+import { ControlsWrapper, PeriodWeek } from 'modules/pages/Reports/Reports.styled';
+import { BasicDialog } from 'modules/components/Dialog/Dialog';
+import { useAppDispatch, useAppSelector } from 'store/store';
 import { fetchReportFiles } from 'services/api/filesApi';
 import { INPUT_FILE_TYPE, MAX_FILES } from 'constants/files';
-import { Notification } from 'modules/components/notification/Notification';
+import { Notification } from 'modules/components/Notification/Notification';
 import { alertMessage } from 'constants/alert';
 import { openNotify } from 'store/reducers/notifySlice';
+import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
+import { fileReportSelector, notifySelector } from 'store/selectors';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();
@@ -33,8 +34,8 @@ export const ReportsPage = () => {
     isLoading: isLoadingUpload,
     isError: isErrorUploadFile,
     isSuccess: isSuccessUploadFile,
-  } = useAppSelector((state) => state.fileReportReducer);
-  const { isOpenNotify, notifyMessage } = useAppSelector((state) => state.notifyReducer);
+  } = useAppSelector(fileReportSelector);
+  const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
 
   useEffect(() => {
     refetch();
@@ -89,20 +90,12 @@ export const ReportsPage = () => {
     </>
   );
 
-  const renderColumnNames = () => (
-    <>
-      {reportColumnNames.map((item) => (
-        <StyledTableCellColl key={v4()}>
-          {item.title} <SubtitleColl>{item.subtitle}</SubtitleColl>
-        </StyledTableCellColl>
-      ))}
-    </>
-  );
+  const renderColumnNames = () => <TableColumns columnNames={reportColumnNames} />;
 
   const uploadFile = (
     weekDataId: string,
     stateId: string,
-    event: React.ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     const { files } = event.target;
     const formData = new FormData();
@@ -113,14 +106,13 @@ export const ReportsPage = () => {
 
       return;
     }
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+    [...files].forEach((file, i) => {
       if (file.type !== INPUT_FILE_TYPE) {
         dispatch(openNotify(alertMessage.errorUploadReportValidType));
         return;
       }
       formData.append(`myExcelDatas${i}`, file);
-    }
+    });
 
     formData.set(`weekDataId`, weekDataId);
     formData.set(`stateId`, stateId);

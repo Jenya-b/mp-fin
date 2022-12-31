@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch } from 'store/store';
 import { Checkbox, PrimaryButton, PrimaryInput } from 'styles/components';
 import { useRegisterUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
-import { Loader } from 'modules/components/loader/Loader';
+import { Loader } from 'modules/components/Loader/Loader';
 import {
   Controls,
   InputList,
@@ -16,8 +16,8 @@ import {
   LoginForm,
   MessageError,
   TitleForm,
-} from 'modules/pages/login/Login.styled';
-import { inputEmailPattern, inputPassPattern } from 'constants/validInput';
+} from 'modules/pages/Login/Login.styled';
+import { inputEmailPattern } from 'constants/validInput';
 
 type FormValues = {
   email: string;
@@ -29,7 +29,7 @@ type FormValues = {
 export const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { analitics } = routerPath;
+  const { home } = routerPath;
 
   const {
     register,
@@ -43,7 +43,7 @@ export const Registration = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(setIsActiveUser(true));
-      navigate(analitics);
+      navigate(home);
     }
   }, [isSuccess]);
 
@@ -77,12 +77,16 @@ export const Registration = () => {
           <PrimaryInput
             {...register('password', {
               required: 'Поле обязательно к заполнению',
-              pattern: inputPassPattern,
+              minLength: 4,
             })}
             type="password"
             placeholder="Создайте пароль"
           />
-          {errors?.password && <MessageError>{errors?.password?.message}</MessageError>}
+          {errors?.password && (
+            <MessageError>
+              {errors?.password?.message || 'Минимальная длина поля 4 символа'}
+            </MessageError>
+          )}
         </Label>
         <Label>
           <PrimaryInput

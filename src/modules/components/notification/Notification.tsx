@@ -1,6 +1,7 @@
+import { SyntheticEvent } from 'react';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch } from 'store/store';
 import { INotify } from 'interfaces/modalWindows';
 import { closeNotify } from 'store/reducers/notifySlice';
 
@@ -13,7 +14,7 @@ export const Notification = ({ notifyMessage, isOpenNotify }: NotificationProps)
   const dispatch = useAppDispatch();
   const { message, type } = notifyMessage;
 
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+  const handleClose = (event: SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }

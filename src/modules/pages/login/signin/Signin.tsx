@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'store/store';
 import { PrimaryButton, PrimaryInput } from 'styles/components';
 import { useSigninUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
-import { Loader } from 'modules/components/loader/Loader';
+import { Loader } from 'modules/components/Loader/Loader';
 import {
   InputList,
   LoginForm,
@@ -16,11 +16,15 @@ import {
   LinkWrapper,
   LinkWrapperCenter,
   MessageError,
-} from 'modules/pages/login/Login.styled';
+} from 'modules/pages/Login/Login.styled';
+import { Notification } from 'modules/components/Notification/Notification';
 import { inputEmailPattern } from 'constants/validInput';
+import { notifySelector } from 'store/selectors';
+import { openNotify } from 'store/reducers/notifySlice';
+import { alertMessage } from 'constants/alert';
 
 type FormValues = {
-  email: string;
+  userName: string;
   password: string;
 };
 
@@ -32,18 +36,23 @@ export const Signin = () => {
     handleSubmit,
   } = useForm<FormValues>();
 
-  const { analitics, passwordRecovery, registration } = routerPath;
-
-  const [signinUser, { isLoading, isSuccess }] = useSigninUserMutation();
-
+  const { home, passwordRecovery, registration } = routerPath;
+  const [signinUser, { isLoading, isSuccess, isError }] = useSigninUserMutation();
   const navigate = useNavigate();
+  const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setIsActiveUser(true));
-      navigate(analitics);
+      navigate(home);
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      dispatch(openNotify(alertMessage.errorSignin));
+    }
+  }, [isError]);
 
   const onSubmit = handleSubmit((data) => {
     signinUser({
@@ -56,40 +65,47 @@ export const Signin = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <LoginForm onSubmit={onSubmit}>
-      <TitleForm>Вход в личный кабинет</TitleForm>
-      <InputList>
-        <Label>
-          <PrimaryInput
-            {...register('email', {
-              required: 'Поле обязательно к заполнению',
-              pattern: inputEmailPattern,
-            })}
-            placeholder="Email"
-          />
-          {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
-        </Label>
-        <Label>
-          <PrimaryInput
-            {...register('password', {
-              required: 'Поле обязательно к заполнению',
-            })}
-            placeholder="Пароль"
-            type="password"
-          />
-          {errors?.password && <MessageError>{errors?.password?.message || 'Error'}</MessageError>}
-        </Label>
-      </InputList>
-      <LinkWrapper>
-        <Link to={passwordRecovery}>Забыли пароль?</Link>
-      </LinkWrapper>
-      <Controls>
-        <PrimaryButton>Продолжить</PrimaryButton>
-      </Controls>
-      <LinkWrapperCenter>
-        <span>Нет аккаутнта?</span> <Link to={registration}>Зарегистрируйтесь</Link>
-      </LinkWrapperCenter>
-    </LoginForm>
+    <>
+      <Notification notifyMessage={notifyMessage} isOpenNotify={isOpenNotify} />
+      <LoginForm onSubmit={onSubmit}>
+        <TitleForm>Вход в личный кабинет</TitleForm>
+        <InputList>
+          <Label>
+            <PrimaryInput
+              {...register('userName', {
+                required: 'Поле обязательно к заполнению',
+                pattern: inputEmailPattern,
+              })}
+              placeholder="Email"
+            />
+            {errors?.userName && (
+              <MessageError>{errors?.userName?.message || 'Error'}</MessageError>
+            )}
+          </Label>
+          <Label>
+            <PrimaryInput
+              {...register('password', {
+                required: 'Поле обязательно к заполнению',
+              })}
+              placeholder="Пароль"
+              type="password"
+            />
+            {errors?.password && (
+              <MessageError>{errors?.password?.message || 'Error'}</MessageError>
+            )}
+          </Label>
+        </InputList>
+        <LinkWrapper>
+          <Link to={passwordRecovery}>Забыли пароль?</Link>
+        </LinkWrapper>
+        <Controls>
+          <PrimaryButton>Продолжить</PrimaryButton>
+        </Controls>
+        <LinkWrapperCenter>
+          <span>Нет аккаутнта?</span> <Link to={registration}>Зарегистрируйтесь</Link>
+        </LinkWrapperCenter>
+      </LoginForm>
+    </>
   );
 };
 

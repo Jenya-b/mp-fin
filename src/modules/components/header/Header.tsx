@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   StyledHeader,
   BalanceInfo,
   Controls,
   LoginImage,
-} from 'modules/components/header/Header.styled';
+} from 'modules/components/Header/Header.styled';
 import {
   LoginInfo,
   LoginName,
@@ -16,27 +16,40 @@ import {
   BalanceIcon,
   BalanceSum,
   BalanceButton,
-} from 'modules/components/header/Header.styled';
+} from 'modules/components/Header/Header.styled';
+import { Loader } from 'modules/components/Loader/Loader';
 import { routerPath } from 'constants/routerPath';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { useSignoutMutation } from 'services';
 import { resetUser } from 'store/reducers/userSlice';
 import { defaultIconLogo } from 'constants/images';
+import { balanceSelector, userSelector } from 'store/selectors';
+import { useAppDispatch, useAppSelector } from 'store/store';
 
 export const Header = () => {
-  const { balance, settings, login } = routerPath;
+  const { balance, settings } = routerPath;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { user, isActiveUser } = useAppSelector((state) => state.persistedUserReducer);
-  const { currentBalance } = useAppSelector((state) => state.balanceReducer);
+  const { user, isActiveUser } = useAppSelector(userSelector);
+  const currentBalance = useAppSelector(balanceSelector);
 
-  const [signoutUser, { isSuccess }] = useSignoutMutation();
+  const [signoutUser, { isSuccess, isLoading }] = useSignoutMutation();
 
-  const openPage = (href: string) => {
-    navigate(href);
+  const openPage = (event: MouseEvent<HTMLButtonElement>) => {
+    const { name } = event.currentTarget;
+
+    switch (name) {
+      case balance:
+        navigate(balance);
+        break;
+      case settings:
+        navigate(settings);
+        break;
+      default:
+        break;
+    }
   };
 
-  const onSignoutHandler = async () => {
+  const onSignoutHandler = () => {
     signoutUser();
   };
 
@@ -47,32 +60,36 @@ export const Header = () => {
   }, [dispatch, isSuccess]);
 
   return (
-    <StyledHeader>
-      <LoginInfo>
-        <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
-        {isActiveUser && <LoginName>{user?.email}</LoginName>}
-      </LoginInfo>
-      {isActiveUser && (
-        <BalanceInfo>
-          <BalanceIcon></BalanceIcon>
-          <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
-          <BalanceButton onClick={() => openPage(balance)}>Пополнить</BalanceButton>
-        </BalanceInfo>
-      )}
-      <Controls>
+    <>
+      {isLoading && <Loader />}
+      <StyledHeader>
+        <LoginInfo>
+          <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
+          {isActiveUser && <LoginName>{user?.email}</LoginName>}
+        </LoginInfo>
         {isActiveUser && (
-          <>
-            <ButtonWrapper>
-              <ButtonSettings onClick={() => openPage(settings)}></ButtonSettings>
-            </ButtonWrapper>
-          </>
+          <BalanceInfo>
+            <BalanceIcon></BalanceIcon>
+            <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
+            <BalanceButton name={balance} onClick={openPage}>
+              Пополнить
+            </BalanceButton>
+          </BalanceInfo>
         )}
-        <ButtonWrapper>
-          <ButtonLogin></ButtonLogin>
-          {!isActiveUser && <LoginTitle onClick={() => openPage(login)}>Войти</LoginTitle>}
-          {isActiveUser && <LoginTitle onClick={onSignoutHandler}>Выйти</LoginTitle>}
-        </ButtonWrapper>
-      </Controls>
-    </StyledHeader>
+        <Controls>
+          {isActiveUser && (
+            <>
+              <ButtonWrapper>
+                <ButtonSettings name={settings} onClick={openPage}></ButtonSettings>
+              </ButtonWrapper>
+            </>
+          )}
+          <ButtonWrapper onClick={onSignoutHandler}>
+            <ButtonLogin></ButtonLogin>
+            <LoginTitle>Выйти</LoginTitle>
+          </ButtonWrapper>
+        </Controls>
+      </StyledHeader>
+    </>
   );
 };

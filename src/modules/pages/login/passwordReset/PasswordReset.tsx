@@ -10,10 +10,9 @@ import {
   TitleForm,
   Controls,
   LinkWrapperCenter,
-} from 'modules/pages/login/Login.styled';
-import { Loader } from 'modules/components/loader/Loader';
-import { InfoMessage } from 'modules/pages/login/InfoMessage';
-import { inputPassPattern } from 'constants/validInput';
+} from 'modules/pages/Login/Login.styled';
+import { Loader } from 'modules/components/Loader/Loader';
+import { InfoMessage } from 'modules/pages/Login/InfoMessage';
 
 type FormValues = {
   passNew: string;
@@ -66,13 +65,15 @@ export const PasswordReset = () => {
                 <PrimaryInput
                   {...register('passNew', {
                     required: 'Поле обязательно к заполнению',
-                    pattern: inputPassPattern,
+                    minLength: 4,
                   })}
                   placeholder="Новый пароль"
                   type="password"
                 />
                 {errors?.passNew && (
-                  <MessageError>{errors?.passNew?.message || 'Error'}</MessageError>
+                  <MessageError>
+                    {errors?.passNew?.message || 'Минимальная длина поля 4 символа'}
+                  </MessageError>
                 )}
               </Label>
             </InputList>

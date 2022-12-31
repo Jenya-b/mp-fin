@@ -16,12 +16,14 @@ import { productApi } from 'services/api/productApi';
 import { balanceApi } from 'services/api/balanceApi';
 import { fetchReportFiles } from 'services/api/filesApi';
 import { adminApi } from 'services/api/adminApi';
+import { smartAnaliticApi } from 'services/api/smartAnaliticApi';
 import { analiticApi } from 'services/api/analiticApi';
 import userReducer from 'store/reducers/userSlice';
 import fileReportReducer from 'store/reducers/fileReportSlice';
 import notifyReducer from 'store/reducers/notifySlice';
 import fileAvatarReducer from 'store/reducers/fileAvatarSlice';
 import balanceReducer from 'store/reducers/balanceSlice';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const persistConfig = {
   key: 'userReducer',
@@ -38,6 +40,7 @@ export const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     [balanceApi.reducerPath]: balanceApi.reducer,
     [adminApi.reducerPath]: adminApi.reducer,
+    [smartAnaliticApi.reducerPath]: smartAnaliticApi.reducer,
     [analiticApi.reducerPath]: analiticApi.reducer,
     persistedUserReducer,
     fileReportReducer,
@@ -60,6 +63,7 @@ export const store = configureStore({
       productApi.middleware,
       balanceApi.middleware,
       adminApi.middleware,
+      smartAnaliticApi.middleware,
       analiticApi.middleware,
     ]),
 });
@@ -68,3 +72,6 @@ export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

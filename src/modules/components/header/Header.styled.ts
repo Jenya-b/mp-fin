@@ -9,6 +9,10 @@ export const StyledHeader = styled.header`
   padding: 0 60px;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1200px) {
+    padding: 0 30px;
+  }
 `;
 
 export const LoginInfo = styled.div`
@@ -59,7 +63,7 @@ export const Controls = styled.div`
   column-gap: 15px;
 `;
 
-const PrimaryButton = styled.div`
+const PrimaryButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -73,7 +77,7 @@ export const ButtonWrapper = styled.div`
   cursor: ${({ theme }) => theme.cursor};
 
   :last-child {
-    margin-left: 65px;
+    margin-left: 15px;
   }
 `;
 export const ButtonSettings = styled(PrimaryButton)`

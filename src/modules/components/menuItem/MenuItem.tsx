@@ -23,7 +23,7 @@ export const MenuItem = ({ srcImg, title, href, isActive }: MenuItemProps) => {
     <Link to={href}>
       <Item>
         <ImageWrapp>
-          <Image src={srcImg}></Image>
+          <Image src={srcImg} />
         </ImageWrapp>
         {visible && <Title>{title}</Title>}
       </Item>
