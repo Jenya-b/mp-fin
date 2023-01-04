@@ -24,7 +24,11 @@ export const Title = styled.h2`
 export const Diagram = styled.div`
   grid-row: 1/2;
   grid-column: 2/3;
-  width: 100%;
+  /* width: 100%; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+  row-gap: 50px;
+  column-gap: 50px;
 `;
 
 export const Table = styled.div`

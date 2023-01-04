@@ -8,6 +8,8 @@ import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
 import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 import { BaseChart } from 'modules/components/Charts/Chart';
 import { IAnaliticVisualData } from 'services/types';
+import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
+import { createArray } from 'utils/createArray';
 
 export const AnaliticsOwn = () => {
   const [
@@ -18,17 +20,17 @@ export const AnaliticsOwn = () => {
     fetchAnaliticsData,
     { isSuccess: isSuccessAnaliticsData, isLoading: isLoadingAnaliticsData, data: analiticsData },
   ] = usePostAnaliticsMutation();
-  const [isFiltersData, setIsFiltersData] = useState<boolean>(false);
   const [allWeekId, setAllWeekId] = useState<string[]>([]);
   const [allArticleName, setAllArticleName] = useState<string[]>([]);
-  const [weekIdFilter, setWeekIdFilter] = useFilter();
-  const [articleNameFilter, setArticleNameFilter] = useFilter();
+  const [weekIdFilter, setWeekIdFilter] = useFilter('weeksId');
+  const [articleNameFilter, setArticleNameFilter] = useFilter('articlesId');
   const [firstAliticsData, setFirstAliticsData] = useState<IAnaliticVisualData>();
+  const [countChart, setCountChart] = useState(1);
 
   useEffect(() => {
-    if (isFiltersData) return;
+    if (allWeekId.length && allArticleName.length) return;
     fetchFiltersData(null);
-  }, [fetchFiltersData, isFiltersData]);
+  }, [fetchFiltersData]);
 
   useEffect(() => {
     if (isSuccessFiltersData && filtersData) {
@@ -36,7 +38,6 @@ export const AnaliticsOwn = () => {
       const articleName = filtersData.articles.map(({ articleName }) => articleName);
       setAllWeekId(weekId);
       setAllArticleName(articleName);
-      setIsFiltersData(true);
     }
   }, [isSuccessFiltersData]);
 
@@ -67,9 +68,15 @@ export const AnaliticsOwn = () => {
           <Title>Фильтр</Title>
           {filtersData && (
             <>
-              <FilterWeeks weeks={filtersData.weeksList} setWeekIdFilter={setWeekIdFilter} />
+              <FilterChartCount setCountChart={setCountChart} />
+              <FilterWeeks
+                arrWeeks={weekIdFilter}
+                allWeeks={filtersData.weeksList}
+                setWeekIdFilter={setWeekIdFilter}
+              />
               <FilterArticles
-                articles={filtersData.articles}
+                arrArticles={articleNameFilter}
+                allArticles={filtersData.articles}
                 setArticleNameFilter={setArticleNameFilter}
               />
             </>
@@ -77,7 +84,11 @@ export const AnaliticsOwn = () => {
         </Filters>
         {firstAliticsData && (
           <>
-            <Diagram>{<BaseChart mainData={firstAliticsData} />}</Diagram>
+            <Diagram>
+              {createArray(countChart).map((n, i) => (
+                <BaseChart key={i} mainData={firstAliticsData} />
+              ))}
+            </Diagram>
             <Table>{<SmartTable data={firstAliticsData.analyticsDatas ?? []} />}</Table>
           </>
         )}

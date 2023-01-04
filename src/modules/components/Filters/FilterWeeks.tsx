@@ -3,18 +3,25 @@ import { formatDateGeneral } from 'utils/formatDate';
 import { Filter, Input, Item, Label, List, Subtitle } from './Filter.styled';
 
 interface FilterWeekProps {
-  weeks: IWeekWithParam[];
+  arrWeeks: string[];
+  allWeeks: IWeekWithParam[];
   setWeekIdFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FilterWeeks = ({ weeks, setWeekIdFilter }: FilterWeekProps) => (
+export const FilterWeeks = ({ arrWeeks, allWeeks, setWeekIdFilter }: FilterWeekProps) => (
   <Filter>
     <Subtitle>Недели:</Subtitle>
     <List>
-      {weeks.map(({ weekId, weekNumber, weekStart, weekEnd }) => (
+      {allWeeks.map(({ weekId, weekNumber, weekStart, weekEnd }) => (
         <Item key={weekId}>
           <Label htmlFor={weekId}>
-            <Input id={weekId} type="checkbox" onChange={setWeekIdFilter} /> {''}
+            <Input
+              id={weekId}
+              type="checkbox"
+              checked={arrWeeks.includes(weekId)}
+              onChange={setWeekIdFilter}
+            />{' '}
+            {''}
             {`${weekNumber} (${formatDateGeneral(weekStart)} - ${formatDateGeneral(weekEnd)})`}
           </Label>
         </Item>

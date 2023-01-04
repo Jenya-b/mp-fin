@@ -117,7 +117,7 @@ export const BaseChart = ({ mainData }: BaseChartProps) => {
   };
 
   return (
-    <>
+    <div>
       <Controls
         chartFormat={chartFormat}
         chartType={chartType}
@@ -132,6 +132,6 @@ export const BaseChart = ({ mainData }: BaseChartProps) => {
         options={options}
         data={chartFormat === 'week' ? dataWeek : dataArticle}
       />
-    </>
+    </div>
   );
 };
