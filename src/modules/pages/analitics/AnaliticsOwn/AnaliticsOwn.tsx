@@ -1,39 +1,59 @@
 import { useEffect, useState } from 'react';
 import { useFilter } from 'hooks/useFilter';
-import { useGetOwnDataQuery, useGetOwnAnaliticMutation } from 'services';
-import { Filters, Wrapper, Title, ButtonFilter, Diagram, Table } from './AnaliticsOwn.styled';
+import { useLazyGetFiltersDataQuery, usePostAnaliticsMutation } from 'services';
+import { Filters, Wrapper, Title, Diagram, Table } from './AnaliticsOwn.styled';
 import { SmartTable } from 'modules/components/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
 import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
 import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 import { BaseChart } from 'modules/components/Charts/Chart';
+import { IAnaliticVisualData } from 'services/types';
 
 export const AnaliticsOwn = () => {
-  const { data: getOwnData, isSuccess, isLoading: isLoadingGetOwnData } = useGetOwnDataQuery(null);
-  const [fetchOwnData, { isLoading: isLoadingFetchOwn, data: ownData }] =
-    useGetOwnAnaliticMutation();
+  const [
+    fetchFiltersData,
+    { data: filtersData, isSuccess: isSuccessFiltersData, isLoading: isLoadingFiltersData },
+  ] = useLazyGetFiltersDataQuery();
+  const [
+    fetchAnaliticsData,
+    { isSuccess: isSuccessAnaliticsData, isLoading: isLoadingAnaliticsData, data: analiticsData },
+  ] = usePostAnaliticsMutation();
+  const [isFiltersData, setIsFiltersData] = useState<boolean>(false);
   const [allWeekId, setAllWeekId] = useState<string[]>([]);
   const [allArticleName, setAllArticleName] = useState<string[]>([]);
   const [weekIdFilter, setWeekIdFilter] = useFilter();
   const [articleNameFilter, setArticleNameFilter] = useFilter();
+  const [firstAliticsData, setFirstAliticsData] = useState<IAnaliticVisualData>();
 
   useEffect(() => {
-    if (isSuccess && getOwnData) {
-      const weekId = getOwnData.weeksList.map(({ weekId }) => weekId);
-      const articleName = getOwnData.articles.map(({ articleName }) => articleName);
+    if (isFiltersData) return;
+    fetchFiltersData(null);
+  }, [fetchFiltersData, isFiltersData]);
+
+  useEffect(() => {
+    if (isSuccessFiltersData && filtersData) {
+      const weekId = filtersData.weeksList.map(({ weekId }) => weekId);
+      const articleName = filtersData.articles.map(({ articleName }) => articleName);
       setAllWeekId(weekId);
       setAllArticleName(articleName);
+      setIsFiltersData(true);
     }
-  }, [isSuccess]);
+  }, [isSuccessFiltersData]);
 
   useEffect(() => {
     if (allWeekId.length && allArticleName.length) {
       updateData();
     }
-  }, [allWeekId, allArticleName]);
+  }, [allWeekId, allArticleName, weekIdFilter, articleNameFilter]);
+
+  useEffect(() => {
+    if (analiticsData) {
+      setFirstAliticsData(analiticsData);
+    }
+  }, [isSuccessAnaliticsData]);
 
   const updateData = () => {
-    fetchOwnData({
+    fetchAnaliticsData({
       weekIds: !weekIdFilter.length ? allWeekId : weekIdFilter,
       articleNames: !articleNameFilter.length ? allArticleName : articleNameFilter,
     });
@@ -41,23 +61,26 @@ export const AnaliticsOwn = () => {
 
   return (
     <>
-      {(isLoadingGetOwnData || isLoadingFetchOwn) && <Loader />}
+      {(isLoadingFiltersData || isLoadingAnaliticsData) && <Loader />}
       <Wrapper style={{ marginTop: '40px' }}>
         <Filters>
           <Title>Фильтр</Title>
-          {getOwnData && (
+          {filtersData && (
             <>
-              <FilterWeeks weeks={getOwnData.weeksList} setWeekIdFilter={setWeekIdFilter} />
+              <FilterWeeks weeks={filtersData.weeksList} setWeekIdFilter={setWeekIdFilter} />
               <FilterArticles
-                articles={getOwnData.articles}
+                articles={filtersData.articles}
                 setArticleNameFilter={setArticleNameFilter}
               />
             </>
           )}
-          <ButtonFilter onClick={updateData}>Обновить</ButtonFilter>
         </Filters>
-        <Diagram>{ownData && <BaseChart mainData={ownData} />}</Diagram>
-        <Table>{ownData && <SmartTable data={ownData.analyticsDatas ?? []} />}</Table>
+        {firstAliticsData && (
+          <>
+            <Diagram>{<BaseChart mainData={firstAliticsData} />}</Diagram>
+            <Table>{<SmartTable data={firstAliticsData.analyticsDatas ?? []} />}</Table>
+          </>
+        )}
       </Wrapper>
     </>
   );

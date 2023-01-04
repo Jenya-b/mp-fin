@@ -32,9 +32,3 @@ export const Table = styled.div`
   grid-column: 2/3;
   width: 100%;
 `;
-
-export const ButtonFilter = styled(Button)`
-  margin-top: 15px;
-  padding: 8px 15px;
-  ${fontStylesCaption}
-`;

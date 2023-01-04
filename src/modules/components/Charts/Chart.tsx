@@ -15,7 +15,7 @@ import {
 import { chartParameter } from 'constants/charts';
 import { Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { IAnaliticVisualOwnData } from 'services/types';
+import { IAnaliticVisualData } from 'services/types';
 import { SelectChangeEvent } from '@mui/material';
 import { Controls } from './Controls';
 import { IDataSets } from 'interfaces/analitics';
@@ -36,7 +36,7 @@ ChartJS.register(
 );
 
 interface BaseChartProps {
-  mainData: IAnaliticVisualOwnData;
+  mainData: IAnaliticVisualData;
 }
 
 export const BaseChart = ({ mainData }: BaseChartProps) => {

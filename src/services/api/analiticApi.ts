@@ -1,19 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import { IAnaliticVisualOwnData, IAnaliticOwn } from 'services/types';
+import { IAnaliticVisualData, IFiltersData } from 'services/types';
 
 export const analiticApi = createApi({
   reducerPath: 'analiticApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getOwnData: builder.query<IAnaliticOwn, null>({
+    getFiltersData: builder.query<IFiltersData, null>({
       query: () => ({
         url: '/Analytic/GetData',
         credentials: 'include',
       }),
     }),
-    getOwnAnalitic: builder.mutation<
-      IAnaliticVisualOwnData,
+    postAnalitics: builder.mutation<
+      IAnaliticVisualData,
       { weekIds: string[]; articleNames: string[] }
     >({
       query: (data) => ({
