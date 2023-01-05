@@ -20,6 +20,7 @@ import { SelectChangeEvent } from '@mui/material';
 import { Controls } from './Controls';
 import { IDataSets } from 'interfaces/analitics';
 import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
+import { isObject } from 'utils/isObject';
 
 ChartJS.register(
   CategoryScale,
@@ -41,8 +42,14 @@ interface BaseChartProps {
 }
 
 export const BaseChart = ({ mainData, chartNum }: BaseChartProps) => {
-  const [chartFormat, setChartFormat] = useState('article');
-  const [chartType, setChartType] = useState<'line' | 'bar'>('line');
+  const localChartFormat = getLocalStorage(`chartFormat${chartNum}`);
+  const localChartType = getLocalStorage(`chartType${chartNum}`);
+  const [chartFormat, setChartFormat] = useState(
+    isObject(localChartFormat) ? 'article' : localChartFormat
+  );
+  const [chartType, setChartType] = useState<'line' | 'bar'>(
+    isObject(localChartType) ? 'line' : localChartType
+  );
   const [selectValues, setSelectValues] = useState<IDataSets[]>(
     getLocalStorage(`defaultAutoSelect${chartNum}`) &&
       getLocalStorage(`defaultAutoSelect${chartNum}`).length
@@ -109,6 +116,14 @@ export const BaseChart = ({ mainData, chartNum }: BaseChartProps) => {
 
     setLocalStorage(`defaultAutoSelect${chartNum}`, selectValues);
   }, [selectValues]);
+
+  useEffect(() => {
+    setLocalStorage(`chartFormat${chartNum}`, chartFormat);
+  }, [chartFormat]);
+
+  useEffect(() => {
+    setLocalStorage(`chartType${chartNum}`, chartType);
+  }, [chartType]);
 
   const handleChangeFormat = (event: SelectChangeEvent<string>) => {
     setChartFormat(event.target.value);
