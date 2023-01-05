@@ -3,8 +3,6 @@ import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
 
 export const useFilter = (localstorageKey: string) => {
   const ids = getLocalStorage(localstorageKey);
-  console.log(Array.isArray(ids));
-
   const [state, setState] = useState<string[]>(Array.isArray(ids) ? ids : []);
 
   useEffect(() => {

@@ -37,14 +37,16 @@ ChartJS.register(
 
 interface BaseChartProps {
   mainData: IAnaliticVisualData;
+  chartNum: number;
 }
 
-export const BaseChart = ({ mainData }: BaseChartProps) => {
+export const BaseChart = ({ mainData, chartNum }: BaseChartProps) => {
   const [chartFormat, setChartFormat] = useState('article');
   const [chartType, setChartType] = useState<'line' | 'bar'>('line');
   const [selectValues, setSelectValues] = useState<IDataSets[]>(
-    getLocalStorage('defaultAutoSelect') && getLocalStorage('defaultAutoSelect').length
-      ? [...getLocalStorage('defaultAutoSelect')]
+    getLocalStorage(`defaultAutoSelect${chartNum}`) &&
+      getLocalStorage(`defaultAutoSelect${chartNum}`).length
+      ? [...getLocalStorage(`defaultAutoSelect${chartNum}`)]
       : [chartParameter[2], chartParameter[4]]
   );
 
@@ -105,7 +107,7 @@ export const BaseChart = ({ mainData }: BaseChartProps) => {
   useEffect(() => {
     if (!selectValues.length) return;
 
-    setLocalStorage('defaultAutoSelect', selectValues);
+    setLocalStorage(`defaultAutoSelect${chartNum}`, selectValues);
   }, [selectValues]);
 
   const handleChangeFormat = (event: SelectChangeEvent<string>) => {

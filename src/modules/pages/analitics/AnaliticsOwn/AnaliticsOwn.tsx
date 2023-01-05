@@ -87,7 +87,7 @@ export const AnaliticsOwn = () => {
           <>
             <Diagram>
               {createArray(countChart).map((n, i) => (
-                <BaseChart key={i} mainData={firstAliticsData} />
+                <BaseChart key={i} chartNum={i} mainData={firstAliticsData} />
               ))}
             </Diagram>
             <Table>{<SmartTable data={firstAliticsData.analyticsDatas ?? []} />}</Table>
