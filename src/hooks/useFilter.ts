@@ -2,7 +2,10 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
 
 export const useFilter = (localstorageKey: string) => {
-  const [state, setState] = useState<string[]>(getLocalStorage(localstorageKey));
+  const ids = getLocalStorage(localstorageKey);
+  console.log(Array.isArray(ids));
+
+  const [state, setState] = useState<string[]>(Array.isArray(ids) ? ids : []);
 
   useEffect(() => {
     setLocalStorage(localstorageKey, state);

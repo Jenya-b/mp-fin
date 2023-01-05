@@ -10,6 +10,7 @@ import { BaseChart } from 'modules/components/Charts/Chart';
 import { IAnaliticVisualData } from 'services/types';
 import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
 import { createArray } from 'utils/createArray';
+import { getLocalStorage } from 'utils/localStorage';
 
 export const AnaliticsOwn = () => {
   const [
@@ -25,7 +26,7 @@ export const AnaliticsOwn = () => {
   const [weekIdFilter, setWeekIdFilter] = useFilter('weeksId');
   const [articleNameFilter, setArticleNameFilter] = useFilter('articlesId');
   const [firstAliticsData, setFirstAliticsData] = useState<IAnaliticVisualData>();
-  const [countChart, setCountChart] = useState(1);
+  const [countChart, setCountChart] = useState(getLocalStorage('countChart') ?? 1);
 
   useEffect(() => {
     if (allWeekId.length && allArticleName.length) return;
@@ -68,7 +69,7 @@ export const AnaliticsOwn = () => {
           <Title>Фильтр</Title>
           {filtersData && (
             <>
-              <FilterChartCount setCountChart={setCountChart} />
+              <FilterChartCount setCountChart={setCountChart} countChart={countChart} />
               <FilterWeeks
                 arrWeeks={weekIdFilter}
                 allWeeks={filtersData.weeksList}
