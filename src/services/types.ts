@@ -97,7 +97,7 @@ export interface IReportSmartData {
   id: number;
 }
 
-export interface IAnaliticOwn {
+export interface IFiltersData {
   articles: IArticle[];
   weeksList: IWeekWithParam[];
 }
@@ -134,7 +134,7 @@ export interface IAnaliticWeek extends IAnaliticDataSum {
   weekNumber: string;
 }
 
-export interface IAnaliticVisualOwnData {
+export interface IAnaliticVisualData {
   analyticsDatas: IAnaliticArticle[];
   analyticsDatasSum: IAnaliticDataSum[];
   weekAndSums: IAnaliticWeek[];

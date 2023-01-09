@@ -1,39 +1,61 @@
 import { useEffect, useState } from 'react';
 import { useFilter } from 'hooks/useFilter';
-import { useGetOwnDataQuery, useGetOwnAnaliticMutation } from 'services';
-import { Filters, Wrapper, Title, ButtonFilter, Diagram, Table } from './AnaliticsOwn.styled';
+import { useLazyGetFiltersDataQuery, usePostAnaliticsMutation } from 'services';
+import { Filters, Wrapper, Title, Diagram, Table } from './AnaliticsOwn.styled';
 import { SmartTable } from 'modules/components/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
 import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
 import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 import { BaseChart } from 'modules/components/Charts/Chart';
+import { IAnaliticVisualData } from 'services/types';
+import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
+import { createArray } from 'utils/createArray';
+import { getLocalStorage } from 'utils/localStorage';
 
 export const AnaliticsOwn = () => {
-  const { data: getOwnData, isSuccess, isLoading: isLoadingGetOwnData } = useGetOwnDataQuery(null);
-  const [fetchOwnData, { isLoading: isLoadingFetchOwn, data: ownData }] =
-    useGetOwnAnaliticMutation();
+  const [
+    fetchFiltersData,
+    { data: filtersData, isSuccess: isSuccessFiltersData, isLoading: isLoadingFiltersData },
+  ] = useLazyGetFiltersDataQuery();
+  const [
+    fetchAnaliticsData,
+    { isSuccess: isSuccessAnaliticsData, isLoading: isLoadingAnaliticsData, data: analiticsData },
+  ] = usePostAnaliticsMutation();
   const [allWeekId, setAllWeekId] = useState<string[]>([]);
   const [allArticleName, setAllArticleName] = useState<string[]>([]);
-  const [weekIdFilter, setWeekIdFilter] = useFilter();
-  const [articleNameFilter, setArticleNameFilter] = useFilter();
+  const [weekIdFilter, setWeekIdFilter] = useFilter('weeksId');
+  const [articleNameFilter, setArticleNameFilter] = useFilter('articlesId');
+  const [firstAliticsData, setFirstAliticsData] = useState<IAnaliticVisualData>();
+  const [countChart, setCountChart] = useState(getLocalStorage('countChart') ?? 1);
 
   useEffect(() => {
-    if (isSuccess && getOwnData) {
-      const weekId = getOwnData.weeksList.map(({ weekId }) => weekId);
-      const articleName = getOwnData.articles.map(({ articleName }) => articleName);
+    if (allWeekId.length && allArticleName.length) return;
+    fetchFiltersData(null);
+  }, [fetchFiltersData]);
+
+  useEffect(() => {
+    if (isSuccessFiltersData && filtersData) {
+      const weekId = filtersData.weeksList.map(({ weekId }) => weekId);
+      const articleName = filtersData.articles.map(({ articleName }) => articleName);
       setAllWeekId(weekId);
       setAllArticleName(articleName);
     }
-  }, [isSuccess]);
+  }, [isSuccessFiltersData]);
 
   useEffect(() => {
     if (allWeekId.length && allArticleName.length) {
       updateData();
     }
-  }, [allWeekId, allArticleName]);
+  }, [allWeekId, allArticleName, weekIdFilter, articleNameFilter]);
+
+  useEffect(() => {
+    if (analiticsData) {
+      setFirstAliticsData(analiticsData);
+    }
+  }, [isSuccessAnaliticsData]);
 
   const updateData = () => {
-    fetchOwnData({
+    fetchAnaliticsData({
       weekIds: !weekIdFilter.length ? allWeekId : weekIdFilter,
       articleNames: !articleNameFilter.length ? allArticleName : articleNameFilter,
     });
@@ -41,23 +63,36 @@ export const AnaliticsOwn = () => {
 
   return (
     <>
-      {(isLoadingGetOwnData || isLoadingFetchOwn) && <Loader />}
+      {(isLoadingFiltersData || isLoadingAnaliticsData) && <Loader />}
       <Wrapper style={{ marginTop: '40px' }}>
         <Filters>
           <Title>Фильтр</Title>
-          {getOwnData && (
+          {filtersData && (
             <>
-              <FilterWeeks weeks={getOwnData.weeksList} setWeekIdFilter={setWeekIdFilter} />
+              <FilterChartCount setCountChart={setCountChart} countChart={countChart} />
+              <FilterWeeks
+                arrWeeks={weekIdFilter}
+                allWeeks={filtersData.weeksList}
+                setWeekIdFilter={setWeekIdFilter}
+              />
               <FilterArticles
-                articles={getOwnData.articles}
+                arrArticles={articleNameFilter}
+                allArticles={filtersData.articles}
                 setArticleNameFilter={setArticleNameFilter}
               />
             </>
           )}
-          <ButtonFilter onClick={updateData}>Обновить</ButtonFilter>
         </Filters>
-        <Diagram>{ownData && <BaseChart mainData={ownData} />}</Diagram>
-        <Table>{ownData && <SmartTable data={ownData.analyticsDatas ?? []} />}</Table>
+        {firstAliticsData && (
+          <>
+            <Diagram>
+              {createArray(countChart).map((n, i) => (
+                <BaseChart key={i} chartNum={i} mainData={firstAliticsData} />
+              ))}
+            </Diagram>
+            <Table>{<SmartTable data={firstAliticsData.analyticsDatas ?? []} />}</Table>
+          </>
+        )}
       </Wrapper>
     </>
   );

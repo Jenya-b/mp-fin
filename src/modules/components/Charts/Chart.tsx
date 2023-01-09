@@ -15,11 +15,12 @@ import {
 import { chartParameter } from 'constants/charts';
 import { Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { IAnaliticVisualOwnData } from 'services/types';
+import { IAnaliticVisualData } from 'services/types';
 import { SelectChangeEvent } from '@mui/material';
 import { Controls } from './Controls';
 import { IDataSets } from 'interfaces/analitics';
 import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
+import { isObject } from 'utils/isObject';
 
 ChartJS.register(
   CategoryScale,
@@ -36,15 +37,23 @@ ChartJS.register(
 );
 
 interface BaseChartProps {
-  mainData: IAnaliticVisualOwnData;
+  mainData: IAnaliticVisualData;
+  chartNum: number;
 }
 
-export const BaseChart = ({ mainData }: BaseChartProps) => {
-  const [chartFormat, setChartFormat] = useState('article');
-  const [chartType, setChartType] = useState<'line' | 'bar'>('line');
+export const BaseChart = ({ mainData, chartNum }: BaseChartProps) => {
+  const localChartFormat = getLocalStorage(`chartFormat${chartNum}`);
+  const localChartType = getLocalStorage(`chartType${chartNum}`);
+  const [chartFormat, setChartFormat] = useState(
+    isObject(localChartFormat) ? 'article' : localChartFormat
+  );
+  const [chartType, setChartType] = useState<'line' | 'bar'>(
+    isObject(localChartType) ? 'line' : localChartType
+  );
   const [selectValues, setSelectValues] = useState<IDataSets[]>(
-    getLocalStorage('defaultAutoSelect') && getLocalStorage('defaultAutoSelect').length
-      ? [...getLocalStorage('defaultAutoSelect')]
+    getLocalStorage(`defaultAutoSelect${chartNum}`) &&
+      getLocalStorage(`defaultAutoSelect${chartNum}`).length
+      ? [...getLocalStorage(`defaultAutoSelect${chartNum}`)]
       : [chartParameter[2], chartParameter[4]]
   );
 
@@ -105,8 +114,16 @@ export const BaseChart = ({ mainData }: BaseChartProps) => {
   useEffect(() => {
     if (!selectValues.length) return;
 
-    setLocalStorage('defaultAutoSelect', selectValues);
+    setLocalStorage(`defaultAutoSelect${chartNum}`, selectValues);
   }, [selectValues]);
+
+  useEffect(() => {
+    setLocalStorage(`chartFormat${chartNum}`, chartFormat);
+  }, [chartFormat]);
+
+  useEffect(() => {
+    setLocalStorage(`chartType${chartNum}`, chartType);
+  }, [chartType]);
 
   const handleChangeFormat = (event: SelectChangeEvent<string>) => {
     setChartFormat(event.target.value);
@@ -117,7 +134,7 @@ export const BaseChart = ({ mainData }: BaseChartProps) => {
   };
 
   return (
-    <>
+    <div>
       <Controls
         chartFormat={chartFormat}
         chartType={chartType}
@@ -132,6 +149,6 @@ export const BaseChart = ({ mainData }: BaseChartProps) => {
         options={options}
         data={chartFormat === 'week' ? dataWeek : dataArticle}
       />
-    </>
+    </div>
   );
 };

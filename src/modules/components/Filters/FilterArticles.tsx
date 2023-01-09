@@ -2,18 +2,29 @@ import { IArticle } from 'services/types';
 import { Filter, Input, Item, Label, List, Subtitle } from './Filter.styled';
 
 interface FilterWeekProps {
-  articles: IArticle[];
+  arrArticles: string[];
+  allArticles: IArticle[];
   setArticleNameFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FilterArticles = ({ articles, setArticleNameFilter }: FilterWeekProps) => (
+export const FilterArticles = ({
+  arrArticles,
+  allArticles,
+  setArticleNameFilter,
+}: FilterWeekProps) => (
   <Filter>
     <Subtitle>Артикулы:</Subtitle>
     <List>
-      {articles.map(({ articleId, articleName }) => (
+      {allArticles.map(({ articleId, articleName }) => (
         <Item key={articleId}>
           <Label htmlFor={articleName}>
-            <Input id={articleName} type="checkbox" onChange={setArticleNameFilter} /> {''}
+            <Input
+              id={articleName}
+              type="checkbox"
+              checked={arrArticles.includes(articleName)}
+              onChange={setArticleNameFilter}
+            />{' '}
+            {''}
             {articleName}
           </Label>
         </Item>

@@ -1,7 +1,13 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
 
-export const useFilter = () => {
-  const [state, setState] = useState<string[]>([]);
+export const useFilter = (localstorageKey: string) => {
+  const ids = getLocalStorage(localstorageKey);
+  const [state, setState] = useState<string[]>(Array.isArray(ids) ? ids : []);
+
+  useEffect(() => {
+    setLocalStorage(localstorageKey, state);
+  }, [state]);
 
   const changeFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = event.target;
