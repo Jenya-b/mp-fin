@@ -33,3 +33,15 @@ export const fetchAvatarFile = createAsyncThunk(
     }
   }
 );
+
+export const fetchWBQueryFile = createAsyncThunk(
+  'fetchWBQueryFile',
+  async (data: FormData, thunkApi) => {
+    try {
+      const response = await uploadFiles.post('/Admin/SaveWBQuery', data);
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);

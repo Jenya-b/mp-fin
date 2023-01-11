@@ -15,6 +15,7 @@ import {
   AdminPage,
   Users,
   Weeks,
+  SearchTerms,
   AnaliticsOther,
   AnaliticsOwn,
 } from 'modules/pages';
@@ -37,6 +38,7 @@ const {
   balance,
   weeks,
   users,
+  searchTerms,
   notFound,
 } = routerPath;
 
@@ -115,6 +117,10 @@ export const router = createBrowserRouter([
           {
             path: users,
             element: <Users />,
+          },
+          {
+            path: searchTerms,
+            element: <SearchTerms />,
           },
         ],
       },

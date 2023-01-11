@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { LoginPage } from 'modules/pages/Login/Login';
 import { Users } from 'modules/pages/Admin/Users/Users';
 import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
+import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
 import { AnaliticsOwn } from 'modules/pages/Analitics/AnaliticsOwn/AnaliticsOwn';
 import { AnaliticsOther } from 'modules/pages/Analitics/AnaliticsOther/AnaliticsOther';
 
@@ -34,6 +35,7 @@ export {
   LoginPage,
   Users,
   Weeks,
+  SearchTerms,
   AnaliticsOwn,
   AnaliticsOther,
 };

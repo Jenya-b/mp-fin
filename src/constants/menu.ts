@@ -34,4 +34,8 @@ export const menuAdminPanel = [
     title: 'Пользователи',
     href: routerPath.users,
   },
+  {
+    title: 'Поисковые запросы',
+    href: routerPath.searchTerms,
+  },
 ];

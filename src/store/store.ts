@@ -22,6 +22,7 @@ import userReducer from 'store/reducers/userSlice';
 import fileReportReducer from 'store/reducers/fileReportSlice';
 import notifyReducer from 'store/reducers/notifySlice';
 import fileAvatarReducer from 'store/reducers/fileAvatarSlice';
+import fileWBQueryReducer from 'store/reducers/fileWBQuerySlice';
 import balanceReducer from 'store/reducers/balanceSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
@@ -43,10 +44,11 @@ export const store = configureStore({
     [smartAnaliticApi.reducerPath]: smartAnaliticApi.reducer,
     [analiticApi.reducerPath]: analiticApi.reducer,
     persistedUserReducer,
-    fileReportReducer,
     notifyReducer,
-    fileAvatarReducer,
     balanceReducer,
+    fileReportReducer,
+    fileAvatarReducer,
+    fileWBQueryReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

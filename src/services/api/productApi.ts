@@ -21,11 +21,11 @@ export const productApi = createApi({
       }),
     }),
     getArticles: builder.query<IArticle[], string>({
-      query: (search) => ({
+      query: (text) => ({
         url: '/Product/GetArticles',
         credentials: 'include',
         params: {
-          text: search,
+          text,
         },
       }),
     }),
@@ -35,6 +35,15 @@ export const productApi = createApi({
         method: 'POST',
         body: data,
         credentials: 'include',
+      }),
+    }),
+    getWbQueries: builder.query({
+      query: (text) => ({
+        url: '/Product/GetWbQueries',
+        credentials: 'include',
+        params: {
+          text,
+        },
       }),
     }),
   }),

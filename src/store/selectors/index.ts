@@ -5,3 +5,4 @@ export const balanceSelector = (state: RootState) => state.balanceReducer.curren
 export const fileReportSelector = (state: RootState) => state.fileReportReducer;
 export const userSelector = (state: RootState) => state.persistedUserReducer;
 export const notifySelector = (state: RootState) => state.notifyReducer;
+export const fileWBQuerySelector = (state: RootState) => state.fileWBQueryReducer;
