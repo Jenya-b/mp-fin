@@ -7,8 +7,8 @@ import { useCreateWeekMutation, useGetWeeksQuery } from 'services';
 import { IWeek } from 'services/types';
 import { Main, MainTitle, PrimaryButton } from 'styles/components';
 import { formatDateISOString } from 'utils/formatDate';
-import { InputDate, Label, WeeksForm } from './Weeks.styled';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
+import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 
 export const Weeks = () => {
   const { data: weeks, isLoading: isLoadingGetWeeks } = useGetWeeksQuery(null);
@@ -37,22 +37,28 @@ export const Weeks = () => {
     <Main>
       {(isLoadingGetWeeks || isLoadingAddWeek) && <Loader />}
       <MainTitle>Список недель</MainTitle>
-      <WeeksForm onSubmit={onSubmit}>
-        <Label>
-          Номер недели
-          <InputDate type="number" {...register('weekNumber')} />
-        </Label>
-        <Label>
-          Начало недели
-          <InputDate type="date" {...register('weekStart')} />
-        </Label>
-        <Label>
-          Конец недели
-          <InputDate type="date" {...register('weekEnd')} />
-        </Label>
-        <PrimaryButton>Добавить неделю</PrimaryButton>
-      </WeeksForm>
-      <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={weeks ?? []} />
+      <Container>
+        <Form onSubmit={onSubmit}>
+          <Label>
+            Номер недели
+            <InputAdminPanel type="number" {...register('weekNumber')} />
+          </Label>
+          <Label>
+            Начало недели
+            <InputAdminPanel type="date" {...register('weekStart')} />
+          </Label>
+          <Label>
+            Конец недели
+            <InputAdminPanel type="date" {...register('weekEnd')} />
+          </Label>
+          <PrimaryButton>Добавить неделю</PrimaryButton>
+        </Form>
+        <BasicTable
+          renderRow={renderRow}
+          renderColumnNames={renderColumnNames}
+          data={weeks ?? []}
+        />
+      </Container>
     </Main>
   );
 };

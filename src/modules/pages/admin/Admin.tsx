@@ -1,6 +1,6 @@
 import { menuAdminPanel } from 'constants/menu';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Wrapper, Menu, Content, List, Item } from './Admin.styled';
+import { Wrapper, Menu, List, Item } from './Admin.styled';
 
 export const AdminPage = () => {
   return (
@@ -14,9 +14,7 @@ export const AdminPage = () => {
           ))}
         </List>
       </Menu>
-      <Content>
-        <Outlet />
-      </Content>
+      <Outlet />
     </Wrapper>
   );
 };

@@ -1,15 +1,23 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDebounce } from 'hooks/debounce';
 import { useGetWbQueriesQuery } from 'services';
-import { Main, MainTitle, SearchInput } from 'styles/components';
-import { SendingData } from './SearchTerms.styled';
+import { Main, MainTitle, PrimaryButton } from 'styles/components';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { fileWBQuerySelector } from 'store/selectors';
 import { fetchWBQueryFile } from 'services/api/filesApi';
 import { formatDateISOString } from 'utils/formatDate';
+import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
+import {
+  InputFile,
+  InputFileBtn,
+  InputFileName,
+  Subtitle,
+  SearchBlock,
+} from './SearchTerms.styled';
 
 export const SearchTerms = () => {
   const [requestFile, setRequestFile] = useState<FormData>();
+  const [fileName, setFileName] = useState<string>('');
   const [searchValue, setSearchValue] = useState<string>('');
   const [dateValue, setDateValue] = useState<string>('');
   const debouncedSearch = useDebounce(searchValue);
@@ -33,6 +41,9 @@ export const SearchTerms = () => {
 
     if (!files || !files.length) return;
     const file = files[0];
+    setFileName(file.name);
+    console.log(file.name);
+
     formData.append('wbFile', file);
     formData.set('Date', dateValue);
     setRequestFile(formData);
@@ -43,7 +54,8 @@ export const SearchTerms = () => {
     setDateValue(formatDateISOString(value));
   };
 
-  const sentFile = () => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!requestFile) return;
     dispatch(fetchWBQueryFile(requestFile)).then(() => refetch());
   };
@@ -51,12 +63,26 @@ export const SearchTerms = () => {
   return (
     <Main>
       <MainTitle>Поисковые запросы</MainTitle>
-      <SendingData>
-        <input type="file" onChange={handleChangeFile} />
-        <input type="date" onChange={handleChangeDate} />
-        <button onClick={sentFile}>ОТПРАВИТЬ</button>
-      </SendingData>
-      <SearchInput onChange={addSearchValue} />
+      <Container>
+        <Subtitle>Обновить запросы</Subtitle>
+        <Form onSubmit={handleSubmit}>
+          <Label>
+            <InputFileName></InputFileName>
+            <InputFile type="file" onChange={handleChangeFile} />
+            <InputFileBtn>{fileName || 'Выберите файл'}</InputFileBtn>
+          </Label>
+          <Label>
+            <InputAdminPanel type="date" onChange={handleChangeDate} />
+          </Label>
+          <PrimaryButton>Отправить</PrimaryButton>
+        </Form>
+        <SearchBlock>
+          <Subtitle>Получить данные</Subtitle>
+          <Label>
+            <InputAdminPanel onChange={addSearchValue} />
+          </Label>
+        </SearchBlock>
+      </Container>
     </Main>
   );
 };
