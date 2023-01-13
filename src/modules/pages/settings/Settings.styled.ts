@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input } from 'styles/components';
+import { PrimaryInput } from 'styles/components';
 import { fontStylesCaption } from 'styles/typography';
 
 export const SettingsForm = styled.form`
@@ -16,7 +16,7 @@ export const InputsWrapper = styled.div`
   column-gap: 30px;
   row-gap: 25px;
 `;
-export const SecondaryInput = styled(Input)`
+export const SecondaryInput = styled(PrimaryInput)`
   background: ${({ theme }) => theme.colors.inputSettingsFormBg};
   margin-top: 5px;
 `;

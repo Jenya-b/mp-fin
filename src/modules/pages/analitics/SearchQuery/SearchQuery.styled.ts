@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input, MainSubtitle } from 'styles/components';
+import { PrimaryInput, MainSubtitle } from 'styles/components';
 import { fontStylesCaption } from 'styles/typography';
 
 export const Subtitle = styled(MainSubtitle)`
@@ -12,7 +12,7 @@ export const SearchBlock = styled.div`
   flex-direction: column;
 `;
 
-export const InputSearch = styled(Input)`
+export const InputSearch = styled(PrimaryInput)`
   margin-top: 7px;
 `;
 export const Label = styled.label`

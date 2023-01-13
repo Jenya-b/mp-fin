@@ -36,7 +36,7 @@ export const PrimaryButton = styled(Button)`
   ${fontStylesRegularBold}
 `;
 
-export const Input = styled.input`
+export const PrimaryInput = styled.input`
   width: 100%;
   height: ${({ theme }) => theme.sizes.inputForm.height}px;
   padding-left: 20px;
@@ -59,11 +59,7 @@ export const Input = styled.input`
   }
 `;
 
-export const PrimaryInput = styled(Input)`
-  background: ${({ theme }) => theme.colors.inputFormBackground};
-`;
-
-export const SearchInput = styled(Input)`
+export const SecondaryInput = styled(PrimaryInput)`
   background: ${({ theme }) => theme.colors.inputFormBackground};
 `;
 

@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { primeCostColumnNames } from 'constants/tables';
 import { useDebounce } from 'hooks/debounce';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { Main, MainTitle, PrimaryInput } from 'styles/components';
+import { Main, MainTitle, SecondaryInput } from 'styles/components';
 import { useChangeArticleMutation, useGetArticlesQuery } from 'services';
 import { IArticle } from 'services/types';
 import { Loader } from 'modules/components/Loader/Loader';
@@ -57,7 +57,7 @@ export const PrimeCostPage = () => {
       <StyledTableCell>{item.itemCode}</StyledTableCell>
       <StyledTableCell>{item.articleName}</StyledTableCell>
       <StyledTableCell>
-        <PrimaryInput
+        <SecondaryInput
           defaultValue={item.costPrice}
           name={item.articleId}
           onChange={onChangeArticle}

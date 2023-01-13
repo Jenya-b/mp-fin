@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fontStylesCaption, fontStylesCaptionBig } from 'styles/typography';
-import { Input } from 'styles/components';
+import { PrimaryInput } from 'styles/components';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -44,7 +44,7 @@ export const Form = styled.form`
   column-gap: ${({ theme }) => theme.indents.adminForm.columnGap}px;
   align-items: flex-end;
 `;
-export const InputAdminPanel = styled(Input)`
+export const InputAdminPanel = styled(PrimaryInput)`
   margin-top: 7px;
 `;
 export const Label = styled.label`

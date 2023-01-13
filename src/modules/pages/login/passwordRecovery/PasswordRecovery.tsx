@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { PrimaryButton, PrimaryInput } from 'styles/components';
+import { PrimaryButton, SecondaryInput } from 'styles/components';
 import { usePasswordRecoveryMutation } from 'services';
 import { openNotify } from 'store/reducers/notifySlice';
 import { Loader } from 'modules/components/Loader/Loader';
@@ -80,7 +80,7 @@ export const PasswordRecovery = () => {
         <TitleForm>Забыли пароль?</TitleForm>
         <InputList>
           <Label>
-            <PrimaryInput
+            <SecondaryInput
               {...register('email', {
                 required: 'Поле обязательно к заполнению',
                 pattern: inputEmailPattern,

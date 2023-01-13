@@ -5,7 +5,7 @@ import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
 import { colorMainWhite } from 'constants/colors';
 import { v4 } from 'uuid';
-import { SearchInput } from 'styles/components';
+import { SecondaryInput } from 'styles/components';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
 
 interface Props<T> {
@@ -36,7 +36,7 @@ export const BasicTable = <T,>({
       }}
     >
       {isSearch && (
-        <SearchInput
+        <SecondaryInput
           type="text"
           placeholder="Поле поиска"
           value={searchValue}
