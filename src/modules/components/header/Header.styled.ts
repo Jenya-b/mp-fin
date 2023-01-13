@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'styles/components';
+import { PrimaryButton } from 'styles/components';
 import { fontStylesCaption, fontStylesRegular } from 'styles/typography';
 
 export const StyledHeader = styled.header`
@@ -51,7 +51,7 @@ export const BalanceSum = styled.div`
   color: ${({ theme }) => theme.colors.textHeaderPrimary};
 `;
 
-export const BalanceButton = styled(Button)`
+export const BalanceButton = styled(PrimaryButton)`
   margin-left: 35px;
   padding: 7px 38px;
 `;
@@ -63,7 +63,7 @@ export const Controls = styled.div`
   column-gap: 15px;
 `;
 
-const PrimaryButton = styled.button`
+const Button = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -80,14 +80,14 @@ export const ButtonWrapper = styled.div`
     margin-left: 15px;
   }
 `;
-export const ButtonSettings = styled(PrimaryButton)`
+export const ButtonSettings = styled(Button)`
   background-image: url('/source/images/iconSettings.png');
   background-position: center center;
   background-repeat: no-repeat;
   cursor: ${({ theme }) => theme.cursor};
 `;
 
-export const ButtonLogin = styled(PrimaryButton)`
+export const ButtonLogin = styled(Button)`
   background-image: url('/source/images/iconLogin.png');
   background-position: center center;
   background-repeat: no-repeat;

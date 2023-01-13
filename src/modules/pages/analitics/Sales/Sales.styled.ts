@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'styles/components';
+import { PrimaryButton } from 'styles/components';
 import { fontStylesCaption, fontStylesH2 } from 'styles/typography';
 
 export const Wrapper = styled.div`

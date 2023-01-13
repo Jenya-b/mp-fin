@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { PrimaryButton, SecondaryInput } from 'styles/components';
+import { SecondaryButton, SecondaryInput } from 'styles/components';
 import { useSigninUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
 import { Loader } from 'modules/components/Loader/Loader';
@@ -99,7 +99,7 @@ export const Signin = () => {
           <Link to={passwordRecovery}>Забыли пароль?</Link>
         </LinkWrapper>
         <Controls>
-          <PrimaryButton>Продолжить</PrimaryButton>
+          <SecondaryButton>Продолжить</SecondaryButton>
         </Controls>
         <LinkWrapperCenter>
           <span>Нет аккаутнта?</span> <Link to={registration}>Зарегистрируйтесь</Link>

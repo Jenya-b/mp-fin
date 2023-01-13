@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { PrimaryButton, SecondaryInput } from 'styles/components';
+import { SecondaryButton, SecondaryInput } from 'styles/components';
 import { usePasswordRecoveryMutation } from 'services';
 import { openNotify } from 'store/reducers/notifySlice';
 import { Loader } from 'modules/components/Loader/Loader';
@@ -91,7 +91,7 @@ export const PasswordRecovery = () => {
           </Label>
         </InputList>
         <Controls>
-          <PrimaryButton>Продолжить</PrimaryButton>
+          <SecondaryButton>Продолжить</SecondaryButton>
         </Controls>
         <LinkWrapperCenter>
           <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>

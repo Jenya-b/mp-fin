@@ -5,7 +5,7 @@ import { BasicTable } from 'modules/components/Table/Table';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
 import { useCreateWeekMutation, useGetWeeksQuery } from 'services';
 import { IWeek } from 'services/types';
-import { Main, MainTitle, PrimaryButton } from 'styles/components';
+import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { formatDateISOString } from 'utils/formatDate';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
@@ -51,7 +51,7 @@ export const Weeks = () => {
             Конец недели
             <InputAdminPanel type="date" {...register('weekEnd')} />
           </Label>
-          <PrimaryButton>Добавить неделю</PrimaryButton>
+          <SecondaryButton>Добавить неделю</SecondaryButton>
         </Form>
         <BasicTable
           renderRow={renderRow}

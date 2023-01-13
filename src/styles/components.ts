@@ -25,12 +25,12 @@ export const MainSubtitle = styled.h2`
   color: ${({ theme }) => theme.colors.mainTitle};
 `;
 
-export const Button = styled.button`
+export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.colors.btn};
   ${ButtonMailStyles}
 `;
 
-export const PrimaryButton = styled(Button)`
+export const SecondaryButton = styled(PrimaryButton)`
   width: 100%;
   height: ${({ theme }) => theme.sizes.primaryBtn.height}px;
   ${fontStylesRegularBold}

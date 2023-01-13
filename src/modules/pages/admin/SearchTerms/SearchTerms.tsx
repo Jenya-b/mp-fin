@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDebounce } from 'hooks/debounce';
 import { useGetWbQueriesQuery } from 'services';
-import { Main, MainTitle, PrimaryButton } from 'styles/components';
+import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { fileWBQuerySelector } from 'store/selectors';
 import { fetchWBQueryFile } from 'services/api/filesApi';
@@ -74,7 +74,7 @@ export const SearchTerms = () => {
           <Label>
             <InputAdminPanel type="date" onChange={handleChangeDate} />
           </Label>
-          <PrimaryButton>Отправить</PrimaryButton>
+          <SecondaryButton>Отправить</SecondaryButton>
         </Form>
         <SearchBlock>
           <Subtitle>Получить данные</Subtitle>

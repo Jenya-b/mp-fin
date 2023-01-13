@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Link, useSearchParams } from 'react-router-dom';
-import { SecondaryInput, PrimaryButton } from 'styles/components';
+import { SecondaryInput, SecondaryButton } from 'styles/components';
 import { usePasswordResetMutation } from 'services';
 import {
   InputList,
@@ -78,7 +78,7 @@ export const PasswordReset = () => {
               </Label>
             </InputList>
             <Controls>
-              <PrimaryButton>Продолжить</PrimaryButton>
+              <SecondaryButton>Продолжить</SecondaryButton>
             </Controls>
             <LinkWrapperCenter>
               <span>Перейти к форме</span> {''}

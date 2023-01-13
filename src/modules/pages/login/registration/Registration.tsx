@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
 import { useAppDispatch } from 'store/store';
-import { Checkbox, PrimaryButton, SecondaryInput } from 'styles/components';
+import { Checkbox, SecondaryButton, SecondaryInput } from 'styles/components';
 import { useRegisterUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
 import { Loader } from 'modules/components/Loader/Loader';
@@ -102,7 +102,7 @@ export const Registration = () => {
         </Label>
       </InputList>
       <Controls>
-        <PrimaryButton>Продолжить</PrimaryButton>
+        <SecondaryButton>Продолжить</SecondaryButton>
       </Controls>
       <LinkWrapperCenter>
         <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>
