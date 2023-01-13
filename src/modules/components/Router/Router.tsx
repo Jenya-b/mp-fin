@@ -17,7 +17,8 @@ import {
   Weeks,
   SearchTerms,
   AnaliticsOther,
-  AnaliticsOwn,
+  SalesAnalytics,
+  SearchQueryAnalytics,
 } from 'modules/pages';
 import { LayoutWrapp } from 'modules/components/Layout/LayouWrapp';
 import { RequireAuth } from 'hocs/RequireAuth';
@@ -28,6 +29,7 @@ const {
   home,
   analiticsOwn,
   analiticsOther,
+  searchQuery,
   login,
   primeCost,
   registration,
@@ -60,12 +62,12 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: analiticsOther,
-            element: <Navigate to={analiticsOwn} replace />,
+            path: searchQuery,
+            element: <SearchQueryAnalytics />,
           },
           {
             path: analiticsOwn,
-            element: <AnaliticsOwn />,
+            element: <SalesAnalytics />,
           },
         ],
       },

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFilter } from 'hooks/useFilter';
 import { useLazyGetFiltersDataQuery, usePostAnaliticsMutation } from 'services';
-import { Filters, Wrapper, Title, Diagram, Table } from './AnaliticsOwn.styled';
+import { Filters, Wrapper, Title, Diagram, Table } from './Sales.styled';
 import { SmartTable } from 'modules/components/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
 import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
@@ -12,7 +12,7 @@ import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
 import { createArray } from 'utils/createArray';
 import { getLocalStorage } from 'utils/localStorage';
 
-export const AnaliticsOwn = () => {
+export const SalesAnalytics = () => {
   const [
     fetchFiltersData,
     { data: filtersData, isSuccess: isSuccessFiltersData, isLoading: isLoadingFiltersData },

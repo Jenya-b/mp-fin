@@ -3,8 +3,9 @@ import { LoginPage } from 'modules/pages/Login/Login';
 import { Users } from 'modules/pages/Admin/Users/Users';
 import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
 import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
-import { AnaliticsOwn } from 'modules/pages/Analitics/AnaliticsOwn/AnaliticsOwn';
+import { SalesAnalytics } from 'modules/pages/Analitics/Sales/Sales';
 import { AnaliticsOther } from 'modules/pages/Analitics/AnaliticsOther/AnaliticsOther';
+import { SearchQueryAnalytics } from 'modules/pages/Analitics/SearchQuery/SearchQuery';
 
 const AnaliticsPage = lazy(() => import('modules/pages/Analitics/Analitics'));
 const ReportsPage = lazy(() => import('modules/pages/Reports/Reports'));
@@ -36,6 +37,7 @@ export {
   Users,
   Weeks,
   SearchTerms,
-  AnaliticsOwn,
+  SalesAnalytics,
   AnaliticsOther,
+  SearchQueryAnalytics,
 };

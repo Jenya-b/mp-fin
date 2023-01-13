@@ -14,5 +14,6 @@ export const routerPath = {
   searchTerms: '/admin-panel/search-terms',
   analiticsOwn: '/analitics-own',
   analiticsOther: '/analitics-other',
+  searchQuery: '/search-query',
   notFound: '*',
 };

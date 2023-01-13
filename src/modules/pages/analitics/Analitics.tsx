@@ -4,14 +4,14 @@ import { NavWrapper } from './Analitics.styled';
 import { routerPath } from 'constants/routerPath';
 
 export const AnaliticsPage = () => {
-  const { analiticsOwn, analiticsOther } = routerPath;
+  const { analiticsOwn, searchQuery } = routerPath;
   return (
     <Main>
       <MainTitle>Аналитика</MainTitle>
-      {/* <NavWrapper> //! Удалить 25.01.23
-        <NavLink to={analiticsOther}>Smart Data</NavLink>
-        <NavLink to={analiticsOwn}>MpFin</NavLink>
-      </NavWrapper> */}
+      <NavWrapper>
+        <NavLink to={analiticsOwn}>Продажи</NavLink>
+        <NavLink to={searchQuery}>Запросы</NavLink>
+      </NavWrapper>
       <Outlet />
     </Main>
   );
