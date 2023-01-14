@@ -6,6 +6,7 @@ import { fetchWBQueryFile } from 'services/api/filesApi';
 import { formatDateISOString } from 'utils/formatDate';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 import { InputFile, InputFileBtn, InputFileName, Subtitle } from './SearchTerms.styled';
+import { Loader } from 'modules/components/Loader/Loader';
 
 export const SearchTerms = () => {
   const [requestFile, setRequestFile] = useState<FormData>();
@@ -13,11 +14,7 @@ export const SearchTerms = () => {
   const [dateValue, setDateValue] = useState<string>('');
   const dispatch = useAppDispatch();
 
-  const {
-    isLoading: isLoadingUpload,
-    isError: isErrorUploadFile,
-    isSuccess: isSuccessUploadFile,
-  } = useAppSelector(fileWBQuerySelector);
+  const { isLoading, isError, isSuccess } = useAppSelector(fileWBQuerySelector);
 
   const handleChangeFile = (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
@@ -26,9 +23,7 @@ export const SearchTerms = () => {
     if (!files || !files.length) return;
     const file = files[0];
     setFileName(file.name);
-    console.log(file.name);
-
-    formData.append('wbFile', file);
+    formData.set('wbFile', file);
     formData.set('Date', dateValue);
     setRequestFile(formData);
   };
@@ -46,17 +41,18 @@ export const SearchTerms = () => {
 
   return (
     <Main>
+      {isLoading && <Loader />}
       <MainTitle>Поисковые запросы</MainTitle>
       <Container>
         <Subtitle>Обновить запросы</Subtitle>
         <Form onSubmit={handleSubmit}>
           <Label>
-            <InputFileName></InputFileName>
-            <InputFile type="file" onChange={handleChangeFile} />
-            <InputFileBtn>{fileName || 'Выберите файл'}</InputFileBtn>
+            <InputAdminPanel type="date" onChange={handleChangeDate} />
           </Label>
           <Label>
-            <InputAdminPanel type="date" onChange={handleChangeDate} />
+            <InputFileName></InputFileName>
+            <InputFile type="file" onChange={handleChangeFile} disabled={!dateValue} />
+            <InputFileBtn>{fileName || 'Выберите файл'}</InputFileBtn>
           </Label>
           <SecondaryButton>Отправить</SecondaryButton>
         </Form>

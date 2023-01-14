@@ -15,7 +15,7 @@ export const fileWBQuerySlice = createSlice({
   extraReducers: {
     [fetchWBQueryFile.pending.type]: (state) => {
       state.isLoading = true;
-      state.isLoading = false;
+      state.isSuccess = false;
       state.isError = false;
     },
     [fetchWBQueryFile.fulfilled.type]: (state) => {
