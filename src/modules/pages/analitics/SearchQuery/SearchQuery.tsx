@@ -5,13 +5,15 @@ import { useLazyGetWbQueriesQuery } from 'services';
 import { SearchQueryChart } from './Chart';
 import { IWbQueries } from 'services/types';
 import { Loader } from 'modules/components/Loader/Loader';
+import { SearchQueryDataGrid } from './DataGrid';
+import { sortDate } from 'utils/formatDate';
 
 export const SearchQueryAnalytics = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [chartData, setChartData] = useState<IWbQueries[]>([]);
   const debouncedSearch = useDebounce(searchValue);
 
-  const [fetchSearchQuery, { isSuccess, isLoading, data }] = useLazyGetWbQueriesQuery();
+  const [fetchSearchQuery, { isSuccess, isLoading, isFetching, data }] = useLazyGetWbQueriesQuery();
 
   useEffect(() => {
     if (!debouncedSearch) return;
@@ -21,7 +23,10 @@ export const SearchQueryAnalytics = () => {
   useEffect(() => {
     if (isSuccess && data && data.length) {
       const dataFilter = data.filter((item) => item.title === searchValue);
-      setChartData(dataFilter);
+      const dataSort = dataFilter.sort((dateA, dateB) =>
+        sortDate(dateA.date, dateB.date) ? 1 : -1
+      );
+      setChartData(dataSort);
     }
   }, [isSuccess]);
 
@@ -32,7 +37,7 @@ export const SearchQueryAnalytics = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {(isLoading || isFetching) && <Loader />}
       <SearchBlock>
         <Subtitle>Получить данные</Subtitle>
         <Label>
@@ -41,6 +46,7 @@ export const SearchQueryAnalytics = () => {
       </SearchBlock>
       <DataBlock>
         <SearchQueryChart mainData={chartData} />
+        <SearchQueryDataGrid data={data ?? []} />
       </DataBlock>
     </>
   );

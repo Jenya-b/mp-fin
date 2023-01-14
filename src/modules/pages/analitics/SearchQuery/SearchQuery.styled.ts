@@ -24,4 +24,5 @@ export const Label = styled.label`
 export const DataBlock = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
 `;
