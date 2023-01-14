@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import { IArticle, IReport, IReportID } from 'services/types';
+import { IArticle, IReport, IReportID, IWbQueries } from 'services/types';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
@@ -37,7 +37,7 @@ export const productApi = createApi({
         credentials: 'include',
       }),
     }),
-    getWbQueries: builder.query({
+    getWbQueries: builder.query<IWbQueries[], string>({
       query: (text) => ({
         url: '/Product/GetWbQueries',
         credentials: 'include',

@@ -26,9 +26,3 @@ export const InputFileBtn = styled.div`
 export const Subtitle = styled(MainSubtitle)`
   margin-bottom: ${({ theme }) => theme.indents.adminSubtitle.marginBottom}px;
 `;
-
-export const SearchBlock = styled.div`
-  margin-top: ${({ theme }) => theme.indents.adminSearchBlock.marginTop}px;
-  display: flex;
-  flex-direction: column;
-`;

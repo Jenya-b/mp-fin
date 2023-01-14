@@ -139,3 +139,9 @@ export interface IAnaliticVisualData {
   analyticsDatasSum: IAnaliticDataSum[];
   weekAndSums: IAnaliticWeek[];
 }
+
+export interface IWbQueries {
+  title: string;
+  count: string;
+  date: string;
+}

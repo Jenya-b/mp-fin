@@ -20,7 +20,7 @@ export const {
   useDeleteReportMutation,
   useGetArticlesQuery,
   useChangeArticleMutation,
-  useGetWbQueriesQuery,
+  useLazyGetWbQueriesQuery,
 } = productApi;
 
 export const { useLazyGetUserQuery, useChangePersonalDataMutation, useChangeReportIdMutation } =
