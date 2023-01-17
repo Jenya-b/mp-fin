@@ -16,7 +16,6 @@ import {
   Users,
   Weeks,
   SearchTerms,
-  AnaliticsOther,
   SalesAnalytics,
   SearchQueryAnalytics,
 } from 'modules/pages';
@@ -27,8 +26,7 @@ import { ErrorBoundary } from 'modules/components/ErrorBoundary/ErrorBoundary';
 
 const {
   home,
-  analiticsOwn,
-  analiticsOther,
+  salesAnalytics,
   searchQuery,
   login,
   primeCost,
@@ -52,7 +50,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to={analiticsOwn} replace />,
+        element: <Navigate to={salesAnalytics} replace />,
       },
       {
         element: (
@@ -66,7 +64,7 @@ export const router = createBrowserRouter([
             element: <SearchQueryAnalytics />,
           },
           {
-            path: analiticsOwn,
+            path: salesAnalytics,
             element: <SalesAnalytics />,
           },
         ],

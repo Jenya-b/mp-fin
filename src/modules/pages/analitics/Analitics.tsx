@@ -4,12 +4,12 @@ import { NavWrapper } from './Analitics.styled';
 import { routerPath } from 'constants/routerPath';
 
 export const AnaliticsPage = () => {
-  const { analiticsOwn, searchQuery } = routerPath;
+  const { salesAnalytics, searchQuery } = routerPath;
   return (
     <Main>
       <MainTitle>Аналитика</MainTitle>
       <NavWrapper>
-        <NavLink to={analiticsOwn}>Продажи</NavLink>
+        <NavLink to={salesAnalytics}>Продажи</NavLink>
         <NavLink to={searchQuery}>Запросы</NavLink>
       </NavWrapper>
       <Outlet />

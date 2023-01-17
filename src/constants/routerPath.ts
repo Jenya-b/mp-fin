@@ -12,8 +12,7 @@ export const routerPath = {
   weeks: '/admin-panel/weeks',
   users: '/admin-panel/users',
   searchTerms: '/admin-panel/search-terms',
-  analiticsOwn: '/analitics-own',
-  analiticsOther: '/analitics-other',
+  salesAnalytics: '/sales',
   searchQuery: '/search-query',
   notFound: '*',
 };

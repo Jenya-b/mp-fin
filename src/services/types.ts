@@ -89,14 +89,6 @@ export interface IWeekWithParam extends IWeek {
   weekId: string;
 }
 
-export interface IIframeSSOResponse {
-  hash: string;
-}
-
-export interface IReportSmartData {
-  id: number;
-}
-
 export interface IFiltersData {
   articles: IArticle[];
   weeksList: IWeekWithParam[];

@@ -4,7 +4,6 @@ import { Users } from 'modules/pages/Admin/Users/Users';
 import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
 import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
 import { SalesAnalytics } from 'modules/pages/Analitics/Sales/Sales';
-import { AnaliticsOther } from 'modules/pages/Analitics/AnaliticsOther/AnaliticsOther';
 import { SearchQueryAnalytics } from 'modules/pages/Analitics/SearchQuery/SearchQuery';
 
 const AnaliticsPage = lazy(() => import('modules/pages/Analitics/Analitics'));
@@ -38,6 +37,5 @@ export {
   Weeks,
   SearchTerms,
   SalesAnalytics,
-  AnaliticsOther,
   SearchQueryAnalytics,
 };
