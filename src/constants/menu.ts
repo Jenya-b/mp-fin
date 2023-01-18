@@ -8,6 +8,11 @@ export const menuSidebar = [
     href: routerPath.home,
   },
   {
+    srcImg: menuIcon.searchQueryIcon,
+    title: 'Запросы',
+    href: routerPath.searchQuery,
+  },
+  {
     srcImg: menuIcon.reportIcon,
     title: 'Загрузить отчет',
     href: routerPath.reports,

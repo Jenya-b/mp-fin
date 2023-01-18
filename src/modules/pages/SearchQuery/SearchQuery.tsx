@@ -7,8 +7,9 @@ import { IWbQueries } from 'services/types';
 import { Loader } from 'modules/components/Loader/Loader';
 import { SearchQueryDataGrid } from './DataGrid';
 import { sortDate } from 'utils/formatDate';
+import { Main, MainTitle } from 'styles/components';
 
-export const SearchQueryAnalytics = () => {
+export const SearchQuery = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [chartData, setChartData] = useState<IWbQueries[]>([]);
   const debouncedSearch = useDebounce(searchValue);
@@ -36,8 +37,9 @@ export const SearchQueryAnalytics = () => {
   };
 
   return (
-    <>
+    <Main>
       {(isLoading || isFetching) && <Loader />}
+      <MainTitle>Аналитика</MainTitle>
       <SearchBlock>
         <Subtitle>Получить данные</Subtitle>
         <Label>
@@ -48,6 +50,8 @@ export const SearchQueryAnalytics = () => {
         <SearchQueryChart mainData={chartData} />
         <SearchQueryDataGrid data={data ?? []} />
       </DataBlock>
-    </>
+    </Main>
   );
 };
+
+export default SearchQuery;

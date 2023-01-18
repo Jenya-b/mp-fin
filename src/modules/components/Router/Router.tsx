@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
 import {
   AnaliticsPage,
@@ -16,8 +16,7 @@ import {
   Users,
   Weeks,
   SearchTerms,
-  SalesAnalytics,
-  SearchQueryAnalytics,
+  SearchQuery,
 } from 'modules/pages';
 import { LayoutWrapp } from 'modules/components/Layout/LayouWrapp';
 import { RequireAuth } from 'hocs/RequireAuth';
@@ -26,8 +25,6 @@ import { ErrorBoundary } from 'modules/components/ErrorBoundary/ErrorBoundary';
 
 const {
   home,
-  salesAnalytics,
-  searchQuery,
   login,
   primeCost,
   registration,
@@ -39,6 +36,7 @@ const {
   weeks,
   users,
   searchTerms,
+  searchQuery,
   notFound,
 } = routerPath;
 
@@ -50,24 +48,19 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to={salesAnalytics} replace />,
-      },
-      {
         element: (
           <RequireAuth>
             <AnaliticsPage />
           </RequireAuth>
         ),
-        children: [
-          {
-            path: searchQuery,
-            element: <SearchQueryAnalytics />,
-          },
-          {
-            path: salesAnalytics,
-            element: <SalesAnalytics />,
-          },
-        ],
+      },
+      {
+        path: searchQuery,
+        element: (
+          <RequireAuth>
+            <SearchQuery />
+          </RequireAuth>
+        ),
       },
       {
         path: reports,
