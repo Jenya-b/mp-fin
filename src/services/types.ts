@@ -128,7 +128,7 @@ export interface IAnaliticWeek extends IAnaliticDataSum {
 
 export interface IAnaliticVisualData {
   analyticsDatas: IAnaliticArticle[];
-  analyticsDatasSum: IAnaliticDataSum[];
+  analyticsDatasSum: IAnaliticDataSum;
   weekAndSums: IAnaliticWeek[];
 }
 
