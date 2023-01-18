@@ -95,26 +95,40 @@ export interface IFiltersData {
 }
 
 export interface IAnaliticDataSum {
-  averagePurchasePrice: number;
-  averageSetPrice: number;
-  comissionPercents: number;
-  comissionRubs: number;
-  costPriceSum: number;
-  logistics: number;
+  comissionWbPercents: number;
+  comissionWbRub: number;
+  costPriceCount: number;
+  costPriceFraction: number;
+  costPriceRub: number;
+  fractionOnBankAccount: number;
+  fractionOrders: number;
+  fractionProfit: number;
+  fractionSales: number;
+  logisticsFraction: number;
+  logisticsGeneral: number;
+  logisticsOrdersCount: number;
+  logisticsOrdersRub: number;
+  logisticsRefundsCount: number;
+  logisticsRefundsRub: number;
   margin: number;
-  ndsAwardWB: number;
-  onBankAccount: number;
+  onBankAccountRub: number;
   ordersCount: number;
   ordersSum: number;
-  poverennyyServices: number;
   profitFraction: number;
   profitRub: number;
+  profitability: number;
   redemtionPercent: number;
   refundsCount: number;
-  refundsSum: number;
+  refundsSumTransferToSeller: number;
+  refundsSumWithDiscount: number;
+  retailPriceIncludingAgreedDiscount: number;
   salesCount: number;
-  salesSum: number;
-  wbExpenses: number;
+  salesSumTransferToSeller: number;
+  salesSumWithDiscount: number;
+  transferToSallerCount: number;
+  transferToSallerForTheSoldGoods: number;
+  transferToSallerRub: number;
+  wbSoldProduct: number;
 }
 
 export interface IAnaliticArticle extends IAnaliticDataSum {

@@ -17,7 +17,7 @@ export const analiticApi = createApi({
       { weekIds: string[]; articleNames: string[] }
     >({
       query: (data) => ({
-        url: '/Analytic/GetAnalytics',
+        url: '/Analytic/GetAnalyticsNew',
         method: 'POST',
         body: data,
         credentials: 'include',
