@@ -12,7 +12,7 @@ import { Main, MainTitle } from 'styles/components';
 export const SearchQuery = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [chartData, setChartData] = useState<IWbQueries[]>([]);
-  const debouncedSearch = useDebounce(searchValue);
+  const debouncedSearch = useDebounce(searchValue, 600);
 
   const [fetchSearchQuery, { isSuccess, isLoading, isFetching, data }] = useLazyGetWbQueriesQuery();
 
