@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FILE_AVATAR_TYPE, MAX_SIZE } from 'constants/files';
 import { defaultLogo } from 'constants/images';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { Main, MainTitle, PrimaryButton } from 'styles/components';
+import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { fetchAvatarFile } from 'services/api/filesApi';
 import { useChangePersonalDataMutation, useLazyGetUserQuery } from 'services';
 import { setUser } from 'store/reducers/userSlice';
@@ -129,7 +129,7 @@ export const SettingsPage = () => {
             <SecondaryInput {...register('telegram')} />
           </Label>
           <ControlWrapper>
-            <PrimaryButton>Сохранить</PrimaryButton>
+            <SecondaryButton>Сохранить</SecondaryButton>
           </ControlWrapper>
         </InputsWrapper>
       </SettingsForm>

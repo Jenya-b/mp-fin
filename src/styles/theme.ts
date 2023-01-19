@@ -87,6 +87,7 @@ export const baseTheme: ITheme = {
     adminMenuBg: colorMainGreyLight,
     adminMenuLink: colorMainBlack,
     adminMenuLinkActive: colorMainBluePrimary,
+    adminInputFile: colorMainWhite,
   },
   sizes: {
     loginForm: {
@@ -125,6 +126,10 @@ export const baseTheme: ITheme = {
     replenishmentBlock: {
       height: 239,
     },
+    adminForm: {
+      maxWidth: 900,
+      width: 100,
+    },
   },
   indents: {
     loginForm: {
@@ -140,6 +145,27 @@ export const baseTheme: ITheme = {
     main: {
       paddingLeft: 290,
       paddingLeftHide: 90,
+    },
+    adminMenu: {
+      paddingTop: 40,
+      paddingRight: 25,
+      paddingBottom: 40,
+      paddingLeft: 30,
+    },
+    adminList: {
+      rowGap: 10,
+    },
+    adminContainer: {
+      marginTop: 30,
+    },
+    adminForm: {
+      columnGap: 10,
+    },
+    adminSubtitle: {
+      marginBottom: 10,
+    },
+    adminSearchBlock: {
+      marginTop: 30,
     },
   },
   borders: {

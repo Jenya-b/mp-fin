@@ -39,6 +39,10 @@ export interface ITheme {
     replenishmentBlock: {
       height: number;
     };
+    adminForm: {
+      maxWidth: number;
+      width: number;
+    };
   };
   indents: {
     loginForm: {
@@ -54,6 +58,27 @@ export interface ITheme {
     main: {
       paddingLeft: number;
       paddingLeftHide: number;
+    };
+    adminMenu: {
+      paddingTop: number;
+      paddingRight: number;
+      paddingBottom: number;
+      paddingLeft: number;
+    };
+    adminList: {
+      rowGap: number;
+    };
+    adminContainer: {
+      marginTop: number;
+    };
+    adminForm: {
+      columnGap: number;
+    };
+    adminSubtitle: {
+      marginBottom: number;
+    };
+    adminSearchBlock: {
+      marginTop: number;
     };
   };
   borders: {

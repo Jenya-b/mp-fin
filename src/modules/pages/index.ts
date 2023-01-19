@@ -2,8 +2,7 @@ import { lazy } from 'react';
 import { LoginPage } from 'modules/pages/Login/Login';
 import { Users } from 'modules/pages/Admin/Users/Users';
 import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
-import { AnaliticsOwn } from 'modules/pages/Analitics/AnaliticsOwn/AnaliticsOwn';
-import { AnaliticsOther } from 'modules/pages/Analitics/AnaliticsOther/AnaliticsOther';
+import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
 
 const AnaliticsPage = lazy(() => import('modules/pages/Analitics/Analitics'));
 const ReportsPage = lazy(() => import('modules/pages/Reports/Reports'));
@@ -18,6 +17,7 @@ const PasswordReset = lazy(() => import('modules/pages/Login/PasswordReset/Passw
 const NotFoundPage = lazy(() => import('modules/pages/NotFound/NotFound'));
 const BalancePage = lazy(() => import('modules/pages/Balance/Balance'));
 const AdminPage = lazy(() => import('modules/pages/Admin/Admin'));
+const SearchQuery = lazy(() => import('modules/pages/SearchQuery/SearchQuery'));
 
 export {
   AnaliticsPage,
@@ -31,9 +31,9 @@ export {
   NotFoundPage,
   BalancePage,
   AdminPage,
+  SearchQuery,
   LoginPage,
   Users,
   Weeks,
-  AnaliticsOwn,
-  AnaliticsOther,
+  SearchTerms,
 };

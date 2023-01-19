@@ -3,7 +3,6 @@ import { productApi } from 'services/api/productApi';
 import { userApi } from 'services/api/userApi';
 import { balanceApi } from 'services/api/balanceApi';
 import { adminApi } from 'services/api/adminApi';
-import { smartAnaliticApi } from 'services/api/smartAnaliticApi';
 import { analiticApi } from 'services/api/analiticApi';
 
 export const {
@@ -20,6 +19,7 @@ export const {
   useDeleteReportMutation,
   useGetArticlesQuery,
   useChangeArticleMutation,
+  useLazyGetWbQueriesQuery,
 } = productApi;
 
 export const { useLazyGetUserQuery, useChangePersonalDataMutation, useChangeReportIdMutation } =
@@ -34,7 +34,5 @@ export const {
   useAppointAdminMutation,
   useRemoveAdminRightsMutation,
 } = adminApi;
-
-export const { useLazyGetSmartDataSSOQuery, useAddReportSmartDataMutation } = smartAnaliticApi;
 
 export const { useLazyGetFiltersDataQuery, usePostAnaliticsMutation } = analiticApi;

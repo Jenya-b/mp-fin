@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button } from 'styles/components';
+import { PrimaryButton } from 'styles/components';
 import { fontStylesCaptionBig, fontStylesH1, fontStylesH2 } from 'styles/typography';
 
 export const NotFoundPage = () => (
@@ -39,7 +39,7 @@ const Subtitle = styled.h2`
   ${fontStylesH2}
   text-align: center;
 `;
-const NotFoundButton = styled(Button)`
+const NotFoundButton = styled(PrimaryButton)`
   ${fontStylesCaptionBig}
   padding: 10px 30px;
 `;

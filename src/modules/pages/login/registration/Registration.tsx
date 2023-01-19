@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
 import { useAppDispatch } from 'store/store';
-import { Checkbox, PrimaryButton, PrimaryInput } from 'styles/components';
+import { Checkbox, SecondaryButton, SecondaryInput } from 'styles/components';
 import { useRegisterUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
 import { Loader } from 'modules/components/Loader/Loader';
@@ -58,7 +58,7 @@ export const Registration = () => {
       <TitleForm>Регистрация</TitleForm>
       <InputList>
         <Label>
-          <PrimaryInput
+          <SecondaryInput
             style={registerUserError && { color: 'red' }}
             {...register('email', {
               required: 'Поле обязательно к заполнению',
@@ -74,7 +74,7 @@ export const Registration = () => {
           )}
         </Label>
         <Label>
-          <PrimaryInput
+          <SecondaryInput
             {...register('password', {
               required: 'Поле обязательно к заполнению',
               minLength: 4,
@@ -89,7 +89,7 @@ export const Registration = () => {
           )}
         </Label>
         <Label>
-          <PrimaryInput
+          <SecondaryInput
             {...register('confirmPassword')}
             type="password"
             placeholder="Повторите пароль"
@@ -102,7 +102,7 @@ export const Registration = () => {
         </Label>
       </InputList>
       <Controls>
-        <PrimaryButton>Продолжить</PrimaryButton>
+        <SecondaryButton>Продолжить</SecondaryButton>
       </Controls>
       <LinkWrapperCenter>
         <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>

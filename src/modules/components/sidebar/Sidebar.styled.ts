@@ -35,11 +35,3 @@ export const LogoImg = styled.img`
   width: 100%;
   height: 100%;
 `;
-
-export const MenuList = styled.ul`
-  padding-top: 40px;
-  padding-left: 27px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-`;

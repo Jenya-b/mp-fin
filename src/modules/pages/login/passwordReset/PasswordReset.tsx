@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Link, useSearchParams } from 'react-router-dom';
-import { PrimaryInput, PrimaryButton } from 'styles/components';
+import { SecondaryInput, SecondaryButton } from 'styles/components';
 import { usePasswordResetMutation } from 'services';
 import {
   InputList,
@@ -59,10 +59,10 @@ export const PasswordReset = () => {
             <TitleForm>Смена пароля</TitleForm>
             <InputList>
               <Label>
-                <PrimaryInput value={userEmail} disabled />
+                <SecondaryInput value={userEmail} disabled />
               </Label>
               <Label>
-                <PrimaryInput
+                <SecondaryInput
                   {...register('passNew', {
                     required: 'Поле обязательно к заполнению',
                     minLength: 4,
@@ -78,7 +78,7 @@ export const PasswordReset = () => {
               </Label>
             </InputList>
             <Controls>
-              <PrimaryButton>Продолжить</PrimaryButton>
+              <SecondaryButton>Продолжить</SecondaryButton>
             </Controls>
             <LinkWrapperCenter>
               <span>Перейти к форме</span> {''}

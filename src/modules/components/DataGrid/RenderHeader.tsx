@@ -6,7 +6,7 @@ interface RenderHeaderProps {
 }
 
 export const RenderHeader = ({ headerName, sum }: RenderHeaderProps) => (
-  <Wrapper>
+  <Wrapper title={headerName}>
     <HeaderName>{headerName}</HeaderName>
     <Parameter>{sum.toLocaleString('ru-RU')}</Parameter>
   </Wrapper>

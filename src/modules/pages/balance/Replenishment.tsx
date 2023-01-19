@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PrimaryButton } from 'styles/components';
+import { SecondaryButton } from 'styles/components';
 import { fontStylesCaption, fontStylesH1, fontStylesRegularBold } from 'styles/typography';
 import { balanceImg } from 'constants/images';
 
@@ -23,7 +23,7 @@ export const Replenishment = ({ currentBalance }: ReplenishmentProps) => (
         </WriteOffParam>
       </Item>
       <Control>
-        <PrimaryButton>Пополнить</PrimaryButton>
+        <SecondaryButton>Пополнить</SecondaryButton>
       </Control>
     </List>
     <ImageWrapp>

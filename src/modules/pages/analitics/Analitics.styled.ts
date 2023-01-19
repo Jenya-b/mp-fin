@@ -1,18 +1,36 @@
 import styled from 'styled-components';
-import { fontStylesCaptionBig } from 'styles/typography';
+import { fontStylesH2 } from 'styles/typography';
 
-export const NavWrapper = styled.div`
-  ${fontStylesCaptionBig}
-  padding: 30px 0 20px 0;
+export const Wrapper = styled.div`
+  display: grid;
+  grid-template: auto 500px / max-content auto;
+  column-gap: 40px;
+  row-gap: 40px;
+`;
+
+export const Filters = styled.div`
+  grid-row: 1/3;
+  grid-column: 1/2;
   display: flex;
-  column-gap: 20px;
+  flex-direction: column;
+  row-gap: 20px;
+`;
 
-  a {
-    color: ${({ theme }) => theme.colors.adminMenuLink};
+export const Title = styled.h2`
+  ${fontStylesH2}
+`;
 
-    &.active {
-      color: ${({ theme }) => theme.colors.adminMenuLinkActive};
-      border-bottom: 1px solid;
-    }
-  }
+export const Diagram = styled.div`
+  grid-row: 1/2;
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+  row-gap: 50px;
+  column-gap: 50px;
+`;
+
+export const Table = styled.div`
+  grid-row: 2/3;
+  grid-column: 2/3;
+  width: 100%;
 `;

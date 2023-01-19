@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import { IArticle, IReport, IReportID } from 'services/types';
+import { IArticle, IReport, IReportID, IWbQueries } from 'services/types';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
@@ -21,11 +21,11 @@ export const productApi = createApi({
       }),
     }),
     getArticles: builder.query<IArticle[], string>({
-      query: (search) => ({
+      query: (text) => ({
         url: '/Product/GetArticles',
         credentials: 'include',
         params: {
-          text: search,
+          text,
         },
       }),
     }),
@@ -35,6 +35,15 @@ export const productApi = createApi({
         method: 'POST',
         body: data,
         credentials: 'include',
+      }),
+    }),
+    getWbQueries: builder.query<IWbQueries[], string>({
+      query: (text) => ({
+        url: '/Product/GetWbQueries',
+        credentials: 'include',
+        params: {
+          text,
+        },
       }),
     }),
   }),

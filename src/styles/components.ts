@@ -25,18 +25,18 @@ export const MainSubtitle = styled.h2`
   color: ${({ theme }) => theme.colors.mainTitle};
 `;
 
-export const Button = styled.button`
+export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.colors.btn};
   ${ButtonMailStyles}
 `;
 
-export const PrimaryButton = styled(Button)`
+export const SecondaryButton = styled(PrimaryButton)`
   width: 100%;
   height: ${({ theme }) => theme.sizes.primaryBtn.height}px;
   ${fontStylesRegularBold}
 `;
 
-export const Input = styled.input`
+export const PrimaryInput = styled.input`
   width: 100%;
   height: ${({ theme }) => theme.sizes.inputForm.height}px;
   padding-left: 20px;
@@ -59,11 +59,7 @@ export const Input = styled.input`
   }
 `;
 
-export const PrimaryInput = styled(Input)`
-  background: ${({ theme }) => theme.colors.inputFormBackground};
-`;
-
-export const SearchInput = styled(Input)`
+export const SecondaryInput = styled(PrimaryInput)`
   background: ${({ theme }) => theme.colors.inputFormBackground};
 `;
 

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { PrimaryButton, PrimaryInput } from 'styles/components';
+import { SecondaryButton, SecondaryInput } from 'styles/components';
 import { useSigninUserMutation } from 'services';
 import { setIsActiveUser } from 'store/reducers/userSlice';
 import { Loader } from 'modules/components/Loader/Loader';
@@ -71,7 +71,7 @@ export const Signin = () => {
         <TitleForm>Вход в личный кабинет</TitleForm>
         <InputList>
           <Label>
-            <PrimaryInput
+            <SecondaryInput
               {...register('userName', {
                 required: 'Поле обязательно к заполнению',
                 pattern: inputEmailPattern,
@@ -83,7 +83,7 @@ export const Signin = () => {
             )}
           </Label>
           <Label>
-            <PrimaryInput
+            <SecondaryInput
               {...register('password', {
                 required: 'Поле обязательно к заполнению',
               })}
@@ -99,7 +99,7 @@ export const Signin = () => {
           <Link to={passwordRecovery}>Забыли пароль?</Link>
         </LinkWrapper>
         <Controls>
-          <PrimaryButton>Продолжить</PrimaryButton>
+          <SecondaryButton>Продолжить</SecondaryButton>
         </Controls>
         <LinkWrapperCenter>
           <span>Нет аккаутнта?</span> <Link to={registration}>Зарегистрируйтесь</Link>
