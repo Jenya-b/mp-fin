@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { mainLogo } from 'constants/images';
 import { menuSidebar, adminRoute } from 'constants/menu';
 import { routerPath } from 'constants/routerPath';
-import { MenuItem } from 'modules/components/MenuItem/MenuItem';
-import { Aside, Logo, LogoImg, LogoWrapper, MenuList } from './Sidebar.styled';
+import { Menu } from 'modules/components/Sidebar/Menu';
+import { Aside, Logo, LogoImg, LogoWrapper } from './Sidebar.styled';
 import { useAppSelector } from 'store/store';
 import { userSelector } from 'store/selectors';
 
@@ -19,6 +19,10 @@ export const Sidebar = () => {
       setMenuList([...menuSidebar, adminRoute]);
     }
   }, [user]);
+
+  useEffect(() => {
+    console.log(isActiveSidebar);
+  }, [isActiveSidebar]);
 
   const activeSidebar = () => {
     setInActiveSidebar(true);
@@ -37,11 +41,7 @@ export const Sidebar = () => {
           </LogoWrapper>
         </Logo>
       </Link>
-      <MenuList>
-        {menuList.map((menu) => (
-          <MenuItem key={menu.title} {...menu} isActive={isActiveSidebar} />
-        ))}
-      </MenuList>
+      <Menu list={menuList} isActive={isActiveSidebar} />
     </Aside>
   );
 };
