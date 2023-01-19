@@ -12,6 +12,7 @@ import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
 import { PercentBar } from '../PercentBar/PercentBar';
 import { getMaxValueInObject, getSumValuesInObject } from 'utils/getValueInObject';
 import { RenderHeader } from './RenderHeader';
+import { analiticColumnWidth } from 'constants/dataGrid';
 
 interface SmartTableProps {
   data: IAnaliticArticle[];
@@ -29,10 +30,11 @@ export const SmartTable = ({ data }: SmartTableProps) => {
       field: 'article',
       headerName: 'Артикул',
       hideable: false,
+      width: analiticColumnWidth,
     },
     {
       field: 'ordersCount',
-      headerName: 'Заказы, кол-во',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'ordersCount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -44,7 +46,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'ordersSum',
-      headerName: 'Заказы, сумма',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'ordersSum' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -56,7 +58,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'salesCount',
-      headerName: 'Продажи, кол-во',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'salesCount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -68,7 +70,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'salesSumWithDiscount',
-      headerName: 'Продажи (со скидкой), руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'salesSumWithDiscount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -80,7 +82,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'salesSumTransferToSeller',
-      headerName: 'Продажи (к перечислению продавцу), руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'salesSumTransferToSeller' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -92,7 +94,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'refundsCount',
-      headerName: 'Возвраты, кол-во',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'refundsCount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -104,7 +106,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'refundsSumWithDiscount',
-      headerName: 'Возвраты (со скидкой), руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'refundsSumWithDiscount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -116,7 +118,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'refundsSumTransferToSeller',
-      headerName: 'Возвраты (к перечислению продавцу), руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'refundsSumTransferToSeller' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -129,6 +131,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'redemtionPercent',
       headerName: 'Выкуп, %',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'redemtionPercent' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -136,39 +139,56 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'logisticsOrdersCount',
-      headerName: 'Логистика заказы, кол-во',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'logisticsOrdersCount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
       },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'logisticsOrdersCount' });
+        return <RenderHeader headerName="Логистика заказы, кол-во" sum={param} />;
+      },
     },
     {
       field: 'logisticsOrdersRub',
-      headerName: 'Логистика заказы, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'logisticsOrdersRub' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
       },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'logisticsOrdersRub' });
+        return <RenderHeader headerName="Логистика заказы, руб" sum={param} />;
+      },
     },
     {
       field: 'logisticsRefundsCount',
-      headerName: 'Логистика возвраты, кол-во',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'logisticsRefundsCount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
       },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'logisticsRefundsCount' });
+        return <RenderHeader headerName="Логистика возвраты, кол-во" sum={param} />;
+      },
     },
     {
       field: 'logisticsRefundsRub',
-      headerName: 'Логистика возвраты, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'logisticsRefundsRub' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'logisticsRefundsRub' });
+        return <RenderHeader headerName="Логистика возвраты, руб" sum={param} />;
       },
     },
     {
       field: 'logisticsGeneral',
       headerName: 'Логистика общая',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'logisticsGeneral' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -177,6 +197,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'logisticsFraction',
       headerName: 'Логистика на ед',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'logisticsFraction' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -184,39 +205,56 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'transferToSallerCount',
-      headerName: 'К перечислению продавцу, кол-во',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'transferToSallerCount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
       },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'transferToSallerCount' });
+        return <RenderHeader headerName="К перечислению продавцу, кол-во" sum={param} />;
+      },
     },
     {
       field: 'transferToSallerRub',
-      headerName: 'К перечислению продавцу, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'transferToSallerRub' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
       },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'transferToSallerRub' });
+        return <RenderHeader headerName="К перечислению продавцу, руб" sum={param} />;
+      },
     },
     {
       field: 'onBankAccountRub',
-      headerName: 'На счёту, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'onBankAccountRub' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
       },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'onBankAccountRub' });
+        return <RenderHeader headerName="На счёту, руб" sum={param} />;
+      },
     },
     {
       field: 'comissionWbRub',
-      headerName: 'Комиссия ВБ, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'comissionWbRub' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'comissionWbRub' });
+        return <RenderHeader headerName="Комиссия ВБ, руб" sum={param} />;
       },
     },
     {
       field: 'comissionWbPercents',
       headerName: 'Комиссия ВБ, %',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'comissionWbPercents' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -224,23 +262,32 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     },
     {
       field: 'costPriceCount',
-      headerName: 'Себестоимость, кол-во',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'costPriceCount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
       },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'costPriceCount' });
+        return <RenderHeader headerName="Себестоимость, кол-во" sum={param} />;
+      },
     },
     {
       field: 'costPriceRub',
-      headerName: 'Себестоимость, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'costPriceRub' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
+      },
+      renderHeader: () => {
+        const param = getSumValuesInObject({ data, parameter: 'costPriceRub' });
+        return <RenderHeader headerName="Себестоимость, руб" sum={param} />;
       },
     },
     {
       field: 'costPriceFraction',
       headerName: 'Себестоимость, на ед',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'costPriceFraction' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -249,6 +296,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'profitRub',
       headerName: 'Прибыль, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'profitRub' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -261,6 +309,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'profitFraction',
       headerName: 'Прибыль, на 1 ед.',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'profitFraction' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -269,6 +318,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'profitability',
       headerName: 'Рентабильность',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'profitability' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -277,6 +327,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'margin',
       headerName: 'Маржа, %',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'margin' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -285,6 +336,8 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'retailPriceIncludingAgreedDiscount',
       headerName: 'Ср. цена розничная (с учетом согласованной скидки)',
+      description: 'Ср. цена розничная (с учетом согласованной скидки)',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({
           data,
@@ -296,6 +349,8 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'wbSoldProduct',
       headerName: 'Средняя Вайлдберриз реализовал Товар (Пр)',
+      description: 'Средняя Вайлдберриз реализовал Товар (Пр)',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'wbSoldProduct' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -304,6 +359,8 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'transferToSallerForTheSoldGoods',
       headerName: 'Средняя к перечислению продавцу, руб',
+      description: 'Средняя к перечислению продавцу, руб',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({
           data,
@@ -315,6 +372,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'fractionOrders',
       headerName: 'Доля в заказах',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'fractionOrders' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -323,6 +381,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'fractionSales',
       headerName: 'Доля в продажах',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'fractionSales' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -331,6 +390,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'fractionProfit',
       headerName: 'Доля в прибыли',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'fractionProfit' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
@@ -339,6 +399,7 @@ export const SmartTable = ({ data }: SmartTableProps) => {
     {
       field: 'fractionOnBankAccount',
       headerName: 'Доля на счет',
+      width: analiticColumnWidth,
       renderCell: (params: GridRenderCellParams) => {
         const maxValue = getMaxValueInObject({ data, parameter: 'fractionOnBankAccount' });
         return <PercentBar value={params.value} maxValue={maxValue} />;
