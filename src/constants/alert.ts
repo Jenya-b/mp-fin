@@ -20,5 +20,4 @@ export const alertMessage: INotifyMessage = {
   errorResetPass: { message: 'Произошла ошибка', type: 'error' },
   errorSignin: { message: 'Неверный логин или пароль', type: 'error' },
   infoSearchQuery: { message: 'Данные не найдены', type: 'info' },
-  errorSearchQuery: { message: 'Произошла ошибка', type: 'error' },
 };

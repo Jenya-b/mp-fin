@@ -8,11 +8,18 @@ import { Loader } from 'modules/components/Loader/Loader';
 import { SearchQueryDataGrid } from './DataGrid';
 import { sortDate } from 'utils/formatDate';
 import { Main, MainTitle } from 'styles/components';
+import { useAppDispatch, useAppSelector } from 'store/store';
+import { notifySelector } from 'store/selectors';
+import { openNotify } from 'store/reducers/notifySlice';
+import { alertMessage } from 'constants/alert';
+import { Notification } from 'modules/components/Notification/Notification';
 
 export const SearchQuery = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [chartData, setChartData] = useState<IWbQueries[]>([]);
   const debouncedSearch = useDebounce(searchValue, 600);
+  const dispatch = useAppDispatch();
+  const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
 
   const { isLoading, isFetching, data, refetch } = useGetWbQueriesQuery(debouncedSearch);
 
@@ -25,7 +32,10 @@ export const SearchQuery = () => {
   }, [debouncedSearch]);
 
   useEffect(() => {
-    if (data && !data.length) setChartData([]);
+    if (data && !data.length) {
+      setChartData([]);
+      dispatch(openNotify(alertMessage.infoSearchQuery));
+    }
     if (data && data.length) {
       const dataFilter = data.filter((item) => item.title === searchValue);
       const dataSort = dataFilter.sort((dateA, dateB) =>
@@ -43,6 +53,7 @@ export const SearchQuery = () => {
   return (
     <Main>
       {(isLoading || isFetching) && <Loader />}
+      <Notification isOpenNotify={isOpenNotify} notifyMessage={notifyMessage} />
       <MainTitle>Аналитика</MainTitle>
       <SearchBlock>
         <Subtitle>Получить данные</Subtitle>
