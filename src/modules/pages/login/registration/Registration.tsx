@@ -21,13 +21,7 @@ import {
 } from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
 import { telegramIcon } from 'constants/images';
-
-type FormValues = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  isAgreeProcessing: boolean;
-};
+import { FormValuesReg } from 'interfaces/form';
 
 export const Registration = () => {
   const navigate = useNavigate();
@@ -38,7 +32,7 @@ export const Registration = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesReg>();
 
   const [registerUser, { isLoading, isSuccess, error: registerUserError }] =
     useRegisterUserMutation();

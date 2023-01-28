@@ -14,10 +14,7 @@ import {
 import { Loader } from 'modules/components/Loader/Loader';
 import { InfoMessage } from 'modules/pages/Login/InfoMessage';
 import { routerPath } from 'constants/routerPath';
-
-type FormValues = {
-  passNew: string;
-};
+import { FormValuesPassReset } from 'interfaces/form';
 
 export const PasswordReset = () => {
   const { login, passwordRecovery, registration } = routerPath;
@@ -25,7 +22,7 @@ export const PasswordReset = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesPassReset>();
 
   const [searchParams] = useSearchParams();
   const userEmail = searchParams.get('userEmail') ?? '';

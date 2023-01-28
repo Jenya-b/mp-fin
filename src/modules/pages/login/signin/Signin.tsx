@@ -22,11 +22,7 @@ import { inputEmailPattern } from 'constants/validInput';
 import { notifySelector } from 'store/selectors';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
-
-type FormValues = {
-  userName: string;
-  password: string;
-};
+import { FormValuesSignin } from 'interfaces/form';
 
 export const Signin = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +30,7 @@ export const Signin = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesSignin>();
 
   const { home, passwordRecovery, registration } = routerPath;
   const [signinUser, { isLoading, isSuccess, isError }] = useSigninUserMutation();

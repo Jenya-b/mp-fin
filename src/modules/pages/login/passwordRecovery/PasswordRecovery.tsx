@@ -19,14 +19,7 @@ import {
 import { inputEmailPattern } from 'constants/validInput';
 import { notifySelector } from 'store/selectors';
 import { routerPath } from 'constants/routerPath';
-
-type FormValues = {
-  email: string;
-};
-
-type ErrorType = {
-  message: string;
-};
+import { ErrorType, FormValuesPassRecovery } from 'interfaces/form';
 
 export const PasswordRecovery = () => {
   const { login } = routerPath;
@@ -36,7 +29,7 @@ export const PasswordRecovery = () => {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesPassRecovery>();
 
   const [recoveryPass, { isLoading, isSuccess, isError, data, error }] =
     usePasswordRecoveryMutation();
