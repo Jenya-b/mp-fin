@@ -130,6 +130,10 @@ export const baseTheme: ITheme = {
       maxWidth: 900,
       width: 100,
     },
+    telegramIcon: {
+      width: 25,
+      height: 25,
+    },
   },
   indents: {
     loginForm: {

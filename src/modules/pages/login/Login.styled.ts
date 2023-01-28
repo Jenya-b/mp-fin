@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { SecondaryButton } from 'styles/components';
 import { flexCenterAll, linkStyles } from '../../../styles/fragments';
 import { fontStylesH2, fontStylesSmall } from '../../../styles/typography';
 
@@ -78,6 +79,9 @@ export const Label = styled.label`
 
 export const Controls = styled.div`
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
 `;
 
 export const LinkWrapper = styled.p`
@@ -94,4 +98,11 @@ export const LinkWrapperCenter = styled(LinkWrapper)`
 export const MessageError = styled.p`
   margin-top: 5px;
   color: ${({ theme }) => theme.colors.messageError};
+`;
+
+export const TelegramButton = styled(SecondaryButton)``;
+
+export const TelegramImg = styled.img`
+  width: ${({ theme }) => theme.sizes.telegramIcon.width}px;
+  height: ${({ theme }) => theme.sizes.telegramIcon.height}px;
 `;

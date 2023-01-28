@@ -16,8 +16,11 @@ import {
   LoginForm,
   MessageError,
   TitleForm,
+  TelegramButton,
+  TelegramImg,
 } from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
+import { telegramIcon } from 'constants/images';
 
 type FormValues = {
   email: string;
@@ -103,6 +106,9 @@ export const Registration = () => {
       </InputList>
       <Controls>
         <SecondaryButton>Продолжить</SecondaryButton>
+        <TelegramButton type="button">
+          <TelegramImg src={telegramIcon} alt="" /> Telegram
+        </TelegramButton>
       </Controls>
       <LinkWrapperCenter>
         <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>
