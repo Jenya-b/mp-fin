@@ -19,8 +19,7 @@ import { IAnaliticVisualData } from 'services/types';
 import { SelectChangeEvent } from '@mui/material';
 import { Controls } from './Controls';
 import { IDataSets } from 'interfaces/analitics';
-import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
-import { isObject } from 'utils/isObject';
+import { getLocalStorage, setLocalStorage, isObject } from 'utils';
 
 ChartJS.register(
   CategoryScale,

@@ -1,12 +1,12 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useDebounce } from 'hooks/debounce';
+import { useDebounce } from 'hooks';
 import { SearchBlock, Subtitle, Label, InputSearch, DataBlock } from './SearchQuery.styled';
 import { useGetWbQueriesQuery } from 'services';
 import { SearchQueryChart } from './Chart';
 import { IWbQueries } from 'services/types';
 import { Loader } from 'modules/components/Loader/Loader';
 import { SearchQueryDataGrid } from './DataGrid';
-import { sortDate } from 'utils/formatDate';
+import { sortDate } from 'utils';
 import { Main, MainTitle } from 'styles/components';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { notifySelector } from 'store/selectors';

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Main, MainTitle } from 'styles/components';
-import { useFilter } from 'hooks/useFilter';
+import { useFilter } from 'hooks';
 import { useLazyGetFiltersDataQuery, usePostAnaliticsMutation } from 'services';
 import { Filters, Wrapper, Title, Diagram, Table } from './Analitics.styled';
 import { SmartTable } from 'modules/components/DataGrid/DataGrid';
@@ -10,8 +10,7 @@ import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 import { BaseChart } from 'modules/components/Charts/Chart';
 import { IAnaliticVisualData } from 'services/types';
 import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
-import { createArray } from 'utils/createArray';
-import { getLocalStorage } from 'utils/localStorage';
+import { createArray, getLocalStorage } from 'utils';
 
 export const AnaliticsPage = () => {
   const [

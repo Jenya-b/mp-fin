@@ -8,9 +8,8 @@ import {
   GridToolbar,
 } from '@mui/x-data-grid';
 import { IAnaliticArticle } from 'services/types';
-import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
+import { getLocalStorage, setLocalStorage, getMaxValueInObject, getSumValuesInObject } from 'utils';
 import { PercentBar } from '../PercentBar/PercentBar';
-import { getMaxValueInObject, getSumValuesInObject } from 'utils/getValueInObject';
 import { RenderHeader } from './RenderHeader';
 import { analiticColumnWidth } from 'constants/dataGrid';
 
