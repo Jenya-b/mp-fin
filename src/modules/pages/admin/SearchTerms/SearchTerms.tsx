@@ -1,12 +1,15 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { fileWBQuerySelector } from 'store/selectors';
+import { fileWBQuerySelector, notifySelector } from 'store/selectors';
 import { fetchWBQueryFile } from 'services/api/filesApi';
 import { formatDateISOString } from 'utils/formatDate';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 import { InputFile, InputFileBtn, InputFileName, Subtitle } from './SearchTerms.styled';
 import { Loader } from 'modules/components/Loader/Loader';
+import { Notification } from 'modules/components/Notification/Notification';
+import { openNotify } from 'store/reducers/notifySlice';
+import { alertMessage } from 'constants/alert';
 
 export const SearchTerms = () => {
   const [requestFile, setRequestFile] = useState<FormData>();
@@ -14,7 +17,17 @@ export const SearchTerms = () => {
   const [dateValue, setDateValue] = useState<string>('');
   const dispatch = useAppDispatch();
 
+  const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
   const { isLoading, isError, isSuccess } = useAppSelector(fileWBQuerySelector);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(openNotify(alertMessage.successUploadSearchTerms));
+    }
+    if (isError) {
+      dispatch(openNotify(alertMessage.warningUploadSearchTerms));
+    }
+  }, [isSuccess, isError]);
 
   const handleChangeFile = (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
@@ -42,6 +55,7 @@ export const SearchTerms = () => {
   return (
     <Main>
       {isLoading && <Loader />}
+      <Notification isOpenNotify={isOpenNotify} notifyMessage={notifyMessage} />
       <MainTitle>Поисковые запросы</MainTitle>
       <Container>
         <Subtitle>Обновить запросы</Subtitle>
