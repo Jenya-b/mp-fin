@@ -10,7 +10,8 @@ export const colorMainGreenPrimary = '#2B9999';
 export const colorMainGreenSecondary = '#1FC5C7';
 
 export const colorAdditionalGreen = '#28C783';
-export const colorAdditionalBlue = '#BDF6E8';
+export const colorAdditionalBlue = '#00beff';
+export const colorAdditionalBlueDark = '#0183b0';
 export const colorAdditionalOrange = '#FFE0BD';
 export const colorAdditionalPinkSecondary = '#E14665';
 export const colorAdditionalPinkPrimary = '#FFD2DB';

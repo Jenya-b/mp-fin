@@ -100,7 +100,14 @@ export const MessageError = styled.p`
   color: ${({ theme }) => theme.colors.messageError};
 `;
 
-export const TelegramButton = styled(SecondaryButton)``;
+export const TelegramButton = styled(SecondaryButton)`
+  background: ${({ theme }) => theme.colors.btnbackgroundTelegram};
+
+  :hover,
+  :active {
+    background: ${({ theme }) => theme.colors.btnHoverTelegram};
+  }
+`;
 
 export const TelegramImg = styled.img`
   width: ${({ theme }) => theme.sizes.telegramIcon.width}px;

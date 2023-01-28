@@ -21,10 +21,7 @@ export const ButtonMailStyles = css`
   background: ${({ theme }) => theme.colors.btnbackground};
   transition: all ${({ theme }) => theme.transitions.button.time}s;
 
-  :hover {
-    background: ${({ theme }) => theme.colors.btnHover};
-  }
-
+  :hover,
   :active {
     background: ${({ theme }) => theme.colors.btnHover};
   }

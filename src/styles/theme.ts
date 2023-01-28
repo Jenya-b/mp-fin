@@ -11,6 +11,7 @@ import {
   colorMainGreyTertiary,
   colorMainWhite,
   colorAdditionalBlue,
+  colorAdditionalBlueDark,
   colorAdditionalGreen,
   colorAdditionalOrange,
   colorAdditionalPinkPrimary,
@@ -43,7 +44,9 @@ export const baseTheme: ITheme = {
     //button
     btn: colorMainGreyLight,
     btnbackground: colorMainGreenSecondary,
+    btnbackgroundTelegram: colorAdditionalBlue,
     btnHover: colorMainGreenPrimary,
+    btnHoverTelegram: colorAdditionalBlueDark,
     btnActive: colorMainGreenPrimary,
     btnCircleHeader: colorMainGreyLight,
 
