@@ -108,7 +108,7 @@ export const Registration = () => {
       <Controls>
         <SecondaryButton>Продолжить</SecondaryButton>
         <TelegramButton type="button">
-          <TelegramImg src={telegramIcon} alt="" /> Telegram
+          <TelegramImg src={telegramIcon} /> Telegram
         </TelegramButton>
       </Controls>
       <LinkWrapperCenter>

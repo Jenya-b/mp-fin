@@ -18,6 +18,7 @@ import {
 } from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
 import { notifySelector } from 'store/selectors';
+import { routerPath } from 'constants/routerPath';
 
 type FormValues = {
   email: string;
@@ -28,6 +29,7 @@ type ErrorType = {
 };
 
 export const PasswordRecovery = () => {
+  const { login } = routerPath;
   const dispatch = useAppDispatch();
   const {
     register,
@@ -94,7 +96,7 @@ export const PasswordRecovery = () => {
           <SecondaryButton>Продолжить</SecondaryButton>
         </Controls>
         <LinkWrapperCenter>
-          <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>
+          <span>Уже есть аккаунт?</span> <Link to={login}> Войти</Link>
         </LinkWrapperCenter>
       </LoginForm>
     </>
