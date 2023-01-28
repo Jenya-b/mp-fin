@@ -14,7 +14,7 @@ export const fetchReportFiles = createAsyncThunk(
   'fetchFilesReport',
   async (data: FormData, thunkApi) => {
     try {
-      const response = await uploadFiles.post('/Product/SaveProducts', data);
+      const response = await uploadFiles.post('/Product/SaveProductsNew', data);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error);

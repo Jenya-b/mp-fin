@@ -20,10 +20,6 @@ export const Sidebar = () => {
     }
   }, [user]);
 
-  useEffect(() => {
-    console.log(isActiveSidebar);
-  }, [isActiveSidebar]);
-
   const activeSidebar = () => {
     setInActiveSidebar(true);
   };
