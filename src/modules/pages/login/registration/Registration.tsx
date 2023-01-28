@@ -32,7 +32,7 @@ type FormValues = {
 export const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { home } = routerPath;
+  const { home, passwordRecovery, login } = routerPath;
 
   const {
     register,
@@ -72,7 +72,8 @@ export const Registration = () => {
           {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
           {registerUserError && (
             <LinkWrapper>
-              <span>Email уже зарегестрирован.</span> <Link to="reset-pass">Забыли пароль?</Link>
+              <span>Email уже зарегестрирован.</span>{' '}
+              <Link to={`../${passwordRecovery}`}>Забыли пароль?</Link>
             </LinkWrapper>
           )}
         </Label>
@@ -111,7 +112,7 @@ export const Registration = () => {
         </TelegramButton>
       </Controls>
       <LinkWrapperCenter>
-        <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>
+        <span>Уже есть аккаунт?</span> <Link to={login}> Войти</Link>
       </LinkWrapperCenter>
     </LoginForm>
   );
