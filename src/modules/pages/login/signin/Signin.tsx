@@ -18,7 +18,6 @@ import {
   MessageError,
 } from 'modules/pages/Login/Login.styled';
 import { Notification } from 'modules/components/Notification/Notification';
-import { inputEmailPattern } from 'constants/validInput';
 import { notifySelector } from 'store/selectors';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
@@ -70,9 +69,8 @@ export const Signin = () => {
             <SecondaryInput
               {...register('userName', {
                 required: 'Поле обязательно к заполнению',
-                pattern: inputEmailPattern,
               })}
-              placeholder="Email"
+              placeholder="Номер телефона или Email"
             />
             {errors?.userName && (
               <MessageError>{errors?.userName?.message || 'Error'}</MessageError>

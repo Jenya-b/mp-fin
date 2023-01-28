@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, MouseEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
@@ -22,6 +22,7 @@ import {
 import { inputEmailPattern } from 'constants/validInput';
 import { telegramIcon } from 'constants/images';
 import { FormValuesReg } from 'interfaces/form';
+import { telegramBotUrl } from 'services/baseUrl';
 
 export const Registration = () => {
   const navigate = useNavigate();
@@ -47,6 +48,11 @@ export const Registration = () => {
   const onSubmit = handleSubmit((data) => {
     registerUser(data);
   });
+
+  const registrationViaTelegram = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    window.open(telegramBotUrl);
+  };
 
   if (isLoading) return <Loader />;
 
@@ -101,7 +107,7 @@ export const Registration = () => {
       </InputList>
       <Controls>
         <SecondaryButton>Продолжить</SecondaryButton>
-        <TelegramButton type="button">
+        <TelegramButton type="button" onClick={registrationViaTelegram}>
           <TelegramImg src={telegramIcon} /> Telegram
         </TelegramButton>
       </Controls>
