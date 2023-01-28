@@ -1,17 +1,18 @@
-export const colorMainWhite = '#ffffff';
-export const colorMainGreyPrimary = '#4F4F4F';
-export const colorMainGreySecondary = '#828282';
-export const colorMainGreyTertiary = '#BDBDBD';
-export const colorMainGreyLight = '#F2F2F2';
-export const colorMainBlack = '#333333';
-export const colorMainBlue = '#F1F8FC';
-export const colorMainBluePrimary = '#5876C5';
-export const colorMainGreenPrimary = '#2B9999';
-export const colorMainGreenSecondary = '#1FC5C7';
-
-export const colorAdditionalGreen = '#28C783';
-export const colorAdditionalBlue = '#00beff';
-export const colorAdditionalBlueDark = '#0183b0';
-export const colorAdditionalOrange = '#FFE0BD';
-export const colorAdditionalPinkSecondary = '#E14665';
-export const colorAdditionalPinkPrimary = '#FFD2DB';
+export enum Colors {
+  MainWhite = '#ffffff',
+  MainGreyPrimary = '#4F4F4F',
+  MainGreySecondary = '#828282',
+  MainGreyTertiary = '#BDBDBD',
+  MainGreyLight = '#F2F2F2',
+  MainBlack = '#333333',
+  MainBlue = '#F1F8FC',
+  MainBluePrimary = '#5876C5',
+  MainGreenPrimary = '#2B9999',
+  MainGreenSecondary = '#1FC5C7',
+  AdditionalGreen = '#28C783',
+  AdditionalBlue = '#00beff',
+  AdditionalBlueDark = '#0183b0',
+  AdditionalOrange = '#FFE0BD',
+  AdditionalPinkSecondary = '#E14665',
+  AdditionalPinkPrimary = '#FFD2DB',
+}

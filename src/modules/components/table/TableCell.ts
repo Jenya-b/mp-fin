@@ -1,9 +1,9 @@
 import TableCell from '@mui/material/TableCell';
 import { styled } from '@mui/material/styles';
-import { colorMainGreyPrimary } from 'constants/colors';
+import { Colors } from 'constants/colors';
 
 export const StyledTableCell = styled(TableCell)`
-  color: ${colorMainGreyPrimary};
+  color: ${Colors.MainGreyPrimary};
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;

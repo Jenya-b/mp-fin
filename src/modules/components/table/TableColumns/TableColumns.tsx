@@ -1,6 +1,6 @@
 import TableCell from '@mui/material/TableCell';
 import { styled } from '@mui/material/styles';
-import { colorMainBlack } from 'constants/colors';
+import { Colors } from 'constants/colors';
 import { ITablecolumns } from 'interfaces/tables';
 
 interface TableColumnsProps {
@@ -16,7 +16,7 @@ export const TableColumns = ({ columnNames }: TableColumnsProps) => (
 );
 
 export const StyledTableCellColl = styled(TableCell)`
-  color: ${colorMainBlack};
+  color: ${Colors.MainBlack};
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
