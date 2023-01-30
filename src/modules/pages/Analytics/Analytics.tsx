@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Main, MainTitle } from 'styles/components';
 import { useFilter } from 'hooks';
-import { useLazyGetFiltersDataQuery, usePostAnaliticsMutation } from 'services';
-import { Filters, Wrapper, Title, Diagram, Table } from './Analitics.styled';
+import { useLazyGetFiltersDataQuery, usePostAnalyticsMutation } from 'services';
+import { Filters, Wrapper, Title, Diagram, Table } from './Analytics.styled';
 import { SmartTable } from 'modules/components/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
 import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
 import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 import { BaseChart } from 'modules/components/Charts/Chart';
-import { IAnaliticVisualData } from 'services/types';
+import { IAnalyticVisualData } from 'services/types';
 import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
 import { createArray, getLocalStorage } from 'utils';
 
@@ -20,12 +20,12 @@ export const AnaliticsPage = () => {
   const [
     fetchAnaliticsData,
     { isSuccess: isSuccessAnaliticsData, isLoading: isLoadingAnaliticsData, data: analiticsData },
-  ] = usePostAnaliticsMutation();
+  ] = usePostAnalyticsMutation();
   const [allWeekId, setAllWeekId] = useState<string[]>([]);
   const [allArticleName, setAllArticleName] = useState<string[]>([]);
   const [weekIdFilter, setWeekIdFilter] = useFilter('weeksId');
   const [articleNameFilter, setArticleNameFilter] = useFilter('articlesId');
-  const [firstAliticsData, setFirstAliticsData] = useState<IAnaliticVisualData>();
+  const [firstAliticsData, setFirstAliticsData] = useState<IAnalyticVisualData>();
   const [countChart, setCountChart] = useState(getLocalStorage('countChart') ?? 1);
 
   useEffect(() => {
@@ -60,6 +60,8 @@ export const AnaliticsPage = () => {
       articleNames: !articleNameFilter.length ? allArticleName : articleNameFilter,
     });
   };
+
+  if (filtersData?.articles || filtersData?.weeksList) return <div>нет контента</div>;
 
   return (
     <Main>

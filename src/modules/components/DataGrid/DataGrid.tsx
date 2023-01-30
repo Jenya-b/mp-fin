@@ -7,14 +7,14 @@ import {
   GridRenderCellParams,
   GridToolbar,
 } from '@mui/x-data-grid';
-import { IAnaliticArticle } from 'services/types';
+import { IAnalyticArticle } from 'services/types';
 import { getLocalStorage, setLocalStorage, getMaxValueInObject, getSumValuesInObject } from 'utils';
 import { PercentBar } from '../PercentBar/PercentBar';
 import { RenderHeader } from './RenderHeader';
 import { analiticColumnWidth } from 'constants/dataGrid';
 
 interface SmartTableProps {
-  data: IAnaliticArticle[];
+  data: IAnalyticArticle[];
 }
 
 export const SmartTable = ({ data }: SmartTableProps) => {

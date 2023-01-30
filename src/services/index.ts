@@ -3,7 +3,7 @@ import { productApi } from 'services/api/productApi';
 import { userApi } from 'services/api/userApi';
 import { balanceApi } from 'services/api/balanceApi';
 import { adminApi } from 'services/api/adminApi';
-import { analiticApi } from 'services/api/analiticApi';
+import { analyticApi } from 'services/api/analyticApi';
 
 export const {
   useRegisterUserMutation,
@@ -35,4 +35,4 @@ export const {
   useRemoveAdminRightsMutation,
 } = adminApi;
 
-export const { useLazyGetFiltersDataQuery, usePostAnaliticsMutation } = analiticApi;
+export const { useLazyGetFiltersDataQuery, usePostAnalyticsMutation } = analyticApi;

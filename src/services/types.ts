@@ -94,7 +94,7 @@ export interface IFiltersData {
   weeksList: IWeekWithParam[];
 }
 
-export interface IAnaliticDataSum {
+export interface IAnalyticDataSum {
   comissionWbPercents: number;
   comissionWbRub: number;
   costPriceCount: number;
@@ -131,19 +131,19 @@ export interface IAnaliticDataSum {
   wbSoldProduct: number;
 }
 
-export interface IAnaliticArticle extends IAnaliticDataSum {
+export interface IAnalyticArticle extends IAnalyticDataSum {
   article: string;
 }
 
-export interface IAnaliticWeek extends IAnaliticDataSum {
+export interface IAnalyticWeek extends IAnalyticDataSum {
   weekId: string;
   weekNumber: string;
 }
 
-export interface IAnaliticVisualData {
-  analyticsDatas: IAnaliticArticle[];
-  analyticsDatasSum: IAnaliticDataSum;
-  weekAndSums: IAnaliticWeek[];
+export interface IAnalyticVisualData {
+  analyticsDatas: IAnalyticArticle[];
+  analyticsDatasSum: IAnalyticDataSum;
+  weekAndSums: IAnalyticWeek[];
 }
 
 export interface IWbQueries {

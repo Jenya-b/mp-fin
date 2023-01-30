@@ -16,7 +16,7 @@ import { productApi } from 'services/api/productApi';
 import { balanceApi } from 'services/api/balanceApi';
 import { fetchReportFiles } from 'services/api/filesApi';
 import { adminApi } from 'services/api/adminApi';
-import { analiticApi } from 'services/api/analiticApi';
+import { analyticApi } from 'services/api/analyticApi';
 import userReducer from 'store/reducers/userSlice';
 import fileReportReducer from 'store/reducers/fileReportSlice';
 import notifyReducer from 'store/reducers/notifySlice';
@@ -40,7 +40,7 @@ export const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     [balanceApi.reducerPath]: balanceApi.reducer,
     [adminApi.reducerPath]: adminApi.reducer,
-    [analiticApi.reducerPath]: analiticApi.reducer,
+    [analyticApi.reducerPath]: analyticApi.reducer,
     persistedUserReducer,
     notifyReducer,
     balanceReducer,
@@ -63,7 +63,7 @@ export const store = configureStore({
       productApi.middleware,
       balanceApi.middleware,
       adminApi.middleware,
-      analiticApi.middleware,
+      analyticApi.middleware,
     ]),
 });
 

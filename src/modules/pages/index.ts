@@ -4,7 +4,7 @@ import { Users } from 'modules/pages/Admin/Users/Users';
 import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
 import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
 
-const AnaliticsPage = lazy(() => import('modules/pages/Analitics/Analitics'));
+const AnalyticsPage = lazy(() => import('modules/pages/Analytics/Analytics'));
 const ReportsPage = lazy(() => import('modules/pages/Reports/Reports'));
 const SettingsPage = lazy(() => import('modules/pages/Settings/Settings'));
 const PrimeCostPage = lazy(() => import('modules/pages/PrimeCost/PrimeCost'));
@@ -20,7 +20,7 @@ const AdminPage = lazy(() => import('modules/pages/Admin/Admin'));
 const SearchQuery = lazy(() => import('modules/pages/SearchQuery/SearchQuery'));
 
 export {
-  AnaliticsPage,
+  AnalyticsPage,
   ReportsPage,
   SettingsPage,
   PrimeCostPage,

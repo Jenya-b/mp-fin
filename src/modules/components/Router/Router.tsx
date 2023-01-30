@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
 import {
-  AnaliticsPage,
+  AnalyticsPage,
   ReportsPage,
   SettingsPage,
   PrimeCostPage,
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
         index: true,
         element: (
           <RequireAuth>
-            <AnaliticsPage />
+            <AnalyticsPage />
           </RequireAuth>
         ),
       },

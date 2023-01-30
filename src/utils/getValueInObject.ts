@@ -1,8 +1,8 @@
 import { IParameterNames } from 'interfaces/analitics';
-import { IAnaliticArticle } from 'services/types';
+import { IAnalyticArticle } from 'services/types';
 
 interface IProps extends IParameterNames {
-  data: IAnaliticArticle[];
+  data: IAnalyticArticle[];
 }
 
 export const getMaxValueInObject = ({ data, parameter }: IProps) => {
