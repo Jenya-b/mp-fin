@@ -10,7 +10,7 @@ import {
 import { IAnalyticArticle } from 'services/types';
 import { getLocalStorage, setLocalStorage, getMaxValueInObject, getSumValuesInObject } from 'utils';
 import { PercentBar } from '../PercentBar/PercentBar';
-import { RenderHeader } from './RenderHeader';
+import { RenderHeader } from './RenderHeader/RenderHeader';
 import { analiticColumnWidth } from 'constants/dataGrid';
 
 interface SmartTableProps {

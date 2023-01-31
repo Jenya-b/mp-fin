@@ -17,9 +17,9 @@ import { Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { IAnalyticVisualData } from 'services/types';
 import { SelectChangeEvent } from '@mui/material';
-import { Controls } from './Controls';
 import { IDataSets } from 'interfaces/analitics';
 import { getLocalStorage, setLocalStorage, isObject } from 'utils';
+import { Controls } from './Controls/Controls';
 
 ChartJS.register(
   CategoryScale,
