@@ -11,6 +11,7 @@ import { BaseChart } from 'modules/components/Charts/Chart';
 import { IAnalyticVisualData } from 'services/types';
 import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
 import { createArray, getLocalStorage } from 'utils';
+import { InformationBlock } from 'modules/components/InformationBlock/InformationBlock';
 
 export const AnaliticsPage = () => {
   const [
@@ -61,7 +62,9 @@ export const AnaliticsPage = () => {
     });
   };
 
-  if (filtersData?.articles || filtersData?.weeksList) return <div>нет контента</div>;
+  if (filtersData && !(filtersData.articles.length && filtersData.weeksList.length)) {
+    return <InformationBlock />;
+  }
 
   return (
     <Main>
