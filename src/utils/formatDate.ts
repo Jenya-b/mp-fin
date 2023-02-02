@@ -8,15 +8,3 @@ export const formatDateGeneral = (parameter: string) => {
 
   return `${day}.${month}`;
 };
-
-const formatDateBySort = (date: string) => {
-  const newDate = date.split('.');
-  return [newDate[1], newDate[0], newDate[2]].join('/');
-};
-
-export const sortDate = (dateA: string, dateB: string) => {
-  const newDateA = formatDateBySort(dateA);
-  const newDateB = formatDateBySort(dateB);
-
-  return new Date(newDateA) > new Date(newDateB);
-};

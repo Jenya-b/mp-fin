@@ -13,7 +13,7 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { IWbQueries } from 'services/types';
+import { OneWbQueriesType } from 'services/types';
 
 ChartJS.register(
   CategoryScale,
@@ -30,7 +30,7 @@ ChartJS.register(
 );
 
 interface SearchQueryChartProps {
-  mainData: IWbQueries[];
+  mainData: OneWbQueriesType[];
 }
 
 export const SearchQueryChart = ({ mainData }: SearchQueryChartProps) => {

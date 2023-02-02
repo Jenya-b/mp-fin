@@ -3,10 +3,9 @@ import { useDebounce } from 'hooks';
 import { SearchBlock, Subtitle, Label, InputSearch, DataBlock } from './SearchQuery.styled';
 import { useGetWbQueriesQuery } from 'services';
 import { SearchQueryChart } from './Chart';
-import { IWbQueries } from 'services/types';
+import { OneWbQueriesType, TopWbQueriesType } from 'services/types';
 import { Loader } from 'modules/components/Loader/Loader';
 import { SearchQueryDataGrid } from './DataGrid';
-import { sortDate } from 'utils';
 import { Main, MainTitle } from 'styles/components';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { notifySelector } from 'store/selectors';
@@ -16,7 +15,8 @@ import { Notification } from 'modules/components/Notification/Notification';
 
 export const SearchQuery = () => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const [chartData, setChartData] = useState<IWbQueries[]>([]);
+  const [chartData, setChartData] = useState<OneWbQueriesType[]>([]);
+  const [gridData, setGridData] = useState<TopWbQueriesType[]>([]);
   const debouncedSearch = useDebounce(searchValue, 600);
   const dispatch = useAppDispatch();
   const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
@@ -25,29 +25,32 @@ export const SearchQuery = () => {
 
   useEffect(() => {
     if (!!debouncedSearch) {
-      setChartData([]);
+      clearData();
       return;
     }
     refetch();
   }, [debouncedSearch]);
 
   useEffect(() => {
-    if (data && !data.length) {
-      setChartData([]);
+    if (!data) return;
+    const { all, one } = data;
+    if (!(all.length || one.length)) {
+      clearData();
       dispatch(openNotify(alertMessage.infoSearchQuery));
+      return;
     }
-    if (data && data.length) {
-      const dataFilter = data.filter((item) => item.title === searchValue);
-      const dataSort = dataFilter.sort((dateA, dateB) =>
-        sortDate(dateA.date, dateB.date) ? 1 : -1
-      );
-      setChartData(dataSort);
-    }
+    setChartData(one);
+    setGridData(all);
   }, [data]);
 
   const addSearchValue = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setSearchValue(value);
+  };
+
+  const clearData = () => {
+    setChartData([]);
+    setGridData([]);
   };
 
   return (
@@ -63,7 +66,7 @@ export const SearchQuery = () => {
       </SearchBlock>
       <DataBlock>
         <SearchQueryChart mainData={chartData} />
-        <SearchQueryDataGrid data={data ?? []} />
+        <SearchQueryDataGrid data={gridData} />
       </DataBlock>
     </Main>
   );

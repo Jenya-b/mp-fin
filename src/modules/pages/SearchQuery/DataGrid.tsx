@@ -1,8 +1,9 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { IWbQueries } from 'services/types';
+import { TopWbQueriesType } from 'services/types';
+import { v4 } from 'uuid';
 
 interface SearchQueryDataGridProps {
-  data: IWbQueries[];
+  data: TopWbQueriesType[];
 }
 
 export const SearchQueryDataGrid = ({ data }: SearchQueryDataGridProps) => {
@@ -18,20 +19,11 @@ export const SearchQueryDataGrid = ({ data }: SearchQueryDataGridProps) => {
       headerName: 'Количество',
       hideable: false,
     },
-    {
-      field: 'date',
-      headerName: 'Дата',
-    },
   ];
 
   return (
     <div style={{ paddingTop: '34px' }}>
-      <DataGrid
-        columns={analiticColumns}
-        rows={data}
-        getRowId={(row) => row.title}
-        rowHeight={30}
-      />
+      <DataGrid columns={analiticColumns} rows={data} getRowId={() => v4()} rowHeight={30} />
     </div>
   );
 };

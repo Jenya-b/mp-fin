@@ -37,7 +37,7 @@ export const productApi = createApi({
         credentials: 'include',
       }),
     }),
-    getWbQueries: builder.query<IWbQueries[], string>({
+    getWbQueries: builder.query<IWbQueries, string>({
       query: (text) => ({
         url: '/Product/GetWbQueries',
         credentials: 'include',

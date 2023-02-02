@@ -146,8 +146,16 @@ export interface IAnalyticVisualData {
   weekAndSums: IAnalyticWeek[];
 }
 
-export interface IWbQueries {
+export interface TopWbQueriesType {
   title: string;
   count: string;
+}
+
+export interface OneWbQueriesType extends TopWbQueriesType {
   date: string;
+}
+
+export interface IWbQueries {
+  all: TopWbQueriesType[];
+  one: OneWbQueriesType[];
 }
