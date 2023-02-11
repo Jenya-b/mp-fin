@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, MouseEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
@@ -16,25 +16,26 @@ import {
   LinkWrapper,
   LinkWrapperCenter,
   MessageError,
+  TelegramButton,
+  TelegramImg,
 } from 'modules/pages/Login/Login.styled';
 import { Notification } from 'modules/components/Notification/Notification';
-import { inputEmailPattern } from 'constants/validInput';
 import { notifySelector } from 'store/selectors';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
-
-type FormValues = {
-  userName: string;
-  password: string;
-};
+import { FormValuesSignin } from 'interfaces/form';
+import { telegramIcon } from 'constants/images';
+import { telegramBotUrl } from 'services/baseUrl';
 
 export const Signin = () => {
+  const [defaultName, setDefaultName] = useState<string>('');
+  const [defaultPass, setDefaultPass] = useState<string>('');
   const dispatch = useAppDispatch();
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesSignin>();
 
   const { home, passwordRecovery, registration } = routerPath;
   const [signinUser, { isLoading, isSuccess, isError }] = useSigninUserMutation();
@@ -54,6 +55,17 @@ export const Signin = () => {
     }
   }, [isError]);
 
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const name = url.searchParams.get('tel');
+    const pass = url.searchParams.get('pass');
+
+    if (!!(name && pass)) {
+      setDefaultName(name);
+      setDefaultPass(pass);
+    }
+  }, []);
+
   const onSubmit = handleSubmit((data) => {
     signinUser({
       rememberMe: false,
@@ -61,6 +73,11 @@ export const Signin = () => {
       ...data,
     });
   });
+
+  const signinByTelegram = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    window.open(telegramBotUrl);
+  };
 
   if (isLoading) return <Loader />;
 
@@ -74,9 +91,9 @@ export const Signin = () => {
             <SecondaryInput
               {...register('userName', {
                 required: 'Поле обязательно к заполнению',
-                pattern: inputEmailPattern,
               })}
-              placeholder="Email"
+              placeholder="Номер телефона или Email"
+              defaultValue={defaultName}
             />
             {errors?.userName && (
               <MessageError>{errors?.userName?.message || 'Error'}</MessageError>
@@ -89,6 +106,7 @@ export const Signin = () => {
               })}
               placeholder="Пароль"
               type="password"
+              defaultValue={defaultPass}
             />
             {errors?.password && (
               <MessageError>{errors?.password?.message || 'Error'}</MessageError>
@@ -100,6 +118,9 @@ export const Signin = () => {
         </LinkWrapper>
         <Controls>
           <SecondaryButton>Продолжить</SecondaryButton>
+          <TelegramButton type="button" onClick={signinByTelegram}>
+            <TelegramImg src={telegramIcon} /> Telegram
+          </TelegramButton>
         </Controls>
         <LinkWrapperCenter>
           <span>Нет аккаутнта?</span> <Link to={registration}>Зарегистрируйтесь</Link>

@@ -15,12 +15,11 @@ import {
 import { chartParameter } from 'constants/charts';
 import { Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { IAnaliticVisualData } from 'services/types';
+import { IAnalyticVisualData } from 'services/types';
 import { SelectChangeEvent } from '@mui/material';
-import { Controls } from './Controls';
 import { IDataSets } from 'interfaces/analitics';
-import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
-import { isObject } from 'utils/isObject';
+import { getLocalStorage, setLocalStorage, isObject } from 'utils';
+import { Controls } from './Controls/Controls';
 
 ChartJS.register(
   CategoryScale,
@@ -37,7 +36,7 @@ ChartJS.register(
 );
 
 interface BaseChartProps {
-  mainData: IAnaliticVisualData;
+  mainData: IAnalyticVisualData;
   chartNum: number;
 }
 

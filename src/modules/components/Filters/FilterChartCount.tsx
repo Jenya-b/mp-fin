@@ -1,5 +1,5 @@
 import { FormControl, NativeSelect } from '@mui/material';
-import { setLocalStorage } from 'utils/localStorage';
+import { setLocalStorage } from 'utils';
 import { Filter, Subtitle } from './Filter.styled';
 
 interface FilterWeekProps {

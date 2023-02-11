@@ -13,17 +13,16 @@ import {
 } from 'modules/pages/Login/Login.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { InfoMessage } from 'modules/pages/Login/InfoMessage';
-
-type FormValues = {
-  passNew: string;
-};
+import { routerPath } from 'constants/routerPath';
+import { FormValuesPassReset } from 'interfaces/form';
 
 export const PasswordReset = () => {
+  const { login, passwordRecovery, registration } = routerPath;
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesPassReset>();
 
   const [searchParams] = useSearchParams();
   const userEmail = searchParams.get('userEmail') ?? '';
@@ -46,13 +45,13 @@ export const PasswordReset = () => {
           <InfoMessage
             title="Успех!"
             desc="Вы сменили пароль. Для продолжения, перейдите к форме входа"
-            routPath="/login"
+            routPath={login}
           />
         ) : isError ? (
           <InfoMessage
             title="Произошла ошибка!"
             desc="Попроуйте повторно отправить данные для восстановления на почту"
-            routPath="/login/recovery-pass"
+            routPath={`../${passwordRecovery}`}
           />
         ) : (
           <>
@@ -82,9 +81,9 @@ export const PasswordReset = () => {
             </Controls>
             <LinkWrapperCenter>
               <span>Перейти к форме</span> {''}
-              <Link to="/login/registration">регистрации</Link> {''}
+              <Link to={`../${registration}`}>регистрации</Link> {''}
               <span>или</span> {''}
-              <Link to="/login">входа</Link>
+              <Link to={login}>входа</Link>
             </LinkWrapperCenter>
           </>
         )}

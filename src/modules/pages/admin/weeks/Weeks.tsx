@@ -6,7 +6,7 @@ import { StyledTableCell } from 'modules/components/Table/TableCell';
 import { useCreateWeekMutation, useGetWeeksQuery } from 'services';
 import { IWeek } from 'services/types';
 import { Main, MainTitle, SecondaryButton } from 'styles/components';
-import { formatDateISOString } from 'utils/formatDate';
+import { formatDateISOString } from 'utils';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 

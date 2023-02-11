@@ -43,6 +43,10 @@ export interface ITheme {
       maxWidth: number;
       width: number;
     };
+    telegramIcon: {
+      width: number;
+      height: number;
+    };
   };
   indents: {
     loginForm: {

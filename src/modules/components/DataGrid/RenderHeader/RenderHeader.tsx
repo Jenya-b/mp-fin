@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { HeaderName, Parameter, Wrapper } from './RenderHeader.styled';
 
 interface RenderHeaderProps {
   headerName: string;
@@ -11,17 +12,3 @@ export const RenderHeader = ({ headerName, sum }: RenderHeaderProps) => (
     <Parameter>{sum.toLocaleString('ru-RU')}</Parameter>
   </Wrapper>
 );
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 80px;
-`;
-const HeaderName = styled.div`
-  height: 20px;
-`;
-const Parameter = styled.div`
-  font-weight: 700;
-  font-size: 14px;
-  color: #1976d2;
-`;

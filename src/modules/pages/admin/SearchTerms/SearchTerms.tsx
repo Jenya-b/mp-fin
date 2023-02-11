@@ -3,7 +3,7 @@ import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { fileWBQuerySelector, notifySelector } from 'store/selectors';
 import { fetchWBQueryFile } from 'services/api/filesApi';
-import { formatDateISOString } from 'utils/formatDate';
+import { formatDateISOString } from 'utils';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 import { InputFile, InputFileBtn, InputFileName, Subtitle } from './SearchTerms.styled';
 import { Loader } from 'modules/components/Loader/Loader';

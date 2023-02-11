@@ -1,93 +1,79 @@
 import { ITheme } from 'interfaces/styled';
-import {
-  colorMainBlack,
-  colorMainBlue,
-  colorMainBluePrimary,
-  colorMainGreenPrimary,
-  colorMainGreenSecondary,
-  colorMainGreyLight,
-  colorMainGreyPrimary,
-  colorMainGreySecondary,
-  colorMainGreyTertiary,
-  colorMainWhite,
-  colorAdditionalBlue,
-  colorAdditionalGreen,
-  colorAdditionalOrange,
-  colorAdditionalPinkPrimary,
-  colorAdditionalPinkSecondary,
-} from 'constants/colors';
+import { Colors } from 'constants/colors';
 
 export const baseTheme: ITheme = {
   colors: {
-    background: colorMainBlue,
+    background: Colors.MainBlue,
 
     //sidebar
-    sidebar: colorMainGreenPrimary,
-    sidebarLogo: colorMainGreenSecondary,
-    sidebarTextMenu: colorMainWhite,
+    sidebar: Colors.MainGreenPrimary,
+    sidebarLogo: Colors.MainGreenSecondary,
+    sidebarTextMenu: Colors.MainWhite,
 
     //formLogin
-    formBackground: colorMainWhite,
-    inputFormPlaceholder: colorMainGreyTertiary,
-    inputFormHoverBord: colorMainGreenSecondary,
-    inputFormFocusBord: colorMainGreyTertiary,
-    inputFormText: colorMainGreyPrimary,
-    inputFormBackground: colorMainBlue,
-    inputFormBorder: colorMainGreyLight,
-    titleForm: colorMainBlack,
-    formLink: colorMainGreenPrimary,
-    formLinkHover: colorMainGreenSecondary,
-    formSpan: colorMainGreySecondary,
-    messageError: colorAdditionalPinkSecondary,
+    formBackground: Colors.MainWhite,
+    inputFormPlaceholder: Colors.MainGreyTertiary,
+    inputFormHoverBord: Colors.MainGreenSecondary,
+    inputFormFocusBord: Colors.MainGreyTertiary,
+    inputFormText: Colors.MainGreyPrimary,
+    inputFormBackground: Colors.MainBlue,
+    inputFormBorder: Colors.MainGreyLight,
+    titleForm: Colors.MainBlack,
+    formLink: Colors.MainGreenPrimary,
+    formLinkHover: Colors.MainGreenSecondary,
+    formSpan: Colors.MainGreySecondary,
+    messageError: Colors.AdditionalPinkSecondary,
 
     //button
-    btn: colorMainGreyLight,
-    btnbackground: colorMainGreenSecondary,
-    btnHover: colorMainGreenPrimary,
-    btnActive: colorMainGreenPrimary,
-    btnCircleHeader: colorMainGreyLight,
+    btn: Colors.MainGreyLight,
+    btnbackground: Colors.MainGreenSecondary,
+    btnbackgroundTelegram: Colors.AdditionalBlue,
+    btnHover: Colors.MainGreenPrimary,
+    btnHoverTelegram: Colors.AdditionalBlueDark,
+    btnActive: Colors.MainGreenPrimary,
+    btnCircleHeader: Colors.MainGreyLight,
 
     //header
-    header: colorMainWhite,
-    headerBorder: colorMainGreyLight,
-    textHeaderPrimary: colorMainBlack,
-    textCountHeader: colorMainWhite,
-    headerMessageCount: colorMainGreenSecondary,
+    header: Colors.MainWhite,
+    headerBorder: Colors.MainGreyLight,
+    textHeaderPrimary: Colors.MainBlack,
+    textCountHeader: Colors.MainWhite,
+    headerMessageCount: Colors.MainGreenSecondary,
 
     //footer
-    footerBg: colorMainWhite,
-    footerBorder: colorMainGreyLight,
-    textFooterPrimary: colorMainBlack,
+    footerBg: Colors.MainWhite,
+    footerBorder: Colors.MainGreyLight,
+    textFooterPrimary: Colors.MainBlack,
 
     //not-found
-    notFoundBg: colorMainWhite,
+    notFoundBg: Colors.MainWhite,
 
     //main
-    mainTitle: colorMainGreyPrimary,
+    mainTitle: Colors.MainGreyPrimary,
 
     //settings
-    inputSettingsFormBg: colorMainWhite,
-    labelSettingsFormText: colorMainGreySecondary,
+    inputSettingsFormBg: Colors.MainWhite,
+    labelSettingsFormText: Colors.MainGreySecondary,
 
     //table
-    tableReportDate: colorMainBluePrimary,
-    tableReportTextMain: colorMainGreyPrimary,
-    tableReportSubtitleColl: colorMainGreySecondary,
+    tableReportDate: Colors.MainBluePrimary,
+    tableReportTextMain: Colors.MainGreyPrimary,
+    tableReportSubtitleColl: Colors.MainGreySecondary,
 
     //
-    tablePrimeCostWrapper: colorMainWhite,
+    tablePrimeCostWrapper: Colors.MainWhite,
 
     //replenishment
-    replenishmentBg: colorMainWhite,
-    replenishmentSpan: colorMainBlack,
-    replenishmentBalance: colorMainGreyPrimary,
-    replenishmentWriteOff: colorMainGreySecondary,
+    replenishmentBg: Colors.MainWhite,
+    replenishmentSpan: Colors.MainBlack,
+    replenishmentBalance: Colors.MainGreyPrimary,
+    replenishmentWriteOff: Colors.MainGreySecondary,
 
     //admin-panel
-    adminMenuBg: colorMainGreyLight,
-    adminMenuLink: colorMainBlack,
-    adminMenuLinkActive: colorMainBluePrimary,
-    adminInputFile: colorMainWhite,
+    adminMenuBg: Colors.MainGreyLight,
+    adminMenuLink: Colors.MainBlack,
+    adminMenuLinkActive: Colors.MainBluePrimary,
+    adminInputFile: Colors.MainWhite,
   },
   sizes: {
     loginForm: {
@@ -129,6 +115,10 @@ export const baseTheme: ITheme = {
     adminForm: {
       maxWidth: 900,
       width: 100,
+    },
+    telegramIcon: {
+      width: 25,
+      height: 25,
     },
   },
   indents: {

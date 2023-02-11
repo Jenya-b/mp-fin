@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { getLocalStorage, setLocalStorage } from 'utils/localStorage';
+import { getLocalStorage, setLocalStorage } from 'utils';
 
 export const useFilter = (localstorageKey: string) => {
   const ids = getLocalStorage(localstorageKey);

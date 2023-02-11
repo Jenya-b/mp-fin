@@ -17,3 +17,5 @@ export const tableControlIcon = {
 };
 
 export const balanceImg = '/source/images/balanceBg.png';
+
+export const telegramIcon = '/source/images/iconTelegram.png';

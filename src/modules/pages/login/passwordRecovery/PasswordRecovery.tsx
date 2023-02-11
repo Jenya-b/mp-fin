@@ -18,23 +18,18 @@ import {
 } from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
 import { notifySelector } from 'store/selectors';
-
-type FormValues = {
-  email: string;
-};
-
-type ErrorType = {
-  message: string;
-};
+import { routerPath } from 'constants/routerPath';
+import { ErrorType, FormValuesPassRecovery } from 'interfaces/form';
 
 export const PasswordRecovery = () => {
+  const { login } = routerPath;
   const dispatch = useAppDispatch();
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesPassRecovery>();
 
   const [recoveryPass, { isLoading, isSuccess, isError, data, error }] =
     usePasswordRecoveryMutation();
@@ -94,7 +89,7 @@ export const PasswordRecovery = () => {
           <SecondaryButton>Продолжить</SecondaryButton>
         </Controls>
         <LinkWrapperCenter>
-          <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>
+          <span>Уже есть аккаунт?</span> <Link to={login}> Войти</Link>
         </LinkWrapperCenter>
       </LoginForm>
     </>

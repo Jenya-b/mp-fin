@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, MouseEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
@@ -16,26 +16,24 @@ import {
   LoginForm,
   MessageError,
   TitleForm,
+  TelegramButton,
+  TelegramImg,
 } from 'modules/pages/Login/Login.styled';
 import { inputEmailPattern } from 'constants/validInput';
-
-type FormValues = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  isAgreeProcessing: boolean;
-};
+import { telegramIcon } from 'constants/images';
+import { FormValuesReg } from 'interfaces/form';
+import { telegramBotUrl } from 'services/baseUrl';
 
 export const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { home } = routerPath;
+  const { home, passwordRecovery, login } = routerPath;
 
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>();
+  } = useForm<FormValuesReg>();
 
   const [registerUser, { isLoading, isSuccess, error: registerUserError }] =
     useRegisterUserMutation();
@@ -50,6 +48,11 @@ export const Registration = () => {
   const onSubmit = handleSubmit((data) => {
     registerUser(data);
   });
+
+  const registrationViaTelegram = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    window.open(telegramBotUrl);
+  };
 
   if (isLoading) return <Loader />;
 
@@ -69,7 +72,8 @@ export const Registration = () => {
           {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
           {registerUserError && (
             <LinkWrapper>
-              <span>Email уже зарегестрирован.</span> <Link to="reset-pass">Забыли пароль?</Link>
+              <span>Email уже зарегестрирован.</span>{' '}
+              <Link to={`../${passwordRecovery}`}>Забыли пароль?</Link>
             </LinkWrapper>
           )}
         </Label>
@@ -103,9 +107,12 @@ export const Registration = () => {
       </InputList>
       <Controls>
         <SecondaryButton>Продолжить</SecondaryButton>
+        <TelegramButton type="button" onClick={registrationViaTelegram}>
+          <TelegramImg src={telegramIcon} /> Telegram
+        </TelegramButton>
       </Controls>
       <LinkWrapperCenter>
-        <span>Уже есть аккаунт?</span> <Link to="/login"> Войти</Link>
+        <span>Уже есть аккаунт?</span> <Link to={login}> Войти</Link>
       </LinkWrapperCenter>
     </LoginForm>
   );

@@ -3,7 +3,7 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
-import { colorMainWhite } from 'constants/colors';
+import { Colors } from 'constants/colors';
 import { v4 } from 'uuid';
 import { SecondaryInput } from 'styles/components';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
@@ -28,7 +28,7 @@ export const BasicTable = <T,>({
   return (
     <TableContainer
       style={{
-        background: colorMainWhite,
+        background: Colors.MainWhite,
         marginTop: 39,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,

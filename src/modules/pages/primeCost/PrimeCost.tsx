@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { primeCostColumnNames } from 'constants/tables';
-import { useDebounce } from 'hooks/debounce';
+import { useDebounce } from 'hooks';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { Main, MainTitle, SecondaryInput } from 'styles/components';
 import { useChangeArticleMutation, useGetArticlesQuery } from 'services';
