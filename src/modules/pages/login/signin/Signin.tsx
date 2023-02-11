@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, MouseEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
@@ -16,14 +16,20 @@ import {
   LinkWrapper,
   LinkWrapperCenter,
   MessageError,
+  TelegramButton,
+  TelegramImg,
 } from 'modules/pages/Login/Login.styled';
 import { Notification } from 'modules/components/Notification/Notification';
 import { notifySelector } from 'store/selectors';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
 import { FormValuesSignin } from 'interfaces/form';
+import { telegramIcon } from 'constants/images';
+import { telegramBotUrl } from 'services/baseUrl';
 
 export const Signin = () => {
+  const [defaultName, setDefaultName] = useState<string>('');
+  const [defaultPass, setDefaultPass] = useState<string>('');
   const dispatch = useAppDispatch();
   const {
     register,
@@ -49,6 +55,17 @@ export const Signin = () => {
     }
   }, [isError]);
 
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const name = url.searchParams.get('tel');
+    const pass = url.searchParams.get('pass');
+
+    if (!!(name && pass)) {
+      setDefaultName(name);
+      setDefaultPass(pass);
+    }
+  }, []);
+
   const onSubmit = handleSubmit((data) => {
     signinUser({
       rememberMe: false,
@@ -56,6 +73,11 @@ export const Signin = () => {
       ...data,
     });
   });
+
+  const signinByTelegram = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    window.open(telegramBotUrl);
+  };
 
   if (isLoading) return <Loader />;
 
@@ -71,6 +93,7 @@ export const Signin = () => {
                 required: 'Поле обязательно к заполнению',
               })}
               placeholder="Номер телефона или Email"
+              defaultValue={defaultName}
             />
             {errors?.userName && (
               <MessageError>{errors?.userName?.message || 'Error'}</MessageError>
@@ -83,6 +106,7 @@ export const Signin = () => {
               })}
               placeholder="Пароль"
               type="password"
+              defaultValue={defaultPass}
             />
             {errors?.password && (
               <MessageError>{errors?.password?.message || 'Error'}</MessageError>
@@ -94,6 +118,9 @@ export const Signin = () => {
         </LinkWrapper>
         <Controls>
           <SecondaryButton>Продолжить</SecondaryButton>
+          <TelegramButton type="button" onClick={signinByTelegram}>
+            <TelegramImg src={telegramIcon} /> Telegram
+          </TelegramButton>
         </Controls>
         <LinkWrapperCenter>
           <span>Нет аккаутнта?</span> <Link to={registration}>Зарегистрируйтесь</Link>

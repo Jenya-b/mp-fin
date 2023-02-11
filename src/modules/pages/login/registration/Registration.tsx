@@ -49,7 +49,7 @@ export const Registration = () => {
     registerUser(data);
   });
 
-  const registrationViaTelegram = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const registrationViaTelegram = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     window.open(telegramBotUrl);
   };
