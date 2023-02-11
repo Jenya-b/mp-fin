@@ -35,4 +35,5 @@ export const {
   useRemoveAdminRightsMutation,
 } = adminApi;
 
-export const { useLazyGetFiltersDataQuery, usePostAnalyticsMutation } = analyticApi;
+export const { useLazyGetFiltersDataQuery, usePostAnalyticsMutation, useGetArticleQueriesQuery } =
+  analyticApi;

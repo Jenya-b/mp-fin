@@ -11,6 +11,7 @@ export const routerPath = {
   weeks: '/admin-panel/weeks',
   users: '/admin-panel/users',
   searchTerms: '/admin-panel/search-terms',
-  searchQuery: '/search-query',
+  searchByName: '/search-name',
+  searchByArticle: '/search-article',
   notFound: '*',
 };

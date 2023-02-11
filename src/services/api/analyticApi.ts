@@ -23,5 +23,14 @@ export const analyticApi = createApi({
         credentials: 'include',
       }),
     }),
+    getArticleQueries: builder.query<null, string>({
+      query: (date) => ({
+        url: '/Analytic/GetArticleQueries',
+        credentials: 'include',
+        params: {
+          date,
+        },
+      }),
+    }),
   }),
 });

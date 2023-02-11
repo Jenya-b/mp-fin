@@ -3,6 +3,8 @@ import { LoginPage } from 'modules/pages/Login/Login';
 import { Users } from 'modules/pages/Admin/Users/Users';
 import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
 import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
+import { SearchByName } from './SearchQuery/SearchByName/SearchByName';
+import { SearchByArticle } from './SearchQuery/SearchByArticle/SearchByArticle';
 
 const AnalyticsPage = lazy(() => import('modules/pages/Analytics/Analytics'));
 const ReportsPage = lazy(() => import('modules/pages/Reports/Reports'));
@@ -32,6 +34,8 @@ export {
   BalancePage,
   AdminPage,
   SearchQuery,
+  SearchByName,
+  SearchByArticle,
   LoginPage,
   Users,
   Weeks,

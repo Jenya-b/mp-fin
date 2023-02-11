@@ -17,6 +17,8 @@ import {
   Weeks,
   SearchTerms,
   SearchQuery,
+  SearchByName,
+  SearchByArticle,
 } from 'modules/pages';
 import { LayoutWrapp } from 'modules/components/Layout/LayouWrapp';
 import { RequireAuth } from 'hocs/RequireAuth';
@@ -36,7 +38,8 @@ const {
   weeks,
   users,
   searchTerms,
-  searchQuery,
+  searchByName,
+  searchByArticle,
   notFound,
 } = routerPath;
 
@@ -55,12 +58,21 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: searchQuery,
         element: (
           <RequireAuth>
             <SearchQuery />
           </RequireAuth>
         ),
+        children: [
+          {
+            path: searchByName,
+            element: <SearchByName />,
+          },
+          {
+            path: searchByArticle,
+            element: <SearchByArticle />,
+          },
+        ],
       },
       {
         path: reports,
