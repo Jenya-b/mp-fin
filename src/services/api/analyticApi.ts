@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import { IAnalyticVisualData, IFiltersData } from 'services/types';
+import { IAnalyticVisualData, IArticleQueries, IFiltersData } from 'services/types';
 
 export const analyticApi = createApi({
   reducerPath: 'analiticApi',
@@ -23,7 +23,7 @@ export const analyticApi = createApi({
         credentials: 'include',
       }),
     }),
-    getArticleQueries: builder.query<null, string>({
+    getArticleQueries: builder.query<IArticleQueries[], string>({
       query: (date) => ({
         url: '/Analytic/GetArticleQueries',
         credentials: 'include',

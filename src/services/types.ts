@@ -159,3 +159,14 @@ export interface IWbQueries {
   all: TopWbQueriesType[];
   one: OneWbQueriesType[];
 }
+
+interface IQueriesCity {
+  city: string;
+  count: number;
+}
+
+export interface IArticleQueries {
+  allCount: number;
+  article: string;
+  articleQueries: IQueriesCity[];
+}
