@@ -7,5 +7,5 @@ export const formatDateGeneral = (parameter: string, full = false) => {
   const month = date.getMonth() >= 9 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
   const year = date.getFullYear();
 
-  return full ? `${day}.${month}.${year}` : `${day}.${month}`;
+  return full ? `${month}.${day}.${year}` : `${day}.${month}`;
 };

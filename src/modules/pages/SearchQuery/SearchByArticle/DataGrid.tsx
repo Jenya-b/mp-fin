@@ -1,4 +1,5 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { cities } from 'constants/cities';
 import { IArticleQueries } from 'services/types';
 import { v4 } from 'uuid';
 
@@ -19,6 +20,11 @@ export const SearchQueryDataGrid = ({ data }: SearchQueryDataGridProps) => {
       headerName: 'Количество',
       hideable: false,
     },
+    ...cities.map((city) => ({
+      field: city,
+      headerName: city.toUpperCase(),
+      hideable: false,
+    })),
   ];
 
   return (
