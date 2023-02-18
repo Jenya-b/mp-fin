@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { HeaderName, Parameter, Wrapper } from './RenderHeader.styled';
 
 interface RenderHeaderProps {
