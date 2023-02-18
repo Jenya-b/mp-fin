@@ -6,11 +6,13 @@ import { Label, SearchBlock, Subtitle } from '../SearchQuery.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { SearchQueryDataGrid } from './DataGrid';
 import { IArticleQueries } from 'services/types';
+import { getDefaultValueByInputDate } from 'utils/formatDate';
 
 export const SearchByArticle = () => {
-  const [date, setDate] = useState<string>('');
+  const [date, setDate] = useState<string>(getDefaultValueByInputDate());
   const [gridData, setGridData] = useState<IArticleQueries[]>([]);
-  const [getArticleQueries, { data, isLoading, isFetching }] = useLazyGetArticleQueriesQuery();
+  const [getArticleQueries, { data: queryData, isLoading, isFetching }] =
+    useLazyGetArticleQueriesQuery();
 
   useEffect(() => {
     if (!date) return;
@@ -18,9 +20,9 @@ export const SearchByArticle = () => {
   }, [date]);
 
   useEffect(() => {
-    if (!data) return;
-    setGridData(data);
-  }, [data]);
+    if (!queryData) return;
+    setGridData(queryData);
+  }, [queryData]);
 
   const updateData = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -33,7 +35,7 @@ export const SearchByArticle = () => {
       <SearchBlock>
         <Subtitle>Введите дату</Subtitle>
         <Label>
-          <InputSearch type="date" onChange={updateData} />
+          <InputSearch type="date" onChange={updateData} defaultValue={date} />
         </Label>
       </SearchBlock>
       <SearchQueryDataGrid data={gridData} />
