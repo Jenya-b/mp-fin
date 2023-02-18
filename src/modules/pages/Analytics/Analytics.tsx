@@ -3,7 +3,7 @@ import { Main, MainTitle } from 'styles/components';
 import { useFilter } from 'hooks';
 import { useLazyGetFiltersDataQuery, usePostAnalyticsMutation } from 'services';
 import { Filters, Wrapper, Title, Diagram, Table } from './Analytics.styled';
-import { SmartTable } from 'modules/components/DataGrid/DataGrid';
+import { SmartTable } from 'modules/pages/Analytics/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
 import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
 import { FilterArticles } from 'modules/components/Filters/FilterArticles';
