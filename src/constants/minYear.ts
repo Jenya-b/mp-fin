@@ -1,1 +1,1 @@
-export const minYear = 2021;
+export const MIN_YEAR = 2021;

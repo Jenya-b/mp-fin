@@ -1,4 +1,4 @@
-import { minYear } from 'constants/minYear';
+import { MIN_YEAR } from 'constants/minYear';
 
 export const formatDateISOString = (parameter: string) => new Date(parameter).toISOString();
 
@@ -22,7 +22,7 @@ export const getListOfYears = () => {
   const listYears: number[] = [];
   const thisYear = getThisYear();
 
-  for (let i = thisYear; i >= minYear; i--) {
+  for (let i = thisYear; i >= MIN_YEAR; i--) {
     listYears.push(i);
   }
 
