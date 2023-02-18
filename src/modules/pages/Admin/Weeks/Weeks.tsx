@@ -10,9 +10,8 @@ import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { formatDateISOString } from 'utils';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
-import { getThisYear } from 'utils/formatDate';
+import { getListOfYears, getThisYear } from 'utils/formatDate';
 import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
-import { paramsByYears } from 'constants/selectParam';
 
 export const Weeks = () => {
   const [weeksByYears, setWeeksByYears] = useState<IWeekWithParam[]>([]);
@@ -70,7 +69,7 @@ export const Weeks = () => {
         <FilterSelectParam
           setParameter={setYear}
           thisParameter={year}
-          parameters={paramsByYears}
+          parameters={getListOfYears()}
           title="Выберите год:"
           isFullWidth={false}
         />
