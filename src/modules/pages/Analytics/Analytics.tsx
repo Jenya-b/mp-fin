@@ -12,6 +12,7 @@ import { IAnalyticVisualData } from 'services/types';
 import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
 import { createArray, getLocalStorage } from 'utils';
 import { InformationBlock } from 'modules/components/InformationBlock/InformationBlock';
+import { countChartParam } from 'constants/selectParam';
 
 export const AnaliticsPage = () => {
   const [
@@ -75,7 +76,13 @@ export const AnaliticsPage = () => {
           <Title>Фильтр</Title>
           {filtersData && (
             <>
-              <FilterChartCount setCountChart={setCountChart} countChart={countChart} />
+              <FilterChartCount
+                setParameter={setCountChart}
+                thisParameter={countChart}
+                parameters={countChartParam}
+                title="Количество графиков:"
+                nameLocalStorage="countChart"
+              />
               <FilterWeeks
                 arrWeeks={weekIdFilter}
                 allWeeks={filtersData.weeksList}

@@ -1,19 +1,33 @@
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { weekColumnNames } from 'constants/tables';
 import { Loader } from 'modules/components/Loader/Loader';
 import { BasicTable } from 'modules/components/Table/Table';
 import { StyledTableCell } from 'modules/components/Table/TableCell';
 import { useCreateWeekMutation, useGetWeeksQuery } from 'services';
-import { IWeek } from 'services/types';
+import { IWeek, IWeekWithParam } from 'services/types';
 import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { formatDateISOString } from 'utils';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
+import { getThisYear } from 'utils/formatDate';
+import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
+import { paramsByYears } from 'constants/selectParam';
 
 export const Weeks = () => {
+  const [weeksByYears, setWeeksByYears] = useState<IWeekWithParam[]>([]);
+  const [year, setYear] = useState<number>(getThisYear());
   const { data: weeks, isLoading: isLoadingGetWeeks } = useGetWeeksQuery(null);
   const [fetchAddWeek, { isLoading: isLoadingAddWeek }] = useCreateWeekMutation();
   const { register, handleSubmit } = useForm();
+
+  useEffect(() => {
+    if (!weeks || !weeks.length) return;
+
+    setWeeksByYears(
+      weeks.filter(({ weekStart }) => weekStart.split('.').reverse()[0] === year.toString())
+    );
+  }, [weeks, year]);
 
   const renderColumnNames = () => <TableColumns columnNames={weekColumnNames} />;
 
@@ -53,10 +67,16 @@ export const Weeks = () => {
           </Label>
           <SecondaryButton>Добавить неделю</SecondaryButton>
         </Form>
+        <FilterChartCount
+          setParameter={setYear}
+          thisParameter={year}
+          parameters={paramsByYears}
+          title="Выберите год:"
+        />
         <BasicTable
           renderRow={renderRow}
           renderColumnNames={renderColumnNames}
-          data={weeks ?? []}
+          data={weeksByYears}
         />
       </Container>
     </Main>

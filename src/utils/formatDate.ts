@@ -9,3 +9,9 @@ export const formatDateGeneral = (parameter: string, full = false) => {
 
   return full ? `${month}.${day}.${year}` : `${day}.${month}`;
 };
+
+export const getThisYear = () => {
+  const thisDate = new Date();
+  const thisYear = thisDate.getFullYear();
+  return thisYear;
+};
