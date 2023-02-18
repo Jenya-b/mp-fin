@@ -35,7 +35,7 @@ export const Weeks = () => {
     <>
       <StyledTableCell>{item.weekNumber}</StyledTableCell>
       <StyledTableCell>{item.weekStart}</StyledTableCell>
-      <StyledTableCell>{item.weekStart}</StyledTableCell>
+      <StyledTableCell>{item.weekEnd}</StyledTableCell>
     </>
   );
 
