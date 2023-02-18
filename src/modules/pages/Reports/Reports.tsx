@@ -19,11 +19,15 @@ import { alertMessage } from 'constants/alert';
 import { openNotify } from 'store/reducers/notifySlice';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { fileReportSelector, notifySelector } from 'store/selectors';
+import { getListOfYears, getThisYear } from 'utils/formatDate';
+import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();
   const [isActiveDialog, setActiveDialog] = useState<boolean>(false);
   const [weekDataId, setWeekDataId] = useState<string>('');
+  const [reportsByYears, setReportsByYears] = useState<IReport[]>([]);
+  const [year, setYear] = useState<number>(getThisYear());
   const [stateId, setStateId] = useState<string>('');
   const { data: reportList, refetch, isLoading: isLoadingGetData } = useGetReportsQuery(null);
   const [
@@ -36,6 +40,14 @@ export const ReportsPage = () => {
     isSuccess: isSuccessUploadFile,
   } = useAppSelector(fileReportSelector);
   const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
+
+  useEffect(() => {
+    if (!reportList || !reportList.length) return;
+
+    setReportsByYears(
+      reportList.filter(({ startWeek }) => startWeek.split('.').reverse()[0] === year.toString())
+    );
+  }, [reportList, year]);
 
   useEffect(() => {
     refetch();
@@ -146,7 +158,18 @@ export const ReportsPage = () => {
         desc="Вы действительно хотите удалить отчет?"
       />
       <MainTitle>Загруженные отчеты</MainTitle>
-      <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={reportList} />
+      <FilterSelectParam
+        setParameter={setYear}
+        thisParameter={year}
+        parameters={getListOfYears()}
+        title="Выберите год:"
+        isFullWidth={false}
+      />
+      <BasicTable
+        renderRow={renderRow}
+        renderColumnNames={renderColumnNames}
+        data={reportsByYears}
+      />
     </Main>
   );
 };
