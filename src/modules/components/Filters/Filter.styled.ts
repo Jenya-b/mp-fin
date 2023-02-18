@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { fontStylesCaption, fontStylesCaptionBig, fontStylesH2 } from 'styles/typography';
 
-export const Filter = styled.div``;
+export const Filter = styled.div`
+  margin-top: 20px;
+`;
 
 export const Title = styled.h2`
   ${fontStylesH2}

@@ -72,6 +72,7 @@ export const Weeks = () => {
           thisParameter={year}
           parameters={paramsByYears}
           title="Выберите год:"
+          isFullWidth={false}
         />
         <BasicTable
           renderRow={renderRow}

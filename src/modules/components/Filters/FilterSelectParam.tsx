@@ -7,6 +7,7 @@ interface FilterSelectParamProps {
   thisParameter: number;
   parameters: number[];
   title: string;
+  isFullWidth: boolean;
   nameLocalStorage?: string;
 }
 
@@ -16,6 +17,7 @@ export const FilterSelectParam = ({
   parameters,
   title,
   nameLocalStorage,
+  isFullWidth,
 }: FilterSelectParamProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -28,7 +30,7 @@ export const FilterSelectParam = ({
   return (
     <Filter>
       <Subtitle>{title}</Subtitle>
-      <FormControl fullWidth>
+      <FormControl fullWidth={isFullWidth}>
         <NativeSelect defaultValue={thisParameter} onChange={handleChange}>
           {parameters.map((item) => (
             <option key={item} value={item}>

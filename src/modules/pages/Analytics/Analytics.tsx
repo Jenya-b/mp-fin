@@ -82,6 +82,7 @@ export const AnaliticsPage = () => {
                 parameters={countChartParam}
                 title="Количество графиков:"
                 nameLocalStorage="countChart"
+                isFullWidth={true}
               />
               <FilterWeeks
                 arrWeeks={weekIdFilter}
