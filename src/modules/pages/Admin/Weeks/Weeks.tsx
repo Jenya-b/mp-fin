@@ -11,7 +11,7 @@ import { formatDateISOString } from 'utils';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 import { getThisYear } from 'utils/formatDate';
-import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
+import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
 import { paramsByYears } from 'constants/selectParam';
 
 export const Weeks = () => {
@@ -67,7 +67,7 @@ export const Weeks = () => {
           </Label>
           <SecondaryButton>Добавить неделю</SecondaryButton>
         </Form>
-        <FilterChartCount
+        <FilterSelectParam
           setParameter={setYear}
           thisParameter={year}
           parameters={paramsByYears}

@@ -2,7 +2,7 @@ import { FormControl, NativeSelect } from '@mui/material';
 import { setLocalStorage } from 'utils';
 import { Filter, Subtitle } from './Filter.styled';
 
-interface FilterWeekProps {
+interface FilterSelectParamProps {
   setParameter: React.Dispatch<React.SetStateAction<number>>;
   thisParameter: number;
   parameters: number[];
@@ -10,13 +10,13 @@ interface FilterWeekProps {
   nameLocalStorage?: string;
 }
 
-export const FilterChartCount = ({
+export const FilterSelectParam = ({
   setParameter,
   thisParameter,
   parameters,
   title,
   nameLocalStorage,
-}: FilterWeekProps) => {
+}: FilterSelectParamProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     setParameter(Number(value));

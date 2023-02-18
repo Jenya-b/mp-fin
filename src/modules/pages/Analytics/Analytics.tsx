@@ -9,7 +9,7 @@ import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
 import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 import { BaseChart } from 'modules/components/Charts/Chart';
 import { IAnalyticVisualData } from 'services/types';
-import { FilterChartCount } from 'modules/components/Filters/FilterChartCount';
+import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
 import { createArray, getLocalStorage } from 'utils';
 import { InformationBlock } from 'modules/components/InformationBlock/InformationBlock';
 import { countChartParam } from 'constants/selectParam';
@@ -76,7 +76,7 @@ export const AnaliticsPage = () => {
           <Title>Фильтр</Title>
           {filtersData && (
             <>
-              <FilterChartCount
+              <FilterSelectParam
                 setParameter={setCountChart}
                 thisParameter={countChart}
                 parameters={countChartParam}
