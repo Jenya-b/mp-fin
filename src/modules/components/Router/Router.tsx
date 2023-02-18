@@ -65,12 +65,12 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: searchByName,
-            element: <SearchByName />,
-          },
-          {
             path: searchByArticle,
             element: <SearchByArticle />,
+          },
+          {
+            path: searchByName,
+            element: <SearchByName />,
           },
         ],
       },

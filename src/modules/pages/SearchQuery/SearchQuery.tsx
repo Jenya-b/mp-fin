@@ -10,8 +10,8 @@ export const SearchQuery = () => {
     <Main>
       <MainTitle>Поисковые запросы</MainTitle>
       <NavWrapper>
-        <NavLink to={searchByName}>По наименованию</NavLink>
         <NavLink to={searchByArticle}>По артикулам</NavLink>
+        <NavLink to={searchByName}>По наименованию</NavLink>
       </NavWrapper>
       <Outlet />
     </Main>
