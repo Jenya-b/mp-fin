@@ -10,7 +10,7 @@ import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { formatDateISOString } from 'utils';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
-import { getListOfYears, getThisYear } from 'utils/formatDate';
+import { getListOfYears, getThisYear } from 'utils/formatDate/formatDate';
 import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
 
 export const Weeks = () => {

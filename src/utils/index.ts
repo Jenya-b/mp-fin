@@ -1,8 +1,8 @@
-import { createArray } from './createArray';
-import { formatDateGeneral, formatDateISOString } from './formatDate';
-import { getMaxValueInObject, getSumValuesInObject } from './getValueInObject';
-import { isObject } from './isObject';
-import { getLocalStorage, setLocalStorage } from './localStorage';
+import { createArray } from './createArray/createArray';
+import { formatDateGeneral, formatDateISOString } from './formatDate/formatDate';
+import { getMaxValueInObject, getSumValuesInObject } from './getValueInObject/getValueInObject';
+import { isObject } from './isObject/isObject';
+import { getLocalStorage, setLocalStorage } from './localStorage/localStorage';
 
 export {
   createArray,

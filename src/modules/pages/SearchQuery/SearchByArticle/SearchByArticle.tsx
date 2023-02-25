@@ -6,10 +6,10 @@ import { Label, SearchBlock, Subtitle } from '../SearchQuery.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { SearchQueryDataGrid } from './DataGrid';
 import { IArticleQueries } from 'services/types';
-import { getDefaultValueByInputDate } from 'utils/formatDate';
+import { getDefaultValueByInputDate } from 'utils/formatDate/formatDate';
 
 export const SearchByArticle = () => {
-  const [date, setDate] = useState<string>(getDefaultValueByInputDate());
+  const [date, setDate] = useState<string>(getDefaultValueByInputDate(new Date()));
   const [gridData, setGridData] = useState<IArticleQueries[]>([]);
   const [getArticleQueries, { data: queryData, isLoading, isFetching }] =
     useLazyGetArticleQueriesQuery();
