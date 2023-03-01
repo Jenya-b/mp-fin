@@ -2,11 +2,12 @@ import { useState, useEffect, ChangeEvent } from 'react';
 import { useLazyGetArticleQueriesQuery } from 'services';
 import { formatDateGeneral } from 'utils';
 import { InputSearch } from '../SearchByName/SearchByName.styled';
-import { Label, SearchBlock, Subtitle } from '../SearchQuery.styled';
+import { Label, SearchBlock, Subtitle, TablesBlock } from '../SearchQuery.styled';
 import { Loader } from 'modules/components/Loader/Loader';
-import { SearchQueryDataGrid } from './DataGrid';
 import { IArticleQueries } from 'services/types';
 import { getDefaultValueByInputDate } from 'utils/formatDate/formatDate';
+import { data } from './data';
+import { GridTable } from './GridTable/GridTable';
 
 export const SearchByArticle = () => {
   const [date, setDate] = useState<string>(getDefaultValueByInputDate(new Date()));
@@ -38,7 +39,11 @@ export const SearchByArticle = () => {
           <InputSearch type="date" onChange={updateData} defaultValue={date} />
         </Label>
       </SearchBlock>
-      <SearchQueryDataGrid data={gridData} />
+      <TablesBlock>
+        {data.map((item) => (
+          <GridTable key={item.article} {...item} />
+        ))}
+      </TablesBlock>
     </>
   );
 };

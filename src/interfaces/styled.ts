@@ -84,6 +84,10 @@ export interface ITheme {
     adminSearchBlock: {
       marginTop: number;
     };
+    queryTableRow: {
+      paddingTop: number;
+      paddingBottom: number;
+    };
   };
   borders: {
     loginForm: { borderRadius: number };

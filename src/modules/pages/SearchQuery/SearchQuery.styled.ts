@@ -29,3 +29,15 @@ export const NavWrapper = styled.div`
     }
   }
 `;
+
+export const TablesBlock = styled.div`
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  background: ${({ theme }) => theme.colors.tableGridBg};
+  border: 1px solid ${({ theme }) => theme.colors.inputFormBorder};
+  border-radius: ${({ theme }) => theme.borders.inputForm.borderRadius}px;
+  overflow: hidden;
+  overflow-x: scroll;
+`;

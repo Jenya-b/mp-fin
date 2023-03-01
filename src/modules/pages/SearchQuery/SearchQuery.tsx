@@ -7,7 +7,7 @@ export const SearchQuery = () => {
   const { searchByName, searchByArticle } = routerPath;
 
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       <MainTitle>Поисковые запросы</MainTitle>
       <NavWrapper>
         <NavLink to={searchByArticle}>По артикулам</NavLink>

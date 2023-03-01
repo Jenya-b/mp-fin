@@ -74,6 +74,10 @@ export const baseTheme: ITheme = {
     adminMenuLink: Colors.MainBlack,
     adminMenuLinkActive: Colors.MainBluePrimary,
     adminInputFile: Colors.MainWhite,
+
+    //searchQuery
+    tableGridBg: Colors.MainWhite,
+    borderTable: Colors.MainGreyLight,
   },
   sizes: {
     loginForm: {
@@ -156,6 +160,10 @@ export const baseTheme: ITheme = {
     },
     adminSearchBlock: {
       marginTop: 30,
+    },
+    queryTableRow: {
+      paddingTop: 7,
+      paddingBottom: 7,
     },
   },
   borders: {

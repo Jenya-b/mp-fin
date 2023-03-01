@@ -39,3 +39,11 @@ export const getListOfYears = () => {
 
   return listYears;
 };
+
+export const subtractDate = (parameter: string, countDays: number) => {
+  const date = new Date(parameter);
+  date.setDate(date.getDate() - countDays);
+  const { day, month, year } = getFullDate(date);
+
+  return `${day}.${month}.${year}`;
+};
