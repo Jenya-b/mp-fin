@@ -1,13 +1,13 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { useLazyGetArticleQueriesQuery } from 'services';
 import { formatDateGeneral } from 'utils';
-import { InputSearch } from '../SearchByName/SearchByName.styled';
 import { Label, SearchBlock, Subtitle, TablesBlock } from '../SearchQuery.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { IArticleQueries } from 'services/types';
 import { getDefaultValueByInputDate } from 'utils/formatDate/formatDate';
 import { data } from './data';
 import { GridTable } from './GridTable/GridTable';
+import { InputSearch } from 'modules/pages/DemandDynamics/DemandDynamics.styled';
 
 export const SearchByArticle = () => {
   const [date, setDate] = useState<string>(getDefaultValueByInputDate(new Date()));

@@ -6,6 +6,7 @@ export const menuIcon = {
   reportIcon: '/source/images/menu/reportIcon.png',
   adminPanel: '/source/images/menu/adminPanel.png',
   searchQueryIcon: '/source/images/menu/searchQuery.png',
+  demandDynamics: '/source/images/menu/demandIcon.png',
 };
 
 export const defaultLogo = '/source/images/logoUser.png';

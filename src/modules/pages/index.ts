@@ -3,7 +3,6 @@ import { LoginPage } from 'modules/pages/Login/Login';
 import { Users } from 'modules/pages/Admin/Users/Users';
 import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
 import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
-import { SearchByName } from './SearchQuery/SearchByName/SearchByName';
 import { SearchByArticle } from './SearchQuery/SearchByArticle/SearchByArticle';
 
 const AnalyticsPage = lazy(() => import('modules/pages/Analytics/Analytics'));
@@ -20,6 +19,7 @@ const NotFoundPage = lazy(() => import('modules/pages/NotFound/NotFound'));
 const BalancePage = lazy(() => import('modules/pages/Balance/Balance'));
 const AdminPage = lazy(() => import('modules/pages/Admin/Admin'));
 const SearchQuery = lazy(() => import('modules/pages/SearchQuery/SearchQuery'));
+const DemandDynamics = lazy(() => import('modules/pages/DemandDynamics/DemandDynamics'));
 
 export {
   AnalyticsPage,
@@ -34,7 +34,7 @@ export {
   BalancePage,
   AdminPage,
   SearchQuery,
-  SearchByName,
+  DemandDynamics,
   SearchByArticle,
   LoginPage,
   Users,

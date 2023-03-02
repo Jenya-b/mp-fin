@@ -13,5 +13,6 @@ export const routerPath = {
   searchTerms: '/admin-panel/search-terms',
   searchByName: '/search-name',
   searchByArticle: '/search-article',
+  dynamics: 'dynamics',
   notFound: '*',
 };

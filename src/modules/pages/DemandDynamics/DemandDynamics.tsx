@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useDebounce } from 'hooks';
-import { InputSearch, DataBlock } from './SearchByName.styled';
+import { InputSearch, DataBlock } from './DemandDynamics.styled';
+import { Main, MainTitle } from 'styles/components';
 import { useGetWbQueriesQuery } from 'services';
 import { SearchQueryChart } from './Chart';
 import { OneWbQueriesType, TopWbQueriesType } from 'services/types';
@@ -11,9 +12,9 @@ import { notifySelector } from 'store/selectors';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
 import { Notification } from 'modules/components/Notification/Notification';
-import { Label, SearchBlock, Subtitle } from '../SearchQuery.styled';
+import { Label, SearchBlock, Subtitle } from '../SearchQuery/SearchQuery.styled';
 
-export const SearchByName = () => {
+export const DemandDynamics = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [chartData, setChartData] = useState<OneWbQueriesType[]>([]);
   const [gridData, setGridData] = useState<TopWbQueriesType[]>([]);
@@ -54,7 +55,8 @@ export const SearchByName = () => {
   };
 
   return (
-    <>
+    <Main>
+      <MainTitle>Динамика запросов</MainTitle>
       {(isLoading || isFetching) && <Loader />}
       <Notification isOpenNotify={isOpenNotify} notifyMessage={notifyMessage} />
       <SearchBlock>
@@ -67,6 +69,8 @@ export const SearchByName = () => {
         <SearchQueryChart mainData={chartData} />
         <SearchQueryDataGrid data={gridData} />
       </DataBlock>
-    </>
+    </Main>
   );
 };
+
+export default DemandDynamics;

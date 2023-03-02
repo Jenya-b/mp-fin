@@ -13,6 +13,11 @@ export const menuSidebar = [
     href: routerPath.searchByArticle,
   },
   {
+    srcImg: menuIcon.demandDynamics,
+    title: 'Динамика запросов',
+    href: routerPath.dynamics,
+  },
+  {
     srcImg: menuIcon.reportIcon,
     title: 'Загрузить отчет',
     href: routerPath.reports,
