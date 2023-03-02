@@ -8,11 +8,10 @@ export const routerPath = {
   settings: 'settings',
   passwordReset: 'reset-pass',
   balance: 'balance',
+  searchQuery: 'search-query',
+  dynamics: 'dynamics',
   weeks: '/admin-panel/weeks',
   users: '/admin-panel/users',
   searchTerms: '/admin-panel/search-terms',
-  searchByName: '/search-name',
-  searchByArticle: '/search-article',
-  dynamics: 'dynamics',
   notFound: '*',
 };

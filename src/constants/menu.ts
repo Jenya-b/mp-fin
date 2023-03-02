@@ -10,7 +10,7 @@ export const menuSidebar = [
   {
     srcImg: menuIcon.searchQueryIcon,
     title: 'Запросы',
-    href: routerPath.searchByArticle,
+    href: routerPath.searchQuery,
   },
   {
     srcImg: menuIcon.demandDynamics,
