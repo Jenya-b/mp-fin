@@ -3,6 +3,7 @@ import {
   formatDateISOString,
   getDefaultValueByInputDate,
   getFullDate,
+  subtractDate,
 } from './formatDate';
 
 describe('Format date', () => {
@@ -23,5 +24,9 @@ describe('Format date', () => {
   });
   test('Get default value by input date', () => {
     expect(getDefaultValueByInputDate(new Date('01.01.2000'))).toBe('2000-01-01');
+  });
+  test('substract date', () => {
+    expect(subtractDate('2022-02-01', 1)).toBe('31.01.2022');
+    expect(subtractDate('2022-02-01', 2)).toBe('30.01.2022');
   });
 });
