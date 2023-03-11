@@ -2,6 +2,7 @@ import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { useState, useEffect, ChangeEvent } from 'react';
 import {
   useAddSavedArticleMutation,
+  useDeleteSavedArticleMutation,
   useGetAllSavedArticleQuery,
   useGetArticlesQuery,
   useLazyGetArticleQueriesQuery,
@@ -22,15 +23,25 @@ export const SearchQuery = () => {
   const [allArticle, setAllArticle] = useState<string[]>([]);
   const [nameQuery, setNameQuery] = useState<string>('');
   const { data: queryAllArticle } = useGetArticlesQuery('');
-  const {} = useGetAllSavedArticleQuery(null);
-  const [getArticleQueries, { data: queryData, isLoading, isFetching }] =
-    useLazyGetArticleQueriesQuery();
-  const [fetchSavedArticle] = useAddSavedArticleMutation();
+  const { data: querySavedArticle, refetch } = useGetAllSavedArticleQuery(null);
+  const [
+    getArticleQueries,
+    { data: queryData, isLoading: isLoadingGetArticle, isFetching: isFetchingGetArticle },
+  ] = useLazyGetArticleQueriesQuery();
+  const [
+    fetchSavedArticle,
+    { isLoading: isLoadingSavedArticle, isSuccess: isSuccessSavedArticle },
+  ] = useAddSavedArticleMutation();
+  const [
+    fetchDeleteArticle,
+    { isLoading: isLoadingDeleteArticle, isSuccess: isSuccessDeleteArticle },
+  ] = useDeleteSavedArticleMutation();
 
   useEffect(() => {
     if (!date) return;
     getArticleQueries(date);
-  }, [date]);
+    refetch();
+  }, [date, isSuccessSavedArticle, isSuccessDeleteArticle]);
 
   useEffect(() => {
     if (!queryData) return;
@@ -54,11 +65,26 @@ export const SearchQuery = () => {
   const savedArticle = () => {
     if (!(nameQuery && allArticle.length)) return;
     fetchSavedArticle({ article: allArticle[0], query: nameQuery });
+    setNameQuery('');
+  };
+
+  const deleteSavedArticle = (article: string, query: string) => {
+    if (!querySavedArticle) return;
+    const desiredObject = querySavedArticle.find(
+      (item) => item.article === article && item.query === query
+    );
+    if (desiredObject) {
+      const { id } = desiredObject;
+      fetchDeleteArticle({ id });
+    }
   };
 
   return (
     <Main style={{ overflow: 'hidden' }}>
-      {(isLoading || isFetching) && <Loader />}
+      {(isLoadingGetArticle ||
+        isFetchingGetArticle ||
+        isLoadingSavedArticle ||
+        isLoadingDeleteArticle) && <Loader />}
       <MainTitle>Поисковые запросы</MainTitle>
       <SearchBlock>
         <Subtitle>Добавить данные по артикулу</Subtitle>
@@ -99,7 +125,12 @@ export const SearchQuery = () => {
       </SearchBlock>
       <TablesBlock>
         {gridData.map((item) => (
-          <GridTable key={item.article} numDate={7} {...item} />
+          <GridTable
+            key={item.article}
+            numDate={7}
+            deleteSavedArticle={deleteSavedArticle}
+            {...item}
+          />
         ))}
       </TablesBlock>
     </Main>

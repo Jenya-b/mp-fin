@@ -16,10 +16,17 @@ import {
 import { Rows } from './Rows';
 
 interface GridTableProps extends IArticleQueries {
+  deleteSavedArticle: (article: string, query: string) => void;
   numDate: number;
 }
 
-export const GridTable = ({ article, date, parameters, numDate }: GridTableProps) => (
+export const GridTable = ({
+  article,
+  date,
+  parameters,
+  numDate,
+  deleteSavedArticle,
+}: GridTableProps) => (
   <TableWrapp>
     <TableHeaders>
       <FirstTableHeader>Арт.№ {article}</FirstTableHeader>
@@ -38,7 +45,13 @@ export const GridTable = ({ article, date, parameters, numDate }: GridTableProps
     </TableHeaders>
     <RowsWrapp>
       {parameters.map(({ title, statistics }) => (
-        <Rows key={title} title={title} statistics={statistics} />
+        <Rows
+          key={title}
+          title={title}
+          statistics={statistics}
+          article={article}
+          deleteSavedArticle={deleteSavedArticle}
+        />
       ))}
     </RowsWrapp>
   </TableWrapp>

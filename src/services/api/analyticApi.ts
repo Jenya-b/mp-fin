@@ -1,6 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import { IAnalyticVisualData, IArticleQueries, IFiltersData } from 'services/types';
+import {
+  IAnalyticVisualData,
+  IArticleQueries,
+  IFiltersData,
+  IGenericResponse,
+  ISavedArticles,
+} from 'services/types';
 
 export const analyticApi = createApi({
   reducerPath: 'analiticApi',
@@ -40,10 +46,20 @@ export const analyticApi = createApi({
         credentials: 'include',
       }),
     }),
-    getAllSavedArticle: builder.query<null, null>({
+    getAllSavedArticle: builder.query<ISavedArticles[], null>({
       query: () => ({
         url: '/Analytic/GetSavedArticlesAndQueries',
         credentials: 'include',
+      }),
+    }),
+    deleteSavedArticle: builder.mutation<IGenericResponse, { id: string }>({
+      query: ({ id }) => ({
+        url: '/Analytic/DeleteSavedArticle',
+        method: 'POST',
+        credentials: 'include',
+        params: {
+          id,
+        },
       }),
     }),
   }),

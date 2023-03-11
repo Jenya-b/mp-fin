@@ -41,4 +41,5 @@ export const {
   useLazyGetArticleQueriesQuery,
   useAddSavedArticleMutation,
   useGetAllSavedArticleQuery,
+  useDeleteSavedArticleMutation,
 } = analyticApi;

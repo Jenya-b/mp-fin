@@ -167,3 +167,9 @@ export interface IArticleQueries {
   parameters: IParam[];
   article: string;
 }
+
+export interface ISavedArticles {
+  article: string;
+  id: string;
+  query: string;
+}

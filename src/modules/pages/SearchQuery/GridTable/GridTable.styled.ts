@@ -51,6 +51,9 @@ export const RowWrapp = styled.div`
 `;
 
 export const RowName = styled.h2`
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
   padding-top: ${({ theme }) => theme.indents.queryTableRow.paddingTop}px;
   padding-bottom: ${({ theme }) => theme.indents.queryTableRow.paddingBottom}px;
   padding-left: 15px;
@@ -65,6 +68,7 @@ export const Parameters = styled.div`
 
 export const List = styled.ul`
   display: flex;
+  align-items: center;
 `;
 
 export const Item = styled.li`
