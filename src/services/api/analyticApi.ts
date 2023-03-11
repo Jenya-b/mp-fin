@@ -32,5 +32,19 @@ export const analyticApi = createApi({
         },
       }),
     }),
+    addSavedArticle: builder.mutation<IArticleQueries, { article: string; query: string }>({
+      query: (data) => ({
+        url: '/Analytic/AddSavedArticle',
+        method: 'POST',
+        body: data,
+        credentials: 'include',
+      }),
+    }),
+    getAllSavedArticle: builder.query<null, null>({
+      query: () => ({
+        url: '/Analytic/GetSavedArticlesAndQueries',
+        credentials: 'include',
+      }),
+    }),
   }),
 });

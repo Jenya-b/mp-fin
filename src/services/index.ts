@@ -39,4 +39,6 @@ export const {
   useLazyGetFiltersDataQuery,
   usePostAnalyticsMutation,
   useLazyGetArticleQueriesQuery,
+  useAddSavedArticleMutation,
+  useGetAllSavedArticleQuery,
 } = analyticApi;

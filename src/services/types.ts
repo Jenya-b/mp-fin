@@ -1,3 +1,5 @@
+import { IParam } from 'interfaces/searchQuery';
+
 export interface IPersonalDataUser {
   name: string;
   surname: string;
@@ -160,13 +162,8 @@ export interface IWbQueries {
   one: OneWbQueriesType[];
 }
 
-interface IQueriesCity {
-  city: string;
-  count: number;
-}
-
 export interface IArticleQueries {
-  allCount: number;
+  date: string;
+  parameters: IParam[];
   article: string;
-  articleQueries: IQueriesCity[];
 }

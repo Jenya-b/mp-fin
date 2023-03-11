@@ -3,7 +3,7 @@ import { PrimaryInput } from 'styles/components';
 
 export const InputSearch = styled(PrimaryInput)`
   margin-top: 7px;
-  max-width: 400px;
+  max-width: 300px;
 `;
 
 export const DataBlock = styled.div`

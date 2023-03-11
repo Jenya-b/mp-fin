@@ -13,9 +13,3 @@ export interface IParam {
   title: string;
   statistics: IStatistics[];
 }
-
-export interface IDataGrid {
-  date: string;
-  parameters: IParam[];
-  article: string;
-}

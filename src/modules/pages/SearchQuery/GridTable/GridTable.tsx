@@ -1,5 +1,5 @@
 import { cities } from 'constants/cities';
-import { IDataGrid } from 'interfaces/searchQuery';
+import { IArticleQueries } from 'services/types';
 import { createArray } from 'utils';
 import { subtractDate } from 'utils/formatDate/formatDate';
 import {
@@ -15,7 +15,7 @@ import {
 } from './GridTable.styled';
 import { Rows } from './Rows';
 
-export const GridTable = ({ article, date, parameters }: IDataGrid) => (
+export const GridTable = ({ article, date, parameters }: IArticleQueries) => (
   <TableWrapp>
     <TableHeaders>
       <FirstTableHeader>Арт.№ {article}</FirstTableHeader>
