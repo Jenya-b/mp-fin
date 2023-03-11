@@ -22,6 +22,7 @@ export const Label = styled.label`
 
 export const TablesBlock = styled.div`
   margin-top: 40px;
+  max-height: 700px;
   display: flex;
   flex-direction: column;
   row-gap: 30px;
@@ -30,4 +31,5 @@ export const TablesBlock = styled.div`
   border-radius: ${({ theme }) => theme.borders.inputForm.borderRadius}px;
   overflow: hidden;
   overflow-x: scroll;
+  overflow-y: auto;
 `;

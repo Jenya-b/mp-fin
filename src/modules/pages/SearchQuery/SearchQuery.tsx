@@ -101,7 +101,7 @@ export const SearchQuery = () => {
           <InputSearch
             value={nameQuery}
             onChange={(e) => setNameQuery(e.target.value)}
-            placeholder="Артикул"
+            placeholder="Название запроса"
           />
         </Label>
         <SecondaryButton style={{ width: '300px' }} onClick={savedArticle}>
@@ -123,16 +123,20 @@ export const SearchQuery = () => {
           />
         </Label>
       </SearchBlock>
-      <TablesBlock>
-        {gridData.map((item) => (
-          <GridTable
-            key={item.article}
-            numDate={7}
-            deleteSavedArticle={deleteSavedArticle}
-            {...item}
-          />
-        ))}
-      </TablesBlock>
+      {gridData.length ? (
+        <TablesBlock>
+          {gridData.map((item) => (
+            <GridTable
+              key={item.article}
+              numDate={7}
+              deleteSavedArticle={deleteSavedArticle}
+              {...item}
+            />
+          ))}
+        </TablesBlock>
+      ) : (
+        <></>
+      )}
     </Main>
   );
 };
