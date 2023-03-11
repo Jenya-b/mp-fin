@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MainSubtitle } from 'styles/components';
+import { MainSubtitle, SecondaryButton } from 'styles/components';
 import { fontStylesCaption } from 'styles/typography';
 
 export const Subtitle = styled(MainSubtitle)`
@@ -32,4 +32,8 @@ export const TablesBlock = styled.div`
   overflow: hidden;
   overflow-x: scroll;
   overflow-y: auto;
+`;
+
+export const Button = styled(SecondaryButton)`
+  width: 300px;
 `;

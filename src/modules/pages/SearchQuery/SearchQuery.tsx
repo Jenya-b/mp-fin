@@ -1,5 +1,5 @@
-import { Main, MainTitle, SecondaryButton } from 'styles/components';
 import { useState, useEffect, ChangeEvent } from 'react';
+import { Main, MainTitle } from 'styles/components';
 import {
   useAddSavedArticleMutation,
   useDeleteSavedArticleMutation,
@@ -8,7 +8,7 @@ import {
   useLazyGetArticleQueriesQuery,
 } from 'services';
 import { formatDateGeneral } from 'utils';
-import { Label, SearchBlock, Subtitle, TablesBlock } from './SearchQuery.styled';
+import { Button, Label, SearchBlock, Subtitle, TablesBlock } from './SearchQuery.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { IArticleQueries } from 'services/types';
 import { getDefaultValueByInputDate } from 'utils/formatDate/formatDate';
@@ -19,8 +19,8 @@ import { MultipleSelect } from './MultipleSelect/MultipleSelect';
 export const SearchQuery = () => {
   const [date, setDate] = useState<string>(getDefaultValueByInputDate(new Date()));
   const [gridData, setGridData] = useState<IArticleQueries[]>([]);
-  const [selectValue, setSelectValue] = useState<string[]>([]);
-  const [allArticle, setAllArticle] = useState<string[]>([]);
+  const [listSavedArticles, setListSavedArticles] = useState<string[]>([]);
+  const [listAllArticles, setListAllArticles] = useState<string[]>([]);
   const [nameQuery, setNameQuery] = useState<string>('');
   const { data: queryAllArticle } = useGetArticlesQuery('');
   const { data: querySavedArticle, refetch } = useGetAllSavedArticleQuery(null);
@@ -45,12 +45,12 @@ export const SearchQuery = () => {
 
   useEffect(() => {
     if (!queryData) return;
-    if (!selectValue.length) {
+    if (!listSavedArticles.length) {
       setGridData(queryData);
     } else {
-      setGridData(queryData.filter(({ article }) => selectValue.includes(article)));
+      setGridData(queryData.filter(({ article }) => listSavedArticles.includes(article)));
     }
-  }, [selectValue, queryData]);
+  }, [listSavedArticles, queryData]);
 
   useEffect(() => {
     if (!queryData) return;
@@ -63,8 +63,8 @@ export const SearchQuery = () => {
   };
 
   const savedArticle = () => {
-    if (!(nameQuery && allArticle.length)) return;
-    fetchSavedArticle({ article: allArticle[0], query: nameQuery });
+    if (!(nameQuery && listAllArticles.length)) return;
+    fetchSavedArticle({ article: listAllArticles[0], query: nameQuery });
     setNameQuery('');
   };
 
@@ -93,8 +93,8 @@ export const SearchQuery = () => {
             isMultiple={false}
             placeholder="Артикул"
             data={queryAllArticle?.map(({ articleName }) => articleName) ?? []}
-            selectValue={allArticle}
-            setSelectValue={setAllArticle}
+            selectValue={listAllArticles}
+            setSelectValue={setListAllArticles}
           />
         </Label>
         <Label>
@@ -104,9 +104,7 @@ export const SearchQuery = () => {
             placeholder="Название запроса"
           />
         </Label>
-        <SecondaryButton style={{ width: '300px' }} onClick={savedArticle}>
-          Добавить
-        </SecondaryButton>
+        <Button onClick={savedArticle}>Добавить</Button>
       </SearchBlock>
       <SearchBlock>
         <Subtitle>Получить данные</Subtitle>
@@ -116,10 +114,10 @@ export const SearchQuery = () => {
         <Label>
           <MultipleSelect
             isMultiple={true}
-            placeholder="Артикул"
+            placeholder="Артикулы"
             data={queryData?.map(({ article }) => article) ?? []}
-            selectValue={selectValue}
-            setSelectValue={setSelectValue}
+            selectValue={listSavedArticles}
+            setSelectValue={setListSavedArticles}
           />
         </Label>
       </SearchBlock>
