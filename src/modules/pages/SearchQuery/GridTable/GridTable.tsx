@@ -15,12 +15,16 @@ import {
 } from './GridTable.styled';
 import { Rows } from './Rows';
 
-export const GridTable = ({ article, date, parameters }: IArticleQueries) => (
+interface GridTableProps extends IArticleQueries {
+  numDate: number;
+}
+
+export const GridTable = ({ article, date, parameters, numDate }: GridTableProps) => (
   <TableWrapp>
     <TableHeaders>
       <FirstTableHeader>Арт.№ {article}</FirstTableHeader>
       <SecondTableHeader>
-        {createArray(7).map((item, index) => (
+        {createArray(numDate).map((_, index) => (
           <HeaderParam key={index}>
             <HeaderDate>{subtractDate(date, index)}</HeaderDate>
             <List>

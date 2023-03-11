@@ -99,7 +99,7 @@ export const SearchQuery = () => {
       </SearchBlock>
       <TablesBlock>
         {gridData.map((item) => (
-          <GridTable key={item.article} {...item} />
+          <GridTable key={item.article} numDate={7} {...item} />
         ))}
       </TablesBlock>
     </Main>
