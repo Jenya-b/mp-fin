@@ -29,7 +29,6 @@ export const Rows = ({ statistics, title, article, deleteSavedArticle }: RowsPro
         </Tooltip>
         {title}
       </RowName>
-
       <Parameters>{statistics.map((item, i) => renderRow(item, i))}</Parameters>
     </RowWrapp>
   );
