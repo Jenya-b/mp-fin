@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { fontStylesCaption, fontStylesCaptionBig, fontStylesH2 } from 'styles/typography';
 
+export const Filters = styled.div`
+  grid-row: 1/3;
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+`;
+
 export const Filter = styled.div`
   margin-top: 20px;
 `;

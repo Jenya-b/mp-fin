@@ -13,6 +13,7 @@ import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam'
 import { createArray, getLocalStorage } from 'utils';
 import { InformationBlock } from 'modules/components/InformationBlock/InformationBlock';
 import { countChartParam } from 'constants/selectParam';
+import { FiltersBlock } from 'modules/components/Filters/Filters';
 
 export const AnaliticsPage = () => {
   const [
@@ -28,7 +29,7 @@ export const AnaliticsPage = () => {
   const [weekIdFilter, setWeekIdFilter] = useFilter('weeksId');
   const [articleNameFilter, setArticleNameFilter] = useFilter('articlesId');
   const [firstAliticsData, setFirstAliticsData] = useState<IAnalyticVisualData>();
-  const [countChart, setCountChart] = useState(getLocalStorage('countChart') ?? 1);
+  const [countChart, setCountChart] = useState<number>(getLocalStorage('countChart') ?? 1);
 
   useEffect(() => {
     if (allWeekId.length && allArticleName.length) return;
@@ -72,31 +73,16 @@ export const AnaliticsPage = () => {
       {(isLoadingFiltersData || isLoadingAnaliticsData) && <Loader />}
       <MainTitle>Аналитика</MainTitle>
       <Wrapper style={{ marginTop: '40px' }}>
-        <Filters>
-          <Title>Фильтр</Title>
-          {filtersData && (
-            <>
-              <FilterSelectParam
-                setParameter={setCountChart}
-                thisParameter={countChart}
-                parameters={countChartParam}
-                title="Количество графиков:"
-                nameLocalStorage="countChart"
-                isFullWidth={true}
-              />
-              <FilterWeeks
-                arrWeeks={weekIdFilter}
-                allWeeks={filtersData.weeksList}
-                setWeekIdFilter={setWeekIdFilter}
-              />
-              <FilterArticles
-                arrArticles={articleNameFilter}
-                allArticles={filtersData.articles}
-                setArticleNameFilter={setArticleNameFilter}
-              />
-            </>
-          )}
-        </Filters>
+        <FiltersBlock
+          setCountChart={setCountChart}
+          countChart={countChart}
+          countChartParam={countChartParam}
+          weekIdFilter={weekIdFilter}
+          filtersData={filtersData}
+          setWeekIdFilter={setWeekIdFilter}
+          articleNameFilter={articleNameFilter}
+          setArticleNameFilter={setArticleNameFilter}
+        />
         {firstAliticsData && (
           <>
             <Diagram>
