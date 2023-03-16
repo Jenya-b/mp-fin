@@ -115,7 +115,7 @@ export const SearchQuery = () => {
           <MultipleSelect
             isMultiple={true}
             placeholder="Артикулы"
-            data={queryData?.map(({ article }) => article) ?? []}
+            data={queryData ? queryData.map(({ article }) => article) : []}
             selectValue={listSavedArticles}
             setSelectValue={setListSavedArticles}
           />

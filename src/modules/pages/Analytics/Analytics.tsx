@@ -104,7 +104,9 @@ export const AnaliticsPage = () => {
                 <BaseChart key={i} chartNum={i} mainData={firstAliticsData} />
               ))}
             </Diagram>
-            <Table>{<SmartTable data={firstAliticsData.analyticsDatas ?? []} />}</Table>
+            <Table>
+              <SmartTable data={firstAliticsData.analyticsDatas} />
+            </Table>
           </>
         )}
       </Wrapper>
