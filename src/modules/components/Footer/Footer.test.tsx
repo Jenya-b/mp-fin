@@ -16,7 +16,7 @@ describe('Snapshot styled-components', () => {
   });
 });
 
-describe('Header component', () => {
+describe('Footer component', () => {
   test('it renders', () => {
     render(
       <ThemeProvider theme={baseTheme}>

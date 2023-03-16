@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Header styled-components BalanceButton 1`] = `
+<button
+  className="sc-hLBbgP sc-bqWxrE dYfrRk fnJgIk"
+/>
+`;
+
+exports[`Snapshot Header styled-components BalanceIcon 1`] = `
+<div
+  className="sc-csuSiG ACVId"
+/>
+`;
+
+exports[`Snapshot Header styled-components BalanceInfo 1`] = `
+<div
+  className="sc-ipEyDJ dVJfLL"
+/>
+`;
+
+exports[`Snapshot Header styled-components BalanceSum 1`] = `
+<div
+  className="sc-eDWCr gkINNn"
+/>
+`;
+
+exports[`Snapshot Header styled-components ButtonLogin 1`] = `
+<button
+  className="sc-hBxehG sc-bjfHbI hCJtBe hcFlRF"
+/>
+`;
+
+exports[`Snapshot Header styled-components ButtonSettings 1`] = `
+<button
+  className="sc-hBxehG sc-fEXmlR hCJtBe hjSRwe"
+/>
+`;
+
+exports[`Snapshot Header styled-components ButtonWrapper 1`] = `
+<div
+  className="sc-fnGiBr kuUJiF"
+/>
+`;
+
+exports[`Snapshot Header styled-components Controls 1`] = `
+<div
+  className="sc-ksBlkl eFVbIr"
+/>
+`;
+
+exports[`Snapshot Header styled-components LoginImage 1`] = `
+<div
+  className="sc-jrcTuL bvSNSN"
+/>
+`;
+
+exports[`Snapshot Header styled-components LoginInfo 1`] = `
+<div
+  className="sc-pyfCe cuSZop"
+/>
+`;
+
+exports[`Snapshot Header styled-components LoginName 1`] = `
+<div
+  className="sc-kDvujY fauTSB"
+/>
+`;
+
+exports[`Snapshot Header styled-components LoginTitle 1`] = `
+<div
+  className="sc-idXgbr kDKrHz"
+/>
+`;
+
+exports[`Snapshot Header styled-components StyledHeader 1`] = `
+<header
+  className="sc-ftTHYK hmjFDk"
+/>
+`;
