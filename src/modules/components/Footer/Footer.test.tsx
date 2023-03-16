@@ -5,7 +5,7 @@ import { baseTheme } from 'styles/theme';
 import { Footer } from './Footer';
 import { StyledFooter, FooterInfo } from './Footer.styled';
 
-describe('Snapshot styled-components', () => {
+describe('Snapshot Footer styled-components', () => {
   test('StyledFooter', () => {
     const tree = renderer.create(<StyledFooter theme={baseTheme} />).toJSON();
     expect(tree).toMatchSnapshot();
