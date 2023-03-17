@@ -4,9 +4,9 @@ import { baseTheme } from 'styles/theme';
 import { FiltersBlock } from './Filters';
 
 const props = {
-  setCountChart: () => {},
-  setWeekIdFilter: () => {},
-  setArticleNameFilter: () => {},
+  setCountChart: jest.fn(),
+  setWeekIdFilter: jest.fn(),
+  setArticleNameFilter: jest.fn(),
   countChart: 1,
   countChartParam: [1, 2],
   weekIdFilter: ['id1', 'id2'],
@@ -39,5 +39,14 @@ describe('FiltersBlock component', () => {
       </ThemeProvider>
     );
     expect(screen.getByText('Фильтр')).toBeInTheDocument();
+  });
+
+  test('FiltersBlock snapshot', () => {
+    const tree = render(
+      <ThemeProvider theme={baseTheme}>
+        <FiltersBlock {...props} />
+      </ThemeProvider>
+    );
+    expect(tree).toMatchSnapshot();
   });
 });
