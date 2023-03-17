@@ -1,6 +1,6 @@
 import { IWeekWithParam } from 'services/types';
 import { formatDateGeneral } from 'utils';
-import { Filter, Input, Item, Label, List, Subtitle } from './Filter.styled';
+import { Filter, Input, Item, Label, List, Subtitle } from '../Filters.styled';
 
 interface FilterWeekProps {
   arrWeeks: string[];

@@ -1,6 +1,6 @@
 import { FormControl, NativeSelect } from '@mui/material';
 import { setLocalStorage } from 'utils';
-import { Filter, Subtitle } from './Filter.styled';
+import { Filter, Subtitle } from '../Filters.styled';
 
 interface FilterSelectParamProps {
   setParameter: React.Dispatch<React.SetStateAction<number>>;

@@ -1,5 +1,5 @@
 import { IArticle } from 'services/types';
-import { Filter, Input, Item, Label, List, Subtitle } from './Filter.styled';
+import { Filter, Input, Item, Label, List, Subtitle } from '../Filters.styled';
 
 interface FilterWeekProps {
   arrArticles: string[];

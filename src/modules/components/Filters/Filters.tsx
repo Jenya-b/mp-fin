@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, ChangeEvent } from 'react';
 import { IFiltersData } from 'services/types';
-import { Filters, Title } from './Filter.styled';
-import { FilterArticles } from './FilterArticles';
-import { FilterSelectParam } from './FilterSelectParam';
-import { FilterWeeks } from './FilterWeeks';
+import { Filters, Title } from './Filters.styled';
+import { FilterArticles } from './FilterByArticles/FilterArticles';
+import { FilterSelectParam } from './FilterBySelectParams/FilterSelectParam';
+import { FilterWeeks } from './FilterByWeeks/FilterWeeks';
 
 interface FiltersBlockProps {
   setCountChart: Dispatch<SetStateAction<number>>;
