@@ -11,7 +11,7 @@ interface FilterSelectParamProps {
   nameLocalStorage?: string;
 }
 
-export const FilterSelectParam = ({
+export const FilterBySelectParams = ({
   setParameter,
   thisParameter,
   parameters,

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, ChangeEvent } from 'react';
 import { IFiltersData } from 'services/types';
 import { Filters, Title } from './Filters.styled';
 import { FilterByArticles } from './FilterByArticles/FilterByArticles';
-import { FilterSelectParam } from './FilterBySelectParams/FilterSelectParam';
+import { FilterBySelectParams } from './FilterBySelectParams/FilterBySelectParams';
 import { FilterByWeeks } from './FilterByWeeks/FilterByWeeks';
 
 interface FiltersBlockProps {
@@ -29,7 +29,7 @@ export const FiltersBlock = ({
   return (
     <Filters>
       <Title>Фильтр</Title>
-      <FilterSelectParam
+      <FilterBySelectParams
         setParameter={setCountChart}
         thisParameter={countChart}
         parameters={countChartParam}
