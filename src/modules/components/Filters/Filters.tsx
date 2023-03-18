@@ -3,7 +3,7 @@ import { IFiltersData } from 'services/types';
 import { Filters, Title } from './Filters.styled';
 import { FilterByArticles } from './FilterByArticles/FilterByArticles';
 import { FilterSelectParam } from './FilterBySelectParams/FilterSelectParam';
-import { FilterWeeks } from './FilterByWeeks/FilterWeeks';
+import { FilterByWeeks } from './FilterByWeeks/FilterByWeeks';
 
 interface FiltersBlockProps {
   setCountChart: Dispatch<SetStateAction<number>>;
@@ -37,7 +37,7 @@ export const FiltersBlock = ({
         nameLocalStorage="countChart"
         isFullWidth={true}
       />
-      <FilterWeeks
+      <FilterByWeeks
         arrWeeks={weekIdFilter}
         allWeeks={filtersData ? filtersData.weeksList : []}
         setWeekIdFilter={setWeekIdFilter}

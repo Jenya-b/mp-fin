@@ -8,7 +8,7 @@ interface FilterWeekProps {
   setWeekIdFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FilterWeeks = ({ arrWeeks, allWeeks, setWeekIdFilter }: FilterWeekProps) => (
+export const FilterByWeeks = ({ arrWeeks, allWeeks, setWeekIdFilter }: FilterWeekProps) => (
   <Filter>
     <Subtitle>Недели:</Subtitle>
     <List>
