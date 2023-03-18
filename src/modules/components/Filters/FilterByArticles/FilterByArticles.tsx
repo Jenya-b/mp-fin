@@ -7,7 +7,7 @@ interface FilterWeekProps {
   setArticleNameFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FilterArticles = ({
+export const FilterByArticles = ({
   arrArticles,
   allArticles,
   setArticleNameFilter,

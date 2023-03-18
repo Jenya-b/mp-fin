@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, ChangeEvent } from 'react';
 import { IFiltersData } from 'services/types';
 import { Filters, Title } from './Filters.styled';
-import { FilterArticles } from './FilterByArticles/FilterArticles';
+import { FilterByArticles } from './FilterByArticles/FilterByArticles';
 import { FilterSelectParam } from './FilterBySelectParams/FilterSelectParam';
 import { FilterWeeks } from './FilterByWeeks/FilterWeeks';
 
@@ -42,7 +42,7 @@ export const FiltersBlock = ({
         allWeeks={filtersData ? filtersData.weeksList : []}
         setWeekIdFilter={setWeekIdFilter}
       />
-      <FilterArticles
+      <FilterByArticles
         arrArticles={articleNameFilter}
         allArticles={filtersData ? filtersData.articles : []}
         setArticleNameFilter={setArticleNameFilter}
