@@ -11,15 +11,3 @@ exports[`Snapshot Footer styled-components StyledFooter 1`] = `
   className="sc-bcXHqe gdjWve"
 />
 `;
-
-exports[`Snapshot styled-components FooterInfo 1`] = `
-<p
-  className="sc-gswNZR"
-/>
-`;
-
-exports[`Snapshot styled-components StyledFooter 1`] = `
-<footer
-  className="sc-bcXHqe gdjWve"
-/>
-`;
