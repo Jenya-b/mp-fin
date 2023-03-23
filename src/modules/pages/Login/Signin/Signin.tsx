@@ -95,9 +95,7 @@ export const Signin = () => {
               placeholder="Номер телефона или Email"
               defaultValue={defaultName}
             />
-            {errors?.userName && (
-              <MessageError>{errors?.userName?.message || 'Error'}</MessageError>
-            )}
+            {errors?.userName && <MessageError>{errors.userName?.message || 'Error'}</MessageError>}
           </Label>
           <Label>
             <SecondaryInput
@@ -108,9 +106,7 @@ export const Signin = () => {
               type="password"
               defaultValue={defaultPass}
             />
-            {errors?.password && (
-              <MessageError>{errors?.password?.message || 'Error'}</MessageError>
-            )}
+            {errors?.password && <MessageError>{errors.password?.message || 'Error'}</MessageError>}
           </Label>
         </InputList>
         <LinkWrapper>

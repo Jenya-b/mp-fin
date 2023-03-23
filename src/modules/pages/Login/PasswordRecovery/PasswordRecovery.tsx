@@ -82,7 +82,7 @@ export const PasswordRecovery = () => {
               })}
               placeholder="Email"
             />
-            {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
+            {errors?.email && <MessageError>{errors.email?.message || 'Error'}</MessageError>}
           </Label>
         </InputList>
         <Controls>
