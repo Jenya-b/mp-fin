@@ -14,7 +14,8 @@ export const Menu = ({ list, isActive }: MenuProps) => {
   useEffect(() => {
     if (!isActive) return setVisible(false);
 
-    setTimeout(() => setVisible(true), 80);
+    const handler = setTimeout(() => setVisible(true), 80);
+    return () => clearTimeout(handler);
   }, [isActive]);
 
   return (
