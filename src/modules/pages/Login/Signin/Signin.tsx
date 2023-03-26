@@ -113,7 +113,7 @@ export const Signin = () => {
           <Link to={passwordRecovery}>Забыли пароль?</Link>
         </LinkWrapper>
         <Controls>
-          <SecondaryButton>Продолжить</SecondaryButton>
+          <SecondaryButton data-testid="submit-form">Продолжить</SecondaryButton>
           <TelegramButton type="button" onClick={signinByTelegram}>
             <TelegramImg src={telegramIcon} /> Telegram
           </TelegramButton>
