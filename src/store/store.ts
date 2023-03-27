@@ -24,6 +24,7 @@ import fileAvatarReducer from 'store/reducers/fileAvatarSlice';
 import fileWBQueryReducer from 'store/reducers/fileWBQuerySlice';
 import balanceReducer from 'store/reducers/balanceSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { refreshDataApi } from 'services/api/refreshDataApi';
 
 const persistConfig = {
   key: 'userReducer',
@@ -41,6 +42,7 @@ export const store = configureStore({
     [balanceApi.reducerPath]: balanceApi.reducer,
     [adminApi.reducerPath]: adminApi.reducer,
     [analyticApi.reducerPath]: analyticApi.reducer,
+    [refreshDataApi.reducerPath]: refreshDataApi.reducer,
     persistedUserReducer,
     notifyReducer,
     balanceReducer,
@@ -64,6 +66,7 @@ export const store = configureStore({
       balanceApi.middleware,
       adminApi.middleware,
       analyticApi.middleware,
+      refreshDataApi.middleware,
     ]),
 });
 

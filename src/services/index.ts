@@ -4,6 +4,7 @@ import { userApi } from 'services/api/userApi';
 import { balanceApi } from 'services/api/balanceApi';
 import { adminApi } from 'services/api/adminApi';
 import { analyticApi } from 'services/api/analyticApi';
+import { refreshDataApi } from './api/refreshDataApi';
 
 export const {
   useRegisterUserMutation,
@@ -43,3 +44,5 @@ export const {
   useGetAllSavedArticleQuery,
   useDeleteSavedArticleMutation,
 } = analyticApi;
+
+export const { useUpdateDataMutation } = refreshDataApi;
