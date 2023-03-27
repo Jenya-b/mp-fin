@@ -99,7 +99,7 @@ export const SearchQuery = () => {
           <MultipleSelect
             isMultiple={false}
             placeholder="Артикул"
-            data={queryAllArticle?.map(({ articleName }) => articleName) ?? []}
+            data={queryAllArticle?.map(({ itemCode }) => itemCode) ?? []}
             selectValue={listAllArticles}
             setSelectValue={setListAllArticles}
           />
