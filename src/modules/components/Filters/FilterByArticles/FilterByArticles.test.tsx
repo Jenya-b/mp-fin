@@ -33,7 +33,7 @@ describe('FilterArticles component', () => {
 
     expect(screen.getByRole('list')).toBeInTheDocument();
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
-    expect(screen.getByText(/article/i)).toBeInTheDocument();
+    expect(screen.getByText(/123/i)).toBeInTheDocument();
   });
 
   test('onChange works', () => {

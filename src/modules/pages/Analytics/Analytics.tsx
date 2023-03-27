@@ -36,7 +36,7 @@ export const AnaliticsPage = () => {
   useEffect(() => {
     if (isSuccessFiltersData && filtersData) {
       const weekId = filtersData.weeksList.map(({ weekId }) => weekId);
-      const articleName = filtersData.articles.map(({ articleName }) => articleName);
+      const articleName = filtersData.articles.map(({ itemCode }) => itemCode);
       setAllWeekId(weekId);
       setAllArticleName(articleName);
     }

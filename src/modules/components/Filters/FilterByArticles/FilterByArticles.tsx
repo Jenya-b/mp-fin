@@ -15,17 +15,17 @@ export const FilterByArticles = ({
   <Filter>
     <Subtitle>Артикулы:</Subtitle>
     <List>
-      {allArticles.map(({ articleId, articleName }) => (
+      {allArticles.map(({ articleId, itemCode }) => (
         <Item key={articleId}>
-          <Label htmlFor={articleName}>
+          <Label htmlFor={itemCode}>
             <Input
-              id={articleName}
+              id={itemCode}
               type="checkbox"
-              checked={arrArticles.includes(articleName)}
+              checked={arrArticles.includes(itemCode)}
               onChange={setArticleNameFilter}
             />{' '}
             {''}
-            {articleName}
+            {itemCode}
           </Label>
         </Item>
       ))}
