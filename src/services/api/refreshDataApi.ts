@@ -9,7 +9,6 @@ export const refreshDataApi = createApi({
       query: () => ({
         url: '/refresh',
         method: 'POST',
-        mode: 'no-cors',
       }),
     }),
   }),
