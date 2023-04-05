@@ -71,7 +71,7 @@ export const PasswordReset = () => {
                 />
                 {errors?.passNew && (
                   <MessageError>
-                    {errors?.passNew?.message || 'Минимальная длина поля 4 символа'}
+                    {errors.passNew?.message || 'Минимальная длина поля 4 символа'}
                   </MessageError>
                 )}
               </Label>

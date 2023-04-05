@@ -1,5 +1,5 @@
 import { IArticle } from 'services/types';
-import { Filter, Input, Item, Label, List, Subtitle } from './Filter.styled';
+import { Filter, Input, Item, Label, List, Subtitle } from '../Filters.styled';
 
 interface FilterWeekProps {
   arrArticles: string[];
@@ -7,7 +7,7 @@ interface FilterWeekProps {
   setArticleNameFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FilterArticles = ({
+export const FilterByArticles = ({
   arrArticles,
   allArticles,
   setArticleNameFilter,
@@ -15,17 +15,17 @@ export const FilterArticles = ({
   <Filter>
     <Subtitle>Артикулы:</Subtitle>
     <List>
-      {allArticles.map(({ articleId, articleName }) => (
+      {allArticles.map(({ articleId, itemCode }) => (
         <Item key={articleId}>
-          <Label htmlFor={articleName}>
+          <Label htmlFor={itemCode}>
             <Input
-              id={articleName}
+              id={itemCode}
               type="checkbox"
-              checked={arrArticles.includes(articleName)}
+              checked={arrArticles.includes(itemCode)}
               onChange={setArticleNameFilter}
             />{' '}
             {''}
-            {articleName}
+            {itemCode}
           </Label>
         </Item>
       ))}

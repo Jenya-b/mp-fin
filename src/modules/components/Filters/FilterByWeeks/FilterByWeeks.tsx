@@ -1,6 +1,6 @@
 import { IWeekWithParam } from 'services/types';
 import { formatDateGeneral } from 'utils';
-import { Filter, Input, Item, Label, List, Subtitle } from './Filter.styled';
+import { Filter, Input, Item, Label, List, Subtitle } from '../Filters.styled';
 
 interface FilterWeekProps {
   arrWeeks: string[];
@@ -8,7 +8,7 @@ interface FilterWeekProps {
   setWeekIdFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FilterWeeks = ({ arrWeeks, allWeeks, setWeekIdFilter }: FilterWeekProps) => (
+export const FilterByWeeks = ({ arrWeeks, allWeeks, setWeekIdFilter }: FilterWeekProps) => (
   <Filter>
     <Subtitle>Недели:</Subtitle>
     <List>

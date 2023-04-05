@@ -69,7 +69,7 @@ export const Registration = () => {
             })}
             placeholder="Email"
           />
-          {errors?.email && <MessageError>{errors?.email?.message || 'Error'}</MessageError>}
+          {errors?.email && <MessageError>{errors.email?.message || 'Error'}</MessageError>}
           {registerUserError && (
             <LinkWrapper>
               <span>Email уже зарегестрирован.</span>{' '}
@@ -88,7 +88,7 @@ export const Registration = () => {
           />
           {errors?.password && (
             <MessageError>
-              {errors?.password?.message || 'Минимальная длина поля 4 символа'}
+              {errors.password?.message || 'Минимальная длина поля 4 символа'}
             </MessageError>
           )}
         </Label>

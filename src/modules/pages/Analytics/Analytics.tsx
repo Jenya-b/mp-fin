@@ -2,17 +2,15 @@ import { useEffect, useState } from 'react';
 import { Main, MainTitle } from 'styles/components';
 import { useFilter } from 'hooks';
 import { useLazyGetFiltersDataQuery, usePostAnalyticsMutation } from 'services';
-import { Filters, Wrapper, Title, Diagram, Table } from './Analytics.styled';
+import { Wrapper, Diagram, Table } from './Analytics.styled';
 import { SmartTable } from 'modules/pages/Analytics/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
-import { FilterWeeks } from 'modules/components/Filters/FilterWeeks';
-import { FilterArticles } from 'modules/components/Filters/FilterArticles';
 import { BaseChart } from 'modules/components/Charts/Chart';
 import { IAnalyticVisualData } from 'services/types';
-import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
 import { createArray, getLocalStorage } from 'utils';
 import { InformationBlock } from 'modules/components/InformationBlock/InformationBlock';
 import { countChartParam } from 'constants/selectParam';
+import { FiltersBlock } from 'modules/components/Filters/Filters';
 
 export const AnaliticsPage = () => {
   const [
@@ -28,7 +26,7 @@ export const AnaliticsPage = () => {
   const [weekIdFilter, setWeekIdFilter] = useFilter('weeksId');
   const [articleNameFilter, setArticleNameFilter] = useFilter('articlesId');
   const [firstAliticsData, setFirstAliticsData] = useState<IAnalyticVisualData>();
-  const [countChart, setCountChart] = useState(getLocalStorage('countChart') ?? 1);
+  const [countChart, setCountChart] = useState<number>(getLocalStorage('countChart') ?? 1);
 
   useEffect(() => {
     if (allWeekId.length && allArticleName.length) return;
@@ -38,7 +36,7 @@ export const AnaliticsPage = () => {
   useEffect(() => {
     if (isSuccessFiltersData && filtersData) {
       const weekId = filtersData.weeksList.map(({ weekId }) => weekId);
-      const articleName = filtersData.articles.map(({ articleName }) => articleName);
+      const articleName = filtersData.articles.map(({ itemCode }) => itemCode);
       setAllWeekId(weekId);
       setAllArticleName(articleName);
     }
@@ -72,31 +70,16 @@ export const AnaliticsPage = () => {
       {(isLoadingFiltersData || isLoadingAnaliticsData) && <Loader />}
       <MainTitle>Аналитика</MainTitle>
       <Wrapper style={{ marginTop: '40px' }}>
-        <Filters>
-          <Title>Фильтр</Title>
-          {filtersData && (
-            <>
-              <FilterSelectParam
-                setParameter={setCountChart}
-                thisParameter={countChart}
-                parameters={countChartParam}
-                title="Количество графиков:"
-                nameLocalStorage="countChart"
-                isFullWidth={true}
-              />
-              <FilterWeeks
-                arrWeeks={weekIdFilter}
-                allWeeks={filtersData.weeksList}
-                setWeekIdFilter={setWeekIdFilter}
-              />
-              <FilterArticles
-                arrArticles={articleNameFilter}
-                allArticles={filtersData.articles}
-                setArticleNameFilter={setArticleNameFilter}
-              />
-            </>
-          )}
-        </Filters>
+        <FiltersBlock
+          setCountChart={setCountChart}
+          countChart={countChart}
+          countChartParam={countChartParam}
+          weekIdFilter={weekIdFilter}
+          filtersData={filtersData}
+          setWeekIdFilter={setWeekIdFilter}
+          articleNameFilter={articleNameFilter}
+          setArticleNameFilter={setArticleNameFilter}
+        />
         {firstAliticsData && (
           <>
             <Diagram>
@@ -104,7 +87,9 @@ export const AnaliticsPage = () => {
                 <BaseChart key={i} chartNum={i} mainData={firstAliticsData} />
               ))}
             </Diagram>
-            <Table>{<SmartTable data={firstAliticsData.analyticsDatas ?? []} />}</Table>
+            <Table>
+              <SmartTable data={firstAliticsData.analyticsDatas} />
+            </Table>
           </>
         )}
       </Wrapper>

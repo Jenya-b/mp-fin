@@ -6,6 +6,7 @@ import {
   useGetAllSavedArticleQuery,
   useGetArticlesQuery,
   useLazyGetArticleQueriesQuery,
+  useUpdateDataMutation,
 } from 'services';
 import { formatDateGeneral } from 'utils';
 import { Button, Label, SearchBlock, Subtitle, TablesBlock } from './SearchQuery.styled';
@@ -36,6 +37,7 @@ export const SearchQuery = () => {
     fetchDeleteArticle,
     { isLoading: isLoadingDeleteArticle, isSuccess: isSuccessDeleteArticle },
   ] = useDeleteSavedArticleMutation();
+  const [fetchUpdateDate, { isLoading: isLoadingUpdateDate }] = useUpdateDataMutation();
 
   useEffect(() => {
     if (!date) return;
@@ -79,12 +81,17 @@ export const SearchQuery = () => {
     }
   };
 
+  const updateDate = () => {
+    fetchUpdateDate();
+  };
+
   return (
     <Main style={{ overflow: 'hidden' }}>
       {(isLoadingGetArticle ||
         isFetchingGetArticle ||
         isLoadingSavedArticle ||
-        isLoadingDeleteArticle) && <Loader />}
+        isLoadingDeleteArticle ||
+        isLoadingUpdateDate) && <Loader />}
       <MainTitle>Поисковые запросы</MainTitle>
       <SearchBlock>
         <Subtitle>Добавить данные по артикулу</Subtitle>
@@ -92,7 +99,7 @@ export const SearchQuery = () => {
           <MultipleSelect
             isMultiple={false}
             placeholder="Артикул"
-            data={queryAllArticle?.map(({ articleName }) => articleName) ?? []}
+            data={queryAllArticle?.map(({ itemCode }) => itemCode) ?? []}
             selectValue={listAllArticles}
             setSelectValue={setListAllArticles}
           />
@@ -115,11 +122,12 @@ export const SearchQuery = () => {
           <MultipleSelect
             isMultiple={true}
             placeholder="Артикулы"
-            data={queryData?.map(({ article }) => article) ?? []}
+            data={queryData ? queryData.map(({ article }) => article) : []}
             selectValue={listSavedArticles}
             setSelectValue={setListSavedArticles}
           />
         </Label>
+        <Button onClick={updateDate}>Обновить</Button>
       </SearchBlock>
       {gridData.length ? (
         <TablesBlock>

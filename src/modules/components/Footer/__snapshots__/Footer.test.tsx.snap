@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Footer styled-components FooterInfo 1`] = `
+<p
+  className="sc-gswNZR"
+/>
+`;
+
+exports[`Snapshot Footer styled-components StyledFooter 1`] = `
+<footer
+  className="sc-bcXHqe gdjWve"
+/>
+`;

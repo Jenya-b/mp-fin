@@ -11,7 +11,7 @@ import { formatDateISOString } from 'utils';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 import { getListOfYears, getThisYear } from 'utils/formatDate/formatDate';
-import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
+import { FilterBySelectParams } from 'modules/components/Filters/FilterBySelectParams/FilterBySelectParams';
 
 export const Weeks = () => {
   const [weeksByYears, setWeeksByYears] = useState<IWeekWithParam[]>([]);
@@ -66,7 +66,7 @@ export const Weeks = () => {
           </Label>
           <SecondaryButton>Добавить неделю</SecondaryButton>
         </Form>
-        <FilterSelectParam
+        <FilterBySelectParams
           setParameter={setYear}
           thisParameter={year}
           parameters={getListOfYears()}

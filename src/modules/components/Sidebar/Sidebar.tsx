@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { mainLogo } from 'constants/images';
 import { menuSidebar, adminRoute } from 'constants/menu';
 import { routerPath } from 'constants/routerPath';
-import { Menu } from 'modules/components/Sidebar/Menu';
+import { Menu } from 'modules/components/Sidebar/Menu/Menu';
 import { Aside, Logo, LogoImg, LogoWrapper } from './Sidebar.styled';
 import { useAppSelector } from 'store/store';
 import { userSelector } from 'store/selectors';

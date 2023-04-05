@@ -11,7 +11,7 @@ export const PercentBar = ({ value, maxValue }: PercentBarProps) => {
   return (
     <Wrapper>
       <PercentText>{value.toLocaleString('ru-RU')}</PercentText>
-      <ColorBlock maxWidth={percent}></ColorBlock>
+      <ColorBlock maxWidth={percent} data-testid="percent-color"></ColorBlock>
     </Wrapper>
   );
 };

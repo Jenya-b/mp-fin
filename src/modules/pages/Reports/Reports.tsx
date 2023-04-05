@@ -20,7 +20,7 @@ import { openNotify } from 'store/reducers/notifySlice';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { fileReportSelector, notifySelector } from 'store/selectors';
 import { getListOfYears, getThisYear } from 'utils/formatDate/formatDate';
-import { FilterSelectParam } from 'modules/components/Filters/FilterSelectParam';
+import { FilterBySelectParams } from 'modules/components/Filters/FilterBySelectParams/FilterBySelectParams';
 
 export const ReportsPage = () => {
   const dispatch = useAppDispatch();
@@ -158,7 +158,7 @@ export const ReportsPage = () => {
         desc="Вы действительно хотите удалить отчет?"
       />
       <MainTitle>Загруженные отчеты</MainTitle>
-      <FilterSelectParam
+      <FilterBySelectParams
         setParameter={setYear}
         thisParameter={year}
         parameters={getListOfYears()}
