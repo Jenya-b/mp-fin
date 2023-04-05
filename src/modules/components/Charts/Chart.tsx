@@ -84,11 +84,12 @@ export const BaseChart = ({ mainData, chartNum }: BaseChartProps) => {
     labels: labelsWeek,
     datasets: selectValues.map(({ label, parameter, backgroundColor, borderColor }) => ({
       label,
-      data: labelsWeek.map(
-        (week) =>
+      data: labelsWeek.map((week) =>
+        Number(
           mainData.weekAndSums[mainData.weekAndSums.findIndex((item) => item.weekNumber === week)][
             parameter
-          ]
+          ].toFixed(2)
+        )
       ),
       borderColor,
       backgroundColor,
@@ -99,11 +100,12 @@ export const BaseChart = ({ mainData, chartNum }: BaseChartProps) => {
     labels: labelsArticle,
     datasets: selectValues.map(({ label, parameter, backgroundColor, borderColor }) => ({
       label,
-      data: labelsArticle.map(
-        (label) =>
+      data: labelsArticle.map((label) =>
+        Number(
           mainData.analyticsDatas[
             mainData.analyticsDatas.findIndex((item) => item.article === label)
-          ][parameter]
+          ][parameter].toFixed(2)
+        )
       ),
       borderColor,
       backgroundColor,
