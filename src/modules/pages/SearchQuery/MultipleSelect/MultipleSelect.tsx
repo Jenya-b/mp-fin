@@ -9,7 +9,21 @@ const styles = {
   background: '#ffffff',
   color: '#4F4F4F',
   borderRadius: '10px',
-  transition: 'all 0.3s',
+
+  '&': {
+    '&& fieldset': {
+      borderColor: '#F2F2F2',
+      transition: 'all 0.3s',
+    },
+  },
+  '&:hover': {
+    '&& fieldset': {
+      border: '1px solid #1FC5C7',
+    },
+  },
+  '.Mui-focused': {
+    border: '1px solid #BDBDBD',
+  },
 };
 
 function getStyles(name: string, personName: string[], theme: Theme) {
@@ -53,7 +67,7 @@ export const MultipleSelect = ({
       }}
     >
       <Select
-        style={styles}
+        sx={styles}
         multiple={isMultiple}
         displayEmpty
         value={selectValue}
