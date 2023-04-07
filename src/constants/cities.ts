@@ -1,10 +1,3 @@
-export const cities: ['msk', 'spb', 'ekb', 'kzn', 'nsk', 'hbr', 'kdr', 'klgd'] = [
-  'msk',
-  'spb',
-  'ekb',
-  'kzn',
-  'nsk',
-  'hbr',
-  'kdr',
-  'klgd',
-];
+export type CitiesType = ['msk', 'spb', 'ekb', 'kzn', 'nsk', 'hbr', 'kdr', 'klgd'];
+
+export const cities: CitiesType = ['msk', 'spb', 'ekb', 'kzn', 'nsk', 'hbr', 'kdr', 'klgd'];

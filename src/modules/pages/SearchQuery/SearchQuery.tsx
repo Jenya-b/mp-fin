@@ -8,14 +8,13 @@ import {
   useLazyGetArticleQueriesQuery,
   useUpdateDataMutation,
 } from 'services';
-import { formatDateGeneral } from 'utils';
-import { Button, Label, SearchBlock, Subtitle, TablesBlock } from './SearchQuery.styled';
+import { formatDateGeneral, getDefaultValueByInputDate } from 'utils';
+import { Button, Label, SearchBlock, Subtitle } from './SearchQuery.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { IArticleQueries } from 'services/types';
-import { getDefaultValueByInputDate } from 'utils/formatDate/formatDate';
 import { InputSearch } from 'modules/pages/DemandDynamics/DemandDynamics.styled';
-import { GridTable } from './GridTable/GridTable';
 import { MultipleSelect } from './MultipleSelect/MultipleSelect';
+import { Table } from './Table/Table';
 
 export const SearchQuery = () => {
   const [date, setDate] = useState<string>(getDefaultValueByInputDate(new Date()));
@@ -129,20 +128,7 @@ export const SearchQuery = () => {
         </Label>
         <Button onClick={updateDate}>Обновить</Button>
       </SearchBlock>
-      {gridData.length ? (
-        <TablesBlock>
-          {gridData.map((item) => (
-            <GridTable
-              key={item.article}
-              numDate={7}
-              deleteSavedArticle={deleteSavedArticle}
-              {...item}
-            />
-          ))}
-        </TablesBlock>
-      ) : (
-        <></>
-      )}
+      <Table data={gridData} deleteSavedArticle={deleteSavedArticle} />
     </Main>
   );
 };

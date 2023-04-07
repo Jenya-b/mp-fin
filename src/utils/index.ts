@@ -1,5 +1,10 @@
 import { createArray } from './createArray/createArray';
-import { formatDateGeneral, formatDateISOString } from './formatDate/formatDate';
+import {
+  formatDateGeneral,
+  formatDateISOString,
+  getDefaultValueByInputDate,
+  subtractDate,
+} from './formatDate/formatDate';
 import { getMaxValueInObject, getSumValuesInObject } from './getValueInObject/getValueInObject';
 import { isObject } from './isObject/isObject';
 import { getLocalStorage, setLocalStorage } from './localStorage/localStorage';
@@ -13,4 +18,6 @@ export {
   isObject,
   setLocalStorage,
   getLocalStorage,
+  subtractDate,
+  getDefaultValueByInputDate,
 };
