@@ -8,8 +8,8 @@ import {
   SelectChangeEvent,
   TextField,
 } from '@mui/material';
-import styled from 'styled-components';
 import { IDataSets } from 'interfaces/analitics';
+import { Wrapper } from './Controls.styled';
 
 interface ControlsProps {
   chartFormat: string;
@@ -62,10 +62,3 @@ export const Controls = ({
     />
   </Wrapper>
 );
-
-export const Wrapper = styled.div`
-  display: grid;
-  grid-template: 1fr 1fr / 200px 1fr;
-  column-gap: 20px;
-  row-gap: 20px;
-`;
