@@ -1,51 +1,21 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { PrimaryButton } from 'styles/components';
-import { fontStylesCaptionBig, fontStylesH1, fontStylesH2 } from 'styles/typography';
+import { Wrapper, NotFoundButton, StyledLink, Subtitle, Title } from './NotFound.styled';
+import { routerPath } from 'constants/routerPath';
 
-export const NotFoundPage = () => (
-  <Wrapper>
-    <Title>Ошибка 404</Title>
-    <Subtitle>
-      Кажется что-то пошло не так! Страница, которую Вы запрашиваете, не существует. Возможно она
-      устарела, была удалена, или был введен неверный адрес в адресной строке.
-    </Subtitle>
-    <StyledLink to="/">
-      <NotFoundButton>Перейти на главную</NotFoundButton>
-    </StyledLink>
-  </Wrapper>
-);
+export const NotFoundPage = () => {
+  const { home } = routerPath;
+
+  return (
+    <Wrapper>
+      <Title>Ошибка 404</Title>
+      <Subtitle>
+        Кажется что-то пошло не так! Страница, которую Вы запрашиваете, не существует. Возможно она
+        устарела, была удалена, или был введен неверный адрес в адресной строке.
+      </Subtitle>
+      <StyledLink to={home}>
+        <NotFoundButton>Перейти на главную</NotFoundButton>
+      </StyledLink>
+    </Wrapper>
+  );
+};
 
 export default NotFoundPage;
-
-const Wrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template: 1fr repeat(3, auto) 1fr/ 1fr minmax(auto, 1200px) 1fr;
-  align-items: center;
-  row-gap: 40px;
-`;
-const Title = styled.h1`
-  grid-row: 2/3;
-  grid-column: 2/3;
-  ${fontStylesH1}
-  font-size: ${({ theme }) => theme.sizes.notFound.title.fontSize}px;
-  text-align: center;
-`;
-const Subtitle = styled.h2`
-  grid-row: 3/4;
-  grid-column: 2/3;
-  ${fontStylesH2}
-  text-align: center;
-`;
-const NotFoundButton = styled(PrimaryButton)`
-  ${fontStylesCaptionBig}
-  padding: 10px 30px;
-`;
-const StyledLink = styled(Link)`
-  grid-row: 4/5;
-  grid-column: 2/3;
-  margin-left: auto;
-  margin-right: auto;
-`;
