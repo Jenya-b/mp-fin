@@ -10,8 +10,8 @@ export const StyledTable = styled.table<ICountColumns>`
   border-collapse: collapse;
   min-width: 100%;
   grid-template-columns: minmax(230px, 1fr) repeat(${({ count }) => count}, minmax(400px, 1fr));
-  background: #ffffff;
-  border: 1px solid rgb(242, 242, 242);
+  background: ${({ theme }) => theme.colors.backgroundPrimary};
+  border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   overflow: hidden;
@@ -36,7 +36,7 @@ export const StyledTable = styled.table<ICountColumns>`
     position: sticky;
     top: 0;
     padding-bottom: 25px;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderPrimary};
     text-align: left;
     font-weight: 500;
 
