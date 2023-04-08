@@ -7,7 +7,7 @@ interface THeadProps {
 }
 
 export const THead = ({ data, cities }: THeadProps) => {
-  const renderItem = (name: string) => (
+  const renderItem = (name: string, _: number) => (
     <th key={name}>
       <div>{name}</div>
       <Params>

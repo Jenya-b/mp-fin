@@ -15,8 +15,8 @@ interface TBodyProps {
 }
 
 export const TBody = ({ article, data, cities, deleteSavedArticle }: TBodyProps) => {
-  const renderItem = (item: IStatistics) => (
-    <td>
+  const renderItem = (item: IStatistics, index: number) => (
+    <td key={index}>
       <Params>
         {cities.map((city, i) => (
           <li key={i}>{item[city]}</li>
