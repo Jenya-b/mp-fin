@@ -12,7 +12,7 @@ import {
   LinkWrapperCenter,
 } from 'modules/pages/Login/Login.styled';
 import { Loader } from 'modules/components/Loader/Loader';
-import { InfoMessage } from 'modules/pages/Login/InfoMessage';
+import { InfoMessage } from 'modules/pages/Login/InfoMessage/InfoMessage';
 import { routerPath } from 'constants/routerPath';
 import { FormValuesPassReset } from 'interfaces/form';
 
