@@ -3,7 +3,7 @@ import { useAppSelector } from 'store/store';
 import { Main, MainTitle, MainSubtitle } from 'styles/components';
 import { BasicTable } from 'modules/components/Table/Table';
 import { BalanceWrapper, HistoryBlock } from 'modules/pages/Balance/Balance.styled';
-import { Replenishment } from 'modules/pages/Balance/Replenishment';
+import { Replenishment } from 'modules/pages/Balance/Replenishment/Replenishment';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { balanceSelector } from 'store/selectors';
 
