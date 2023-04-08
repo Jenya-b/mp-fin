@@ -17,16 +17,16 @@ export const Main = styled.main`
 
 export const MainTitle = styled.h1`
   ${fontStylesH1}
-  color: ${({ theme }) => theme.colors.mainTitle};
+  color: ${({ theme }) => theme.colors.textTertiary};
 `;
 
 export const MainSubtitle = styled.h2`
   ${fontStylesH2}
-  color: ${({ theme }) => theme.colors.mainTitle};
+  color: ${({ theme }) => theme.colors.textTertiary};
 `;
 
 export const PrimaryButton = styled.button`
-  color: ${({ theme }) => theme.colors.btn};
+  color: ${({ theme }) => theme.colors.textSecondary};
   ${ButtonMailStyles}
 `;
 
@@ -41,26 +41,26 @@ export const PrimaryInput = styled.input`
   height: ${({ theme }) => theme.sizes.inputForm.height}px;
   padding-left: 20px;
   ${fontStylesCaption}
-  color: ${({ theme }) => theme.colors.inputFormText};
+  color: ${({ theme }) => theme.colors.textTertiary};
   border-radius: ${({ theme }) => theme.borders.inputForm.borderRadius}px;
-  border: 1px solid ${({ theme }) => theme.colors.inputFormBorder};
+  border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   transition: all ${({ theme }) => theme.transitions.input.time}s;
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.inputFormPlaceholder};
+    color: ${({ theme }) => theme.colors.textPrimary};
   }
 
   :hover {
-    border: 1px solid ${({ theme }) => theme.colors.inputFormHoverBord};
+    border: 1px solid ${({ theme }) => theme.colors.borderSecondary};
   }
 
   :focus {
-    border: 1px solid ${({ theme }) => theme.colors.inputFormFocusBord};
+    border: 1px solid ${({ theme }) => theme.colors.borderTertiary};
   }
 `;
 
 export const SecondaryInput = styled(PrimaryInput)`
-  background: ${({ theme }) => theme.colors.inputFormBackground};
+  background: ${({ theme }) => theme.colors.backgroundBase};
 `;
 
 export const Checkbox = styled.input``;

@@ -38,7 +38,7 @@ const Wrapper = styled.div`
   padding: 30px 35px;
   border-radius: ${({ theme }) => theme.borders.replenishment.borderRadius}px;
   height: ${({ theme }) => theme.sizes.replenishmentBlock.height}px;
-  background: ${({ theme }) => theme.colors.replenishmentBg};
+  background: ${({ theme }) => theme.colors.backgroundPrimary};
   position: relative;
 `;
 const List = styled.div`
@@ -51,7 +51,7 @@ const Item = styled.div`
   justify-content: space-between;
 `;
 const BalanceTitle = styled.div`
-  color: ${({ theme }) => theme.colors.replenishmentBalance};
+  color: ${({ theme }) => theme.colors.textTertiary};
   ${fontStylesRegularBold}
 `;
 const BalanceParam = styled.div`
@@ -59,14 +59,14 @@ const BalanceParam = styled.div`
 `;
 const WriteOffTitle = styled.div`
   ${fontStylesCaption}
-  color: ${({ theme }) => theme.colors.replenishmentWriteOff};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 const WriteOffParam = styled.div`
   ${fontStylesCaption}
-  color: ${({ theme }) => theme.colors.replenishmentWriteOff};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 const Span = styled.span`
-  color: ${({ theme }) => theme.colors.replenishmentSpan};
+  color: ${({ theme }) => theme.colors.textBase};
 `;
 const Control = styled.div``;
 const ImageWrapp = styled.div`

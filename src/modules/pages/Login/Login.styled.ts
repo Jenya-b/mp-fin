@@ -6,7 +6,7 @@ import { fontStylesH2, fontStylesSmall } from '../../../styles/typography';
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundBase};
   display: grid;
   grid-template-columns: 1fr ${({ theme }) => theme.sizes.logoForm.width}px;
 
@@ -46,7 +46,7 @@ export const LoginForm = styled.form`
   padding-right: ${({ theme }) => theme.indents.loginForm.paddingRight}px;
   padding-bottom: ${({ theme }) => theme.indents.loginForm.paddingBottom}px;
   padding-left: ${({ theme }) => theme.indents.loginForm.paddingLeft}px;
-  background: ${({ theme }) => theme.colors.formBackground};
+  background: ${({ theme }) => theme.colors.backgroundPrimary};
   border-radius: ${({ theme }) => theme.borders.loginForm.borderRadius}px;
 
   @media (max-width: 560px) {
@@ -59,7 +59,7 @@ export const LoginForm = styled.form`
 export const TitleForm = styled.h2`
   ${fontStylesH2}
   text-align: center;
-  color: ${({ theme }) => theme.colors.titleForm};
+  color: ${({ theme }) => theme.colors.textBase};
 `;
 
 export const InputList = styled.div`
@@ -86,7 +86,7 @@ export const Controls = styled.div`
 
 export const LinkWrapper = styled.p`
   margin-top: 13px;
-  color: ${({ theme }) => theme.colors.formSpan};
+  color: ${({ theme }) => theme.colors.textPrimary};
   ${fontStylesSmall}
   ${linkStyles}
 `;
@@ -97,15 +97,15 @@ export const LinkWrapperCenter = styled(LinkWrapper)`
 
 export const MessageError = styled.p`
   margin-top: 5px;
-  color: ${({ theme }) => theme.colors.messageError};
+  color: ${({ theme }) => theme.colors.textAttentionSecondary};
 `;
 
 export const TelegramButton = styled(SecondaryButton)`
-  background: ${({ theme }) => theme.colors.btnbackgroundTelegram};
+  background: ${({ theme }) => theme.colors.backgroundTelegramPrimary};
 
   :hover,
   :active {
-    background: ${({ theme }) => theme.colors.btnHoverTelegram};
+    background: ${({ theme }) => theme.colors.backgroundTelegramSecondary};
   }
 `;
 

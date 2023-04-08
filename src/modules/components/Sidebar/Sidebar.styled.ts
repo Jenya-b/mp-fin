@@ -13,7 +13,7 @@ export const Aside = styled.aside<AsideProps>`
       ? ({ theme }) => theme.sizes.sidebar.widthActive
       : ({ theme }) => theme.sizes.sidebar.widthHidden}px;
   height: 100%;
-  background: ${({ theme }) => theme.colors.sidebar};
+  background: ${({ theme }) => theme.colors.backgroundTertiary};
   display: grid;
   grid-template: ${({ theme }) => theme.sizes.sidebar.logo.height}px 1fr / 1fr;
   transition: all 0.1s;
@@ -22,7 +22,7 @@ export const Aside = styled.aside<AsideProps>`
 
 export const Logo = styled.div`
   height: 100%;
-  background: ${({ theme }) => theme.colors.sidebarLogo};
+  background: ${({ theme }) => theme.colors.backgroundSecondary};
   display: flex;
   align-items: center;
 `;

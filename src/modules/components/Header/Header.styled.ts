@@ -4,8 +4,8 @@ import { fontStylesCaption, fontStylesRegular } from 'styles/typography';
 
 export const StyledHeader = styled.header`
   height: 100%;
-  background: ${({ theme }) => theme.colors.header};
-  border: 1px solid ${({ theme }) => theme.colors.headerBorder};
+  background: ${({ theme }) => theme.colors.backgroundPrimary};
+  border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   padding: 0 60px;
   display: flex;
   justify-content: space-between;
@@ -32,7 +32,7 @@ export const LoginImage = styled.div<{ imagesUrl: string }>`
 `;
 export const LoginName = styled.div`
   ${fontStylesRegular}
-  color: ${({ theme }) => theme.colors.textHeaderPrimary};
+  color: ${({ theme }) => theme.colors.textBase};
 `;
 
 export const BalanceInfo = styled.div`
@@ -48,7 +48,7 @@ export const BalanceIcon = styled.div`
 export const BalanceSum = styled.div`
   margin-left: 10px;
   ${fontStylesRegular}
-  color: ${({ theme }) => theme.colors.textHeaderPrimary};
+  color: ${({ theme }) => theme.colors.textBase};
 `;
 
 export const BalanceButton = styled(PrimaryButton)`
@@ -67,7 +67,6 @@ const Button = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.btnCircleHeader};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -97,5 +96,5 @@ export const ButtonLogin = styled(Button)`
 export const LoginTitle = styled.div`
   margin-left: 15px;
   ${fontStylesCaption}
-  color: ${({ theme }) => theme.colors.textHeaderPrimary};
+  color: ${({ theme }) => theme.colors.textBase};
 `;

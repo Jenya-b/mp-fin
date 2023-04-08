@@ -8,21 +8,21 @@ export const flexCenterAll = css`
 
 export const linkStyles = css`
   a {
-    color: ${({ theme }) => theme.colors.formLink};
+    color: ${({ theme }) => theme.colors.backgroundTertiary};
 
     :hover {
-      color: ${({ theme }) => theme.colors.formLinkHover};
+      color: ${({ theme }) => theme.colors.backgroundSecondary};
     }
   }
 `;
 
 export const ButtonMailStyles = css`
   border-radius: ${({ theme }) => theme.borders.primaryBtn.borderRadius}px;
-  background: ${({ theme }) => theme.colors.btnbackground};
+  background: ${({ theme }) => theme.colors.backgroundSecondary};
   transition: all ${({ theme }) => theme.transitions.button.time}s;
 
   :hover,
   :active {
-    background: ${({ theme }) => theme.colors.btnHover};
+    background: ${({ theme }) => theme.colors.backgroundTertiary};
   }
 `;

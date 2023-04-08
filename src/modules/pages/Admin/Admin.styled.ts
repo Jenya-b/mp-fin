@@ -13,7 +13,7 @@ export const Menu = styled.div`
   padding-right: ${({ theme }) => theme.indents.adminMenu.paddingRight}px;
   padding-bottom: ${({ theme }) => theme.indents.adminMenu.paddingBottom}px;
   padding-left: ${({ theme }) => theme.indents.adminMenu.paddingLeft}px;
-  background: ${({ theme }) => theme.colors.adminMenuBg};
+  background: ${({ theme }) => theme.colors.backgroundBase};
 `;
 export const List = styled.ul`
   display: flex;
@@ -24,10 +24,10 @@ export const Item = styled.li`
   ${fontStylesCaptionBig}
 
   a {
-    color: ${({ theme }) => theme.colors.adminMenuLink};
+    color: ${({ theme }) => theme.colors.textBase};
 
     &.active {
-      color: ${({ theme }) => theme.colors.adminMenuLinkActive};
+      color: ${({ theme }) => theme.colors.textAttentionPrimary};
     }
   }
 `;

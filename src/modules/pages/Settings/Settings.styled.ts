@@ -17,12 +17,12 @@ export const InputsWrapper = styled.div`
   row-gap: 25px;
 `;
 export const SecondaryInput = styled(PrimaryInput)`
-  background: ${({ theme }) => theme.colors.inputSettingsFormBg};
+  background: ${({ theme }) => theme.colors.backgroundPrimary};
   margin-top: 5px;
 `;
 export const Label = styled.label`
   ${fontStylesCaption}
-  color: ${({ theme }) => theme.colors.labelSettingsFormText};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
 export const InputFileWrapp = styled.div`

@@ -1,8 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
-import { ThemeProvider } from 'styled-components';
 import { baseTheme } from 'styles/theme';
-import { Header } from './Header';
 import {
   StyledHeader,
   BalanceButton,

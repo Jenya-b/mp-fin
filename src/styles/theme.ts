@@ -3,81 +3,21 @@ import { Colors } from 'constants/colors';
 
 export const baseTheme: ITheme = {
   colors: {
-    background: Colors.MainBlue,
-
-    //sidebar
-    sidebar: Colors.MainGreenPrimary,
-    sidebarLogo: Colors.MainGreenSecondary,
-    sidebarTextMenu: Colors.MainWhite,
-
-    //formLogin
-    formBackground: Colors.MainWhite,
-    inputFormPlaceholder: Colors.MainGreyTertiary,
-    inputFormHoverBord: Colors.MainGreenSecondary,
-    inputFormFocusBord: Colors.MainGreyTertiary,
-    inputFormText: Colors.MainGreyPrimary,
-    inputFormBackground: Colors.MainBlue,
-    inputFormBorder: Colors.MainGreyLight,
-    titleForm: Colors.MainBlack,
-    formLink: Colors.MainGreenPrimary,
-    formLinkHover: Colors.MainGreenSecondary,
-    formSpan: Colors.MainGreySecondary,
-    messageError: Colors.AdditionalPinkSecondary,
-
-    //button
-    btn: Colors.MainGreyLight,
-    btnbackground: Colors.MainGreenSecondary,
-    btnbackgroundTelegram: Colors.AdditionalBlue,
-    btnHover: Colors.MainGreenPrimary,
-    btnHoverTelegram: Colors.AdditionalBlueDark,
-    btnActive: Colors.MainGreenPrimary,
-    btnCircleHeader: Colors.MainGreyLight,
-
-    //header
-    header: Colors.MainWhite,
-    headerBorder: Colors.MainGreyLight,
-    textHeaderPrimary: Colors.MainBlack,
-    textCountHeader: Colors.MainWhite,
-    headerMessageCount: Colors.MainGreenSecondary,
-
-    //footer
-    footerBg: Colors.MainWhite,
-    footerBorder: Colors.MainGreyLight,
-    textFooterPrimary: Colors.MainBlack,
-
-    //not-found
-    notFoundBg: Colors.MainWhite,
-
-    //main
-    mainTitle: Colors.MainGreyPrimary,
-
-    //settings
-    inputSettingsFormBg: Colors.MainWhite,
-    labelSettingsFormText: Colors.MainGreySecondary,
-
-    //table
-    tableReportDate: Colors.MainBluePrimary,
-    tableReportTextMain: Colors.MainGreyPrimary,
-    tableReportSubtitleColl: Colors.MainGreySecondary,
-
-    //
-    tablePrimeCostWrapper: Colors.MainWhite,
-
-    //replenishment
-    replenishmentBg: Colors.MainWhite,
-    replenishmentSpan: Colors.MainBlack,
-    replenishmentBalance: Colors.MainGreyPrimary,
-    replenishmentWriteOff: Colors.MainGreySecondary,
-
-    //admin-panel
-    adminMenuBg: Colors.MainGreyLight,
-    adminMenuLink: Colors.MainBlack,
-    adminMenuLinkActive: Colors.MainBluePrimary,
-    adminInputFile: Colors.MainWhite,
-
-    //searchQuery
-    tableGridBg: Colors.MainWhite,
-    borderTable: Colors.MainGreyLight,
+    backgroundBase: Colors.MainBlue,
+    backgroundPrimary: Colors.MainWhite,
+    backgroundSecondary: Colors.MainGreenSecondary,
+    backgroundTertiary: Colors.MainGreenPrimary,
+    backgroundTelegramPrimary: Colors.AdditionalBlue,
+    backgroundTelegramSecondary: Colors.AdditionalBlue,
+    textBase: Colors.MainBlack,
+    textPrimary: Colors.MainGreySecondary,
+    textSecondary: Colors.MainGreyLight,
+    textTertiary: Colors.MainGreyPrimary,
+    textAttentionPrimary: Colors.MainBluePrimary,
+    textAttentionSecondary: Colors.AdditionalPinkSecondary,
+    borderPrimary: Colors.MainGreyLight,
+    borderSecondary: Colors.MainGreenSecondary,
+    borderTertiary: Colors.MainGreyTertiary,
   },
   sizes: {
     loginForm: {

@@ -26,8 +26,8 @@ export const TablesBlock = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  background: ${({ theme }) => theme.colors.tableGridBg};
-  border: 1px solid ${({ theme }) => theme.colors.inputFormBorder};
+  background: ${({ theme }) => theme.colors.backgroundPrimary};
+  border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   border-radius: ${({ theme }) => theme.borders.inputForm.borderRadius}px;
   overflow: hidden;
   overflow-x: scroll;

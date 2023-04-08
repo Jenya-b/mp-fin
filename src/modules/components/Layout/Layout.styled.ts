@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: 100%;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundBase};
 `;
 
 export const ContentWrapper = styled.div`

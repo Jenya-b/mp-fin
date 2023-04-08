@@ -11,9 +11,9 @@ export const InputFileName = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.colors.adminInputFile};
+  background: ${({ theme }) => theme.colors.backgroundPrimary};
   border-radius: ${({ theme }) => theme.borders.inputForm.borderRadius}px;
-  border: 1px solid ${({ theme }) => theme.colors.inputFormBorder};
+  border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
 `;
 
 export const InputFileBtn = styled.div`

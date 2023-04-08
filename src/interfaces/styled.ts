@@ -1,6 +1,20 @@
 export interface ITheme {
   colors: {
-    [key: string]: string;
+    backgroundBase: string;
+    backgroundPrimary: string;
+    backgroundSecondary: string;
+    backgroundTertiary: string;
+    backgroundTelegramPrimary: string;
+    backgroundTelegramSecondary: string;
+    textBase: string;
+    textPrimary: string;
+    textSecondary: string;
+    textTertiary: string;
+    textAttentionPrimary: string;
+    textAttentionSecondary: string;
+    borderPrimary: string;
+    borderSecondary: string;
+    borderTertiary: string;
   };
   sizes: {
     loginForm: {

@@ -26,13 +26,13 @@ exports[`Snapshot Header styled-components BalanceSum 1`] = `
 
 exports[`Snapshot Header styled-components ButtonLogin 1`] = `
 <button
-  className="sc-hBxehG sc-bjfHbI hCJtBe hcFlRF"
+  className="sc-hBxehG sc-bjfHbI eJsBfT hcFlRF"
 />
 `;
 
 exports[`Snapshot Header styled-components ButtonSettings 1`] = `
 <button
-  className="sc-hBxehG sc-fEXmlR hCJtBe hjSRwe"
+  className="sc-hBxehG sc-fEXmlR eJsBfT hjSRwe"
 />
 `;
 

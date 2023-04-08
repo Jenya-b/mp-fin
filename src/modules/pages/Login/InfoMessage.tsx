@@ -42,6 +42,6 @@ const Button = styled.div`
   height: ${({ theme }) => theme.sizes.primaryBtn.height}px;
 
   a {
-    color: ${({ theme }) => theme.colors.btn};
+    color: ${({ theme }) => theme.colors.textSecondary};
   }
 `;

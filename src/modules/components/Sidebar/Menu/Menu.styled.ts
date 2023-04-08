@@ -14,7 +14,7 @@ export const Image = styled.img`
 
 export const Title = styled.p`
   ${fontStylesRegular}
-  color: ${({ theme }) => theme.colors.sidebarTextMenu};
+  color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 export const MenuList = styled.ul`
