@@ -35,7 +35,12 @@ export const Signin = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValuesSignin>();
+  } = useForm<FormValuesSignin>({
+    values: {
+      userName: defaultName,
+      password: defaultPass,
+    },
+  });
 
   const { home, passwordRecovery, registration } = routerPath;
   const [signinUser, { isLoading, isSuccess, isError }] = useSigninUserMutation();
@@ -57,13 +62,18 @@ export const Signin = () => {
 
   useEffect(() => {
     const url = new URL(window.location.href);
-    const name = url.searchParams.get('tel');
-    const pass = url.searchParams.get('pass');
+    const searchParams = url.searchParams;
+    const name = searchParams.get('tel');
+    const pass = searchParams.get('pass');
 
     if (!!(name && pass)) {
-      setDefaultName(name);
+      setDefaultName(`+${name.trim()}`);
       setDefaultPass(pass);
     }
+
+    searchParams.delete('tel');
+    searchParams.delete('pass');
+    history.pushState(null, document.title, url);
   }, []);
 
   const onSubmit = handleSubmit((data) => {
@@ -93,7 +103,6 @@ export const Signin = () => {
                 required: 'Поле обязательно к заполнению',
               })}
               placeholder="Номер телефона или Email"
-              defaultValue={defaultName}
             />
             {errors?.userName && <MessageError>{errors.userName?.message || 'Error'}</MessageError>}
           </Label>
@@ -104,7 +113,6 @@ export const Signin = () => {
               })}
               placeholder="Пароль"
               type="password"
-              defaultValue={defaultPass}
             />
             {errors?.password && <MessageError>{errors.password?.message || 'Error'}</MessageError>}
           </Label>
