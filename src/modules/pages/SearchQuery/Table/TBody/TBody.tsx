@@ -24,6 +24,7 @@ export const TBody = ({ article, data, cities, deleteSavedArticle }: TBodyProps)
       </Params>
     </td>
   );
+
   return (
     <tbody>
       <tr style={{ fontWeight: 600 }}>

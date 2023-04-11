@@ -22,6 +22,8 @@ export const Table = ({ data, deleteSavedArticle }: TableProps) => {
     setHeadData(createArray(countDays).map((_, index) => subtractDate(data[0].date, index)));
   }, [data]);
 
+  if (!data.length) return null;
+
   return (
     <StyledTable count={countDays}>
       <THead data={headData} cities={cities} />
