@@ -39,7 +39,7 @@ export const TBody = ({ article, data, cities, deleteSavedArticle }: TBodyProps)
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
-            {title}
+            <span title={title}>{title}</span>
           </td>
           <TableRow row={statistics} renderItem={renderItem} renderEmpty={<></>} />
         </tr>
