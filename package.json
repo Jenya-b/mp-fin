@@ -78,6 +78,7 @@
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
-    "@typescript-eslint/parser": "^5.15.0"
+    "@typescript-eslint/parser": "^5.15.0",
+    "jest-fetch-mock": "^3.0.3"
   }
 }

@@ -7,7 +7,7 @@ import { SmartTable } from 'modules/pages/Analytics/DataGrid/DataGrid';
 import { Loader } from 'modules/components/Loader/Loader';
 import { BaseChart } from 'modules/components/Charts/Chart';
 import { IAnalyticVisualData } from 'services/types';
-import { createArray, getLocalStorage } from 'utils';
+import { createArray, getLocalStorage, getThisYear } from 'utils';
 import { InformationBlock } from 'modules/components/InformationBlock/InformationBlock';
 import { countChartParam } from 'constants/selectParam';
 import { FiltersBlock } from 'modules/components/Filters/Filters';
@@ -27,6 +27,7 @@ export const AnaliticsPage = () => {
   const [articleNameFilter, setArticleNameFilter] = useFilter('articlesId');
   const [firstAliticsData, setFirstAliticsData] = useState<IAnalyticVisualData>();
   const [countChart, setCountChart] = useState<number>(getLocalStorage('countChart') ?? 1);
+  const [year, setYear] = useState<number>(getThisYear());
 
   useEffect(() => {
     if (allWeekId.length && allArticleName.length) return;
@@ -79,6 +80,8 @@ export const AnaliticsPage = () => {
           setWeekIdFilter={setWeekIdFilter}
           articleNameFilter={articleNameFilter}
           setArticleNameFilter={setArticleNameFilter}
+          analiticYear={year}
+          setAnaliticYear={setYear}
         />
         {firstAliticsData && (
           <>

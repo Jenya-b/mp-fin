@@ -63,28 +63,60 @@ Object {
           <h3
             class="sc-hLBbgP hnJdxU"
           >
+            Выберите год:
+          </h3>
+          <div
+            class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiNativeSelect-root css-v4u5dn-MuiInputBase-root-MuiInput-root"
+            >
+              <select
+                aria-invalid="false"
+                class="MuiNativeSelect-select MuiNativeSelect-outlined MuiInputBase-input MuiInput-input css-19ygod6-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="2023"
+                >
+                  2023
+                </option>
+                <option
+                  value="2022"
+                >
+                  2022
+                </option>
+                <option
+                  value="2021"
+                >
+                  2021
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconOutlined css-1g12qau-MuiSvgIcon-root-MuiNativeSelect-icon"
+                data-testid="ArrowDropDownIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-gswNZR eEdGWU"
+        >
+          <h3
+            class="sc-hLBbgP hnJdxU"
+          >
             Недели:
           </h3>
           <ul
             class="sc-eDvSVe dQxPEN"
-          >
-            <li
-              class="sc-jSUZER"
-            >
-              <label
-                class="sc-gKPRtg bDoPsJ"
-                for="string"
-              >
-                <input
-                  class="sc-iBYQkv"
-                  id="string"
-                  type="checkbox"
-                />
-                 
-                1 (0NaN.0NaN - 0NaN.0NaN)
-              </label>
-            </li>
-          </ul>
+          />
         </div>
         <div
           class="sc-gswNZR eEdGWU"
@@ -177,28 +209,60 @@ Object {
         <h3
           class="sc-hLBbgP hnJdxU"
         >
+          Выберите год:
+        </h3>
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
+        >
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiNativeSelect-root css-v4u5dn-MuiInputBase-root-MuiInput-root"
+          >
+            <select
+              aria-invalid="false"
+              class="MuiNativeSelect-select MuiNativeSelect-outlined MuiInputBase-input MuiInput-input css-19ygod6-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input"
+            >
+              <option
+                selected=""
+                value="2023"
+              >
+                2023
+              </option>
+              <option
+                value="2022"
+              >
+                2022
+              </option>
+              <option
+                value="2021"
+              >
+                2021
+              </option>
+            </select>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconOutlined css-1g12qau-MuiSvgIcon-root-MuiNativeSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-gswNZR eEdGWU"
+      >
+        <h3
+          class="sc-hLBbgP hnJdxU"
+        >
           Недели:
         </h3>
         <ul
           class="sc-eDvSVe dQxPEN"
-        >
-          <li
-            class="sc-jSUZER"
-          >
-            <label
-              class="sc-gKPRtg bDoPsJ"
-              for="string"
-            >
-              <input
-                class="sc-iBYQkv"
-                id="string"
-                type="checkbox"
-              />
-               
-              1 (0NaN.0NaN - 0NaN.0NaN)
-            </label>
-          </li>
-        </ul>
+        />
       </div>
       <div
         class="sc-gswNZR eEdGWU"

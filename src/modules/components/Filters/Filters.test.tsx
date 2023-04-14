@@ -7,6 +7,8 @@ const props = {
   setCountChart: jest.fn(),
   setWeekIdFilter: jest.fn(),
   setArticleNameFilter: jest.fn(),
+  analiticYear: 2023,
+  setAnaliticYear: jest.fn(),
   countChart: 1,
   countChartParam: [1, 2],
   weekIdFilter: ['id1', 'id2'],

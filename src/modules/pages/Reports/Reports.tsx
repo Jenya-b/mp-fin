@@ -19,7 +19,7 @@ import { alertMessage } from 'constants/alert';
 import { openNotify } from 'store/reducers/notifySlice';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { fileReportSelector, notifySelector } from 'store/selectors';
-import { getListOfYears, getThisYear } from 'utils/formatDate/formatDate';
+import { getListOfYears, getThisYear } from 'utils';
 import { FilterBySelectParams } from 'modules/components/Filters/FilterBySelectParams/FilterBySelectParams';
 
 export const ReportsPage = () => {

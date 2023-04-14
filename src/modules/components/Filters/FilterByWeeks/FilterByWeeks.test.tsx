@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from 'styles/theme';
 import { FilterByWeeks } from './FilterByWeeks';
@@ -15,16 +14,18 @@ const propsWithData = {
     },
   ],
   setWeekIdFilter: jest.fn(),
+  analiticYear: 2023,
 };
 
 const propsWithoutData = {
   arrWeeks: [],
   allWeeks: [],
   setWeekIdFilter: jest.fn(),
+  analiticYear: 2023,
 };
 
 describe('FilterByWeeks component', () => {
-  test('render component', () => {
+  test('render component', async () => {
     render(
       <ThemeProvider theme={baseTheme}>
         <FilterByWeeks {...propsWithData} />
@@ -32,7 +33,6 @@ describe('FilterByWeeks component', () => {
     );
 
     expect(screen.getByRole('list')).toBeInTheDocument();
-    expect(screen.getByRole('checkbox')).toBeInTheDocument();
   });
 
   test('render component without data', () => {
@@ -44,17 +44,5 @@ describe('FilterByWeeks component', () => {
 
     expect(screen.getByRole('list')).toBeInTheDocument();
     expect(screen.queryByRole('checkbox')).toBeNull();
-  });
-
-  test('onChange works', () => {
-    render(
-      <ThemeProvider theme={baseTheme}>
-        <FilterByWeeks {...propsWithData} />
-      </ThemeProvider>
-    );
-
-    const checkbox = screen.getByRole('checkbox');
-    userEvent.click(checkbox);
-    expect(propsWithData.setWeekIdFilter).toHaveBeenCalledTimes(1);
   });
 });

@@ -3,6 +3,8 @@ import {
   formatDateGeneral,
   formatDateISOString,
   getDefaultValueByInputDate,
+  getListOfYears,
+  getThisYear,
   subtractDate,
 } from './formatDate/formatDate';
 import { getMaxValueInObject, getSumValuesInObject } from './getValueInObject/getValueInObject';
@@ -20,4 +22,6 @@ export {
   getLocalStorage,
   subtractDate,
   getDefaultValueByInputDate,
+  getListOfYears,
+  getThisYear,
 };
