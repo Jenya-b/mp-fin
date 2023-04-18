@@ -33,6 +33,10 @@ export const LoginImage = styled.div<{ imagesUrl: string }>`
 export const LoginName = styled.div`
   ${fontStylesRegular}
   color: ${({ theme }) => theme.colors.textBase};
+
+  @media (${({ theme }) => theme.media.large}) {
+    display: none;
+  }
 `;
 
 export const BalanceInfo = styled.div`
@@ -49,6 +53,12 @@ export const BalanceSum = styled.div`
   margin-left: 10px;
   ${fontStylesRegular}
   color: ${({ theme }) => theme.colors.textBase};
+
+  @media (${({ theme }) => theme.media.large}) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const BalanceButton = styled(PrimaryButton)`
@@ -97,4 +107,8 @@ export const LoginTitle = styled.div`
   margin-left: 15px;
   ${fontStylesCaption}
   color: ${({ theme }) => theme.colors.textBase};
+
+  @media (${({ theme }) => theme.media.large}) {
+    display: none;
+  }
 `;

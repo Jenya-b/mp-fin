@@ -29,10 +29,16 @@ export const Header = () => {
   const { balance, settings } = routerPath;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { user, isActiveUser } = useAppSelector(userSelector);
+  const { user } = useAppSelector(userSelector);
   const currentBalance = useAppSelector(balanceSelector);
 
   const [signoutUser, { isSuccess, isLoading }] = useSignoutMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(resetUser());
+    }
+  }, [dispatch, isSuccess]);
 
   const openPage = (event: MouseEvent<HTMLButtonElement>) => {
     const { name } = event.currentTarget;
@@ -53,37 +59,27 @@ export const Header = () => {
     signoutUser();
   };
 
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(resetUser());
-    }
-  }, [dispatch, isSuccess]);
-
   return (
     <>
       {isLoading && <Loader />}
       <StyledHeader>
         <LoginInfo>
-          <LoginImage imagesUrl={user?.avatar || defaultIconLogo}></LoginImage>
-          {isActiveUser && <LoginName>{user?.email}</LoginName>}
+          <LoginImage imagesUrl={user ? user.avatar : defaultIconLogo}></LoginImage>
+          <LoginName>{user?.email}</LoginName>
         </LoginInfo>
-        {isActiveUser && (
-          <BalanceInfo>
-            <BalanceIcon></BalanceIcon>
-            <BalanceSum>Баланс: {currentBalance} ₽</BalanceSum>
-            <BalanceButton name={balance} onClick={openPage}>
-              Пополнить
-            </BalanceButton>
-          </BalanceInfo>
-        )}
+        <BalanceInfo>
+          <BalanceIcon></BalanceIcon>
+          <BalanceSum>
+            <span>Баланс:</span> {currentBalance} ₽
+          </BalanceSum>
+          <BalanceButton name={balance} onClick={openPage}>
+            Пополнить
+          </BalanceButton>
+        </BalanceInfo>
         <Controls>
-          {isActiveUser && (
-            <>
-              <ButtonWrapper>
-                <ButtonSettings name={settings} onClick={openPage}></ButtonSettings>
-              </ButtonWrapper>
-            </>
-          )}
+          <ButtonWrapper>
+            <ButtonSettings name={settings} onClick={openPage}></ButtonSettings>
+          </ButtonWrapper>
           <ButtonWrapper onClick={onSignoutHandler}>
             <ButtonLogin></ButtonLogin>
             <LoginTitle>Выйти</LoginTitle>

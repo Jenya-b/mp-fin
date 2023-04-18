@@ -20,7 +20,7 @@ exports[`Snapshot Header styled-components BalanceInfo 1`] = `
 
 exports[`Snapshot Header styled-components BalanceSum 1`] = `
 <div
-  className="sc-eDWCr gkINNn"
+  className="sc-eDWCr gsVzSY"
 />
 `;
 
@@ -62,13 +62,13 @@ exports[`Snapshot Header styled-components LoginInfo 1`] = `
 
 exports[`Snapshot Header styled-components LoginName 1`] = `
 <div
-  className="sc-kDvujY fauTSB"
+  className="sc-kDvujY foeDiA"
 />
 `;
 
 exports[`Snapshot Header styled-components LoginTitle 1`] = `
 <div
-  className="sc-idXgbr kDKrHz"
+  className="sc-idXgbr eVbslW"
 />
 `;
 
