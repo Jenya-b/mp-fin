@@ -123,4 +123,10 @@ export const baseTheme: ITheme = {
     settingLogo: 1,
   },
   cursor: 'pointer',
+  media: {
+    extraLarge: '(max-width: 1279px)',
+    large: '(max-width: 1023px)',
+    medium: '(max-width: 767px)',
+    small: '(max-width: 479px)',
+  },
 };

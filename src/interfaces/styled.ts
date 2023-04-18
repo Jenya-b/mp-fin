@@ -119,4 +119,10 @@ export interface ITheme {
     settingLogo: number;
   };
   cursor: string;
+  media: {
+    extraLarge: string;
+    large: string;
+    medium: string;
+    small: string;
+  };
 }

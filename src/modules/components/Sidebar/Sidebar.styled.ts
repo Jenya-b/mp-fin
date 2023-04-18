@@ -18,6 +18,10 @@ export const Aside = styled.aside<AsideProps>`
   grid-template: ${({ theme }) => theme.sizes.sidebar.logo.height}px 1fr / 1fr;
   transition: all 0.1s;
   z-index: ${({ theme }) => theme.order.sidebar};
+
+  @media (${({ theme }) => theme.media.large}) {
+    width: ${({ theme }) => theme.sizes.sidebar.widthHidden}px;
+  }
 `;
 
 export const Logo = styled.div`
@@ -29,6 +33,10 @@ export const Logo = styled.div`
 
 export const LogoWrapper = styled.div<AsideProps>`
   padding: ${({ isActive }) => (isActive ? '0 0 0 27px' : '0 12px 0 12px')};
+
+  @media (${({ theme }) => theme.media.large}) {
+    padding: 0 12px 0 12px;
+  }
 `;
 
 export const LogoImg = styled.img`

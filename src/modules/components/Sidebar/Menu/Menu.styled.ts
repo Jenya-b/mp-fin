@@ -15,6 +15,10 @@ export const Image = styled.img`
 export const Title = styled.p`
   ${fontStylesRegular}
   color: ${({ theme }) => theme.colors.textSecondary};
+
+  @media (${({ theme }) => theme.media.large}) {
+    display: none;
+  }
 `;
 
 export const MenuList = styled.ul`
