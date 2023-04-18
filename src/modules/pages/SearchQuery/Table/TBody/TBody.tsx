@@ -15,15 +15,27 @@ interface TBodyProps {
 }
 
 export const TBody = ({ article, data, cities, deleteSavedArticle }: TBodyProps) => {
-  const renderItem = (item: IStatistics, index: number) => (
-    <td key={index}>
-      <Params>
-        {cities.map((city, i) => (
-          <li key={i}>{item[city]}</li>
-        ))}
-      </Params>
-    </td>
-  );
+  const renderItem = (item: IStatistics, index: number, arr: IStatistics[]) => {
+    const nextParams = arr[index + 1];
+
+    return (
+      <td key={index}>
+        <Params>
+          {cities.map((city, i) => (
+            <li key={i}>
+              {!nextParams || nextParams[city] === item[city] ? (
+                <span>{item[city]}</span>
+              ) : item[city] > nextParams[city] ? (
+                <span style={{ color: 'green' }}>{item[city]}🠕</span>
+              ) : (
+                <span style={{ color: 'red' }}>{item[city]}🠗</span>
+              )}
+            </li>
+          ))}
+        </Params>
+      </td>
+    );
+  };
 
   return (
     <tbody>

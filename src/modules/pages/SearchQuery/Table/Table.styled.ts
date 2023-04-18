@@ -9,7 +9,7 @@ export const StyledTable = styled.table<ICountColumns>`
   display: grid;
   border-collapse: collapse;
   min-width: 100%;
-  grid-template-columns: minmax(230px, 1fr) repeat(${({ count }) => count}, minmax(400px, 1fr));
+  grid-template-columns: minmax(230px, 1fr) repeat(${({ count }) => count}, minmax(440px, 1fr));
   background: ${({ theme }) => theme.colors.backgroundPrimary};
   border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   border-top-left-radius: 10px;
@@ -58,7 +58,7 @@ export const Params = styled.ul`
   align-items: center;
 
   li {
-    width: 50px;
+    width: 55px;
     text-align: center;
     text-transform: uppercase;
   }
