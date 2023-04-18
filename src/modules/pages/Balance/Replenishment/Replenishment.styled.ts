@@ -15,6 +15,14 @@ export const List = styled.div`
   display: grid;
   grid-template: 1fr 1.5fr 1fr / minmax(min-content, 613px);
   height: 100%;
+
+  @media (${({ theme }) => theme.media.extraLarge}) {
+    grid-template: 1fr 1.5fr 1fr / minmax(min-content, 450px);
+  }
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-template: 1fr 1.5fr 1fr / minmax(min-content, 350px);
+  }
 `;
 
 export const Item = styled.div`
@@ -49,4 +57,10 @@ export const ImageWrapp = styled.div`
   position: absolute;
   bottom: 30px;
   right: 30px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    img {
+      width: 200px;
+    }
+  }
 `;

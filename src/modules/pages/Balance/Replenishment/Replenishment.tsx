@@ -36,7 +36,7 @@ export const Replenishment = ({ currentBalance }: ReplenishmentProps) => (
       </div>
     </List>
     <ImageWrapp>
-      <img src={balanceImg} />
+      <img src={balanceImg} alt="" />
     </ImageWrapp>
   </Wrapper>
 );
