@@ -10,8 +10,6 @@ import { balanceSelector } from 'store/selectors';
 export const BalancePage = () => {
   const currentBalance = useAppSelector(balanceSelector);
 
-  const historyList: string[] = [];
-
   const renderColumnNames = () => <TableColumns columnNames={balanceColumnNames} />;
 
   const renderRow = (item: string) => <></>;
@@ -23,11 +21,7 @@ export const BalancePage = () => {
         <Replenishment currentBalance={currentBalance ?? 0} />
         <HistoryBlock>
           <MainSubtitle>История операций</MainSubtitle>
-          <BasicTable
-            renderRow={renderRow}
-            renderColumnNames={renderColumnNames}
-            data={historyList}
-          />
+          <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={[]} />
         </HistoryBlock>
       </BalanceWrapper>
     </Main>
