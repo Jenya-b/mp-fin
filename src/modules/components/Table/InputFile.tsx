@@ -23,6 +23,7 @@ export const InputFile = ({ handleChange, title, src, weekDataId, stateId }: Inp
 const Wrapper = styled.div`
   position: relative;
 `;
+
 const Input = styled.input`
   position: absolute;
   top: 0;

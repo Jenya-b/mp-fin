@@ -10,8 +10,8 @@ export interface TableButtonProps {
 export const TableButton = ({ handleClick, title, src }: TableButtonProps) => {
   return (
     <ButtonWrapper onClick={handleClick}>
-      <ButtonIcon src={src}></ButtonIcon>
-      <ButtonTitle>{title}</ButtonTitle>
+      <img src={src} alt="" />
+      <div>{title}</div>
     </ButtonWrapper>
   );
 };
@@ -20,6 +20,5 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   column-gap: 10px;
+  cursor: ${({ theme }) => theme.cursor};
 `;
-const ButtonIcon = styled.img``;
-const ButtonTitle = styled.div``;
