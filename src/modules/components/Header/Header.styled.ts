@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 1200px) {
+  @media (${({ theme }) => theme.media.extraLarge}) {
     padding: 0 30px;
   }
 `;

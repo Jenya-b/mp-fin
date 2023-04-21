@@ -7,6 +7,15 @@ export const Filters = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    display: grid;
+    grid-template: repeat(3, auto) / repeat(2, 1fr);
+    row-gap: 10px;
+    column-gap: 20px;
+  }
 `;
 
 export const Filter = styled.div`
@@ -15,6 +24,11 @@ export const Filter = styled.div`
 
 export const Title = styled.h2`
   ${fontStylesH2}
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-row: 1/2;
+    grid-column: 1/3;
+  }
 `;
 
 export const Subtitle = styled.h3`
@@ -29,6 +43,10 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    max-height: 200px;
+  }
 `;
 
 export const Item = styled.li``;

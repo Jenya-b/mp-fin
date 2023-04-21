@@ -10,8 +10,12 @@ import {
 export const Main = styled.main`
   padding: 50px 60px 80px 60px;
 
-  @media (max-width: 1200px) {
+  @media (${({ theme }) => theme.media.extraLarge}) {
     padding: 40px 30px;
+  }
+
+  @media (${({ theme }) => theme.media.large}) {
+    padding: 25px 25px;
   }
 `;
 

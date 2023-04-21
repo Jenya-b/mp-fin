@@ -6,10 +6,10 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="sc-bcXHqe fLbuTA"
+        class="sc-bcXHqe bSJIXe"
       >
         <h2
-          class="sc-dkrFOg kREnOE"
+          class="sc-dkrFOg brYzzX"
         >
           Фильтр
         </h2>
@@ -115,7 +115,7 @@ Object {
             Недели:
           </h3>
           <ul
-            class="sc-eDvSVe dQxPEN"
+            class="sc-eDvSVe fUtpdY"
           />
         </div>
         <div
@@ -127,7 +127,7 @@ Object {
             Артикулы:
           </h3>
           <ul
-            class="sc-eDvSVe dQxPEN"
+            class="sc-eDvSVe fUtpdY"
           >
             <li
               class="sc-jSUZER"
@@ -152,10 +152,10 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-bcXHqe fLbuTA"
+      class="sc-bcXHqe bSJIXe"
     >
       <h2
-        class="sc-dkrFOg kREnOE"
+        class="sc-dkrFOg brYzzX"
       >
         Фильтр
       </h2>
@@ -261,7 +261,7 @@ Object {
           Недели:
         </h3>
         <ul
-          class="sc-eDvSVe dQxPEN"
+          class="sc-eDvSVe fUtpdY"
         />
       </div>
       <div
@@ -273,7 +273,7 @@ Object {
           Артикулы:
         </h3>
         <ul
-          class="sc-eDvSVe dQxPEN"
+          class="sc-eDvSVe fUtpdY"
         >
           <li
             class="sc-jSUZER"

@@ -70,7 +70,7 @@ export const AnaliticsPage = () => {
     <Main>
       {(isLoadingFiltersData || isLoadingAnaliticsData) && <Loader />}
       <MainTitle>Аналитика</MainTitle>
-      <Wrapper style={{ marginTop: '40px' }}>
+      <Wrapper>
         <FiltersBlock
           setCountChart={setCountChart}
           countChart={countChart}
