@@ -63,17 +63,21 @@ export const Signin = () => {
   useEffect(() => {
     const url = new URL(window.location.href);
     const searchParams = url.searchParams;
-    const name = searchParams.get('tel');
-    const pass = searchParams.get('pass');
+    const userName = searchParams.get('tel');
+    const password = searchParams.get('pass');
 
-    if (!!(name && pass)) {
-      setDefaultName(`+${name.trim()}`);
-      setDefaultPass(pass);
+    if (!!(userName && password)) {
+      signinUser({
+        rememberMe: false,
+        returnUrl: null,
+        userName: `+${userName.trim()}`,
+        password,
+      });
     }
 
     searchParams.delete('tel');
     searchParams.delete('pass');
-    history.pushState(null, document.title, url);
+    window.history.pushState(null, document.title, url);
   }, []);
 
   const onSubmit = handleSubmit((data) => {
