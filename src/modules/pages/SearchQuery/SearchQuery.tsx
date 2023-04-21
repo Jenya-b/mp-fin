@@ -36,13 +36,14 @@ export const SearchQuery = () => {
     fetchDeleteArticle,
     { isLoading: isLoadingDeleteArticle, isSuccess: isSuccessDeleteArticle },
   ] = useDeleteSavedArticleMutation();
-  const [fetchUpdateDate, { isLoading: isLoadingUpdateDate }] = useUpdateDataMutation();
+  const [fetchUpdateData, { isLoading: isLoadingUpdateDate, isSuccess: isSuccessUpdateData }] =
+    useUpdateDataMutation();
 
   useEffect(() => {
     if (!date) return;
     getArticleQueries(date);
     refetch();
-  }, [date, isSuccessSavedArticle, isSuccessDeleteArticle]);
+  }, [date, isSuccessSavedArticle, isSuccessDeleteArticle, isSuccessUpdateData]);
 
   useEffect(() => {
     if (!queryData) return;
@@ -58,7 +59,7 @@ export const SearchQuery = () => {
     setGridData(queryData);
   }, [queryData]);
 
-  const updateData = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeDate = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setDate(formatDateGeneral(value, true));
   };
@@ -80,8 +81,8 @@ export const SearchQuery = () => {
     }
   };
 
-  const updateDate = () => {
-    fetchUpdateDate();
+  const updateData = () => {
+    fetchUpdateData();
   };
 
   return (
@@ -115,7 +116,7 @@ export const SearchQuery = () => {
       <SearchBlock>
         <Subtitle>Получить данные</Subtitle>
         <Label>
-          <InputSearch type="date" onChange={updateData} defaultValue={date} />
+          <InputSearch type="date" onChange={handleChangeDate} defaultValue={date} />
         </Label>
         <Label>
           <MultipleSelect
@@ -126,7 +127,7 @@ export const SearchQuery = () => {
             setSelectValue={setListSavedArticles}
           />
         </Label>
-        <Button onClick={updateDate}>Обновить</Button>
+        <Button onClick={updateData}>Обновить</Button>
       </SearchBlock>
       <Table data={gridData} deleteSavedArticle={deleteSavedArticle} />
     </Main>
