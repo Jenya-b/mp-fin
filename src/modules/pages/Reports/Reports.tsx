@@ -7,7 +7,7 @@ import { Loader } from 'modules/components/Loader/Loader';
 import { InputFile } from 'modules/components/Table/InputFile';
 import { BasicTable } from 'modules/components/Table/Table';
 import { TableButton } from 'modules/components/Table/TableBtn';
-import { StyledTableCell } from 'modules/components/Table/TableCell';
+import { StyledTableCell } from 'modules/components/Table/Table.styled';
 import { reportColumnNames } from 'constants/tables';
 import { ControlsWrapper, PeriodWeek } from 'modules/pages/Reports/Reports.styled';
 import { BasicDialog } from 'modules/components/Dialog/Dialog';
@@ -148,7 +148,7 @@ export const ReportsPage = () => {
   };
 
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       {(isLoadingUpload || isLoadingDelete || isLoadingGetData) && <Loader />}
       <Notification notifyMessage={notifyMessage} isOpenNotify={isOpenNotify} />
       <BasicDialog
@@ -169,6 +169,7 @@ export const ReportsPage = () => {
         renderRow={renderRow}
         renderColumnNames={renderColumnNames}
         data={reportsByYears}
+        gridTemplateStyled="repeat(3, minmax(200px, 1fr)) minmax(400px, 1fr)"
       />
     </Main>
   );

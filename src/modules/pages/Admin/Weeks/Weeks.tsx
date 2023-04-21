@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { weekColumnNames } from 'constants/tables';
 import { Loader } from 'modules/components/Loader/Loader';
 import { BasicTable } from 'modules/components/Table/Table';
-import { StyledTableCell } from 'modules/components/Table/TableCell';
+import { StyledTableCell } from 'modules/components/Table/Table.styled';
 import { useCreateWeekMutation, useGetWeeksQuery } from 'services';
 import { IWeek, IWeekWithParam } from 'services/types';
 import { Main, MainTitle, SecondaryButton } from 'styles/components';
@@ -47,7 +47,7 @@ export const Weeks = () => {
   });
 
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       {(isLoadingGetWeeks || isLoadingAddWeek) && <Loader />}
       <MainTitle>Список недель</MainTitle>
       <Container>
@@ -77,6 +77,7 @@ export const Weeks = () => {
           renderRow={renderRow}
           renderColumnNames={renderColumnNames}
           data={weeksByYears}
+          gridTemplateStyled="repeat(3, minmax(250px, 1fr))"
         />
       </Container>
     </Main>

@@ -7,7 +7,7 @@ import { useChangeArticleMutation, useGetArticlesQuery } from 'services';
 import { IArticle } from 'services/types';
 import { Loader } from 'modules/components/Loader/Loader';
 import { BasicTable } from 'modules/components/Table/Table';
-import { StyledTableCell } from 'modules/components/Table/TableCell';
+import { StyledTableCell } from 'modules/components/Table/Table.styled';
 import { Notification } from 'modules/components/Notification/Notification';
 import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
@@ -95,7 +95,7 @@ export const PrimeCostPage = () => {
   };
 
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       {(isLoadingSetData || isLoadingGetData || isFetching) && <Loader />}
       <Notification notifyMessage={notifyMessage} isOpenNotify={isOpenNotify} />
       <MainTitle>Себестоимость</MainTitle>
@@ -105,6 +105,7 @@ export const PrimeCostPage = () => {
         renderRow={renderRow}
         renderColumnNames={renderColumnNames}
         data={articleList}
+        gridTemplateStyled="repeat(3, minmax(250px, 1fr))"
       />
     </Main>
   );

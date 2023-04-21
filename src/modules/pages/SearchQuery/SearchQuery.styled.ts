@@ -20,20 +20,6 @@ export const Label = styled.label`
   ${fontStylesCaption}
 `;
 
-export const TablesBlock = styled.div`
-  margin-top: 40px;
-  max-height: 700px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-  background: ${({ theme }) => theme.colors.backgroundPrimary};
-  border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
-  border-radius: ${({ theme }) => theme.borders.inputForm.borderRadius}px;
-  overflow: hidden;
-  overflow-x: scroll;
-  overflow-y: auto;
-`;
-
 export const Button = styled(SecondaryButton)`
   width: 300px;
 `;

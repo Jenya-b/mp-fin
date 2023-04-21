@@ -1,4 +1,3 @@
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
@@ -6,7 +5,7 @@ import TableHead from '@mui/material/TableHead';
 import { Colors } from 'constants/colors';
 import { v4 } from 'uuid';
 import { SecondaryInput } from 'styles/components';
-import { StyledTableCell } from 'modules/components/Table/TableCell';
+import { StyledTableCell, StyledTable } from 'modules/components/Table/Table.styled';
 
 interface Props<T> {
   isSearch?: boolean;
@@ -15,6 +14,7 @@ interface Props<T> {
   data: T[] | undefined;
   renderRow: (item: T) => JSX.Element;
   renderColumnNames: () => JSX.Element;
+  gridTemplateStyled: string;
 }
 
 export const BasicTable = <T,>({
@@ -24,6 +24,7 @@ export const BasicTable = <T,>({
   isSearch,
   searchValue,
   handleChange,
+  gridTemplateStyled,
 }: Props<T>) => {
   return (
     <TableContainer
@@ -49,11 +50,10 @@ export const BasicTable = <T,>({
           }}
         />
       )}
-      <Table>
+      <StyledTable gridTemplateStyled={gridTemplateStyled}>
         <TableHead>
           <TableRow>{renderColumnNames()}</TableRow>
         </TableHead>
-
         <TableBody>
           {!data.length ? (
             <TableRow>
@@ -65,7 +65,7 @@ export const BasicTable = <T,>({
             data.map((item) => <TableRow key={v4()}>{renderRow(item)}</TableRow>)
           )}
         </TableBody>
-      </Table>
+      </StyledTable>
     </TableContainer>
   );
 };

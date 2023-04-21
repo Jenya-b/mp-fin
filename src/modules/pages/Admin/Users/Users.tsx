@@ -1,7 +1,7 @@
 import { usersColumnNames } from 'constants/tables';
 import { BasicTable } from 'modules/components/Table/Table';
 import { Loader } from 'modules/components/Loader/Loader';
-import { StyledTableCell } from 'modules/components/Table/TableCell';
+import { StyledTableCell } from 'modules/components/Table/Table.styled';
 import {
   useAppointAdminMutation,
   useGetAdminPanelUsersQuery,
@@ -57,10 +57,15 @@ export const Users = () => {
   };
 
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       {(isLoadingGetUsers || isLoadingAppointAdmin || isLoadingRemoveAdmin) && <Loader />}
       <MainTitle>Список пользователей</MainTitle>
-      <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={users ?? []} />
+      <BasicTable
+        renderRow={renderRow}
+        renderColumnNames={renderColumnNames}
+        data={users ?? []}
+        gridTemplateStyled="repeat(5, minmax(250px, 1fr)) minmax(400px, 1fr)"
+      />
     </Main>
   );
 };

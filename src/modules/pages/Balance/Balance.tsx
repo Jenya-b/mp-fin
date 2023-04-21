@@ -15,13 +15,18 @@ export const BalancePage = () => {
   const renderRow = (item: string) => <></>;
 
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       <MainTitle>Баланс и пополнение</MainTitle>
       <BalanceWrapper>
         <Replenishment currentBalance={currentBalance ?? 0} />
         <HistoryBlock>
           <MainSubtitle>История операций</MainSubtitle>
-          <BasicTable renderRow={renderRow} renderColumnNames={renderColumnNames} data={[]} />
+          <BasicTable
+            renderRow={renderRow}
+            renderColumnNames={renderColumnNames}
+            data={[]}
+            gridTemplateStyled="repeat(5, minmax(200px, 1fr))"
+          />
         </HistoryBlock>
       </BalanceWrapper>
     </Main>
