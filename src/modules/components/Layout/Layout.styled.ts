@@ -13,4 +13,9 @@ export const ContentWrapper = styled.div`
   grid-template: ${({ theme }) => theme.sizes.header.height}px 1fr ${({ theme }) =>
       theme.sizes.footer.height}px / 1fr;
   padding-left: ${({ theme }) => theme.indents.main.paddingLeftHide}px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-template: 61px 1fr 50px / 1fr;
+    padding-left: 60px;
+  }
 `;

@@ -20,7 +20,8 @@ export const Aside = styled.aside<AsideProps>`
   z-index: ${({ theme }) => theme.order.sidebar};
 
   @media (${({ theme }) => theme.media.large}) {
-    width: ${({ theme }) => theme.sizes.sidebar.widthHidden}px;
+    width: 60px;
+    grid-template: 60px 1fr / 1fr;
   }
 `;
 
@@ -35,7 +36,7 @@ export const LogoWrapper = styled.div<AsideProps>`
   padding: ${({ isActive }) => (isActive ? '0 0 0 27px' : '0 12px 0 12px')};
 
   @media (${({ theme }) => theme.media.large}) {
-    padding: 0 12px 0 12px;
+    padding: 0 6px 0 6px;
   }
 `;
 

@@ -29,6 +29,11 @@ export const LoginImage = styled.div<{ imagesUrl: string }>`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (${({ theme }) => theme.media.large}) {
+    width: 45px;
+    height: 45px;
+  }
 `;
 export const LoginName = styled.div`
   ${fontStylesRegular}

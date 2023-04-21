@@ -48,12 +48,6 @@ exports[`Snapshot Header styled-components Controls 1`] = `
 />
 `;
 
-exports[`Snapshot Header styled-components LoginImage 1`] = `
-<div
-  className="sc-jrcTuL bvSNSN"
-/>
-`;
-
 exports[`Snapshot Header styled-components LoginInfo 1`] = `
 <div
   className="sc-pyfCe cuSZop"

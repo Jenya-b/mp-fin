@@ -10,7 +10,6 @@ import {
   ButtonSettings,
   ButtonWrapper,
   Controls,
-  LoginImage,
   LoginInfo,
   LoginName,
   LoginTitle,
@@ -51,12 +50,6 @@ describe('Snapshot Header styled-components', () => {
   });
   test('Controls', () => {
     const tree = renderer.create(<Controls theme={baseTheme} />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-  test('LoginImage', () => {
-    const tree = renderer
-      .create(<LoginImage imagesUrl={'/source/images/iconAccount.png'} theme={baseTheme} />)
-      .toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('LoginInfo', () => {

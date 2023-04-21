@@ -10,6 +10,11 @@ export const Item = styled.li`
 export const Image = styled.img`
   width: 32px;
   height: 32px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 export const Title = styled.p`
@@ -27,4 +32,10 @@ export const MenuList = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    padding-top: 30px;
+    padding-left: 18px;
+    row-gap: 25px;
+  }
 `;
