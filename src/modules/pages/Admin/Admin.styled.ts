@@ -7,19 +7,36 @@ export const Wrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template: 1fr / auto 1fr;
+
+  @media (${({ theme }) => theme.media.extraLarge}) {
+    grid-template: auto 1fr / 1fr;
+  }
 `;
+
 export const Menu = styled.div`
   padding-top: ${({ theme }) => theme.indents.adminMenu.paddingTop}px;
   padding-right: ${({ theme }) => theme.indents.adminMenu.paddingRight}px;
   padding-bottom: ${({ theme }) => theme.indents.adminMenu.paddingBottom}px;
   padding-left: ${({ theme }) => theme.indents.adminMenu.paddingLeft}px;
   background: ${({ theme }) => theme.colors.backgroundBase};
+
+  @media (${({ theme }) => theme.media.extraLarge}) {
+    padding-bottom: 0;
+  }
 `;
+
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: ${({ theme }) => theme.indents.adminList.rowGap}px;
+
+  @media (${({ theme }) => theme.media.extraLarge}) {
+    flex-direction: row;
+    row-gap: 0;
+    column-gap: 20px;
+  }
 `;
+
 export const Item = styled.li`
   ${fontStylesCaptionBig}
 
@@ -43,10 +60,16 @@ export const Form = styled.form`
   grid-template-columns: repeat(4, 1fr);
   column-gap: ${({ theme }) => theme.indents.adminForm.columnGap}px;
   align-items: flex-end;
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-template: repeat(2, 84px) / repeat(2, 1fr);
+  }
 `;
+
 export const InputAdminPanel = styled(PrimaryInput)`
   margin-top: 7px;
 `;
+
 export const Label = styled.label`
   position: relative;
   display: inline-block;
