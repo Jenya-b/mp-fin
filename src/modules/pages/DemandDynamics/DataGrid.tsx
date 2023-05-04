@@ -12,7 +12,7 @@ export const SearchQueryDataGrid = ({ data }: SearchQueryDataGridProps) => {
       field: 'title',
       headerName: 'Название',
       hideable: false,
-      width: 300,
+      width: 250,
     },
     {
       field: 'count',
