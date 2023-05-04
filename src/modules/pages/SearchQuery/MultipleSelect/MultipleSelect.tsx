@@ -4,6 +4,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { StyledFormControl } from './MultipleSelect.styled';
 
 const styles = {
   background: '#ffffff',
@@ -60,12 +61,7 @@ export const MultipleSelect = ({
   };
 
   return (
-    <FormControl
-      sx={{
-        m: 0,
-        width: 300,
-      }}
-    >
+    <StyledFormControl>
       <Select
         sx={styles}
         multiple={isMultiple}
@@ -90,6 +86,6 @@ export const MultipleSelect = ({
           </MenuItem>
         ))}
       </Select>
-    </FormControl>
+    </StyledFormControl>
   );
 };

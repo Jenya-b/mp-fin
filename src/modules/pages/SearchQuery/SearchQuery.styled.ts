@@ -14,6 +14,15 @@ export const SearchBlock = styled.div`
   column-gap: 20px;
   grid-template: max-content auto / 300px 300px 1fr;
   align-items: flex-end;
+
+  @media (${({ theme }) => theme.media.extraLarge}) {
+    grid-template: max-content auto / 250px 250px 1fr;
+  }
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-template: max-content auto / 200px 200px 1fr;
+    column-gap: 15px;
+  }
 `;
 
 export const Label = styled.label`
@@ -22,4 +31,8 @@ export const Label = styled.label`
 
 export const Button = styled(SecondaryButton)`
   width: 300px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    width: 250px;
+  }
 `;
