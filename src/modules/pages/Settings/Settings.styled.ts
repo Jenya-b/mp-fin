@@ -8,18 +8,29 @@ export const SettingsForm = styled.form`
   width: 100%;
   display: grid;
   grid-template-columns: 280px 1fr;
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-template-columns: 180px 1fr;
+  }
 `;
-export const PostPicture = styled.div``;
+
 export const InputsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 30px;
   row-gap: 25px;
+
+  @media (${({ theme }) => theme.media.medium}) {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+  }
 `;
+
 export const SecondaryInput = styled(PrimaryInput)`
   background: ${({ theme }) => theme.colors.backgroundPrimary};
   margin-top: 5px;
 `;
+
 export const Label = styled.label`
   ${fontStylesCaption}
   color: ${({ theme }) => theme.colors.textPrimary};
@@ -31,7 +42,13 @@ export const InputFileWrapp = styled.div`
   height: ${({ theme }) => theme.sizes.settingInputFile.height}px;
   border-radius: 50%;
   position: relative;
+
+  @media (${({ theme }) => theme.media.large}) {
+    width: 130px;
+    height: 130px;
+  }
 `;
+
 export const InputFile = styled.input`
   position: absolute;
   top: 0;
@@ -42,6 +59,7 @@ export const InputFile = styled.input`
   opacity: 0;
   cursor: ${({ theme }) => theme.cursor};
 `;
+
 export const LogoImage = styled.img`
   position: absolute;
   top: 0;
@@ -56,4 +74,8 @@ export const ControlWrapper = styled.div`
   grid-column: 1/2;
   grid-row: 4/5;
   padding-top: 10px;
+
+  @media (${({ theme }) => theme.media.medium}) {
+    grid-row: 6/7;
+  }
 `;

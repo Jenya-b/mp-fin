@@ -11,7 +11,6 @@ import { Loader } from 'modules/components/Loader/Loader';
 import {
   SettingsForm,
   InputsWrapper,
-  PostPicture,
   Label,
   SecondaryInput,
   InputFileWrapp,
@@ -95,12 +94,12 @@ export const SettingsPage = () => {
       {(isLoadingUploadFile || isLoadingChangeData) && <Loader />}
       <MainTitle>Настройки аккаунта</MainTitle>
       <SettingsForm onSubmit={onSubmit}>
-        <PostPicture>
+        <div>
           <InputFileWrapp>
             <InputFile type="file" onChange={addLogo} />
             <LogoImage src={logoUrl} />
           </InputFileWrapp>
-        </PostPicture>
+        </div>
         <InputsWrapper>
           <Label>
             Имя
