@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from 'store/store';
 import { HeaderDesktop } from './Desktop/Desktop';
 import { HeaderMobile } from './Mobile/Mobile';
 import { PullDownMenu } from '../PullDownMenu/PullDownMenu';
-import { menuSidebar } from 'constants/menu';
+import { adminRoute, menuSidebar } from 'constants/menu';
 
 export const Header = () => {
   const { balance, settings } = routerPath;
@@ -58,7 +58,12 @@ export const Header = () => {
         onSignoutHandler={onSignoutHandler}
       />
       <HeaderMobile setActiveMenu={setActiveMenu} />
-      <PullDownMenu dataMenu={menuSidebar} isActiveMenu={isActiveMenu} />
+      <PullDownMenu
+        dataMenu={menuSidebar}
+        extraMenu={adminRoute}
+        isActiveMenu={isActiveMenu}
+        isAdmin={user?.isAdmin}
+      />
     </>
   );
 };
