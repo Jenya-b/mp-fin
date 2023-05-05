@@ -13,7 +13,7 @@ import {
   LoginInfo,
   LoginName,
   LoginTitle,
-} from './Header.styled';
+} from './Desktop.styled';
 
 describe('Snapshot Header styled-components', () => {
   test('StyledHeader', () => {
