@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
+  position: relative;
   min-height: 100vh;
   display: grid;
   grid-template: ${({ theme }) => theme.sizes.header.height}px 1fr ${({ theme }) =>
@@ -17,5 +18,10 @@ export const ContentWrapper = styled.div`
   @media (${({ theme }) => theme.media.large}) {
     grid-template: 61px 1fr 50px / 1fr;
     padding-left: 60px;
+  }
+
+  @media (${({ theme }) => theme.media.medium}) {
+    grid-template: 50px 1fr 50px / 1fr;
+    padding-left: 0px;
   }
 `;

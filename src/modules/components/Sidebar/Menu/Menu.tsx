@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IMenu } from 'interfaces/sidebar';
+import { IMenu } from 'interfaces/menu';
 import { Item, MenuList, Title, Image } from './Menu.styled';
 
 interface MenuProps {

@@ -114,6 +114,7 @@ export interface ITheme {
     button: { time: number };
   };
   order: {
+    header: number;
     sidebar: number;
     settingInputFile: number;
     settingLogo: number;

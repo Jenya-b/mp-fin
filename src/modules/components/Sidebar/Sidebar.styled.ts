@@ -23,6 +23,10 @@ export const Aside = styled.aside<AsideProps>`
     width: 60px;
     grid-template: 60px 1fr / 1fr;
   }
+
+  @media (${({ theme }) => theme.media.medium}) {
+    display: none;
+  }
 `;
 
 export const Logo = styled.div`

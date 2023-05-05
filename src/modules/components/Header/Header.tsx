@@ -1,32 +1,19 @@
-import { useEffect, MouseEvent } from 'react';
+import { useEffect, MouseEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  StyledHeader,
-  BalanceInfo,
-  Controls,
-  LoginImage,
-} from 'modules/components/Header/Header.styled';
-import {
-  LoginInfo,
-  LoginName,
-  ButtonWrapper,
-  ButtonSettings,
-  ButtonLogin,
-  LoginTitle,
-  BalanceIcon,
-  BalanceSum,
-  BalanceButton,
-} from 'modules/components/Header/Header.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { routerPath } from 'constants/routerPath';
 import { useSignoutMutation } from 'services';
 import { resetUser } from 'store/reducers/userSlice';
-import { defaultIconLogo } from 'constants/images';
 import { balanceSelector, userSelector } from 'store/selectors';
 import { useAppDispatch, useAppSelector } from 'store/store';
+import { HeaderDesktop } from './Desktop/Desktop';
+import { HeaderMobile } from './Mobile/Mobile';
+import { PullDownMenu } from '../PullDownMenu/PullDownMenu';
+import { menuSidebar } from 'constants/menu';
 
 export const Header = () => {
   const { balance, settings } = routerPath;
+  const [isActiveMenu, setActiveMenu] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector(userSelector);
@@ -62,30 +49,16 @@ export const Header = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <StyledHeader>
-        <LoginInfo>
-          <LoginImage imagesUrl={user ? user.avatar : defaultIconLogo}></LoginImage>
-          <LoginName>{user?.email}</LoginName>
-        </LoginInfo>
-        <BalanceInfo>
-          <BalanceIcon></BalanceIcon>
-          <BalanceSum>
-            <span>Баланс:</span> {currentBalance} ₽
-          </BalanceSum>
-          <BalanceButton name={balance} onClick={openPage}>
-            Пополнить
-          </BalanceButton>
-        </BalanceInfo>
-        <Controls>
-          <ButtonWrapper>
-            <ButtonSettings name={settings} onClick={openPage}></ButtonSettings>
-          </ButtonWrapper>
-          <ButtonWrapper onClick={onSignoutHandler}>
-            <ButtonLogin></ButtonLogin>
-            <LoginTitle>Выйти</LoginTitle>
-          </ButtonWrapper>
-        </Controls>
-      </StyledHeader>
+      <HeaderDesktop
+        user={user}
+        balance={balance}
+        settings={settings}
+        currentBalance={currentBalance}
+        openPage={openPage}
+        onSignoutHandler={onSignoutHandler}
+      />
+      <HeaderMobile setActiveMenu={setActiveMenu} />
+      <PullDownMenu dataMenu={menuSidebar} isActiveMenu={isActiveMenu} />
     </>
   );
 };

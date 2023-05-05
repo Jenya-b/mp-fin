@@ -118,6 +118,7 @@ export const baseTheme: ITheme = {
   },
   // z-index
   order: {
+    header: 100,
     sidebar: 50,
     settingInputFile: 10,
     settingLogo: 1,
