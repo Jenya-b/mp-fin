@@ -4,25 +4,21 @@ import { defaultIconLogo } from 'constants/images';
 import {
   StyledHeader,
   BalanceInfo,
-  Controls,
   LoginImage,
   LoginInfo,
   LoginName,
-  ButtonWrapper,
-  ButtonSettings,
-  ButtonLogin,
-  LoginTitle,
   BalanceIcon,
   BalanceSum,
   BalanceButton,
 } from './Desktop.styled';
 import { IAllUserOptions } from 'services/types';
+import { ControlsBlock } from '../ControlsBlock/ControlsBlock';
+import { IRouterPath } from 'interfaces/routerPath';
 
 interface HeaderDesktopProps {
   user: IAllUserOptions | null;
   currentBalance: number | null;
-  balance: string;
-  settings: string;
+  routerPath: IRouterPath;
   openPage: (event: MouseEvent<HTMLButtonElement>) => void;
   onSignoutHandler: () => void;
 }
@@ -30,35 +26,30 @@ interface HeaderDesktopProps {
 export const HeaderDesktop = ({
   user,
   currentBalance,
-  balance,
-  settings,
+  routerPath,
   openPage,
   onSignoutHandler,
 }: HeaderDesktopProps) => {
   return (
     <StyledHeader>
       <LoginInfo>
-        <LoginImage imagesUrl={user ? user.avatar : defaultIconLogo}></LoginImage>
+        <LoginImage imagesUrl={user ? user.avatar : defaultIconLogo} />
         <LoginName>{user?.email}</LoginName>
       </LoginInfo>
       <BalanceInfo>
-        <BalanceIcon></BalanceIcon>
+        <BalanceIcon />
         <BalanceSum>
           <span>Баланс:</span> {currentBalance} ₽
         </BalanceSum>
-        <BalanceButton name={balance} onClick={openPage}>
+        <BalanceButton name={routerPath.balance} onClick={openPage}>
           Пополнить
         </BalanceButton>
       </BalanceInfo>
-      <Controls>
-        <ButtonWrapper>
-          <ButtonSettings name={settings} onClick={openPage}></ButtonSettings>
-        </ButtonWrapper>
-        <ButtonWrapper onClick={onSignoutHandler}>
-          <ButtonLogin></ButtonLogin>
-          <LoginTitle>Выйти</LoginTitle>
-        </ButtonWrapper>
-      </Controls>
+      <ControlsBlock
+        onSignoutHandler={onSignoutHandler}
+        openPage={openPage}
+        routerPath={routerPath}
+      />
     </StyledHeader>
   );
 };

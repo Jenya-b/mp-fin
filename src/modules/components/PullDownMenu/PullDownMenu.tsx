@@ -1,15 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, MouseEvent } from 'react';
 import { IMenu } from 'interfaces/menu';
 import { Menu, Link, List } from './PullDownMenu.styled';
+import { ControlsBlock } from '../Header/ControlsBlock/ControlsBlock';
+import { IRouterPath } from 'interfaces/routerPath';
 
 interface PullDownMenuProps {
   dataMenu: IMenu[];
   extraMenu: IMenu;
   isActiveMenu: boolean;
   isAdmin: boolean | undefined;
+  settings: string;
+  openPage: (event: MouseEvent<HTMLButtonElement>) => void;
+  onSignoutHandler: () => void;
+  routerPath: IRouterPath;
 }
 
-export const PullDownMenu = ({ dataMenu, extraMenu, isActiveMenu, isAdmin }: PullDownMenuProps) => {
+export const PullDownMenu = ({
+  dataMenu,
+  extraMenu,
+  isActiveMenu,
+  isAdmin,
+  onSignoutHandler,
+  openPage,
+  routerPath,
+}: PullDownMenuProps) => {
   const [menuList, setMenuList] = useState(dataMenu);
 
   useEffect(() => {
@@ -25,6 +39,11 @@ export const PullDownMenu = ({ dataMenu, extraMenu, isActiveMenu, isAdmin }: Pul
           </li>
         ))}
       </List>
+      <ControlsBlock
+        onSignoutHandler={onSignoutHandler}
+        openPage={openPage}
+        routerPath={routerPath}
+      />
     </Menu>
   );
 };

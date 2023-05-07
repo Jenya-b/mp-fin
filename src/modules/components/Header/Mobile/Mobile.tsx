@@ -1,10 +1,10 @@
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 import { mainLogo } from 'constants/images';
 import { Header, LogoImg, LogoWrapper, Burger } from './Mobile.styled';
 
 interface HeaderMobileProps {
-  setActiveMenu: Dispatch<React.SetStateAction<boolean>>;
+  setActiveMenu: Dispatch<SetStateAction<boolean>>;
 }
 
 export const HeaderMobile = ({ setActiveMenu }: HeaderMobileProps) => {

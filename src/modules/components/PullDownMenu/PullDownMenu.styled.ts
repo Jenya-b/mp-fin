@@ -25,10 +25,6 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-
-  li {
-    text-align: center;
-  }
 `;
 
 export const Link = styled(NavLink)`

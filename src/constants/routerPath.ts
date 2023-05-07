@@ -1,4 +1,6 @@
-export const routerPath = {
+import { IRouterPath } from 'interfaces/routerPath';
+
+export const routerPath: IRouterPath = {
   home: '/',
   login: '/login',
   primeCost: 'prime-cost',

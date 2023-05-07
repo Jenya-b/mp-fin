@@ -51,18 +51,21 @@ export const Header = () => {
       {isLoading && <Loader />}
       <HeaderDesktop
         user={user}
-        balance={balance}
-        settings={settings}
+        routerPath={routerPath}
         currentBalance={currentBalance}
         openPage={openPage}
         onSignoutHandler={onSignoutHandler}
       />
       <HeaderMobile setActiveMenu={setActiveMenu} />
       <PullDownMenu
+        routerPath={routerPath}
         dataMenu={menuSidebar}
         extraMenu={adminRoute}
         isActiveMenu={isActiveMenu}
         isAdmin={user?.isAdmin}
+        settings={settings}
+        openPage={openPage}
+        onSignoutHandler={onSignoutHandler}
       />
     </>
   );
