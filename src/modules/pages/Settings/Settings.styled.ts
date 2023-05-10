@@ -12,6 +12,16 @@ export const SettingsForm = styled.form`
   @media (${({ theme }) => theme.media.large}) {
     grid-template-columns: 180px 1fr;
   }
+
+  @media (${({ theme }) => theme.media.medium}) {
+    grid-template-columns: 150px 1fr;
+  }
+
+  @media (${({ theme }) => theme.media.small}) {
+    margin-top: 20px;
+    grid-template: 100px 1fr / 1fr;
+    row-gap: 15px;
+  }
 `;
 
 export const InputsWrapper = styled.div`
@@ -23,6 +33,10 @@ export const InputsWrapper = styled.div`
   @media (${({ theme }) => theme.media.medium}) {
     grid-template-columns: 1fr;
     row-gap: 15px;
+  }
+
+  @media (${({ theme }) => theme.media.small}) {
+    row-gap: 10px;
   }
 `;
 
@@ -46,6 +60,12 @@ export const InputFileWrapp = styled.div`
   @media (${({ theme }) => theme.media.large}) {
     width: 130px;
     height: 130px;
+  }
+
+  @media (${({ theme }) => theme.media.small}) {
+    width: 100px;
+    height: 100px;
+    justify-self: center;
   }
 `;
 

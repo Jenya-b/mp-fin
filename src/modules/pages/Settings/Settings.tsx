@@ -94,12 +94,10 @@ export const SettingsPage = () => {
       {(isLoadingUploadFile || isLoadingChangeData) && <Loader />}
       <MainTitle>Настройки аккаунта</MainTitle>
       <SettingsForm onSubmit={onSubmit}>
-        <div>
-          <InputFileWrapp>
-            <InputFile type="file" onChange={addLogo} />
-            <LogoImage src={logoUrl} />
-          </InputFileWrapp>
-        </div>
+        <InputFileWrapp>
+          <InputFile type="file" onChange={addLogo} />
+          <LogoImage src={logoUrl} />
+        </InputFileWrapp>
         <InputsWrapper>
           <Label>
             Имя

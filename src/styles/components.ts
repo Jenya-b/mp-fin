@@ -17,6 +17,10 @@ export const Main = styled.main`
   @media (${({ theme }) => theme.media.large}) {
     padding: 25px 25px;
   }
+
+  @media (${({ theme }) => theme.media.small}) {
+    padding: 15px 15px 20px 15px;
+  }
 `;
 
 export const MainTitle = styled.h1`
