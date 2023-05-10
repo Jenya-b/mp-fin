@@ -1,6 +1,6 @@
 import { IWeekWithParam } from 'services/types';
 import { formatDateGeneral } from 'utils';
-import { Filter, Input, Item, Label, List, Subtitle } from '../Filters.styled';
+import { Filter, Label, List, Subtitle } from '../Filters.styled';
 import { useEffect, useState } from 'react';
 
 interface FilterWeekProps {
@@ -29,9 +29,9 @@ export const FilterByWeeks = ({
       <Subtitle>Недели:</Subtitle>
       <List>
         {weeksState.map(({ weekId, weekNumber, weekStart, weekEnd }) => (
-          <Item key={weekId}>
+          <li key={weekId}>
             <Label htmlFor={weekId}>
-              <Input
+              <input
                 id={weekId}
                 type="checkbox"
                 checked={arrWeeks.includes(weekId)}
@@ -40,7 +40,7 @@ export const FilterByWeeks = ({
               {''}
               {`${weekNumber} (${formatDateGeneral(weekStart)} - ${formatDateGeneral(weekEnd)})`}
             </Label>
-          </Item>
+          </li>
         ))}
       </List>
     </Filter>
