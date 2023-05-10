@@ -5,4 +5,9 @@ export const Wrapper = styled.div`
   grid-template: 1fr 1fr / 200px 1fr;
   column-gap: 20px;
   row-gap: 20px;
+
+  @media (${({ theme }) => theme.media.medium}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

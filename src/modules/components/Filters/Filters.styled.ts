@@ -16,6 +16,12 @@ export const Filters = styled.div`
     row-gap: 10px;
     column-gap: 20px;
   }
+
+  @media (${({ theme }) => theme.media.small}) {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
 `;
 
 export const Filter = styled.div`
@@ -28,6 +34,10 @@ export const Title = styled.h2`
   @media (${({ theme }) => theme.media.large}) {
     grid-row: 1/2;
     grid-column: 1/3;
+  }
+
+  @media (${({ theme }) => theme.media.small}) {
+    display: none;
   }
 `;
 

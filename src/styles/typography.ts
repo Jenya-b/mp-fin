@@ -18,7 +18,6 @@ export const fontStylesH1 = css`
 
   @media (${({ theme }) => theme.media.small}) {
     font-size: 22px;
-    line-height: 38px;
   }
 `;
 export const fontStylesH2 = css`
@@ -26,6 +25,10 @@ export const fontStylesH2 = css`
   font-weight: 600;
   font-size: 22px;
   line-height: 30px;
+
+  @media (${({ theme }) => theme.media.small}) {
+    font-size: 20px;
+  }
 `;
 export const fontStylesRegularBold = css`
   ${fontsFamilyOpenSans}

@@ -33,7 +33,7 @@ export const FiltersBlock = ({
 }: FiltersBlockProps) => {
   return (
     <Filters>
-      <Title>Фильтр</Title>
+      <Title>Фильтры</Title>
       <FilterBySelectParams
         setParameter={setCountChart}
         thisParameter={countChart}

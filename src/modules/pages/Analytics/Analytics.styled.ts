@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
   @media (${({ theme }) => theme.media.large}) {
     grid-template: auto auto 500px / 1fr;
   }
+
+  @media (${({ theme }) => theme.media.medium}) {
+    margin-top: 20px;
+    row-gap: 20px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -28,6 +33,10 @@ export const Diagram = styled.div`
   @media (${({ theme }) => theme.media.large}) {
     grid-row: 2/3;
     grid-column: 1/2;
+  }
+
+  @media (${({ theme }) => theme.media.large}) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 `;
 
