@@ -18,7 +18,7 @@ export const Main = styled.main`
     padding: 25px 25px;
   }
 
-  @media (${({ theme }) => theme.media.small}) {
+  @media (${({ theme }) => theme.media.medium}) {
     padding: 15px 15px 20px 15px;
   }
 `;
