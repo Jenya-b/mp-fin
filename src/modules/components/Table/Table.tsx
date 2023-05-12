@@ -1,8 +1,6 @@
 import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
-import { Colors } from 'constants/colors';
 import { v4 } from 'uuid';
 import {
   StyledTableCell,

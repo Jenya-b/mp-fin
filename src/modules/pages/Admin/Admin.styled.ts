@@ -23,6 +23,11 @@ export const Menu = styled.div`
   @media (${({ theme }) => theme.media.extraLarge}) {
     padding-bottom: 0;
   }
+
+  @media (${({ theme }) => theme.media.small}) {
+    padding-top: 20px;
+    padding-left: 15px;
+  }
 `;
 
 export const List = styled.ul`
@@ -45,7 +50,12 @@ export const Item = styled.li`
 
     &.active {
       color: ${({ theme }) => theme.colors.textAttentionPrimary};
+      text-decoration: underline;
     }
+  }
+
+  @media (${({ theme }) => theme.media.small}) {
+    ${fontStylesCaption}
   }
 `;
 
@@ -64,6 +74,13 @@ export const Form = styled.form`
   @media (${({ theme }) => theme.media.large}) {
     grid-template: repeat(2, 84px) / repeat(2, 1fr);
   }
+
+  @media (${({ theme }) => theme.media.small}) {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 15px;
+  }
 `;
 
 export const InputAdminPanel = styled(PrimaryInput)`
@@ -74,4 +91,9 @@ export const Label = styled.label`
   position: relative;
   display: inline-block;
   ${fontStylesCaption}
+
+  @media (${({ theme }) => theme.media.small}) {
+    width: 100%;
+    line-height: 5px;
+  }
 `;
