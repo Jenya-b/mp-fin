@@ -9,10 +9,9 @@ import {
   useUpdateDataMutation,
 } from 'services';
 import { formatDateGeneral, getDefaultValueByInputDate } from 'utils';
-import { Button, Label, SearchBlock, Subtitle } from './SearchQuery.styled';
+import { Button, Label, SearchBlock, Subtitle, InputSearch } from './SearchQuery.styled';
 import { Loader } from 'modules/components/Loader/Loader';
 import { IArticleQueries } from 'services/types';
-import { InputSearch } from 'modules/pages/DemandDynamics/DemandDynamics.styled';
 import { MultipleSelect } from './MultipleSelect/MultipleSelect';
 import { Table } from './Table/Table';
 
