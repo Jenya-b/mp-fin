@@ -4,8 +4,12 @@ import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
 import { Colors } from 'constants/colors';
 import { v4 } from 'uuid';
-import { SecondaryInput } from 'styles/components';
-import { StyledTableCell, StyledTable } from 'modules/components/Table/Table.styled';
+import {
+  StyledTableCell,
+  StyledTable,
+  InputSearch,
+  StyledTableContainer,
+} from 'modules/components/Table/Table.styled';
 import { SerializedStyles } from '@emotion/react';
 
 interface Props<T> {
@@ -28,27 +32,13 @@ export const BasicTable = <T,>({
   gridTemplateStyled,
 }: Props<T>) => {
   return (
-    <TableContainer
-      style={{
-        background: Colors.MainWhite,
-        marginTop: 39,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        border: '1px solid #F2F2F2',
-      }}
-    >
+    <StyledTableContainer>
       {isSearch && (
-        <SecondaryInput
+        <InputSearch
           type="text"
           placeholder="Поле поиска"
           value={searchValue}
           onChange={handleChange}
-          style={{
-            maxWidth: 517,
-            marginTop: 50,
-            marginLeft: 40,
-            marginBottom: 35,
-          }}
         />
       )}
       <StyledTable gridTemplateStyled={gridTemplateStyled}>
@@ -67,6 +57,6 @@ export const BasicTable = <T,>({
           )}
         </TableBody>
       </StyledTable>
-    </TableContainer>
+    </StyledTableContainer>
   );
 };

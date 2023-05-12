@@ -1,12 +1,23 @@
 import { SerializedStyles } from '@emotion/react';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
 import { styled as styledMUI } from '@mui/material/styles';
 import { Colors } from 'constants/colors';
+import styled from 'styled-components';
+import { SecondaryInput } from 'styles/components';
 
 interface StyledTableProps {
   gridTemplateStyled: SerializedStyles;
 }
+
+export const StyledTableContainer = styledMUI(TableContainer)`
+	background: ${Colors.MainWhite};
+  margin-top: 39px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid ${Colors.MainGreyLight};
+`;
 
 export const StyledTable = styledMUI(Table)<StyledTableProps>`
 	${({ gridTemplateStyled }) => gridTemplateStyled};
@@ -52,5 +63,19 @@ export const StyledTableCell = styledMUI(TableCell)`
   @media (max-width: 1300px) {
     padding-left: 20px;
     padding-right: 20px;
+  }
+`;
+
+export const InputSearch = styled(SecondaryInput)`
+  width: 517px;
+  margin: 50px 0 35px 40px;
+
+  @media (${({ theme }) => theme.media.large}) {
+    width: 400px;
+    margin: 20px 0 10px 20px;
+  }
+
+  @media (${({ theme }) => theme.media.small}) {
+    width: 250px;
   }
 `;
