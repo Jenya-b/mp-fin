@@ -2,7 +2,11 @@ import { balanceColumnNames } from 'constants/tables';
 import { useAppSelector } from 'store/store';
 import { Main, MainTitle, MainSubtitle } from 'styles/components';
 import { BasicTable } from 'modules/components/Table/Table';
-import { BalanceWrapper, HistoryBlock } from 'modules/pages/Balance/Balance.styled';
+import {
+  BalanceWrapper,
+  HistoryBlock,
+  gridTemplateStyled,
+} from 'modules/pages/Balance/Balance.styled';
 import { Replenishment } from 'modules/pages/Balance/Replenishment/Replenishment';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { balanceSelector } from 'store/selectors';
@@ -25,7 +29,7 @@ export const BalancePage = () => {
             renderRow={renderRow}
             renderColumnNames={renderColumnNames}
             data={[]}
-            gridTemplateStyled="repeat(5, minmax(200px, 1fr))"
+            gridTemplateStyled={gridTemplateStyled}
           />
         </HistoryBlock>
       </BalanceWrapper>

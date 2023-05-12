@@ -12,6 +12,7 @@ import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns
 import { Form, Label, InputAdminPanel, Container } from '../Admin.styled';
 import { getListOfYears, getThisYear } from 'utils/formatDate/formatDate';
 import { FilterBySelectParams } from 'modules/components/Filters/FilterBySelectParams/FilterBySelectParams';
+import { gridTemplateStyled } from './Weeks.styled';
 
 export const Weeks = () => {
   const [weeksByYears, setWeeksByYears] = useState<IWeekWithParam[]>([]);
@@ -77,7 +78,7 @@ export const Weeks = () => {
           renderRow={renderRow}
           renderColumnNames={renderColumnNames}
           data={weeksByYears}
-          gridTemplateStyled="repeat(3, minmax(250px, 1fr))"
+          gridTemplateStyled={gridTemplateStyled}
         />
       </Container>
     </Main>

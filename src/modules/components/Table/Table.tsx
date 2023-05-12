@@ -6,6 +6,7 @@ import { Colors } from 'constants/colors';
 import { v4 } from 'uuid';
 import { SecondaryInput } from 'styles/components';
 import { StyledTableCell, StyledTable } from 'modules/components/Table/Table.styled';
+import { SerializedStyles } from '@emotion/react';
 
 interface Props<T> {
   isSearch?: boolean;
@@ -14,7 +15,7 @@ interface Props<T> {
   data: T[] | undefined;
   renderRow: (item: T) => JSX.Element;
   renderColumnNames: () => JSX.Element;
-  gridTemplateStyled: string;
+  gridTemplateStyled: SerializedStyles;
 }
 
 export const BasicTable = <T,>({

@@ -9,7 +9,12 @@ import {
 } from 'services';
 import { IUsersInAdminPanel } from 'services/types';
 import { Main, MainTitle } from 'styles/components';
-import { AssignedRoles, AssignedRolesButton, AssignedRolesDesc } from './Users.styled';
+import {
+  AssignedRoles,
+  AssignedRolesButton,
+  AssignedRolesDesc,
+  gridTemplateStyled,
+} from './Users.styled';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 
 export const Users = () => {
@@ -38,7 +43,7 @@ export const Users = () => {
           </AssignedRoles>
         ) : (
           <AssignedRoles>
-            <AssignedRolesDesc></AssignedRolesDesc>
+            <AssignedRolesDesc />
             <AssignedRolesButton onClick={() => appointAdmin(item.email)}>
               Назначить админом
             </AssignedRolesButton>
@@ -64,7 +69,7 @@ export const Users = () => {
         renderRow={renderRow}
         renderColumnNames={renderColumnNames}
         data={users ?? []}
-        gridTemplateStyled="repeat(5, minmax(250px, 1fr)) minmax(400px, 1fr)"
+        gridTemplateStyled={gridTemplateStyled}
       />
     </Main>
   );

@@ -13,6 +13,7 @@ import { openNotify } from 'store/reducers/notifySlice';
 import { alertMessage } from 'constants/alert';
 import { TableColumns } from 'modules/components/Table/TableColumns/TableColumns';
 import { notifySelector } from 'store/selectors';
+import { gridTemplateStyled } from './PrimeCost.styled';
 
 let delayTimer: ReturnType<typeof setTimeout>;
 
@@ -105,7 +106,7 @@ export const PrimeCostPage = () => {
         renderRow={renderRow}
         renderColumnNames={renderColumnNames}
         data={articleList}
-        gridTemplateStyled="repeat(3, minmax(250px, 1fr))"
+        gridTemplateStyled={gridTemplateStyled}
       />
     </Main>
   );

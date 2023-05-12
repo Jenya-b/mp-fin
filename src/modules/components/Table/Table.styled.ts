@@ -1,17 +1,18 @@
+import { SerializedStyles } from '@emotion/react';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import { styled as styledMUI } from '@mui/material/styles';
 import { Colors } from 'constants/colors';
 
 interface StyledTableProps {
-  gridTemplateStyled: string;
+  gridTemplateStyled: SerializedStyles;
 }
 
 export const StyledTable = styledMUI(Table)<StyledTableProps>`
+	${({ gridTemplateStyled }) => gridTemplateStyled};
   display: grid;
   border-collapse: collapse;
   min-width: 100%;
-  grid-template-columns: ${(props) => props.gridTemplateStyled};
   overflow: hidden;
   overflow-x: scroll;
   overflow-y: auto;
