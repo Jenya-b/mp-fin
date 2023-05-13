@@ -56,7 +56,7 @@ export const Header = () => {
         openPage={openPage}
         onSignoutHandler={onSignoutHandler}
       />
-      <HeaderMobile setActiveMenu={setActiveMenu} />
+      <HeaderMobile setActiveMenu={setActiveMenu} isActiveMenu={isActiveMenu} />
       <PullDownMenu
         routerPath={routerPath}
         dataMenu={menuSidebar}

@@ -5,9 +5,10 @@ import { Header, LogoImg, LogoWrapper, Burger } from './Mobile.styled';
 
 interface HeaderMobileProps {
   setActiveMenu: Dispatch<SetStateAction<boolean>>;
+  isActiveMenu: boolean;
 }
 
-export const HeaderMobile = ({ setActiveMenu }: HeaderMobileProps) => {
+export const HeaderMobile = ({ setActiveMenu, isActiveMenu }: HeaderMobileProps) => {
   const updateDisplayMenu = () => {
     setActiveMenu((state) => !state);
   };
@@ -17,7 +18,7 @@ export const HeaderMobile = ({ setActiveMenu }: HeaderMobileProps) => {
       <LogoWrapper>
         <LogoImg src={mainLogo} alt="logo" />
       </LogoWrapper>
-      <Burger onClick={updateDisplayMenu}>
+      <Burger onClick={updateDisplayMenu} isActiveBurger={isActiveMenu}>
         <span></span>
       </Burger>
     </Header>

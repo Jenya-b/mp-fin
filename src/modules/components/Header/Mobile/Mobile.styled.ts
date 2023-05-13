@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface BurgerProps {
+  isActiveBurger: boolean;
+}
+
 export const Header = styled.header`
   position: relative;
   display: none;
@@ -25,7 +29,7 @@ export const LogoImg = styled.img`
   height: 100%;
 `;
 
-export const Burger = styled.div`
+export const Burger = styled.div<BurgerProps>`
   height: 23px;
   width: 35px;
   display: flex;
@@ -33,29 +37,30 @@ export const Burger = styled.div`
   position: relative;
 
   span {
-    display: block;
+    display: ${({ isActiveBurger }) => (isActiveBurger ? 'none' : 'block')};
     width: 100%;
     height: 3px;
     background: ${({ theme }) => theme.colors.backgroundPrimary};
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    left: 0;
-    bottom: 0;
-    background: ${({ theme }) => theme.colors.backgroundPrimary};
-  }
-
+  &::after,
   &::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 3px;
-    left: 0;
-    top: 0;
     background: ${({ theme }) => theme.colors.backgroundPrimary};
+    left: 0;
+    transition: all 0.1s;
+  }
+
+  &::after {
+    transform: rotate(${({ isActiveBurger }) => (isActiveBurger ? 45 : 0)}deg);
+    bottom: ${({ isActiveBurger }) => (isActiveBurger ? 10 : 0)}px;
+  }
+
+  &::before {
+    transform: rotate(${({ isActiveBurger }) => (isActiveBurger ? -45 : 0)}deg);
+    top: ${({ isActiveBurger }) => (isActiveBurger ? 10 : 0)}px;
   }
 `;
