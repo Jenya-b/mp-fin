@@ -30,7 +30,7 @@ export const PullDownMenu = ({
 
   useEffect(() => {
     if (isAdmin) setMenuList((state) => [...state, extraMenu]);
-  }, []);
+  }, [isAdmin]);
 
   const closeMenu = () => setActiveMenu(false);
 
