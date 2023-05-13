@@ -39,7 +39,7 @@ export const BasicTable = <T,>({
           onChange={handleChange}
         />
       )}
-      <StyledTable gridTemplateStyled={gridTemplateStyled}>
+      <StyledTable gridtemplatestyled={gridTemplateStyled}>
         <TableHead>
           <TableRow>{renderColumnNames()}</TableRow>
         </TableHead>

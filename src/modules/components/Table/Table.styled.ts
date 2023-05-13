@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { SecondaryInput } from 'styles/components';
 
 interface StyledTableProps {
-  gridTemplateStyled: SerializedStyles;
+  gridtemplatestyled: SerializedStyles;
 }
 
 export const StyledTableContainer = styledMUI(TableContainer)`
@@ -20,7 +20,7 @@ export const StyledTableContainer = styledMUI(TableContainer)`
 `;
 
 export const StyledTable = styledMUI(Table)<StyledTableProps>`
-	${({ gridTemplateStyled }) => gridTemplateStyled};
+	${({ gridtemplatestyled }) => gridtemplatestyled};
   display: grid;
   border-collapse: collapse;
   min-width: 100%;
