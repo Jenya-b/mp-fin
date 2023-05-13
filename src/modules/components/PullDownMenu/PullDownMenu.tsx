@@ -1,4 +1,4 @@
-import { useEffect, useState, MouseEvent } from 'react';
+import { useEffect, useState, MouseEvent, Dispatch, SetStateAction } from 'react';
 import { IMenu } from 'interfaces/menu';
 import { Menu, Link, List } from './PullDownMenu.styled';
 import { ControlsBlock } from '../Header/ControlsBlock/ControlsBlock';
@@ -8,6 +8,7 @@ interface PullDownMenuProps {
   dataMenu: IMenu[];
   extraMenu: IMenu;
   isActiveMenu: boolean;
+  setActiveMenu: Dispatch<SetStateAction<boolean>>;
   isAdmin: boolean | undefined;
   settings: string;
   openPage: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -19,6 +20,7 @@ export const PullDownMenu = ({
   dataMenu,
   extraMenu,
   isActiveMenu,
+  setActiveMenu,
   isAdmin,
   onSignoutHandler,
   openPage,
@@ -30,12 +32,16 @@ export const PullDownMenu = ({
     if (isAdmin) setMenuList((state) => [...state, extraMenu]);
   }, []);
 
+  const closeMenu = () => setActiveMenu(false);
+
   return (
     <Menu isActiveMenu={isActiveMenu}>
       <List>
         {menuList.map(({ href, title }) => (
           <li key={title}>
-            <Link to={href}>{title}</Link>
+            <Link to={href} onClick={closeMenu}>
+              {title}
+            </Link>
           </li>
         ))}
       </List>

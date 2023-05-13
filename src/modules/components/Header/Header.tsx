@@ -33,11 +33,11 @@ export const Header = () => {
     switch (name) {
       case balance:
         navigate(balance);
+        setActiveMenu(false);
         break;
       case settings:
         navigate(settings);
-        break;
-      default:
+        setActiveMenu(false);
         break;
     }
   };
@@ -62,6 +62,7 @@ export const Header = () => {
         dataMenu={menuSidebar}
         extraMenu={adminRoute}
         isActiveMenu={isActiveMenu}
+        setActiveMenu={setActiveMenu}
         isAdmin={user?.isAdmin}
         settings={settings}
         openPage={openPage}
