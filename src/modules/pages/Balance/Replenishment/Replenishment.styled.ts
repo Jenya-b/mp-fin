@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
   height: ${({ theme }) => theme.sizes.replenishmentBlock.height}px;
   background: ${({ theme }) => theme.colors.backgroundPrimary};
   position: relative;
+
+  @media (${({ theme }) => theme.media.small}) {
+    padding: 20px 20px;
+  }
 `;
 
 export const List = styled.div`
@@ -22,6 +26,10 @@ export const List = styled.div`
 
   @media (${({ theme }) => theme.media.large}) {
     grid-template: 1fr 1.5fr 1fr / minmax(min-content, 350px);
+  }
+
+  @media (${({ theme }) => theme.media.small}) {
+    grid-template: 1fr 1.5fr 1fr / 1fr;
   }
 `;
 
@@ -62,5 +70,9 @@ export const ImageWrapp = styled.div`
     img {
       width: 200px;
     }
+  }
+
+  @media (${({ theme }) => theme.media.medium}) {
+    display: none;
   }
 `;
