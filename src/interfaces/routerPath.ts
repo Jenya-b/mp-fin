@@ -13,5 +13,6 @@ export interface IRouterPath {
   weeks: string;
   users: string;
   searchTerms: string;
+  sales: string;
   notFound: string;
 }

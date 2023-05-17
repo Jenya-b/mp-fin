@@ -19,6 +19,7 @@ const BalancePage = lazy(() => import('modules/pages/Balance/Balance'));
 const AdminPage = lazy(() => import('modules/pages/Admin/Admin'));
 const SearchQuery = lazy(() => import('modules/pages/SearchQuery/SearchQuery'));
 const DemandDynamics = lazy(() => import('modules/pages/DemandDynamics/DemandDynamics'));
+const SalesPage = lazy(() => import('modules/pages/Sales/Sales'));
 
 export {
   AnalyticsPage,
@@ -34,6 +35,7 @@ export {
   AdminPage,
   SearchQuery,
   DemandDynamics,
+  SalesPage,
   LoginPage,
   Users,
   Weeks,

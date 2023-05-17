@@ -27,6 +27,11 @@ export const menuSidebar = [
     title: 'Себестоимость',
     href: routerPath.primeCost,
   },
+  {
+    srcImg: menuIcon.salesIcon,
+    title: 'Заказы и продажи',
+    href: routerPath.sales,
+  },
 ];
 
 export const adminRoute = {
