@@ -24,11 +24,17 @@ export const TBody = ({ article, data, cities, deleteSavedArticle }: TBodyProps)
           {cities.map((city, i) => (
             <li key={i}>
               {!nextParams || nextParams[city] === item[city] ? (
-                <span>{item[city]}</span>
+                item[city]
               ) : item[city] > nextParams[city] ? (
-                <span style={{ color: 'green' }}>{item[city]}🠕</span>
+                <>
+                  {item[city]}
+                  <span style={{ color: 'red' }}>🠗</span>
+                </>
               ) : (
-                <span style={{ color: 'red' }}>{item[city]}🠗</span>
+                <>
+                  {item[city]}
+                  <span style={{ color: 'green' }}>🠕</span>
+                </>
               )}
             </li>
           ))}
