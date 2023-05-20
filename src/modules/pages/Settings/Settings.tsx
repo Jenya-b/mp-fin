@@ -1,22 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { FILE_AVATAR_TYPE, MAX_SIZE } from 'constants/files';
 import { defaultLogo } from 'constants/images';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { Main, MainTitle, SecondaryButton } from 'styles/components';
+import { Main, MainTitle } from 'styles/components';
 import { fetchAvatarFile } from 'services/api/filesApi';
-import { useChangePersonalDataMutation, useLazyGetUserQuery } from 'services';
+import {
+  useAddWbTokenMutation,
+  useChangePersonalDataMutation,
+  useLazyGetUserQuery,
+} from 'services';
 import { setUser } from 'store/reducers/userSlice';
 import { Loader } from 'modules/components/Loader/Loader';
 import {
-  SettingsForm,
-  InputsWrapper,
   Label,
-  SecondaryInput,
+  Input,
   InputFileWrapp,
   InputFile,
   LogoImage,
-  ControlWrapper,
+  Wrapper,
+  Form,
+  PersonalDataButton,
+  AdditionalButton,
 } from 'modules/pages/Settings/Settings.styled';
 import { inputEmailPattern } from 'constants/validInput';
 import { MessageError } from 'modules/pages/Login/Login.styled';
@@ -25,10 +30,12 @@ import { avatarSelector, userSelector } from 'store/selectors';
 export const SettingsPage = () => {
   const [logoUrl, setLogoUrl] = useState(defaultLogo);
   const [logoFile, setLogoFile] = useState<FormData>();
+  const [wbToken, setWbToken] = useState('');
   const dispatch = useAppDispatch();
   const [changePersonalData, { isSuccess: isSuccessChangeData, isLoading: isLoadingChangeData }] =
     useChangePersonalDataMutation();
   const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
+  const [fetchAddToken, { isLoading: isLoadingAddToken }] = useAddWbTokenMutation();
   const { user } = useAppSelector(userSelector);
   const { isLoading: isLoadingUploadFile, isSuccess: isSuccessUploadFile } =
     useAppSelector(avatarSelector);
@@ -82,34 +89,44 @@ export const SettingsPage = () => {
     }
   }, [dataUser, dispatch, isSuccessFetchUser]);
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmitPersonalData = handleSubmit((data) => {
     changePersonalData(data);
     if (logoFile) {
       dispatch(fetchAvatarFile(logoFile));
     }
   });
 
+  const onSubmitWbToken = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    fetchAddToken(wbToken);
+  };
+
+  const handleChangeWbToken = (event: FormEvent<HTMLInputElement>) => {
+    const { value } = event.currentTarget;
+    setWbToken(value);
+  };
+
   return (
     <Main>
-      {(isLoadingUploadFile || isLoadingChangeData) && <Loader />}
+      {(isLoadingUploadFile || isLoadingChangeData || isLoadingAddToken) && <Loader />}
       <MainTitle>Настройки аккаунта</MainTitle>
-      <SettingsForm onSubmit={onSubmit}>
+      <Wrapper>
         <InputFileWrapp>
           <InputFile type="file" onChange={addLogo} />
           <LogoImage src={logoUrl} />
         </InputFileWrapp>
-        <InputsWrapper>
+        <Form onSubmit={onSubmitPersonalData}>
           <Label>
             Имя
-            <SecondaryInput {...register('name')} />
+            <Input {...register('name')} />
           </Label>
           <Label>
             Фамилия
-            <SecondaryInput {...register('surname')} />
+            <Input {...register('surname')} />
           </Label>
           <Label>
             Email
-            <SecondaryInput
+            <Input
               {...register('email', {
                 required: 'Поле обязательно к заполнению',
                 pattern: inputEmailPattern,
@@ -119,17 +136,22 @@ export const SettingsPage = () => {
           </Label>
           <Label>
             Телефон
-            <SecondaryInput {...register('phoneNumber')} />
+            <Input {...register('phoneNumber')} />
           </Label>
           <Label>
             Telegram
-            <SecondaryInput {...register('telegram')} />
+            <Input {...register('telegram')} />
           </Label>
-          <ControlWrapper>
-            <SecondaryButton>Сохранить</SecondaryButton>
-          </ControlWrapper>
-        </InputsWrapper>
-      </SettingsForm>
+          <PersonalDataButton>Сохранить</PersonalDataButton>
+        </Form>
+        <Form onSubmit={onSubmitWbToken}>
+          <Label>
+            Токет Wildberries
+            <Input value={wbToken} onChange={handleChangeWbToken} />
+          </Label>
+          <AdditionalButton>Добавить токен</AdditionalButton>
+        </Form>
+      </Wrapper>
     </Main>
   );
 };

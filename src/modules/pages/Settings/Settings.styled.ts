@@ -1,20 +1,17 @@
 import styled from 'styled-components';
-import { PrimaryInput } from 'styles/components';
+import { PrimaryInput, SecondaryButton } from 'styles/components';
 import { fontStylesCaption } from 'styles/typography';
 
-export const SettingsForm = styled.form`
+export const Wrapper = styled.div`
   margin-top: 60px;
   max-width: 1090px;
   width: 100%;
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template: repeat(2, auto) / 280px 1fr;
+  row-gap: 30px;
 
   @media (${({ theme }) => theme.media.large}) {
-    grid-template-columns: 180px 1fr;
-  }
-
-  @media (${({ theme }) => theme.media.medium}) {
-    grid-template-columns: 150px 1fr;
+    grid-template: repeat(2, auto) / 180px 1fr;
   }
 
   @media (${({ theme }) => theme.media.small}) {
@@ -24,7 +21,7 @@ export const SettingsForm = styled.form`
   }
 `;
 
-export const InputsWrapper = styled.div`
+export const Form = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 30px;
@@ -40,7 +37,7 @@ export const InputsWrapper = styled.div`
   }
 `;
 
-export const SecondaryInput = styled(PrimaryInput)`
+export const Input = styled(PrimaryInput)`
   background: ${({ theme }) => theme.colors.backgroundPrimary};
   margin-top: 5px;
 `;
@@ -51,6 +48,7 @@ export const Label = styled.label`
 `;
 
 export const InputFileWrapp = styled.div`
+  grid-row: 1/3;
   overflow: hidden;
   width: ${({ theme }) => theme.sizes.settingInputFile.width}px;
   height: ${({ theme }) => theme.sizes.settingInputFile.height}px;
@@ -63,6 +61,7 @@ export const InputFileWrapp = styled.div`
   }
 
   @media (${({ theme }) => theme.media.small}) {
+    grid-row: 1/2;
     width: 100px;
     height: 100px;
     justify-self: center;
@@ -90,12 +89,16 @@ export const LogoImage = styled.img`
   object-fit: cover;
 `;
 
-export const ControlWrapper = styled.div`
+export const PersonalDataButton = styled(SecondaryButton)`
   grid-column: 1/2;
   grid-row: 4/5;
-  padding-top: 10px;
 
   @media (${({ theme }) => theme.media.medium}) {
     grid-row: 6/7;
   }
+`;
+
+export const AdditionalButton = styled(SecondaryButton)`
+  grid-column: 1/2;
+  grid-row: 2/3;
 `;
