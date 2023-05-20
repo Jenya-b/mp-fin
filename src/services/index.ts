@@ -43,6 +43,9 @@ export const {
   useAddSavedArticleMutation,
   useGetAllSavedArticleQuery,
   useDeleteSavedArticleMutation,
+  useGetWbApiReportsQuery,
+  useAddWbTokenMutation,
+  useEditWbTokenMutation,
 } = analyticApi;
 
 export const { useUpdateDataMutation } = refreshDataApi;

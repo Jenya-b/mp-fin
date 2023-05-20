@@ -62,5 +62,31 @@ export const analyticApi = createApi({
         },
       }),
     }),
+    getWbApiReports: builder.query({
+      query: () => ({
+        url: '/Analytic/GetWbApiReports',
+        credentials: 'include',
+      }),
+    }),
+    addWbToken: builder.mutation<IGenericResponse, string>({
+      query: (token) => ({
+        url: '/Analytic/AddWbToken',
+        method: 'POST',
+        credentials: 'include',
+        params: {
+          token,
+        },
+      }),
+    }),
+    editWbToken: builder.mutation<IGenericResponse, string>({
+      query: (token) => ({
+        url: '/Analytic/EditWbToken',
+        method: 'POST',
+        credentials: 'include',
+        params: {
+          token,
+        },
+      }),
+    }),
   }),
 });
