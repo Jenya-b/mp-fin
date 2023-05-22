@@ -6,12 +6,12 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="sc-bcXHqe bSJIXe"
+        class="sc-bcXHqe hMmqpl"
       >
         <h2
-          class="sc-dkrFOg brYzzX"
+          class="sc-dkrFOg dvcPFN"
         >
-          Фильтр
+          Фильтры
         </h2>
         <div
           class="sc-gswNZR eEdGWU"
@@ -129,15 +129,12 @@ Object {
           <ul
             class="sc-eDvSVe fUtpdY"
           >
-            <li
-              class="sc-jSUZER"
-            >
+            <li>
               <label
-                class="sc-gKPRtg bDoPsJ"
+                class="sc-jSUZER ljnyRR"
                 for="string"
               >
                 <input
-                  class="sc-iBYQkv"
                   id="string"
                   type="checkbox"
                 />
@@ -152,12 +149,12 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-bcXHqe bSJIXe"
+      class="sc-bcXHqe hMmqpl"
     >
       <h2
-        class="sc-dkrFOg brYzzX"
+        class="sc-dkrFOg dvcPFN"
       >
-        Фильтр
+        Фильтры
       </h2>
       <div
         class="sc-gswNZR eEdGWU"
@@ -275,15 +272,12 @@ Object {
         <ul
           class="sc-eDvSVe fUtpdY"
         >
-          <li
-            class="sc-jSUZER"
-          >
+          <li>
             <label
-              class="sc-gKPRtg bDoPsJ"
+              class="sc-jSUZER ljnyRR"
               for="string"
             >
               <input
-                class="sc-iBYQkv"
                 id="string"
                 type="checkbox"
               />

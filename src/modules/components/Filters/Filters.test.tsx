@@ -40,7 +40,7 @@ describe('FiltersBlock component', () => {
         <FiltersBlock {...props} />
       </ThemeProvider>
     );
-    expect(screen.getByText('Фильтр')).toBeInTheDocument();
+    expect(screen.getByText('Фильтры')).toBeInTheDocument();
   });
 
   test('FiltersBlock snapshot', () => {
