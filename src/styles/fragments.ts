@@ -25,4 +25,8 @@ export const ButtonMailStyles = css`
   :active {
     background: ${({ theme }) => theme.colors.backgroundTertiary};
   }
+
+  :disabled {
+    background: ${({ theme }) => theme.colors.borderTertiary};
+  }
 `;
