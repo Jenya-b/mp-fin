@@ -4,6 +4,7 @@ import { StyledTable } from './Table.styled';
 import { createArray, subtractDate } from 'utils';
 import { TBody } from './TBody/TBody';
 import { IWbReportsResponse } from 'services/types';
+import { TextInfo } from '../Sales.styled';
 
 interface TableProps {
   data: IWbReportsResponse | undefined;
@@ -20,7 +21,7 @@ export const Table = ({ data }: TableProps) => {
     );
   }, [data]);
 
-  if (!data) return <></>;
+  if (!data) return <TextInfo>Нет данных для отображения</TextInfo>;
 
   return (
     <StyledTable count={headData.length}>

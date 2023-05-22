@@ -8,6 +8,8 @@ import { fetchAvatarFile } from 'services/api/filesApi';
 import {
   useAddWbTokenMutation,
   useChangePersonalDataMutation,
+  useEditWbTokenMutation,
+  useIsTokenSavedQuery,
   useLazyGetUserQuery,
 } from 'services';
 import { setUser } from 'store/reducers/userSlice';
@@ -35,7 +37,10 @@ export const SettingsPage = () => {
   const [changePersonalData, { isSuccess: isSuccessChangeData, isLoading: isLoadingChangeData }] =
     useChangePersonalDataMutation();
   const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
-  const [fetchAddToken, { isLoading: isLoadingAddToken }] = useAddWbTokenMutation();
+  const [fetchAddToken, { isLoading: isLoadingAddToken, isSuccess: isSuccessAddToken }] =
+    useAddWbTokenMutation();
+  const [fetchEditToken, { isLoading: isLoadingEditToken }] = useEditWbTokenMutation();
+  const { data: isToken, isLoading: isLoadingGetToken, refetch } = useIsTokenSavedQuery(null);
   const { user } = useAppSelector(userSelector);
   const { isLoading: isLoadingUploadFile, isSuccess: isSuccessUploadFile } =
     useAppSelector(avatarSelector);
@@ -49,20 +54,9 @@ export const SettingsPage = () => {
     defaultValues: { name: '', surname: '', phoneNumber: '', email: '', telegram: '' },
   });
 
-  const addLogo = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
-    const formData = new FormData();
-
-    if (!files || !files.length) return;
-    const file = files[0];
-
-    if (file.size > MAX_SIZE) return;
-    if (!FILE_AVATAR_TYPE.includes(file.type)) return;
-
-    setLogoUrl(URL.createObjectURL(file));
-    formData.append('file', files[0]);
-    setLogoFile(formData);
-  };
+  useEffect(() => {
+    if (isSuccessAddToken) refetch();
+  }, [isSuccessAddToken]);
 
   useEffect(() => {
     if (user) {
@@ -96,9 +90,24 @@ export const SettingsPage = () => {
     }
   });
 
+  const addLogo = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = event.target;
+    const formData = new FormData();
+
+    if (!files || !files.length) return;
+    const file = files[0];
+
+    if (file.size > MAX_SIZE) return;
+    if (!FILE_AVATAR_TYPE.includes(file.type)) return;
+
+    setLogoUrl(URL.createObjectURL(file));
+    formData.append('file', files[0]);
+    setLogoFile(formData);
+  };
+
   const onSubmitWbToken = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    fetchAddToken(wbToken);
+    isToken ? fetchEditToken(wbToken) : fetchAddToken(wbToken);
   };
 
   const handleChangeWbToken = (event: FormEvent<HTMLInputElement>) => {
@@ -108,7 +117,11 @@ export const SettingsPage = () => {
 
   return (
     <Main>
-      {(isLoadingUploadFile || isLoadingChangeData || isLoadingAddToken) && <Loader />}
+      {(isLoadingUploadFile ||
+        isLoadingChangeData ||
+        isLoadingAddToken ||
+        isLoadingGetToken ||
+        isLoadingEditToken) && <Loader />}
       <MainTitle>Настройки аккаунта</MainTitle>
       <Wrapper>
         <InputFileWrapp>
@@ -149,7 +162,7 @@ export const SettingsPage = () => {
             Токет Wildberries
             <Input value={wbToken} onChange={handleChangeWbToken} />
           </Label>
-          <AdditionalButton>Добавить токен</AdditionalButton>
+          <AdditionalButton>{isToken ? 'Изменить токен' : 'Добавить токен'}</AdditionalButton>
         </Form>
       </Wrapper>
     </Main>

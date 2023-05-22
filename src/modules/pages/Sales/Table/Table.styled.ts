@@ -21,6 +21,10 @@ export const StyledTable = styled.table<ICountColumns>`
   overflow-x: scroll;
   overflow-y: auto;
 
+  @media (${({ theme }) => theme.media.medium}) {
+    margin-top: 20px;
+  }
+
   thead,
   tbody,
   tr {

@@ -89,5 +89,11 @@ export const analyticApi = createApi({
         },
       }),
     }),
+    isTokenSaved: builder.query({
+      query: () => ({
+        url: '/Analytic/IsTokenSaved',
+        credentials: 'include',
+      }),
+    }),
   }),
 });

@@ -46,6 +46,7 @@ export const {
   useGetWbApiReportsQuery,
   useAddWbTokenMutation,
   useEditWbTokenMutation,
+  useIsTokenSavedQuery,
 } = analyticApi;
 
 export const { useUpdateDataMutation } = refreshDataApi;
