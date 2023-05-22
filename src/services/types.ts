@@ -173,3 +173,16 @@ export interface ISavedArticles {
   id: string;
   query: string;
 }
+
+export interface IWbData {
+  itemcodeseller: string;
+  itemcodewb: string;
+  parameters: number[];
+  product: string;
+}
+
+export interface IWbReportsResponse {
+  data: IWbData[];
+  date: string;
+  total: number[];
+}

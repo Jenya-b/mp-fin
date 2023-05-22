@@ -6,6 +6,7 @@ import {
   IFiltersData,
   IGenericResponse,
   ISavedArticles,
+  IWbReportsResponse,
 } from 'services/types';
 
 export const analyticApi = createApi({
@@ -62,7 +63,7 @@ export const analyticApi = createApi({
         },
       }),
     }),
-    getWbApiReports: builder.query({
+    getWbApiReports: builder.query<IWbReportsResponse, null>({
       query: () => ({
         url: '/Analytic/GetWbApiReports',
         credentials: 'include',

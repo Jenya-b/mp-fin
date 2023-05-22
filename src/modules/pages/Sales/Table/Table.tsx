@@ -1,29 +1,31 @@
 import { useEffect, useState } from 'react';
-import { IData } from '../data';
 import { THead } from './THead/THead';
 import { StyledTable } from './Table.styled';
 import { createArray, subtractDate } from 'utils';
 import { TBody } from './TBody/TBody';
+import { IWbReportsResponse } from 'services/types';
 
 interface TableProps {
-  data: IData[];
+  data: IWbReportsResponse | undefined;
 }
 
 export const Table = ({ data }: TableProps) => {
   const [headData, setHeadData] = useState<string[]>([]);
 
   useEffect(() => {
-    if (!data.length) return;
+    if (!data?.data.length) return;
 
     setHeadData(
-      createArray(data[0].parameters.length).map((_, index) => subtractDate(data[0].date, index))
+      createArray(data.data[0].parameters.length).map((_, index) => subtractDate(data.date, index))
     );
   }, [data]);
+
+  if (!data) return <></>;
 
   return (
     <StyledTable count={headData.length}>
       <THead data={headData} />
-      <TBody data={data} />
+      <TBody data={data.data} total={data.total} />
     </StyledTable>
   );
 };
