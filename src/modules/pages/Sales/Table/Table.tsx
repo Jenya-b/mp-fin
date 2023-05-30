@@ -7,26 +7,30 @@ import { IWbReportsResponse } from 'services/types';
 import { TextInfo } from '../Sales.styled';
 
 interface TableProps {
-  data: IWbReportsResponse | undefined;
+  response: IWbReportsResponse | undefined;
 }
 
-export const Table = ({ data }: TableProps) => {
+export const Table = ({ response }: TableProps) => {
   const [headData, setHeadData] = useState<string[]>([]);
 
   useEffect(() => {
-    if (!data?.data.length) return;
+    if (!response?.data.length) return;
 
     setHeadData(
-      createArray(data.data[0].parameters.length).map((_, index) => subtractDate(data.date, index))
+      createArray(response.data[0].parameters.length).map((_, index) =>
+        subtractDate(response.date, index)
+      )
     );
-  }, [data]);
+  }, [response]);
 
-  if (!data) return <TextInfo>Нет данных для отображения</TextInfo>;
+  if (!response || (response && !response.data.length)) {
+    return <TextInfo>Нет данных для отображения</TextInfo>;
+  }
 
   return (
     <StyledTable count={headData.length}>
       <THead data={headData} />
-      <TBody data={data.data} total={data.total} />
+      <TBody data={response.data} total={response.total} />
     </StyledTable>
   );
 };
