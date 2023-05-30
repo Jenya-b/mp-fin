@@ -80,4 +80,12 @@ export default createGlobalStyle`
 	#root{
 		height: 100%;
 	}
+
+	.fullscreen {
+		position: relative;
+	}
+
+	.fullscreen-enabled {
+	  background: #fff;
+	}
 `;

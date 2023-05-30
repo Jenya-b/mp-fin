@@ -33,6 +33,14 @@ export const Diagram = styled.div`
   @media (${({ theme }) => theme.media.large}) {
     grid-row: 2/3;
     grid-column: 1/2;
+
+    & > div {
+      display: none;
+
+      :nth-child(1) {
+        display: block;
+      }
+    }
   }
 
   @media (${({ theme }) => theme.media.large}) {
