@@ -57,8 +57,25 @@ export const List = styled.ul`
   @media (${({ theme }) => theme.media.large}) {
     max-height: 200px;
   }
+
+  @media (${({ theme }) => theme.media.medium}) {
+    row-gap: 8px;
+  }
 `;
 
 export const Label = styled.label`
   ${fontStylesCaption}
+
+  @media (${({ theme }) => theme.media.medium}) {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+`;
+
+export const Input = styled.input`
+  @media (${({ theme }) => theme.media.medium}) {
+    width: 18px;
+    height: 18px;
+  }
 `;

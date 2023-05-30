@@ -1,5 +1,5 @@
 import { IArticle } from 'services/types';
-import { Filter, Label, List, Subtitle } from '../Filters.styled';
+import { Filter, Input, Label, List, Subtitle } from '../Filters.styled';
 
 interface FilterWeekProps {
   arrArticles: string[];
@@ -18,7 +18,7 @@ export const FilterByArticles = ({
       {allArticles.map(({ articleId, itemCode }) => (
         <li key={articleId}>
           <Label htmlFor={itemCode}>
-            <input
+            <Input
               id={itemCode}
               type="checkbox"
               checked={arrArticles.includes(itemCode)}

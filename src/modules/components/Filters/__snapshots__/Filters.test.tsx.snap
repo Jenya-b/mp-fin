@@ -115,7 +115,7 @@ Object {
             Недели:
           </h3>
           <ul
-            class="sc-eDvSVe fUtpdY"
+            class="sc-eDvSVe jPEOHm"
           />
         </div>
         <div
@@ -127,14 +127,15 @@ Object {
             Артикулы:
           </h3>
           <ul
-            class="sc-eDvSVe fUtpdY"
+            class="sc-eDvSVe jPEOHm"
           >
             <li>
               <label
-                class="sc-jSUZER ljnyRR"
+                class="sc-jSUZER hekZka"
                 for="string"
               >
                 <input
+                  class="sc-gKPRtg fZWUmC"
                   id="string"
                   type="checkbox"
                 />
@@ -258,7 +259,7 @@ Object {
           Недели:
         </h3>
         <ul
-          class="sc-eDvSVe fUtpdY"
+          class="sc-eDvSVe jPEOHm"
         />
       </div>
       <div
@@ -270,14 +271,15 @@ Object {
           Артикулы:
         </h3>
         <ul
-          class="sc-eDvSVe fUtpdY"
+          class="sc-eDvSVe jPEOHm"
         >
           <li>
             <label
-              class="sc-jSUZER ljnyRR"
+              class="sc-jSUZER hekZka"
               for="string"
             >
               <input
+                class="sc-gKPRtg fZWUmC"
                 id="string"
                 type="checkbox"
               />
