@@ -47,3 +47,8 @@ export const subtractDate = (parameter: string, countDays: number) => {
 
   return `${day}.${month}.${year}`;
 };
+
+export const subtractDateWithoutYear = (parameter: string, countDays: number) => {
+  const date = subtractDate(parameter, countDays);
+  return date.split('.').slice(0, 2).join('.');
+};

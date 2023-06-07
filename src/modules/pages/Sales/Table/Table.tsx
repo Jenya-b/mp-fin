@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { THead } from './THead/THead';
 import { StyledTable } from './Table.styled';
-import { createArray, subtractDate } from 'utils';
+import { createArray, subtractDateWithoutYear } from 'utils';
 import { TBody } from './TBody/TBody';
 import { IWbReportsResponse } from 'services/types';
 import { TextInfo } from '../Sales.styled';
@@ -18,7 +18,7 @@ export const Table = ({ response }: TableProps) => {
 
     setHeadData(
       createArray(response.data[0].parameters.length).map((_, index) =>
-        subtractDate(response.date, index)
+        subtractDateWithoutYear(response.date, index)
       )
     );
   }, [response]);

@@ -5,13 +5,14 @@ interface ICountColumns {
 }
 
 export const StyledTable = styled.table<ICountColumns>`
+  max-height: 500px;
   margin-top: 40px;
   display: grid;
   border-collapse: collapse;
   min-width: 100%;
   grid-template-columns: repeat(2, minmax(150px, 1fr)) minmax(200px, 1fr) repeat(
       ${({ count }) => count},
-      minmax(110px, 1fr)
+      minmax(70px, 1fr)
     );
   background: ${({ theme }) => theme.colors.backgroundPrimary};
   border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
@@ -41,6 +42,7 @@ export const StyledTable = styled.table<ICountColumns>`
 
   th {
     position: sticky;
+    background: ${({ theme }) => theme.colors.backgroundPrimary};
     top: 0;
     padding-bottom: 25px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.borderPrimary};

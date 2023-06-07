@@ -6,6 +6,7 @@ import {
   getListOfYears,
   getThisYear,
   subtractDate,
+  subtractDateWithoutYear,
 } from './formatDate/formatDate';
 import { getMaxValueInObject, getSumValuesInObject } from './getValueInObject/getValueInObject';
 import { isObject } from './isObject/isObject';
@@ -21,6 +22,7 @@ export {
   setLocalStorage,
   getLocalStorage,
   subtractDate,
+  subtractDateWithoutYear,
   getDefaultValueByInputDate,
   getListOfYears,
   getThisYear,
