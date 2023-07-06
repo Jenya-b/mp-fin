@@ -7,7 +7,6 @@ import { Main, MainTitle } from 'styles/components';
 import { fetchAvatarFile } from 'services/api/filesApi';
 import {
   useAddWbTokenMutation,
-  useChangePersonalDataMutation,
   useEditWbTokenMutation,
   useIsTokenSavedQuery,
   useLazyGetUserQuery,
@@ -34,8 +33,6 @@ export const SettingsPage = () => {
   const [logoFile, setLogoFile] = useState<FormData>();
   const [wbToken, setWbToken] = useState('');
   const dispatch = useAppDispatch();
-  const [changePersonalData, { isSuccess: isSuccessChangeData, isLoading: isLoadingChangeData }] =
-    useChangePersonalDataMutation();
   const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
   const [fetchAddToken, { isLoading: isLoadingAddToken, isSuccess: isSuccessAddToken }] =
     useAddWbTokenMutation();
@@ -72,10 +69,10 @@ export const SettingsPage = () => {
   }, [setValue, user]);
 
   useEffect(() => {
-    if (isSuccessChangeData || isSuccessUploadFile) {
+    if (isSuccessUploadFile) {
       fetchUser(null);
     }
-  }, [fetchUser, isSuccessChangeData, isSuccessUploadFile]);
+  }, [fetchUser, isSuccessUploadFile]);
 
   useEffect(() => {
     if (isSuccessFetchUser && dataUser) {
@@ -84,7 +81,6 @@ export const SettingsPage = () => {
   }, [dataUser, dispatch, isSuccessFetchUser]);
 
   const onSubmitPersonalData = handleSubmit((data) => {
-    changePersonalData(data);
     if (logoFile) {
       dispatch(fetchAvatarFile(logoFile));
     }
@@ -117,11 +113,9 @@ export const SettingsPage = () => {
 
   return (
     <Main>
-      {(isLoadingUploadFile ||
-        isLoadingChangeData ||
-        isLoadingAddToken ||
-        isLoadingGetToken ||
-        isLoadingEditToken) && <Loader />}
+      {(isLoadingUploadFile || isLoadingAddToken || isLoadingGetToken || isLoadingEditToken) && (
+        <Loader />
+      )}
       <MainTitle>Настройки аккаунта</MainTitle>
       <Wrapper>
         <InputFileWrapp>

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IGenericResponse, IAllUserOptions, IUserSettings } from 'services/types';
+import { IAllUserOptions } from 'services/types';
 import { baseUrl } from 'services/baseUrl';
 import { setUser } from 'store/reducers/userSlice';
 import { RootState } from 'store/store';
@@ -31,13 +31,6 @@ export const userApi = createApi({
           throw new Error();
         }
       },
-    }),
-    changePersonalData: builder.mutation<IGenericResponse, IUserSettings>({
-      query: (data) => ({
-        url: '/Account/ChangeInfo',
-        method: 'POST',
-        body: data,
-      }),
     }),
   }),
 });

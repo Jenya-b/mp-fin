@@ -8,10 +8,6 @@ export interface IPersonalDataUser {
   telegram: string;
 }
 
-export interface IUserSettings extends IPersonalDataUser {
-  avatar?: string;
-}
-
 export interface IAllUserOptions extends IPersonalDataUser {
   balance: number;
   isAdmin: boolean;
