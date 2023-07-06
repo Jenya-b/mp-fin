@@ -7,7 +7,7 @@ export type FormValuesPassReset = {
 };
 
 export type FormValuesReg = {
-  email: string;
+  phoneNumber: string;
   password: string;
   confirmPassword: string;
   isAgreeProcessing: boolean;

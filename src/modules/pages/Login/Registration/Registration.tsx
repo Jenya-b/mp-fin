@@ -46,6 +46,8 @@ export const Registration = () => {
   }, [isSuccess]);
 
   const onSubmit = handleSubmit((data) => {
+    console.log(data);
+
     registerUser(data);
   });
 
@@ -63,13 +65,15 @@ export const Registration = () => {
         <Label>
           <SecondaryInput
             style={registerUserError && { color: 'red' }}
-            {...register('email', {
+            {...register('phoneNumber', {
               required: 'Поле обязательно к заполнению',
-              pattern: inputEmailPattern,
+              // pattern: inputEmailPattern,
             })}
             placeholder="Email"
           />
-          {errors?.email && <MessageError>{errors.email?.message || 'Error'}</MessageError>}
+          {errors?.phoneNumber && (
+            <MessageError>{errors.phoneNumber?.message || 'Error'}</MessageError>
+          )}
           {registerUserError && (
             <LinkWrapper>
               <span>Email уже зарегестрирован.</span>{' '}

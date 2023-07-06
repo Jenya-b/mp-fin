@@ -1,10 +1,20 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
 import { IWeek, IWeekWithParam, IGenericResponse, IUsersInAdminPanel } from 'services/types';
+import { RootState } from 'store/store';
 
 export const adminApi = createApi({
   reducerPath: 'adminApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl,
+    prepareHeaders: (headers, { getState }) => {
+      const token = (getState() as RootState).persistedUserReducer.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+        return headers;
+      }
+    },
+  }),
   tagTypes: ['Weeks', 'Users'],
   endpoints: (builder) => ({
     getWeeks: builder.query<IWeekWithParam[], null>({

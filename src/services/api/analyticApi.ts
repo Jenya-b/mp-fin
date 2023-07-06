@@ -8,10 +8,20 @@ import {
   ISavedArticles,
   IWbReportsResponse,
 } from 'services/types';
+import { RootState } from 'store/store';
 
 export const analyticApi = createApi({
   reducerPath: 'analiticApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl,
+    prepareHeaders: (headers, { getState }) => {
+      const token = (getState() as RootState).persistedUserReducer.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+        return headers;
+      }
+    },
+  }),
   endpoints: (builder) => ({
     getFiltersData: builder.query<IFiltersData, null>({
       query: () => ({

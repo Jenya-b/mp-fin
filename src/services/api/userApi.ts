@@ -2,16 +2,25 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IGenericResponse, IAllUserOptions, IUserSettings } from 'services/types';
 import { baseUrl } from 'services/baseUrl';
 import { setUser } from 'store/reducers/userSlice';
+import { RootState } from 'store/store';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl,
+    prepareHeaders: (headers, { getState }) => {
+      const token = (getState() as RootState).persistedUserReducer.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+        return headers;
+      }
+    },
+  }),
   tagTypes: ['User'],
   endpoints: (builder) => ({
     getUser: builder.query<IAllUserOptions, null>({
       query: () => ({
         url: '/Account/GetUser',
-        credentials: 'include',
       }),
       providesTags: ['User'],
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
@@ -28,7 +37,6 @@ export const userApi = createApi({
         url: '/Account/ChangeInfo',
         method: 'POST',
         body: data,
-        credentials: 'include',
       }),
     }),
     changeReportId: builder.mutation({
@@ -38,7 +46,6 @@ export const userApi = createApi({
         params: {
           reportId,
         },
-        credentials: 'include',
       }),
       invalidatesTags: ['User'],
     }),

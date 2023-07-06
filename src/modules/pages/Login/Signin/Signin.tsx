@@ -28,8 +28,6 @@ import { telegramIcon } from 'constants/images';
 import { telegramBotUrl } from 'services/baseUrl';
 
 export const Signin = () => {
-  const [defaultName, setDefaultName] = useState<string>('');
-  const [defaultPass, setDefaultPass] = useState<string>('');
   const dispatch = useAppDispatch();
   const {
     register,
@@ -37,8 +35,8 @@ export const Signin = () => {
     handleSubmit,
   } = useForm<FormValuesSignin>({
     values: {
-      userName: defaultName,
-      password: defaultPass,
+      userName: '',
+      password: '',
     },
   });
 
@@ -69,7 +67,6 @@ export const Signin = () => {
     if (!!(userName && password)) {
       signinUser({
         rememberMe: false,
-        returnUrl: null,
         userName: `+${userName.trim()}`,
         password,
       });
@@ -83,7 +80,6 @@ export const Signin = () => {
   const onSubmit = handleSubmit((data) => {
     signinUser({
       rememberMe: false,
-      returnUrl: null,
       ...data,
     });
   });

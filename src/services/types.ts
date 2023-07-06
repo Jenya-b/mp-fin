@@ -29,17 +29,22 @@ export interface IGenericResponse {
   message: string;
 }
 
+export interface AuthResponse {
+  expiration: string;
+  token: string;
+}
+
 export interface IRegistrationInputs {
-  email: string;
+  phoneNumber: string;
   password: string;
   confirmPassword: string;
+  isAgreeProcessing: boolean;
 }
 
 export interface ISigninInputs {
   userName: string;
   password: string;
   rememberMe: boolean;
-  returnUrl: string | null;
 }
 
 export interface IPassRecoveryInput {
