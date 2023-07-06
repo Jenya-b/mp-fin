@@ -39,15 +39,5 @@ export const userApi = createApi({
         body: data,
       }),
     }),
-    changeReportId: builder.mutation({
-      query: (reportId) => ({
-        url: '/Account/ChangeReportId',
-        method: 'POST',
-        params: {
-          reportId,
-        },
-      }),
-      invalidatesTags: ['User'],
-    }),
   }),
 });

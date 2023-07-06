@@ -23,8 +23,7 @@ export const {
   useGetWbQueriesQuery,
 } = productApi;
 
-export const { useLazyGetUserQuery, useChangePersonalDataMutation, useChangeReportIdMutation } =
-  userApi;
+export const { useLazyGetUserQuery, useChangePersonalDataMutation } = userApi;
 
 export const { useLazyGetBalanceQuery } = balanceApi;
 
