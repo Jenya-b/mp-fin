@@ -54,8 +54,7 @@ export interface IPassReset {
 }
 
 export interface IReportID {
-  weekDataId: string;
-  stateId: string;
+  reportId: string;
 }
 
 export interface IReport {

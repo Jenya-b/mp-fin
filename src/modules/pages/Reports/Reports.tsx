@@ -147,7 +147,7 @@ export const ReportsPage = () => {
   };
 
   const confirmAction = () => {
-    deleteReport({ weekDataId, stateId });
+    deleteReport({ reportId: stateId });
     closeDialogWindow();
   };
 

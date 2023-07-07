@@ -27,7 +27,6 @@ export const productApi = createApi({
         url: '/Product/DeleteState',
         method: 'POST',
         body: data,
-        credentials: 'include',
       }),
     }),
     getArticles: builder.query<IArticle[], string>({
