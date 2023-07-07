@@ -19,7 +19,6 @@ export const productApi = createApi({
     getReports: builder.query<IReport[], null>({
       query: () => ({
         url: '/Product/GetStates',
-        credentials: 'include',
       }),
     }),
     deleteReport: builder.mutation<IReport, IReportID>({
@@ -32,7 +31,6 @@ export const productApi = createApi({
     getArticles: builder.query<IArticle[], string>({
       query: (text) => ({
         url: '/Product/GetArticles',
-        credentials: 'include',
         params: {
           text,
         },
@@ -43,13 +41,11 @@ export const productApi = createApi({
         url: '/Product/SetCostPrices',
         method: 'POST',
         body: data,
-        credentials: 'include',
       }),
     }),
     getWbQueries: builder.query<IWbQueries, string>({
       query: (text) => ({
         url: '/Product/GetWbQueries',
-        credentials: 'include',
         params: {
           text,
         },

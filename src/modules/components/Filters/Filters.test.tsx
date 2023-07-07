@@ -16,8 +16,8 @@ const props = {
   filtersData: {
     articles: [
       {
-        articleId: 'string',
-        articleName: 'string',
+        id: 1,
+        supplierItemCode: 'string',
         costPrice: 1,
         itemCode: 'string',
       },

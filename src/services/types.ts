@@ -69,8 +69,8 @@ export interface IReport {
 }
 
 export interface IArticle {
-  articleId: string;
-  articleName: string;
+  id: number;
+  supplierItemCode: string;
   costPrice: number;
   itemCode: string;
 }

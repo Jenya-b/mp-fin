@@ -9,8 +9,8 @@ const propsWithData = {
   arrArticles: ['art1', 'art2'],
   allArticles: [
     {
-      articleId: 'id1',
-      articleName: 'article',
+      id: 1,
+      supplierItemCode: 'article',
       costPrice: 1,
       itemCode: '123',
     },

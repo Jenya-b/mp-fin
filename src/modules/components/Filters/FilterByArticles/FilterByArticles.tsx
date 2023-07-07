@@ -15,8 +15,8 @@ export const FilterByArticles = ({
   <Filter>
     <Subtitle>Артикулы:</Subtitle>
     <List>
-      {allArticles.map(({ articleId, itemCode }) => (
-        <li key={articleId}>
+      {allArticles.map(({ id, itemCode }) => (
+        <li key={id}>
           <Label htmlFor={itemCode}>
             <Input
               id={itemCode}

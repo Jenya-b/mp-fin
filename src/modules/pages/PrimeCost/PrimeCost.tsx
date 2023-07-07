@@ -56,11 +56,11 @@ export const PrimeCostPage = () => {
   const renderRow = (item: IArticle) => (
     <>
       <StyledTableCell>{item.itemCode}</StyledTableCell>
-      <StyledTableCell>{item.articleName}</StyledTableCell>
+      <StyledTableCell>{item.supplierItemCode}</StyledTableCell>
       <StyledTableCell>
         <SecondaryInput
           defaultValue={item.costPrice}
-          name={item.articleId}
+          name={String(item.id)}
           onChange={onChangeArticle}
         />
       </StyledTableCell>
@@ -83,7 +83,7 @@ export const PrimeCostPage = () => {
         setArticle([
           {
             costPrices,
-            articlesId,
+            itemCodeId: articlesId,
           },
         ]);
       }, 1000);
