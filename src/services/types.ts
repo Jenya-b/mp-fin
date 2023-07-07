@@ -64,7 +64,7 @@ export interface IReport {
   logistik: number;
   saled: number;
   weekId: string;
-  stateId: string;
+  reportId: string;
   isReportSaved: boolean;
   weekNumber: number;
 }

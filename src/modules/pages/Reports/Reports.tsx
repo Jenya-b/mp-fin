@@ -88,7 +88,7 @@ export const ReportsPage = () => {
           {!item.isReportSaved ? (
             <InputFile
               weekDataId={item.weekId}
-              stateId={item.stateId}
+              stateId={item.reportId}
               handleChange={uploadFile}
               title={'Загрузить отчет'}
               src={tableControlIcon.uploadReport}
@@ -97,7 +97,7 @@ export const ReportsPage = () => {
             <>Отчет загружен</>
           )}
           <TableButton
-            handleClick={() => deleteRow({ weekDataId: item.weekId, stateId: item.stateId })}
+            handleClick={() => deleteRow({ weekDataId: item.weekId, stateId: item.reportId })}
             title={'Удалить'}
             src={tableControlIcon.deleteReportRow}
           />

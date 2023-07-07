@@ -1,21 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { baseUrl } from 'services/baseUrl';
+import { getLocalStorage } from 'utils';
 
 const uploadFiles = axios.create({
   baseURL: baseUrl,
-  headers: {
-    'content-type': 'multipart/form-data',
-  },
-  withCredentials: true,
 });
 
 export const fetchReportFiles = createAsyncThunk(
   'fetchFilesReport',
   async (data: FormData, thunkApi) => {
     try {
-      const response = await uploadFiles.post('/Product/SaveProductsNew', data);
-      return response.data;
+      const { token } = getLocalStorage('persist:userReducer');
+      if (token) {
+        const response = await uploadFiles.post('/Product/SaveProductsNew', data, {
+          headers: {
+            'content-type': 'multipart/form-data',
+            Authorization: `Bearer ${token.replace(/"/g, '')}`,
+          },
+        });
+        return response.data;
+      }
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
