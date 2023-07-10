@@ -8,7 +8,7 @@ const propsWithData = {
   allWeeks: [
     {
       weekEnd: '2022-01-09T20:59:32',
-      weekId: '77cf3a13-73b5-44d9-8c9e-328d67f7122f',
+      id: '77cf3a13-73b5-44d9-8c9e-328d67f7122f',
       weekNumber: 1,
       weekStart: '2022-01-03T20:59:32.218',
     },

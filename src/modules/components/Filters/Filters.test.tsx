@@ -5,14 +5,9 @@ import { FiltersBlock } from './Filters';
 
 const props = {
   setCountChart: jest.fn(),
-  setWeekIdFilter: jest.fn(),
-  setArticleNameFilter: jest.fn(),
-  analiticYear: 2023,
-  setAnaliticYear: jest.fn(),
   countChart: 1,
   countChartParam: [1, 2],
   weekIdFilter: ['id1', 'id2'],
-  articleNameFilter: ['art1', 'art2'],
   filtersData: {
     articles: [
       {
@@ -20,6 +15,7 @@ const props = {
         supplierItemCode: 'string',
         costPrice: 1,
         itemCode: 'string',
+        userId: 'string',
       },
     ],
     weeksList: [
@@ -27,10 +23,15 @@ const props = {
         weekEnd: 'string',
         weekNumber: 1,
         weekStart: 'string',
-        weekId: 'string',
+        id: 'string',
       },
     ],
   },
+  setWeekIdFilter: jest.fn(),
+  articleNameFilter: ['art1', 'art2'],
+  setArticleNameFilter: jest.fn(),
+  analiticYear: 2023,
+  setAnaliticYear: jest.fn(),
 };
 
 describe('FiltersBlock component', () => {
@@ -42,7 +43,6 @@ describe('FiltersBlock component', () => {
     );
     expect(screen.getByText('Фильтры')).toBeInTheDocument();
   });
-
   test('FiltersBlock snapshot', () => {
     const tree = render(
       <ThemeProvider theme={baseTheme}>

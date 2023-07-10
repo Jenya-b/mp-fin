@@ -75,6 +75,10 @@ export interface IArticle {
   itemCode: string;
 }
 
+interface iArticleForAnalitic extends IArticle {
+  userId: string;
+}
+
 export interface IChangeArticle {
   myExcelDatas: FormDataEntryValue | null;
   weekDataId: string;
@@ -88,11 +92,11 @@ export interface IWeek {
 }
 
 export interface IWeekWithParam extends IWeek {
-  weekId: string;
+  id: string;
 }
 
 export interface IFiltersData {
-  articles: IArticle[];
+  articles: iArticleForAnalitic[];
   weeksList: IWeekWithParam[];
 }
 

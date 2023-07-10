@@ -28,13 +28,13 @@ export const FilterByWeeks = ({
     <Filter>
       <Subtitle>Недели:</Subtitle>
       <List>
-        {weeksState.map(({ weekId, weekNumber, weekStart, weekEnd }) => (
-          <li key={weekId}>
-            <Label htmlFor={weekId}>
+        {weeksState.map(({ id, weekNumber, weekStart, weekEnd }) => (
+          <li key={id}>
+            <Label htmlFor={id}>
               <Input
-                id={weekId}
+                id={id}
                 type="checkbox"
-                checked={arrWeeks.includes(weekId)}
+                checked={arrWeeks.includes(id)}
                 onChange={setWeekIdFilter}
               />{' '}
               {''}
