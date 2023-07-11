@@ -8,7 +8,6 @@ import { refreshDataApi } from './api/refreshDataApi';
 export const {
   useRegisterUserMutation,
   useSigninUserMutation,
-  useSignoutMutation,
   useIsInSystemUserQuery,
   usePasswordRecoveryMutation,
   usePasswordResetMutation,

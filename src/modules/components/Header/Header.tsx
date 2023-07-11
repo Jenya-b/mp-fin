@@ -1,8 +1,7 @@
-import { useEffect, MouseEvent, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Loader } from 'modules/components/Loader/Loader';
 import { routerPath } from 'constants/routerPath';
-import { useSignoutMutation } from 'services';
 import { resetUser } from 'store/reducers/userSlice';
 import { userSelector } from 'store/selectors';
 import { useAppDispatch, useAppSelector } from 'store/store';
@@ -17,14 +16,6 @@ export const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector(userSelector);
-
-  const [signoutUser, { isSuccess, isLoading }] = useSignoutMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(resetUser());
-    }
-  }, [dispatch, isSuccess]);
 
   const openPage = (event: MouseEvent<HTMLButtonElement>) => {
     const { name } = event.currentTarget;
@@ -42,12 +33,11 @@ export const Header = () => {
   };
 
   const onSignoutHandler = () => {
-    signoutUser();
+    dispatch(resetUser());
   };
 
   return (
     <>
-      {isLoading && <Loader />}
       <HeaderDesktop
         user={user}
         routerPath={routerPath}

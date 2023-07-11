@@ -65,13 +65,6 @@ export const authApi = createApi({
         }
       },
     }),
-    signout: builder.mutation<IGenericResponse, void>({
-      query: () => ({
-        url: '/Account/Logout',
-        method: 'POST',
-        credentials: 'include',
-      }),
-    }),
     isInSystemUser: builder.query<string, null>({
       query: () => ({
         url: '/Account/IsInSystem',
