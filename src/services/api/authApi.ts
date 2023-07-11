@@ -8,7 +8,6 @@ import {
   IPassReset,
   AuthResponse,
 } from 'services/types';
-import { balanceApi } from 'services/api/balanceApi';
 import { userApi } from 'services/api/userApi';
 import { setAuthData } from 'store/reducers/userSlice';
 import { RootState } from 'store/store';
@@ -82,7 +81,6 @@ export const authApi = createApi({
         try {
           await queryFulfilled;
           await dispatch(userApi.endpoints.getUser.initiate(null));
-          await dispatch(balanceApi.endpoints.getBalance.initiate(null));
         } catch {
           throw new Error();
         }

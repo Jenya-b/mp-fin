@@ -1,7 +1,6 @@
 import { authApi } from 'services/api/authApi';
 import { productApi } from 'services/api/productApi';
 import { userApi } from 'services/api/userApi';
-import { balanceApi } from 'services/api/balanceApi';
 import { adminApi } from 'services/api/adminApi';
 import { analyticApi } from 'services/api/analyticApi';
 import { refreshDataApi } from './api/refreshDataApi';
@@ -24,8 +23,6 @@ export const {
 } = productApi;
 
 export const { useLazyGetUserQuery } = userApi;
-
-export const { useLazyGetBalanceQuery } = balanceApi;
 
 export const {
   useGetWeeksQuery,
