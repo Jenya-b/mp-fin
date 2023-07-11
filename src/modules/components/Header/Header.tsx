@@ -4,7 +4,7 @@ import { Loader } from 'modules/components/Loader/Loader';
 import { routerPath } from 'constants/routerPath';
 import { useSignoutMutation } from 'services';
 import { resetUser } from 'store/reducers/userSlice';
-import { balanceSelector, userSelector } from 'store/selectors';
+import { userSelector } from 'store/selectors';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { HeaderDesktop } from './Desktop/Desktop';
 import { HeaderMobile } from './Mobile/Mobile';
@@ -17,7 +17,6 @@ export const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector(userSelector);
-  const currentBalance = useAppSelector(balanceSelector);
 
   const [signoutUser, { isSuccess, isLoading }] = useSignoutMutation();
 
@@ -52,7 +51,7 @@ export const Header = () => {
       <HeaderDesktop
         user={user}
         routerPath={routerPath}
-        currentBalance={currentBalance}
+        currentBalance={0}
         openPage={openPage}
         onSignoutHandler={onSignoutHandler}
       />

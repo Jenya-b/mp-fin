@@ -21,7 +21,6 @@ import fileReportReducer from 'store/reducers/fileReportSlice';
 import notifyReducer from 'store/reducers/notifySlice';
 import fileAvatarReducer from 'store/reducers/fileAvatarSlice';
 import fileWBQueryReducer from 'store/reducers/fileWBQuerySlice';
-import balanceReducer from 'store/reducers/balanceSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { refreshDataApi } from 'services/api/refreshDataApi';
 
@@ -43,7 +42,6 @@ export const store = configureStore({
     [refreshDataApi.reducerPath]: refreshDataApi.reducer,
     persistedUserReducer,
     notifyReducer,
-    balanceReducer,
     fileReportReducer,
     fileAvatarReducer,
     fileWBQueryReducer,
