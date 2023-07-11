@@ -7,8 +7,6 @@ import {
   PrimeCostPage,
   Signin,
   Registration,
-  PasswordRecovery,
-  PasswordReset,
   NotFoundPage,
   LoginPage,
   BalancePage,
@@ -31,9 +29,7 @@ const {
   primeCost,
   registration,
   reports,
-  passwordRecovery,
   settings,
-  passwordReset,
   balance,
   weeks,
   users,
@@ -151,14 +147,6 @@ export const router = createBrowserRouter([
       {
         path: registration,
         element: <Registration />,
-      },
-      {
-        path: passwordRecovery,
-        element: <PasswordRecovery />,
-      },
-      {
-        path: passwordReset,
-        element: <PasswordReset />,
       },
     ],
   },

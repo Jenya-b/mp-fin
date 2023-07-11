@@ -40,7 +40,7 @@ export const Signin = () => {
     },
   });
 
-  const { home, passwordRecovery, registration } = routerPath;
+  const { home, registration } = routerPath;
   const [signinUser, { isLoading, isSuccess, isError }] = useSigninUserMutation();
   const navigate = useNavigate();
   const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
@@ -118,7 +118,8 @@ export const Signin = () => {
           </Label>
         </InputList>
         <LinkWrapper>
-          <Link to={passwordRecovery}>Забыли пароль?</Link>
+          {/* //! Функционал смены пароля в разработке */}
+          <Link to={'#'}>Забыли пароль?</Link>
         </LinkWrapper>
         <Controls>
           <SecondaryButton data-testid="submit-form">Продолжить</SecondaryButton>

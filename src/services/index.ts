@@ -5,13 +5,7 @@ import { adminApi } from 'services/api/adminApi';
 import { analyticApi } from 'services/api/analyticApi';
 import { refreshDataApi } from './api/refreshDataApi';
 
-export const {
-  useRegisterUserMutation,
-  useSigninUserMutation,
-  useIsInSystemUserQuery,
-  usePasswordRecoveryMutation,
-  usePasswordResetMutation,
-} = authApi;
+export const { useRegisterUserMutation, useSigninUserMutation, useIsInSystemUserQuery } = authApi;
 
 export const {
   useGetReportsQuery,

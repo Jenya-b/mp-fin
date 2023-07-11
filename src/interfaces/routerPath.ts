@@ -4,9 +4,7 @@ export interface IRouterPath {
   primeCost: string;
   registration: string;
   reports: string;
-  passwordRecovery: string;
   settings: string;
-  passwordReset: string;
   balance: string;
   searchQuery: string;
   dynamics: string;

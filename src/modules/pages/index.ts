@@ -10,10 +10,6 @@ const SettingsPage = lazy(() => import('modules/pages/Settings/Settings'));
 const PrimeCostPage = lazy(() => import('modules/pages/PrimeCost/PrimeCost'));
 const Signin = lazy(() => import('modules/pages/Login/Signin/Signin'));
 const Registration = lazy(() => import('modules/pages/Login/Registration/Registration'));
-const PasswordRecovery = lazy(
-  () => import('modules/pages/Login/PasswordRecovery/PasswordRecovery')
-);
-const PasswordReset = lazy(() => import('modules/pages/Login/PasswordReset/PasswordReset'));
 const NotFoundPage = lazy(() => import('modules/pages/NotFound/NotFound'));
 const BalancePage = lazy(() => import('modules/pages/Balance/Balance'));
 const AdminPage = lazy(() => import('modules/pages/Admin/Admin'));
@@ -28,8 +24,6 @@ export {
   PrimeCostPage,
   Signin,
   Registration,
-  PasswordRecovery,
-  PasswordReset,
   NotFoundPage,
   BalancePage,
   AdminPage,

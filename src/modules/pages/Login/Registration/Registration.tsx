@@ -27,7 +27,7 @@ import { telegramBotUrl } from 'services/baseUrl';
 export const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { home, passwordRecovery, login } = routerPath;
+  const { home, login } = routerPath;
 
   const {
     register,
@@ -77,7 +77,8 @@ export const Registration = () => {
           {registerUserError && (
             <LinkWrapper>
               <span>Email уже зарегестрирован.</span>{' '}
-              <Link to={`../${passwordRecovery}`}>Забыли пароль?</Link>
+              {/* //! Функционал смены пароля в разработке */}
+              <Link to={'#'}>Забыли пароль?</Link>
             </LinkWrapper>
           )}
         </Label>

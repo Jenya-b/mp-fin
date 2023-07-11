@@ -1,13 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrl } from 'services/baseUrl';
-import {
-  IGenericResponse,
-  ISigninInputs,
-  IRegistrationInputs,
-  IPassRecoveryInput,
-  IPassReset,
-  AuthResponse,
-} from 'services/types';
+import { IGenericResponse, ISigninInputs, IRegistrationInputs, AuthResponse } from 'services/types';
 import { userApi } from 'services/api/userApi';
 import { setAuthData } from 'store/reducers/userSlice';
 import { RootState } from 'store/store';
@@ -70,28 +63,6 @@ export const authApi = createApi({
         url: '/Account/IsInSystem',
       }),
       transformResponse: (response: IGenericResponse) => response.message,
-      onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
-        try {
-          await queryFulfilled;
-          await dispatch(userApi.endpoints.getUser.initiate(null));
-        } catch {
-          throw new Error();
-        }
-      },
-    }),
-    passwordRecovery: builder.mutation<IGenericResponse, IPassRecoveryInput>({
-      query: (data) => ({
-        url: '/Account/ForgotPassword',
-        method: 'POST',
-        body: data,
-      }),
-    }),
-    passwordReset: builder.mutation<IGenericResponse, IPassReset>({
-      query: (data) => ({
-        url: '/Account/ConfirmResetPassword',
-        method: 'POST',
-        body: data,
-      }),
     }),
   }),
 });
