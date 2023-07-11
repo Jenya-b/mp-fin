@@ -149,7 +149,7 @@ export const SettingsPage = () => {
             Telegram
             <Input {...register('telegram')} />
           </Label>
-          <PersonalDataButton disabled>Сохранить</PersonalDataButton>
+          <PersonalDataButton>Сохранить</PersonalDataButton>
         </Form>
         <Form onSubmit={onSubmitWbToken}>
           <Label>

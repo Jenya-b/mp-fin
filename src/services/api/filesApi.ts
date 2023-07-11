@@ -31,8 +31,16 @@ export const fetchAvatarFile = createAsyncThunk(
   'fetchAvatarFile',
   async (data: FormData, thunkApi) => {
     try {
-      const response = await uploadFiles.post('/Account/ChangeImage', data);
-      return response.data;
+      const { token } = getLocalStorage('persist:userReducer');
+      if (token) {
+        const response = await uploadFiles.post('/Account/ChangeImage', data, {
+          headers: {
+            'content-type': 'multipart/form-data',
+            Authorization: `Bearer ${token.replace(/"/g, '')}`,
+          },
+        });
+        return response.data;
+      }
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
