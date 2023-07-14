@@ -43,10 +43,7 @@ export const analyticApi = createApi({
     getArticleQueries: builder.query<IArticleQueries[], string>({
       query: (date) => ({
         url: '/Analytic/GetArticleQueries',
-        credentials: 'include',
-        params: {
-          date,
-        },
+        body: { date },
       }),
     }),
     addSavedArticle: builder.mutation<IArticleQueries, { article: string; query: string }>({
@@ -54,13 +51,11 @@ export const analyticApi = createApi({
         url: '/Analytic/AddSavedArticle',
         method: 'POST',
         body: data,
-        credentials: 'include',
       }),
     }),
     getAllSavedArticle: builder.query<ISavedArticles[], null>({
       query: () => ({
-        url: '/Analytic/GetSavedArticlesAndQueries',
-        credentials: 'include',
+        url: '/Analytic/GetSavedItemCodeAndQueries',
       }),
     }),
     deleteSavedArticle: builder.mutation<IGenericResponse, { id: string }>({
