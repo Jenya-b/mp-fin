@@ -113,9 +113,9 @@ export const router = createBrowserRouter([
       {
         element: (
           <RequireAuth>
-            <RequireAdmin>
-              <AdminPage />
-            </RequireAdmin>
+            {/* <RequireAdmin> */}
+            <AdminPage />
+            {/* </RequireAdmin> */}
           </RequireAuth>
         ),
         children: [

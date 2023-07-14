@@ -51,8 +51,16 @@ export const fetchWBQueryFile = createAsyncThunk(
   'fetchWBQueryFile',
   async (data: FormData, thunkApi) => {
     try {
-      const response = await uploadFiles.post('/Admin/SaveWBQuery', data);
-      return response.data;
+      const { token } = getLocalStorage('persist:userReducer');
+      if (token) {
+        const response = await uploadFiles.post('/Admin/SaveQueryDinamics', data, {
+          headers: {
+            'content-type': 'multipart/form-data',
+            Authorization: `Bearer ${token.replace(/"/g, '')}`,
+          },
+        });
+        return response.data;
+      }
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }

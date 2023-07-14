@@ -15,7 +15,8 @@ export const Sidebar = () => {
   const [isActiveSidebar, setInActiveSidebar] = useState<boolean>(false);
 
   useEffect(() => {
-    if (user && user.isAdmin) {
+    // ! user && user.isAdmin
+    if (true) {
       setMenuList([...menuSidebar, adminRoute]);
     }
   }, [user]);
