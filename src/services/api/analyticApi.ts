@@ -70,8 +70,7 @@ export const analyticApi = createApi({
     }),
     getWbApiReports: builder.query<IWbReportsResponse, null>({
       query: () => ({
-        url: '/Analytic/GetWbApiReports',
-        credentials: 'include',
+        url: '/Analytic/GetWBApiOrdersReports',
       }),
     }),
     addWbToken: builder.mutation<IGenericResponse, string>({
