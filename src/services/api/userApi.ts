@@ -32,5 +32,12 @@ export const userApi = createApi({
         }
       },
     }),
+    editUserInfo: builder.mutation({
+      query: (data) => ({
+        method: 'POST',
+        url: '/Account/EditUserInfo',
+        body: data,
+      }),
+    }),
   }),
 });

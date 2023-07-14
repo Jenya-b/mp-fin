@@ -15,7 +15,7 @@ export const {
   useGetWbQueriesQuery,
 } = productApi;
 
-export const { useLazyGetUserQuery } = userApi;
+export const { useLazyGetUserQuery, useEditUserInfoMutation } = userApi;
 
 export const {
   useGetWeeksQuery,

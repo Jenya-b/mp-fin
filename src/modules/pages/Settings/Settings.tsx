@@ -7,6 +7,7 @@ import { Main, MainTitle } from 'styles/components';
 import { fetchAvatarFile } from 'services/api/filesApi';
 import {
   useAddWbTokenMutation,
+  useEditUserInfoMutation,
   useEditWbTokenMutation,
   useIsTokenSavedQuery,
   useLazyGetUserQuery,
@@ -34,6 +35,7 @@ export const SettingsPage = () => {
   const [wbToken, setWbToken] = useState('');
   const dispatch = useAppDispatch();
   const [fetchUser, { data: dataUser, isSuccess: isSuccessFetchUser }] = useLazyGetUserQuery();
+  const [fetchEditUserInfo, { isLoading: isLoadingEditUser }] = useEditUserInfoMutation();
   const [fetchAddToken, { isLoading: isLoadingAddToken, isSuccess: isSuccessAddToken }] =
     useAddWbTokenMutation();
   const [fetchEditToken, { isLoading: isLoadingEditToken }] = useEditWbTokenMutation();
@@ -80,7 +82,8 @@ export const SettingsPage = () => {
     }
   }, [dataUser, dispatch, isSuccessFetchUser]);
 
-  const onSubmitPersonalData = handleSubmit((data) => {
+  const onSubmitPersonalData = handleSubmit(({ name, email, phoneNumber, surname, telegram }) => {
+    fetchEditUserInfo({ name, surname, telegram });
     if (logoFile) {
       dispatch(fetchAvatarFile(logoFile));
     }
@@ -113,9 +116,11 @@ export const SettingsPage = () => {
 
   return (
     <Main>
-      {(isLoadingUploadFile || isLoadingAddToken || isLoadingGetToken || isLoadingEditToken) && (
-        <Loader />
-      )}
+      {(isLoadingUploadFile ||
+        isLoadingAddToken ||
+        isLoadingGetToken ||
+        isLoadingEditToken ||
+        isLoadingEditUser) && <Loader />}
       <MainTitle>Настройки аккаунта</MainTitle>
       <Wrapper>
         <InputFileWrapp>
