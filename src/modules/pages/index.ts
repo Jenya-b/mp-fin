@@ -15,7 +15,9 @@ const BalancePage = lazy(() => import('modules/pages/Balance/Balance'));
 const AdminPage = lazy(() => import('modules/pages/Admin/Admin'));
 const SearchQuery = lazy(() => import('modules/pages/SearchQuery/SearchQuery'));
 const DemandDynamics = lazy(() => import('modules/pages/DemandDynamics/DemandDynamics'));
-const OrdersPage = lazy(() => import('modules/pages/Orders/Orders'));
+const OrdersPage = lazy(() => import('modules/pages/Turnover/Orders/Orders'));
+const SalesPage = lazy(() => import('modules/pages/Turnover/Sales/Sales'));
+const TurnoverPage = lazy(() => import('modules/pages/Turnover/Turnover'));
 
 export {
   AnalyticsPage,
@@ -30,6 +32,8 @@ export {
   SearchQuery,
   DemandDynamics,
   OrdersPage,
+  TurnoverPage,
+  SalesPage,
   LoginPage,
   Users,
   Weeks,

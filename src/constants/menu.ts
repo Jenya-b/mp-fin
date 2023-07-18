@@ -30,7 +30,7 @@ export const menuSidebar = [
   {
     srcImg: menuIcon.salesIcon,
     title: 'Заказы и продажи',
-    href: routerPath.sales,
+    href: routerPath.orders,
   },
 ];
 
@@ -39,6 +39,17 @@ export const adminRoute = {
   title: 'Администрирование',
   href: routerPath.weeks,
 };
+
+export const menuTurnoverPanel = [
+  {
+    title: 'Заказы',
+    href: routerPath.orders,
+  },
+  {
+    title: 'Продажи',
+    href: routerPath.sales,
+  },
+];
 
 export const menuAdminPanel = [
   {

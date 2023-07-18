@@ -4,13 +4,14 @@ import { StyledTable } from './Table.styled';
 import { createArray, subtractDateWithoutYear } from 'utils';
 import { TBody } from './TBody/TBody';
 import { IWbReportsResponse } from 'services/types';
-import { TextInfo } from '../Orders.styled';
+import { TextInfo } from '../Turnover.styled';
 
 interface TableProps {
   response: IWbReportsResponse | undefined;
+  interval: number;
 }
 
-export const Table = ({ response }: TableProps) => {
+export const Table = ({ response, interval }: TableProps) => {
   const [headData, setHeadData] = useState<string[]>([]);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export const Table = ({ response }: TableProps) => {
 
     setHeadData(
       createArray(response.data[0].parameters.length).map((_, index) =>
-        subtractDateWithoutYear(response.date, index)
+        subtractDateWithoutYear(response.date, index * interval)
       )
     );
   }, [response]);

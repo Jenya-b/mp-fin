@@ -17,6 +17,8 @@ import {
   SearchQuery,
   DemandDynamics,
   OrdersPage,
+  TurnoverPage,
+  SalesPage,
 } from 'modules/pages';
 import { LayoutWrapp } from 'modules/components/Layout/LayouWrapp';
 import { RequireAuth } from 'hocs/RequireAuth';
@@ -37,6 +39,7 @@ const {
   searchQuery,
   dynamics,
   sales,
+  orders,
   notFound,
 } = routerPath;
 
@@ -103,12 +106,21 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: sales,
         element: (
           <RequireAuth>
-            <OrdersPage />
+            <TurnoverPage />
           </RequireAuth>
         ),
+        children: [
+          {
+            path: orders,
+            element: <OrdersPage />,
+          },
+          {
+            path: sales,
+            element: <SalesPage />,
+          },
+        ],
       },
       {
         element: (
