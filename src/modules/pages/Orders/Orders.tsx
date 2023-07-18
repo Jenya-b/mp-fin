@@ -4,7 +4,7 @@ import { useGetWbApiReportsQuery } from 'services';
 import { Loader } from 'modules/components/Loader/Loader';
 import { SalesChart } from './Chart/Chart';
 
-export const Sales = () => {
+export const Orders = () => {
   const { data: response, isLoading } = useGetWbApiReportsQuery(null);
 
   return (
@@ -17,4 +17,4 @@ export const Sales = () => {
   );
 };
 
-export default Sales;
+export default Orders;

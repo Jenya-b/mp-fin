@@ -4,7 +4,7 @@ import { StyledTable } from './Table.styled';
 import { createArray, subtractDateWithoutYear } from 'utils';
 import { TBody } from './TBody/TBody';
 import { IWbReportsResponse } from 'services/types';
-import { TextInfo } from '../Sales.styled';
+import { TextInfo } from '../Orders.styled';
 
 interface TableProps {
   response: IWbReportsResponse | undefined;
