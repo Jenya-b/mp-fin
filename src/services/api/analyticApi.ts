@@ -43,7 +43,7 @@ export const analyticApi = createApi({
     getArticleQueries: builder.query<IArticleQueries[], string>({
       query: (date) => ({
         url: '/Analytic/GetArticleQueries',
-        body: { date },
+        params: { date },
       }),
     }),
     addSavedArticle: builder.mutation<IArticleQueries, { article: string; query: string }>({

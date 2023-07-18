@@ -10,7 +10,7 @@ const countDays = 7;
 
 interface TableProps {
   data: IArticleQueries[];
-  deleteSavedArticle: (article: string, query: string) => void;
+  deleteSavedArticle: (itemCode: string, query: string) => void;
 }
 
 export const Table = ({ data, deleteSavedArticle }: TableProps) => {

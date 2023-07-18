@@ -69,10 +69,10 @@ export const SearchQuery = () => {
     setNameQuery('');
   };
 
-  const deleteSavedArticle = (article: string, query: string) => {
+  const deleteSavedArticle = (itemCode: string, query: string) => {
     if (!querySavedArticle) return;
     const desiredObject = querySavedArticle.find(
-      (item) => item.article === article && item.query === query
+      (item) => item.itemCode === itemCode && item.query === query
     );
     if (desiredObject) {
       const { id } = desiredObject;

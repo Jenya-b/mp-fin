@@ -163,7 +163,7 @@ export interface IArticleQueries {
 }
 
 export interface ISavedArticles {
-  article: string;
+  itemCode: string;
   id: string;
   query: string;
 }
