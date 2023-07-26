@@ -14,7 +14,6 @@ import { authApi } from 'services/api/authApi';
 import { userApi } from 'services/api/userApi';
 import { productApi } from 'services/api/productApi';
 import { fetchReportFiles } from 'services/api/filesApi';
-import { adminApi } from 'services/api/adminApi';
 import { analyticApi } from 'services/api/analyticApi';
 import userReducer from 'store/reducers/userSlice';
 import fileReportReducer from 'store/reducers/fileReportSlice';
@@ -37,7 +36,6 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
-    [adminApi.reducerPath]: adminApi.reducer,
     [analyticApi.reducerPath]: analyticApi.reducer,
     [refreshDataApi.reducerPath]: refreshDataApi.reducer,
     persistedUserReducer,
@@ -59,7 +57,6 @@ export const store = configureStore({
       authApi.middleware,
       userApi.middleware,
       productApi.middleware,
-      adminApi.middleware,
       analyticApi.middleware,
       refreshDataApi.middleware,
     ]),

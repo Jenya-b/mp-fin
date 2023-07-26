@@ -11,8 +11,6 @@ import {
   LoginPage,
   BalancePage,
   AdminPage,
-  Users,
-  Weeks,
   SearchTerms,
   SearchQuery,
   DemandDynamics,
@@ -33,8 +31,6 @@ const {
   reports,
   settings,
   balance,
-  weeks,
-  users,
   searchTerms,
   searchQuery,
   dynamics,
@@ -131,14 +127,6 @@ export const router = createBrowserRouter([
           </RequireAuth>
         ),
         children: [
-          {
-            path: weeks,
-            element: <Weeks />,
-          },
-          {
-            path: users,
-            element: <Users />,
-          },
           {
             path: searchTerms,
             element: <SearchTerms />,

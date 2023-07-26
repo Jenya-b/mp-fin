@@ -16,11 +16,6 @@ export interface IAllUserOptions extends IPersonalDataUser {
   reportId: null | string;
 }
 
-export interface IUsersInAdminPanel extends IPersonalDataUser {
-  balance: number;
-  isAdmin: boolean;
-}
-
 export interface IGenericResponse {
   message: string;
 }

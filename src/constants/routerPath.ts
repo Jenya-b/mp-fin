@@ -10,8 +10,6 @@ export const routerPath: IRouterPath = {
   balance: 'balance',
   searchQuery: 'search-query',
   dynamics: 'dynamics',
-  weeks: '/admin-panel/weeks',
-  users: '/admin-panel/users',
   searchTerms: '/admin-panel/search-terms',
   sales: '/sales',
   orders: '/orders',

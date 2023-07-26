@@ -37,7 +37,7 @@ export const menuSidebar = [
 export const adminRoute = {
   srcImg: menuIcon.adminPanel,
   title: 'Администрирование',
-  href: routerPath.weeks,
+  href: routerPath.searchTerms,
 };
 
 export const menuTurnoverPanel = [
@@ -52,14 +52,6 @@ export const menuTurnoverPanel = [
 ];
 
 export const menuAdminPanel = [
-  {
-    title: 'Недели',
-    href: routerPath.weeks,
-  },
-  {
-    title: 'Пользователи',
-    href: routerPath.users,
-  },
   {
     title: 'Поисковые запросы',
     href: routerPath.searchTerms,

@@ -1,7 +1,5 @@
 import { lazy } from 'react';
 import { LoginPage } from 'modules/pages/Login/Login';
-import { Users } from 'modules/pages/Admin/Users/Users';
-import { Weeks } from 'modules/pages/Admin/Weeks/Weeks';
 import { SearchTerms } from 'modules/pages/Admin/SearchTerms/SearchTerms';
 
 const AnalyticsPage = lazy(() => import('modules/pages/Analytics/Analytics'));
@@ -35,7 +33,5 @@ export {
   TurnoverPage,
   SalesPage,
   LoginPage,
-  Users,
-  Weeks,
   SearchTerms,
 };

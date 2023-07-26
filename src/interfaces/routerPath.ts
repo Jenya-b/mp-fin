@@ -8,8 +8,6 @@ export interface IRouterPath {
   balance: string;
   searchQuery: string;
   dynamics: string;
-  weeks: string;
-  users: string;
   searchTerms: string;
   sales: string;
   orders: string;
