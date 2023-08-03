@@ -7,6 +7,7 @@ import {
   IGenericResponse,
   ISavedArticles,
   IWbReportsResponse,
+  IAnalyticReports,
 } from 'services/types';
 import { RootState } from 'store/store';
 
@@ -76,6 +77,11 @@ export const analyticApi = createApi({
     getWbApiSalesReports: builder.query<IWbReportsResponse, null>({
       query: () => ({
         url: '/Analytic/GetWBApiSalesReports',
+      }),
+    }),
+    getWeeklyAnalyticReports: builder.query<IAnalyticReports, null>({
+      query: () => ({
+        url: '/Analytic/GetWeeklyAnalyticReports',
       }),
     }),
     addWbToken: builder.mutation<IGenericResponse, string>({

@@ -13,5 +13,6 @@ export const routerPath: IRouterPath = {
   searchTerms: '/admin-panel/search-terms',
   sales: '/sales',
   orders: '/orders',
+  comparison: '/comparison',
   notFound: '*',
 };

@@ -175,3 +175,35 @@ export interface IWbReportsResponse {
   date: string;
   total: number[];
 }
+
+export interface IWbData {
+  itemcodeseller: string;
+  itemcodewb: string;
+  parameters: number[];
+  product: string;
+}
+
+export interface IComparisonParam {
+  sales: number;
+  salesPercent: number;
+  salesRub: number;
+  orders: number;
+  ordersPercent: number;
+  ordersRub: number;
+  inWayToClient: number;
+  inWayFromClient: number;
+  quantityFull: number;
+}
+
+export interface IComparisonData {
+  itemcodeseller: string;
+  itemcodewb: string;
+  parameters: IComparisonParam[];
+  product: string;
+}
+
+export interface IAnalyticReports {
+  data: IComparisonData[];
+  date: string;
+  total: IComparisonParam[];
+}

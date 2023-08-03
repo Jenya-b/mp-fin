@@ -28,6 +28,7 @@ export const {
   useAddWbTokenMutation,
   useEditWbTokenMutation,
   useIsTokenSavedQuery,
+  useGetWeeklyAnalyticReportsQuery,
 } = analyticApi;
 
 export const { useUpdateDataMutation } = refreshDataApi;

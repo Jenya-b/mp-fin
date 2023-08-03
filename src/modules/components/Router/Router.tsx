@@ -17,6 +17,7 @@ import {
   OrdersPage,
   TurnoverPage,
   SalesPage,
+  ComparisonPage,
 } from 'modules/pages';
 import { LayoutWrapp } from 'modules/components/Layout/LayouWrapp';
 import { RequireAuth } from 'hocs/RequireAuth';
@@ -37,6 +38,7 @@ const {
   sales,
   orders,
   notFound,
+  comparison,
 } = routerPath;
 
 export const router = createBrowserRouter([
@@ -115,6 +117,10 @@ export const router = createBrowserRouter([
           {
             path: sales,
             element: <SalesPage />,
+          },
+          {
+            path: comparison,
+            element: <ComparisonPage />,
           },
         ],
       },

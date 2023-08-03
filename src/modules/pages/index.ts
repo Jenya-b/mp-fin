@@ -15,6 +15,7 @@ const SearchQuery = lazy(() => import('modules/pages/SearchQuery/SearchQuery'));
 const DemandDynamics = lazy(() => import('modules/pages/DemandDynamics/DemandDynamics'));
 const OrdersPage = lazy(() => import('modules/pages/Turnover/Orders/Orders'));
 const SalesPage = lazy(() => import('modules/pages/Turnover/Sales/Sales'));
+const ComparisonPage = lazy(() => import('modules/pages/Turnover/Comparison/Comparison'));
 const TurnoverPage = lazy(() => import('modules/pages/Turnover/Turnover'));
 
 export {
@@ -32,6 +33,7 @@ export {
   OrdersPage,
   TurnoverPage,
   SalesPage,
+  ComparisonPage,
   LoginPage,
   SearchTerms,
 };

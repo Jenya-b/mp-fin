@@ -49,6 +49,10 @@ export const menuTurnoverPanel = [
     title: 'Продажи',
     href: routerPath.sales,
   },
+  {
+    title: 'Сравнение',
+    href: routerPath.comparison,
+  },
 ];
 
 export const menuAdminPanel = [

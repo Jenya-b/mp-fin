@@ -11,5 +11,6 @@ export interface IRouterPath {
   searchTerms: string;
   sales: string;
   orders: string;
+  comparison: string;
   notFound: string;
 }
