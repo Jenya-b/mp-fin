@@ -1,4 +1,4 @@
-import { useEffect, MouseEvent, useState } from 'react';
+import { useEffect, MouseEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routerPath } from 'constants/routerPath';
@@ -26,6 +26,7 @@ import { alertMessage } from 'constants/alert';
 import { FormValuesSignin } from 'interfaces/form';
 import { telegramIcon } from 'constants/images';
 import { telegramBotUrl } from 'services/baseUrl';
+import { inputPhonePattern } from 'constants/validInput';
 
 export const Signin = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ export const Signin = () => {
     handleSubmit,
   } = useForm<FormValuesSignin>({
     values: {
-      userName: '',
+      phone: '',
       password: '',
     },
   });
@@ -78,9 +79,11 @@ export const Signin = () => {
   }, []);
 
   const onSubmit = handleSubmit((data) => {
+    const phone = data.phone.replace(/\+/gi, '');
     signinUser({
       rememberMe: false,
-      ...data,
+      userName: phone,
+      password: data.password,
     });
   });
 
@@ -99,12 +102,13 @@ export const Signin = () => {
         <InputList>
           <Label>
             <SecondaryInput
-              {...register('userName', {
+              {...register('phone', {
                 required: 'Поле обязательно к заполнению',
+                pattern: inputPhonePattern,
               })}
-              placeholder="Номер телефона или Email"
+              placeholder="Номер телефона"
             />
-            {errors?.userName && <MessageError>{errors.userName?.message || 'Error'}</MessageError>}
+            {errors?.phone && <MessageError>{errors.phone?.message || 'Error'}</MessageError>}
           </Label>
           <Label>
             <SecondaryInput

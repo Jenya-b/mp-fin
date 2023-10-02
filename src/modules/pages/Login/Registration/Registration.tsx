@@ -19,7 +19,7 @@ import {
   TelegramButton,
   TelegramImg,
 } from 'modules/pages/Login/Login.styled';
-import { inputEmailPattern } from 'constants/validInput';
+import { inputPhonePattern } from 'constants/validInput';
 import { telegramIcon } from 'constants/images';
 import { FormValuesReg } from 'interfaces/form';
 import { telegramBotUrl } from 'services/baseUrl';
@@ -46,9 +46,14 @@ export const Registration = () => {
   }, [isSuccess]);
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    const phoneNumber = data.phoneNumber.replace(/\+/gi, '');
 
-    registerUser(data);
+    registerUser({
+      phoneNumber,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+      isAgreeProcessing: data.isAgreeProcessing,
+    });
   });
 
   const registrationViaTelegram = (event: MouseEvent<HTMLButtonElement>) => {
@@ -67,16 +72,16 @@ export const Registration = () => {
             style={registerUserError && { color: 'red' }}
             {...register('phoneNumber', {
               required: 'Поле обязательно к заполнению',
-              // pattern: inputEmailPattern,
+              pattern: inputPhonePattern,
             })}
-            placeholder="Email"
+            placeholder="Номер телефона"
           />
           {errors?.phoneNumber && (
             <MessageError>{errors.phoneNumber?.message || 'Error'}</MessageError>
           )}
           {registerUserError && (
             <LinkWrapper>
-              <span>Email уже зарегестрирован.</span>{' '}
+              <span>Номер телефона уже зарегестрирован.</span>{' '}
               {/* //! Функционал смены пароля в разработке */}
               <Link to={'#'}>Забыли пароль?</Link>
             </LinkWrapper>

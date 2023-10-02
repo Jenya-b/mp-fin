@@ -14,7 +14,7 @@ export type FormValuesReg = {
 };
 
 export type FormValuesSignin = {
-  userName: string;
+  phone: string;
   password: string;
 };
 

@@ -3,6 +3,11 @@ export const inputEmailPattern = {
   message: 'Не соответствует формату электронной почты',
 };
 
+export const inputPhonePattern = {
+  value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+  message: 'Не соответствует формату номера телефона',
+};
+
 export const inputPassPattern = {
   value: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/g,
   message:
