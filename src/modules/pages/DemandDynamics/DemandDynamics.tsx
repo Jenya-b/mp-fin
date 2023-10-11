@@ -17,6 +17,7 @@ import { Label, SearchBlock } from '../SearchQuery/SearchQuery.styled';
 import { Table } from './Table/Table';
 import { data as response, typesSearchQuery } from './data';
 import { formatDateGeneral, getDefaultValueByInputDate } from 'utils';
+import { Modal } from './Dialog';
 
 function a11yProps(index: number) {
   return {
@@ -32,6 +33,7 @@ export const DemandDynamics = () => {
   const [dateFrom, setDateFrom] = useState<string>(getDefaultValueByInputDate(new Date(), -30));
   const [dateTo, setDateTo] = useState<string>(getDefaultValueByInputDate(new Date()));
   const debouncedSearch = useDebounce(searchValue, 600);
+  const [openModal, setOpenModal] = useState(false);
   const dispatch = useAppDispatch();
   const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
 
@@ -55,6 +57,14 @@ export const DemandDynamics = () => {
     }
     setChartData(one);
   }, [data]);
+
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
 
   const addSearchValue = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
@@ -104,7 +114,8 @@ export const DemandDynamics = () => {
             <Tab key={id} label={name} {...a11yProps(id)} />
           ))}
         </Tabs>
-        <IconButton color="primary">
+        <Modal open={openModal} handleClose={handleClose} />
+        <IconButton color="primary" onClick={handleClickOpen}>
           <AddBoxIcon />
         </IconButton>
       </Box>
