@@ -2,7 +2,10 @@ import { MIN_YEAR } from 'constants/minYear';
 
 export const formatDateISOString = (parameter: string) => new Date(parameter).toISOString();
 
-export const getFullDate = (date: Date) => {
+export const getFullDate = (date: Date, n?: number) => {
+  if (n) {
+    date.setDate(date.getDate() + n);
+  }
   const day = date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`;
   const month = date.getMonth() >= 9 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
   const year = date.getFullYear();
@@ -10,15 +13,15 @@ export const getFullDate = (date: Date) => {
   return { day, month, year };
 };
 
-export const formatDateGeneral = (parameter: string, full = false) => {
+export const formatDateGeneral = (parameter: string, full = false, n?: number) => {
   const date = new Date(parameter);
-  const { day, month, year } = getFullDate(date);
+  const { day, month, year } = getFullDate(date, n);
 
   return full ? `${month}.${day}.${year}` : `${day}.${month}`;
 };
 
-export const getDefaultValueByInputDate = (date: Date) => {
-  const { day, month, year } = getFullDate(date);
+export const getDefaultValueByInputDate = (date: Date, n?: number) => {
+  const { day, month, year } = getFullDate(date, n);
 
   return `${year}-${month}-${day}`;
 };
