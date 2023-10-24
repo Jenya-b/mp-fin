@@ -29,6 +29,13 @@ export const {
   useEditWbTokenMutation,
   useIsTokenSavedQuery,
   useGetWeeklyAnalyticReportsQuery,
+  useGetQueryDynamicsFoldersQuery,
+  useAddFolderMutation,
+  useRemoveFolderMutation,
+  useUpdateFolderMutation,
+  useGetQDFDataQuery,
+  useInserDataToFolderMutation,
+  useRemoveDataToFolderMutation,
 } = analyticApi;
 
 export const { useUpdateDataMutation } = refreshDataApi;

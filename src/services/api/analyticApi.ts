@@ -110,5 +110,79 @@ export const analyticApi = createApi({
         credentials: 'include',
       }),
     }),
+    getQueryDynamicsFolders: builder.query({
+      query: () => ({
+        url: '/Analytic/GetQueryDynamicsFolders',
+      }),
+    }),
+    addFolder: builder.mutation<{ message: string }, string>({
+      query: (name) => ({
+        url: '/Analytic/AddFolder',
+        method: 'POST',
+        params: {
+          name,
+        },
+      }),
+    }),
+    removeFolder: builder.mutation<{ message: string }, number>({
+      query: (id) => ({
+        url: '/Analytic/RemoveFolder',
+        method: 'DELETE',
+        params: {
+          id,
+        },
+      }),
+    }),
+    updateFolder: builder.mutation<{ message: string }, { id: number; name: string }>({
+      query: (body) => ({
+        url: '/Analytic/RemoveFolder',
+        method: 'PUT',
+        body,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }),
+    }),
+    getQDFData: builder.query<
+      { message: string },
+      { typeid: number; page: number; search: string }
+    >({
+      query: (params) => ({
+        url: '/Analytic/GetQDFData',
+        params,
+      }),
+    }),
+    inserDataToFolder: builder.mutation<
+      { message: string },
+      {
+        typeId: number;
+        queries: string[];
+      }
+    >({
+      query: (body) => ({
+        url: '/Analytic/InserDataToFolder',
+        method: 'POST',
+        body,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }),
+    }),
+    removeDataToFolder: builder.mutation<
+      { message: string },
+      {
+        typeId: number;
+        queries: string[];
+      }
+    >({
+      query: (body) => ({
+        url: '/Analytic/RemoveDataFromFolder',
+        method: 'DELETE',
+        body,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }),
+    }),
   }),
 });
