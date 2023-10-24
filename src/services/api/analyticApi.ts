@@ -8,6 +8,7 @@ import {
   ISavedArticles,
   IWbReportsResponse,
   IAnalyticReports,
+  IQDFDataResponse,
 } from 'services/types';
 import { RootState } from 'store/store';
 
@@ -110,7 +111,7 @@ export const analyticApi = createApi({
         credentials: 'include',
       }),
     }),
-    getQueryDynamicsFolders: builder.query({
+    getQueryDynamicsFolders: builder.query<{ id: number; name: string }[], null>({
       query: () => ({
         url: '/Analytic/GetQueryDynamicsFolders',
       }),
@@ -135,7 +136,7 @@ export const analyticApi = createApi({
     }),
     updateFolder: builder.mutation<{ message: string }, { id: number; name: string }>({
       query: (body) => ({
-        url: '/Analytic/RemoveFolder',
+        url: '/Analytic/UpdateFolder',
         method: 'PUT',
         body,
         headers: {
@@ -143,10 +144,7 @@ export const analyticApi = createApi({
         },
       }),
     }),
-    getQDFData: builder.query<
-      { message: string },
-      { typeid: number; page: number; search: string }
-    >({
+    getQDFData: builder.query<IQDFDataResponse, { typeid: number; page: number; search: string }>({
       query: (params) => ({
         url: '/Analytic/GetQDFData',
         params,

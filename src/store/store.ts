@@ -20,6 +20,7 @@ import fileReportReducer from 'store/reducers/fileReportSlice';
 import notifyReducer from 'store/reducers/notifySlice';
 import fileAvatarReducer from 'store/reducers/fileAvatarSlice';
 import fileWBQueryReducer from 'store/reducers/fileWBQuerySlice';
+import analiticsReducer from './reducers/analitics';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { refreshDataApi } from 'services/api/refreshDataApi';
 
@@ -43,6 +44,7 @@ export const store = configureStore({
     fileReportReducer,
     fileAvatarReducer,
     fileWBQueryReducer,
+    analiticsReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

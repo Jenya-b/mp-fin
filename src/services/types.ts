@@ -207,3 +207,17 @@ export interface IAnalyticReports {
   date: string;
   total: IComparisonParam[];
 }
+
+export interface IQDFDataResponse {
+  totalCount: number;
+  page: number;
+  countOnPage: number;
+  date: string;
+  data: [
+    {
+      name: string;
+      typeId: number;
+      parameters: number[];
+    }
+  ];
+}

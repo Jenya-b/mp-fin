@@ -1,24 +1,35 @@
+import { ChangeEvent } from 'react';
+import { addSelectedQDFData } from 'store/reducers/analitics';
+import { useAppDispatch } from 'store/store';
+
 interface TBodyProps {
   data: {
-    id: number;
     name: string;
-    typeId: number | null;
+    typeId: number;
     parameters: number[];
   }[];
 }
 
-export const TBody = ({ data }: TBodyProps) => (
-  <tbody>
-    {data.map(({ id, name, parameters, typeId }) => (
-      <tr key={id}>
-        <td>
-          <input type="checkbox" />
-        </td>
-        <td>{name}</td>
-        {parameters.map((item, i) => (
-          <td key={i}>{item}</td>
-        ))}
-      </tr>
-    ))}
-  </tbody>
-);
+export const TBody = ({ data }: TBodyProps) => {
+  const dispatch = useAppDispatch();
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(addSelectedQDFData(e.target.id));
+  };
+
+  return (
+    <tbody>
+      {data.map(({ name, parameters }) => (
+        <tr key={name}>
+          <td>
+            <input type="checkbox" id={name} onChange={handleChange} />
+          </td>
+          <td>{name}</td>
+          {parameters.map((item, i) => (
+            <td key={i}>{item}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  );
+};

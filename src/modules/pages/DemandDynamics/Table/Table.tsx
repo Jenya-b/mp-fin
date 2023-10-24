@@ -3,17 +3,10 @@ import { THead } from './THead/THead';
 import { StyledTable } from './Table.styled';
 import { createArray, subtractDateWithoutYear } from 'utils';
 import { TBody } from './TBody/TBody';
+import { IQDFDataResponse } from 'services/types';
 
 interface TableProps {
-  response: {
-    data: {
-      id: number;
-      name: string;
-      typeId: number | null;
-      parameters: number[];
-    }[];
-    date: string;
-  };
+  response: IQDFDataResponse;
   interval: number;
 }
 

@@ -1,23 +1,28 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { Box, IconButton, Tab, Tabs } from '@mui/material';
+import { Box, IconButton, Pagination, Tab, Tabs } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import FolderDeleteIcon from '@mui/icons-material/FolderDelete';
+import EditIcon from '@mui/icons-material/Edit';
 import { useDebounce } from 'hooks';
 import { InputSearch, DataBlock, Button } from './DemandDynamics.styled';
 import { Main, MainTitle } from 'styles/components';
-import { useGetWbQueriesQuery } from 'services';
-import { SearchQueryChart } from './Chart';
-import { OneWbQueriesType, TopWbQueriesType } from 'services/types';
+import {
+  useGetQDFDataQuery,
+  useGetQueryDynamicsFoldersQuery,
+  useRemoveDataToFolderMutation,
+} from 'services';
 import { Loader } from 'modules/components/Loader/Loader';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { notifySelector } from 'store/selectors';
-import { openNotify } from 'store/reducers/notifySlice';
-import { alertMessage } from 'constants/alert';
+import { analiticsSelector, notifySelector } from 'store/selectors';
 import { Notification } from 'modules/components/Notification/Notification';
 import { Label, SearchBlock } from '../SearchQuery/SearchQuery.styled';
 import { Table } from './Table/Table';
-import { data as response, typesSearchQuery } from './data';
 import { formatDateGeneral, getDefaultValueByInputDate } from 'utils';
-import { Modal } from './Dialog';
+import { NewFolderDialog } from './NewFolderDialog';
+import { RemoveFolderDialog } from './RemoveFolderDialog';
+import { UpdateFolderDialog } from './UpdateFolderDialog';
+import { clearSelectedQDFData } from 'store/reducers/analitics';
+import { InserDataToFolderDialog } from './InserDataToFolderDialog';
 
 function a11yProps(index: number) {
   return {
@@ -28,51 +33,43 @@ function a11yProps(index: number) {
 
 export const DemandDynamics = () => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const [chartData, setChartData] = useState<OneWbQueriesType[]>([]);
   const [tab, setTab] = useState(0);
+  const [page, setPage] = useState(0);
   const [dateFrom, setDateFrom] = useState<string>(getDefaultValueByInputDate(new Date(), -30));
   const [dateTo, setDateTo] = useState<string>(getDefaultValueByInputDate(new Date()));
   const debouncedSearch = useDebounce(searchValue, 600);
-  const [openModal, setOpenModal] = useState(false);
+  const [openNewFolderDialog, setOpenModal] = useState(false);
+  const [openRemoveFolderDialog, setOpenRemoveFolderDialog] = useState(false);
+  const [openUpdateFolderDialog, setOpenUpdateFolderDialog] = useState(false);
+  const [openInserDatatoFolderDialog, setOpenInserDatatoFolderDialog] = useState(false);
   const dispatch = useAppDispatch();
   const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
+  const { selectedQDFData } = useAppSelector(analiticsSelector);
 
-  const { isLoading, isFetching, data, refetch } = useGetWbQueriesQuery(debouncedSearch);
+  const { data, isLoading: isLoadingGetData } = useGetQDFDataQuery({
+    search: debouncedSearch,
+    page,
+    typeid: tab,
+  });
+  const {
+    data: folders,
+    isLoading: isLoadingFolders,
+    refetch: refetchFolders,
+  } = useGetQueryDynamicsFoldersQuery(null);
+  const [fetchRemoveDataToFolder] = useRemoveDataToFolderMutation();
 
   useEffect(() => {
-    if (!!debouncedSearch) {
-      clearData();
-      return;
-    }
-    refetch();
-  }, [debouncedSearch]);
+    setPage(0);
+    dispatch(clearSelectedQDFData());
+  }, [tab]);
 
-  useEffect(() => {
-    if (!data) return;
-    const { all, one } = data;
-    if (!(all.length || one.length)) {
-      clearData();
-      dispatch(openNotify(alertMessage.infoSearchQuery));
-      return;
-    }
-    setChartData(one);
-  }, [data]);
-
-  const handleClickOpen = () => {
-    setOpenModal(true);
-  };
-
-  const handleClose = () => {
-    setOpenModal(false);
+  const refetch = () => {
+    refetchFolders();
   };
 
   const addSearchValue = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setSearchValue(value);
-  };
-
-  const clearData = () => {
-    setChartData([]);
   };
 
   const handleChangeTabs = (event: React.SyntheticEvent, newValue: number) => {
@@ -89,10 +86,22 @@ export const DemandDynamics = () => {
     setDateFrom(formatDateGeneral(value, true));
   };
 
+  const handleChangePage = (event: ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
+  const removeDataFromFolder = () => {
+    if (!(tab && selectedQDFData.length)) {
+      return;
+    }
+
+    fetchRemoveDataToFolder({ typeId: tab, queries: selectedQDFData });
+  };
+
   return (
     <Main>
       <MainTitle>Динамика запросов</MainTitle>
-      {(isLoading || isFetching) && <Loader />}
+      {isLoadingFolders && <Loader />}
       <Notification isOpenNotify={isOpenNotify} notifyMessage={notifyMessage} />
       <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '15px' }}>
         <SearchBlock>
@@ -106,23 +115,74 @@ export const DemandDynamics = () => {
             <InputSearch type="date" onChange={handleChangeDateTo} defaultValue={dateTo} />
           </Label>
         </SearchBlock>
-        <Button>Добавить в список</Button>
+        <div style={{ display: 'flex', columnGap: '10px' }}>
+          <Button onClick={() => setOpenInserDatatoFolderDialog(true)}>Добавить в список</Button>
+          <InserDataToFolderDialog
+            open={openInserDatatoFolderDialog}
+            handleClose={() => setOpenInserDatatoFolderDialog(false)}
+            folders={folders}
+            refetch={refetch}
+          />
+          {data && <Button onClick={removeDataFromFolder}>Удалить из списка</Button>}
+        </div>
       </Box>
       <Box sx={{ display: 'flex', columnGap: '15px' }}>
         <Tabs value={tab} onChange={handleChangeTabs} aria-label="basic tabs example">
-          {typesSearchQuery.map(({ id, name }) => (
+          {(folders ?? []).map(({ id, name }) => (
             <Tab key={id} label={name} {...a11yProps(id)} />
           ))}
         </Tabs>
-        <Modal open={openModal} handleClose={handleClose} />
-        <IconButton color="primary" onClick={handleClickOpen}>
+        <NewFolderDialog
+          open={openNewFolderDialog}
+          handleClose={() => setOpenModal(false)}
+          refetch={refetch}
+        />
+        <IconButton color="primary" onClick={() => setOpenModal(true)}>
           <AddBoxIcon />
         </IconButton>
+        {folders && tab ? (
+          <>
+            <RemoveFolderDialog
+              open={openRemoveFolderDialog}
+              handleClose={() => setOpenRemoveFolderDialog(false)}
+              folderId={tab}
+              folderName={folders.find((folder) => folder.id === tab)?.name ?? ''}
+              refetch={refetch}
+            />
+            <IconButton color="primary" onClick={() => setOpenRemoveFolderDialog(true)}>
+              <FolderDeleteIcon />
+            </IconButton>
+            <UpdateFolderDialog
+              open={openUpdateFolderDialog}
+              handleClose={() => setOpenUpdateFolderDialog(false)}
+              folderId={tab}
+              folderName={folders.find((folder) => folder.id === tab)?.name ?? ''}
+              refetch={refetch}
+            />
+            <IconButton color="primary" onClick={() => setOpenUpdateFolderDialog(true)}>
+              <EditIcon />
+            </IconButton>
+          </>
+        ) : (
+          <></>
+        )}
       </Box>
-      <DataBlock>
-        <Table response={response} interval={1} />
-        <SearchQueryChart mainData={chartData} />
-      </DataBlock>
+      {data ? (
+        <DataBlock>
+          <div>
+            <Table response={data} interval={1} />
+            <Pagination
+              count={Math.ceil(data.totalCount / data.countOnPage)}
+              variant="outlined"
+              shape="rounded"
+              page={page}
+              onChange={handleChangePage}
+            />
+          </div>
+        </DataBlock>
+      ) : (
+        <p>Нет данных для отображения</p>
+      )}
     </Main>
   );
 };
