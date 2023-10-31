@@ -40,6 +40,7 @@ export const InserDataToFolderDialog = ({
 
   useEffect(() => {
     if (isSuccess) {
+      handleClose();
       refetch();
     }
   }, [isSuccess]);

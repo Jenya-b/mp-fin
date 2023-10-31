@@ -13,7 +13,11 @@ export const analiticsSlice = createSlice({
   initialState,
   reducers: {
     addSelectedQDFData: (state, action: PayloadAction<string>) => {
-      state.selectedQDFData.push(action.payload);
+      if (state.selectedQDFData.includes(action.payload)) {
+        state.selectedQDFData = state.selectedQDFData.filter((item) => item !== action.payload);
+      } else {
+        state.selectedQDFData.push(action.payload);
+      }
     },
     clearSelectedQDFData: (state) => {
       state.selectedQDFData = [];

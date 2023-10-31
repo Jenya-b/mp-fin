@@ -15,9 +15,9 @@ export const StyledTable = styled.table<ICountColumns>`
   border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  overflow: hidden;
-  overflow-x: scroll;
-  overflow-y: auto;
+  overflow: auto;
+  /* overflow-x: scroll;
+  overflow-y: auto; */
 
   @media (${({ theme }) => theme.media.medium}) {
     margin-top: 20px;

@@ -137,20 +137,6 @@ export interface IAnalyticVisualData {
   weekAndSums: IAnalyticWeek[];
 }
 
-export interface TopWbQueriesType {
-  title: string;
-  count: string;
-}
-
-export interface OneWbQueriesType extends TopWbQueriesType {
-  date: string;
-}
-
-export interface IWbQueries {
-  all: TopWbQueriesType[];
-  one: OneWbQueriesType[];
-}
-
 export interface IArticleQueries {
   date: string;
   parameters: IParam[];
@@ -220,4 +206,12 @@ export interface IQDFDataResponse {
       parameters: number[];
     }
   ];
+}
+
+export interface IQDFDataRequest {
+  typeid: number;
+  page: number;
+  search: string;
+  dateFrom: string;
+  dateTo: string;
 }

@@ -1,10 +1,10 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { Box, IconButton, Pagination, Tab, Tabs } from '@mui/material';
+import { Box, IconButton, Pagination } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import FolderDeleteIcon from '@mui/icons-material/FolderDelete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useDebounce } from 'hooks';
-import { InputSearch, DataBlock, Button } from './DemandDynamics.styled';
+import { InputSearch, DataBlock, Button, Tabs, Tab } from './DemandDynamics.styled';
 import { Main, MainTitle } from 'styles/components';
 import {
   useGetQDFDataQuery,
@@ -24,17 +24,10 @@ import { UpdateFolderDialog } from './UpdateFolderDialog';
 import { clearSelectedQDFData } from 'store/reducers/analitics';
 import { InserDataToFolderDialog } from './InserDataToFolderDialog';
 
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
 export const DemandDynamics = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [tab, setTab] = useState(0);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [dateFrom, setDateFrom] = useState<string>(getDefaultValueByInputDate(new Date(), -30));
   const [dateTo, setDateTo] = useState<string>(getDefaultValueByInputDate(new Date()));
   const debouncedSearch = useDebounce(searchValue, 600);
@@ -46,10 +39,17 @@ export const DemandDynamics = () => {
   const { isOpenNotify, notifyMessage } = useAppSelector(notifySelector);
   const { selectedQDFData } = useAppSelector(analiticsSelector);
 
-  const { data, isLoading: isLoadingGetData } = useGetQDFDataQuery({
+  const {
+    data,
+    isLoading: isLoadingGetData,
+    isFetching: isFetchingGetData,
+    refetch: refetchTableData,
+  } = useGetQDFDataQuery({
     search: debouncedSearch,
     page,
     typeid: tab,
+    dateFrom,
+    dateTo,
   });
   const {
     data: folders,
@@ -59,20 +59,21 @@ export const DemandDynamics = () => {
   const [fetchRemoveDataToFolder] = useRemoveDataToFolderMutation();
 
   useEffect(() => {
-    setPage(0);
+    setPage(1);
     dispatch(clearSelectedQDFData());
+    console.log(tab);
   }, [tab]);
 
-  const refetch = () => {
-    refetchFolders();
-  };
+  useEffect(() => {
+    refetchTableData();
+  }, [page, dateFrom, dateTo]);
 
   const addSearchValue = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setSearchValue(value);
   };
 
-  const handleChangeTabs = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChangeTabs = (newValue: number) => {
     setTab(newValue);
   };
 
@@ -101,7 +102,7 @@ export const DemandDynamics = () => {
   return (
     <Main>
       <MainTitle>Динамика запросов</MainTitle>
-      {isLoadingFolders && <Loader />}
+      {(isLoadingFolders || isLoadingGetData || isFetchingGetData) && <Loader />}
       <Notification isOpenNotify={isOpenNotify} notifyMessage={notifyMessage} />
       <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '15px' }}>
         <SearchBlock>
@@ -121,21 +122,27 @@ export const DemandDynamics = () => {
             open={openInserDatatoFolderDialog}
             handleClose={() => setOpenInserDatatoFolderDialog(false)}
             folders={folders}
-            refetch={refetch}
+            refetch={() => refetchFolders()}
           />
-          {data && <Button onClick={removeDataFromFolder}>Удалить из списка</Button>}
+          {data && tab !== 0 && <Button onClick={removeDataFromFolder}>Удалить из списка</Button>}
         </div>
       </Box>
       <Box sx={{ display: 'flex', columnGap: '15px' }}>
-        <Tabs value={tab} onChange={handleChangeTabs} aria-label="basic tabs example">
+        <Tabs>
           {(folders ?? []).map(({ id, name }) => (
-            <Tab key={id} label={name} {...a11yProps(id)} />
+            <Tab
+              className={tab === id ? 'active' : ''}
+              key={id}
+              onClick={() => handleChangeTabs(id)}
+            >
+              {name}
+            </Tab>
           ))}
         </Tabs>
         <NewFolderDialog
           open={openNewFolderDialog}
           handleClose={() => setOpenModal(false)}
-          refetch={refetch}
+          refetch={() => refetchFolders()}
         />
         <IconButton color="primary" onClick={() => setOpenModal(true)}>
           <AddBoxIcon />
@@ -147,7 +154,7 @@ export const DemandDynamics = () => {
               handleClose={() => setOpenRemoveFolderDialog(false)}
               folderId={tab}
               folderName={folders.find((folder) => folder.id === tab)?.name ?? ''}
-              refetch={refetch}
+              refetch={() => refetchFolders()}
             />
             <IconButton color="primary" onClick={() => setOpenRemoveFolderDialog(true)}>
               <FolderDeleteIcon />
@@ -157,7 +164,7 @@ export const DemandDynamics = () => {
               handleClose={() => setOpenUpdateFolderDialog(false)}
               folderId={tab}
               folderName={folders.find((folder) => folder.id === tab)?.name ?? ''}
-              refetch={refetch}
+              refetch={() => refetchFolders()}
             />
             <IconButton color="primary" onClick={() => setOpenUpdateFolderDialog(true)}>
               <EditIcon />
@@ -169,15 +176,18 @@ export const DemandDynamics = () => {
       </Box>
       {data ? (
         <DataBlock>
-          <div>
+          <div style={{ overflow: 'auto' }}>
             <Table response={data} interval={1} />
-            <Pagination
-              count={Math.ceil(data.totalCount / data.countOnPage)}
-              variant="outlined"
-              shape="rounded"
-              page={page}
-              onChange={handleChangePage}
-            />
+            {!!data.totalCount && (
+              <Pagination
+                sx={{ marginTop: '10px' }}
+                count={Math.ceil(data.totalCount / data.countOnPage)}
+                variant="outlined"
+                shape="rounded"
+                page={page}
+                onChange={handleChangePage}
+              />
+            )}
           </div>
         </DataBlock>
       ) : (

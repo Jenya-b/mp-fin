@@ -9,6 +9,7 @@ import {
   IWbReportsResponse,
   IAnalyticReports,
   IQDFDataResponse,
+  IQDFDataRequest,
 } from 'services/types';
 import { RootState } from 'store/store';
 
@@ -144,7 +145,7 @@ export const analyticApi = createApi({
         },
       }),
     }),
-    getQDFData: builder.query<IQDFDataResponse, { typeid: number; page: number; search: string }>({
+    getQDFData: builder.query<IQDFDataResponse, IQDFDataRequest>({
       query: (params) => ({
         url: '/Analytic/GetQDFData',
         params,
