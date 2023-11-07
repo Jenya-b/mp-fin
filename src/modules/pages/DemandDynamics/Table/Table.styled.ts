@@ -10,7 +10,10 @@ export const StyledTable = styled.table<ICountColumns>`
   display: grid;
   border-collapse: collapse;
   min-width: 100%;
-  grid-template-columns: 50px minmax(200px, 1fr) repeat(${({ count }) => count}, minmax(70px, 1fr));
+  grid-template-columns: 50px minmax(min-content, 1fr) repeat(
+      ${({ count }) => count},
+      minmax(min-content, 1fr)
+    );
   background: ${({ theme }) => theme.colors.backgroundPrimary};
   border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   border-top-left-radius: 10px;

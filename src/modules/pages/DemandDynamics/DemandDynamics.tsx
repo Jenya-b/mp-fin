@@ -28,7 +28,7 @@ export const DemandDynamics = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [tab, setTab] = useState(0);
   const [page, setPage] = useState(1);
-  const [dateFrom, setDateFrom] = useState<string>(getDefaultValueByInputDate(new Date(), -30));
+  const [dateFrom, setDateFrom] = useState<string>(getDefaultValueByInputDate(new Date(), -7));
   const [dateTo, setDateTo] = useState<string>(getDefaultValueByInputDate(new Date()));
   const debouncedSearch = useDebounce(searchValue, 600);
   const [openNewFolderDialog, setOpenModal] = useState(false);
@@ -181,7 +181,7 @@ export const DemandDynamics = () => {
             {!!data.totalCount && (
               <Pagination
                 sx={{ marginTop: '10px' }}
-                count={Math.ceil(data.totalCount / data.countOnPage)}
+                count={Math.ceil(data.totalCount / 100)}
                 variant="outlined"
                 shape="rounded"
                 page={page}
